@@ -107,7 +107,6 @@
     z-index: -1;
     right: -10px;
     bottom: -10px;
-    background: url(https://i.ibb.co/DKn55Qz/pattern-1.jpg) repeat;
 }
 .about-section .btn-style-three:hover {
     color: #ffffff;
@@ -153,3 +152,50 @@
     height: 1px;
     background-color: #bbbbbb;
 }
+
+.img-animation-2 .elementor-image img{
+  animation: k 10s infinite alternate ease-in-out 0s none running;
+  padding-right: 35%;
+}
+
+.elementor-widget-image {
+  position: relative;
+  z-index: 1;
+}
+
+.elementor-absolute {
+  position: absolute;
+}
+
+.elementor-absolute:nth-child(2) {
+  margin-top: 35%;
+  z-index: 2;
+}
+
+.elementor-absolute:last-child {
+  margin-top: 35%;
+  z-index: 3;
+}
+@keyframes k {
+  0% {
+    transform: rotateY(25deg);
+  }
+  50% {
+    transform: rotateY(0deg);
+  }
+  100%{
+    transform: rotateY(25deg);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
