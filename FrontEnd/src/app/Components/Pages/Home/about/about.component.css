@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap');
+
 .about-section{
 	position:relative;
 	padding:120px 0px;
@@ -124,7 +126,6 @@
     background-color: #ffffff;
     text-transform: capitalize;
     border: 2px solid #d7a449;
-    font-family: 'Arimo', sans-serif;
 }
 .sec-title2{
 	color:#fff;
@@ -134,14 +135,9 @@
     padding-bottom: 40px;
 }
 .sec-title .title {
-    position: relative;
-    color: #d7a449;
-    font-size: 18px;
-    font-weight: 700;
-    padding-right: 50px;
-    margin-bottom: 15px;
-    display: inline-block;
-    text-transform: capitalize;
+  font-size: 50px;
+  line-height: 60px;
+  font-family: 'Libre Baskerville', serif;
 }
 .sec-title .title:before {
     position: absolute;
@@ -170,13 +166,13 @@
 
 .elementor-absolute:nth-child(2) {
   right: 0;
-  margin-top: 20%;
+  margin-top: 22%;
   z-index: 2;
 }
 
 .elementor-absolute:last-child {
   right: 0;
-  margin-top: 15%;
+  margin-top: 10%;
   z-index: 3;
 }
 
