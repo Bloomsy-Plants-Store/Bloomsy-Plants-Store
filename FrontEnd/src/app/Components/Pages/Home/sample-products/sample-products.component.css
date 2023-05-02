@@ -35,7 +35,7 @@
   top:0px;
   right: 0px;
   left: 0px;
-  background-image:url('https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/5-1-600x713.jpg') ;
+  background-size: contain;
   opacity: 0;
 }
 .overlay button{
