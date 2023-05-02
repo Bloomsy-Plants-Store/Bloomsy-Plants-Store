@@ -7,6 +7,7 @@ import { SampleProductsComponent } from './Components/Pages/Home/sample-products
 import { HeaderComponent } from './Components/Pages/Home/header/header.component';
 import { HomePageComponent } from './Components/Pages/Home/home-page/home-page.component';
 import { ReviewComponent } from './Components/Pages/Home/review/review.component';
+import { NavbarComponent } from './Components/Pages/Home/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ReviewComponent } from './Components/Pages/Home/review/review.component
     HomePageComponent,
     HeaderComponent,
     ReviewComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
