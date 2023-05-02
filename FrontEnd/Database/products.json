@@ -1,0 +1,34 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Jade Succulent",
+      "price": 150,
+      "imageUrl": ["https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/4-1.jpg",
+                   "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/5-1.jpg",
+                   "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/6-1.jpg"
+                  ],
+      "videoUrl": "https://youtu.be/q75VaiRgIGc",
+      "discount": 33,
+      "favorite": false,
+      "bestSelling": true,
+      "description": "",
+      "itemsinStock": 5
+    },
+    {
+      "id": 2,
+      "name": "Italian Stone Pine",
+      "price": 250.00,
+      "imageUrl": ["https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/10-1.jpg",
+                   "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/10-1-1.jpg",
+                   "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/10-2.jpg"
+                  ],
+      "videoUrl": "",
+      "discount": 0,
+      "favorite": false,
+      "bestSelling": true,
+      "description": "",
+      "itemsinStock": 15
+    }
+  ]
+}
