@@ -13,8 +13,8 @@ import { ReviewComponent } from './Components/Pages/Home/review/review.component
     AppComponent,
     SampleProductsComponent,
     HomePageComponent,
-    ReviewComponent
-    HeaderComponent
+    HeaderComponent,
+    ReviewComponent,
   ],
   imports: [
     BrowserModule,
