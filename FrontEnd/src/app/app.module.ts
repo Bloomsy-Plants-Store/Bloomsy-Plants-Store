@@ -4,14 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './Components/Pages/Home/navbar/navbar.component';
+import { SampleProductsComponent } from './Components/Pages/Home/sample-products/sample-products.component';
+import { HeaderComponent } from './Components/Pages/Home/header/header.component';
+import { HomePageComponent } from './Components/Pages/Home/home-page/home-page.component';
+import { ReviewComponent } from './Components/Pages/Home/review/review.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomePageComponent,
+    ReviewComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule
   ],
   providers: [],
