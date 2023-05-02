@@ -8,9 +8,11 @@ nav .fa-bars {
     color: white !important;
   }
 
-.navbar-brand{
-  margin-right: 50px !important;
-}
+  .navbar-nav .nav-item .nav-link.active ,.nav-link:hover , .nav-link:focus {
+    text-decoration: underline solid #224229 !important;
+    text-underline-offset: 10px !important;
+  }
+
 
 
 @media (max-width: 991px) {
