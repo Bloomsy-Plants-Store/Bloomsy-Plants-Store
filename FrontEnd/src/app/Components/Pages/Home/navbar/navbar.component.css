@@ -25,7 +25,14 @@ nav .fa-bars {
   .navbar-scroll .fa-bars {
     color: white !important;
   }
+  .navbar-scroll .nav-link .fa-solid{
+   display: none !important;
 }
+.navbar-nav{
+  margin: 0!important;
+}
+}
+
 
 .navbar-brand {
   letter-spacing: 3px;
