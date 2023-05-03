@@ -21,13 +21,18 @@
   position: relative;
   display: inline-block;
 }
-.voucher{
-  display: flex;
-  justify-content: space-between;
+.discount, .hot{
   position: absolute;
   top: 12px;
   z-index: 100;
 }
+.hot{
+  right:12px;
+}
+.discount{
+  left:12px;
+}
+
 .overlay{
   position: absolute;
   transition: all 0.1s ease;
@@ -74,7 +79,7 @@
   100%{
     transform: translateY(-25px);
   }
-  
+
 }
 @keyframes overlay-animation-even {
   0%{
@@ -89,7 +94,7 @@
   100%{
     transform: translateY(25px);
   }
-  
+
 }
 .title-price-section{
   color:#828787;
