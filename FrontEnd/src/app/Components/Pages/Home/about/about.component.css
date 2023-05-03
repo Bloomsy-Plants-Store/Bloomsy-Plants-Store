@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap');
 
-.about-section{
+.about-section {
   background-color: #f9f4ef;
 }
 
@@ -20,9 +20,7 @@
 	line-height:2em;
 	margin-bottom:40px;
 }
-.elementor-icon-box-content{
-  margin-left: 2%;
-}
+
 
 .elementor-icon-box-title span{
   font-size: 22px;
@@ -37,7 +35,6 @@
 
 .about-section .image-column{
 	position:relative;
-	margin-bottom:50px;
 }
 
 .about-section .image-column .inner-column{
@@ -67,7 +64,6 @@
 	bottom:-50px;
 	width:299px;
 	height:299px;
-	/* background:url(img/pattern-2.png) no-repeat; */
 }
 
 .about-section .image-column .inner-column .image img{
@@ -91,29 +87,6 @@
 	padding-left:125px;
 }
 
-.about-section .image-column .inner-column .image .overlay-box .year-box .number{
-	position:absolute;
-	left:0px;
-	top:0px;
-	width:110px;
-	height:110px;
-	color:#d7a449;
-	font-size:68px;
-	font-weight:700;
-	line-height:105px;
-	text-align:center;
-	background-color:#ffffff;
-	border:1px solid #000000;
-}
-.about-section .btn-style-three:before {
-    position: absolute;
-    content: '';
-    left: 10px;
-    top: 10px;
-    z-index: -1;
-    right: -10px;
-    bottom: -10px;
-}
 
 .sec-title2{
 	color:#fff;
@@ -124,7 +97,6 @@
 }
 .sec-title .title {
   font-size: 50px;
-  line-height: 60px;
   font-family: 'Libre Baskerville', serif;
 }
 
@@ -148,11 +120,10 @@
 }
 
 .elementor-absolute:nth-child(2) {
-  /* transform: rotateY(50deg); */
-  /* left: -20; */
   right: 0;
-  left: -80px;
-  margin-top: 18%;
+  top: -150;
+  left: -105px;
+  margin-top: 19%;
   z-index: 2;
   opacity: 0.7;
 }
@@ -160,8 +131,9 @@
 
 .elementor-absolute:last-child {
   right: 0;
-  left: -50px;
-  margin-top: 10%;
+  top: -150;
+  left: -70px;
+  margin-top: 18%;
   z-index: 3;
   opacity: 0.7;
 }
@@ -183,6 +155,7 @@
   height: 70px;
   border-radius: 50%;
   background-color: #224229;
+  margin-right: 3%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -214,8 +187,64 @@
   }
 }
 
+@media only screen and (max-width: 1000px) {
+  .elementor-absolute {
+    position: relative;
+  }
+
+  .sec-title .title{
+    font-size: 25px;
+  }
+  .elementor-element{
+    padding: 0;
+  }
+  img{
+    width: 100%;
+    margin: 0 auto;
+  }
+
+}
+
+@media  screen and (max-width:767.5px) {
+  .elementor-icon-box-title span{
+    font-size: 15px;
+    color: #313232;
+    font-family: 'Libre Baskerville', serif;
+  }
+
+  .elementor-icon-box-description{
+    font-size: 10px;
+    color: #828787;
+  }
+  .sec-title .title{
+    font-size: 20px;
+  }
+  .circular-icon{
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+  }
+  .elementor-icon-box-wrappe{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  img{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+}
 
 
+
+/* @media only screen and (max-width: 750px) {
+
+  .about-section{
+    height: 100rem;
+  }
+} */
 
 
 
