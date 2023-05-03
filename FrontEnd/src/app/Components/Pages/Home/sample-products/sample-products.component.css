@@ -21,13 +21,18 @@
   position: relative;
   display: inline-block;
 }
-.voucher{
-  display: flex;
-  justify-content: space-between;
+.discount, .hot{
   position: absolute;
   top: 12px;
   z-index: 100;
 }
+.hot{
+  right:12px;
+}
+.discount{
+  left:12px;
+}
+
 .overlay{
   position: absolute;
   transition: all 0.1s ease;
@@ -63,35 +68,61 @@
 }
 @keyframes overlay-animation-odd {
   0%{
-    transform: translateY(25px);
+    transform: translateY(0px);
+  }
+  25%{
+    transform: translateY(20px);
   }
   50%{
-    transform: translateY(25px);
+    transform: translateY(20px);
   }
   75%{
-    transform: translateY(-25px);
+    transform: translateY(-20px);
   }
   100%{
-    transform: translateY(-25px);
+    transform: translateY(-20px);
   }
-  
+
 }
 @keyframes overlay-animation-even {
   0%{
-    transform: translateY(-25px);
+    transform: translateY(0px);
+  }
+  25%{
+    transform: translateY(-20px);
   }
   50%{
-    transform: translateY(-25px);
+    transform: translateY(-20px);
   }
   75%{
-    transform: translateY(25px);
+    transform: translateY(20px);
   }
   100%{
-    transform: translateY(25px);
+    transform: translateY(20px);
   }
-  
+
 }
 .title-price-section{
   color:#828787;
   font-size: large;
+}
+
+/*----View More Button----*/
+.view-more-btn-container:hover{
+  animation: view-more-animation 0.6s ease-in-out;
+}
+@keyframes view-more-animation {
+  0%{
+    transform:translateX(-20px)
+  }
+  100%{
+      transform:translateX(0px)
+  }
+}
+.view-more-btn a{
+  color:#224229;
+}
+.view-btn{
+  z-index: 100;
+  margin-left:-12px;
 }
