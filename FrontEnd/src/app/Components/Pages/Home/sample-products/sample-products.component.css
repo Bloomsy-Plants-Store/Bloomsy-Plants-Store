@@ -68,31 +68,37 @@
 }
 @keyframes overlay-animation-odd {
   0%{
-    transform: translateY(25px);
+    transform: translateY(0px);
+  }
+  25%{
+    transform: translateY(20px);
   }
   50%{
-    transform: translateY(25px);
+    transform: translateY(20px);
   }
   75%{
-    transform: translateY(-25px);
+    transform: translateY(-20px);
   }
   100%{
-    transform: translateY(-25px);
+    transform: translateY(-20px);
   }
 
 }
 @keyframes overlay-animation-even {
   0%{
-    transform: translateY(-25px);
+    transform: translateY(0px);
+  }
+  25%{
+    transform: translateY(-20px);
   }
   50%{
-    transform: translateY(-25px);
+    transform: translateY(-20px);
   }
   75%{
-    transform: translateY(25px);
+    transform: translateY(20px);
   }
   100%{
-    transform: translateY(25px);
+    transform: translateY(20px);
   }
 
 }

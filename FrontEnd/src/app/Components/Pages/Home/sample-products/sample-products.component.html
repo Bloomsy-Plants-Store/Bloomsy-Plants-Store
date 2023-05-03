@@ -49,19 +49,19 @@
             class="overlay col-12 d-flex justify-content-center align-items-end gap-3"
             [style.backgroundImage]="'url(' + product.imageUrl[1] + ')'"
           >
-            <button>
-              <i
-                class="fi fi-rs-search d-flex justify-content-center align-items-center"
-              ></i>
-            </button>
-            <button>
+            <button data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Cart">
               <i
                 class="fi fi-rs-shopping-bag d-flex justify-content-center align-items-center"
               ></i>
             </button>
-            <button>
+            <button data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
               <i
                 class="fi fi-rs-heart d-flex justify-content-center align-items-center"
+              ></i>
+            </button>
+            <button data-bs-toggle="tooltip" data-bs-placement="top" title="Quick Search">
+              <i
+                class="fi fi-rs-search d-flex justify-content-center align-items-center"
               ></i>
             </button>
           </div>
@@ -107,3 +107,4 @@
     </a>
   </div>
 </div>
+
