@@ -17,8 +17,8 @@
 	position:relative;
 	color:#828787;
 	font-size:14px;
-	line-height:2em;
-	margin-bottom:40px;
+	line-height:1.5em;
+	margin-bottom:30px;
 }
 
 
@@ -97,6 +97,7 @@
 }
 .sec-title .title {
   font-size: 50px;
+  line-height: 60px;
   font-family: 'Libre Baskerville', serif;
 }
 
@@ -121,9 +122,9 @@
 
 .elementor-absolute:nth-child(2) {
   right: 0;
-  top: -150;
-  left: -105px;
-  margin-top: 19%;
+
+  left: -80px;
+  margin-top: 18%;
   z-index: 2;
   opacity: 0.7;
 }
@@ -131,9 +132,9 @@
 
 .elementor-absolute:last-child {
   right: 0;
-  top: -150;
-  left: -70px;
-  margin-top: 18%;
+  top: -80;
+  left: -50px;
+  margin-top: 14%;
   z-index: 3;
   opacity: 0.7;
 }
@@ -151,8 +152,8 @@
 }
 
 .circular-icon {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background-color: #224229;
   margin-right: 3%;
@@ -194,6 +195,7 @@
 
   .sec-title .title{
     font-size: 25px;
+    line-height: 40px;
   }
   .elementor-element{
     padding: 0;
@@ -207,22 +209,23 @@
 
 @media  screen and (max-width:767.5px) {
   .elementor-icon-box-title span{
-    font-size: 15px;
+    font-size: 20px;
     color: #313232;
     font-family: 'Libre Baskerville', serif;
   }
 
   .elementor-icon-box-description{
-    font-size: 10px;
+    font-size: 15px;
     color: #828787;
   }
   .sec-title .title{
-    font-size: 20px;
+    font-size: 25px;
+    line-height: 40px;
   }
   .circular-icon{
     margin: 0 auto;
-    width: 50px;
-    height: 50px;
+    width: 90px;
+    height: 90px;
   }
   .elementor-icon-box-wrappe{
     display: flex;
