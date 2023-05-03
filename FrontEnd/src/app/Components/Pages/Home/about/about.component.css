@@ -114,23 +114,7 @@
     right: -10px;
     bottom: -10px;
 }
-.about-section .btn-style-three:hover {
-    color: #ffffff;
-    background: #d7a449;
-}
-.about-section .btn-style-three {
-    position: relative;
-    line-height: 24px;
-    color: #252525;
-    font-size: 15px;
-    font-weight: 700;
-    background: none;
-    display: inline-block;
-    padding: 11px 40px;
-    background-color: #ffffff;
-    text-transform: capitalize;
-    border: 2px solid #d7a449;
-}
+
 .sec-title2{
 	color:#fff;
 }
@@ -151,7 +135,6 @@
 
 .img-animation-2 .elementor-image img{
   animation: k 5s infinite alternate ease-in-out 0s none running;
-  padding-right: 20%;
 }
 
 
@@ -165,17 +148,22 @@
 }
 
 .elementor-absolute:nth-child(2) {
-  width: 100%;
+  /* transform: rotateY(50deg); */
+  /* left: -20; */
   right: 0;
-  margin-top: 20%;
+  left: -80px;
+  margin-top: 18%;
   z-index: 2;
+  opacity: 0.5;
 }
 
 
 .elementor-absolute:last-child {
   right: 0;
-  margin-top: 15%;
+  left: -50px;
+  margin-top: 10%;
   z-index: 3;
+  opacity: 0.5;
 }
 
 @keyframes k {
