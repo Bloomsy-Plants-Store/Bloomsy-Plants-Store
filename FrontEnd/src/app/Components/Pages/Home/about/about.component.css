@@ -128,13 +128,13 @@
 
 @keyframes k {
   0% {
-    transform: rotateY(15deg);
+    transform: rotateY(20deg);
   }
   50% {
     transform: rotateY(0deg);
   }
   100%{
-    transform: rotateY(15deg);
+    transform: rotateY(20deg);
   }
 }
 
