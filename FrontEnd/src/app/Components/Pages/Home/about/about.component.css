@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap');
 
 .about-section{
-	position:relative;
-	padding:120px 0px;
+  background-color: #f9f4ef;
 }
 
 .about-section .content-column{
@@ -12,23 +11,28 @@
 
 .about-section .content-column .inner-column{
 	position:relative;
-	padding-top:50px;
-	padding-right:100px;
 }
 
 .about-section .content-column .text{
 	position:relative;
-	color:#777777;
-	font-size:15px;
+	color:#828787;
+	font-size:14px;
 	line-height:2em;
 	margin-bottom:40px;
 }
+.elementor-icon-box-content{
+  margin-left: 2%;
+}
 
-.about-section .content-column .email{
-	position:relative;
-	color:#252525;
-	font-weight:700;
-	margin-bottom:50px;
+.elementor-icon-box-title span{
+  font-size: 22px;
+  color: #313232;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.elementor-icon-box-description{
+  font-size: 14px;
+  color: #828787;
 }
 
 .about-section .image-column{
@@ -139,19 +143,15 @@
   line-height: 60px;
   font-family: 'Libre Baskerville', serif;
 }
-.sec-title .title:before {
-    position: absolute;
-    content: '';
-    right: 0px;
-    bottom: 7px;
-    width: 40px;
-    height: 1px;
-    background-color: #bbbbbb;
+
+.sec-title span{
+  font-style: italic;
 }
+
 
 .img-animation-2 .elementor-image img{
   animation: k 5s infinite alternate ease-in-out 0s none running;
-  padding-right: 5%;
+  padding-right: 20%;
 }
 
 
@@ -165,28 +165,68 @@
 }
 
 .elementor-absolute:nth-child(2) {
+  width: 100%;
   right: 0;
-  margin-top: 22%;
+  margin-top: 20%;
   z-index: 2;
 }
 
+
 .elementor-absolute:last-child {
   right: 0;
-  margin-top: 10%;
+  margin-top: 15%;
   z-index: 3;
 }
 
 @keyframes k {
   0% {
-    transform: rotateY(20deg);
+    transform: rotateY(15deg);
   }
   50% {
     transform: rotateY(0deg);
   }
   100%{
-    transform: rotateY(20deg);
+    transform: rotateY(15deg);
   }
 }
+
+.circular-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #224229;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.circular-icon svg {
+  height: 30px;
+  width: 30px;
+  fill: #fff;
+}
+.circular-icon:hover {
+  animation: shake 0.4s linear;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
 
 
 
