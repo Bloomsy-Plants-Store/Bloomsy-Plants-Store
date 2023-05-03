@@ -97,7 +97,6 @@
 
 .img-animation-2 .elementor-image img{
   animation: k 5s infinite alternate ease-in-out 0s none running;
-  padding-right: 12%;
 }
 
 
@@ -112,21 +111,19 @@
 
 .elementor-absolute:nth-child(2) {
   right: 0;
-  /* left: -80px; */
   left: 50px;
-  margin-top: 14%;
+  margin-top: 15%;
   z-index: 2;
-  overflow: hidden;
+
 }
 
 
 .elementor-absolute:last-child {
   right: 0;
   top: -80;
-  /* left: -50px; */
-  margin-top: 7%;
+  left: 80px;
+  margin-top: 10%;
   z-index: 3;
-  overflow: hidden;
 }
 
 @keyframes k {
@@ -204,6 +201,62 @@
 
 }
 
+@media only screen and (min-width:1001px) and  (max-width: 1200px) {
+
+  .sec-title .title{
+    font-size: 28px;
+    line-height: 35px;
+  }
+
+  .elementor-icon-box-title span{
+    font-size: 20px;
+    color: #313232;
+    font-family: 'Libre Baskerville', serif;
+  }
+
+  .elementor-icon-box-description{
+    font-size: 15px;
+    color: #828787;
+  }
+  img{
+    margin: 2% 0;
+    width: 100%;
+    height: 85%;
+    margin: 0 auto;
+  }
+
+}
+
+
+@media only screen and (min-width:768px) and (max-width: 1000px) {
+  .elementor-absolute {
+    position: relative;
+  }
+
+  .sec-title .title{
+    font-size: 27px;
+    line-height: 40px;
+  }
+  .elementor-element{
+    padding: 0;
+  }
+  .elementor-widget-container{
+    display: flex;
+    justify-content: center;
+  }
+
+  img{
+    width: 100%;
+    height: 70%;
+    margin: 10% auto;
+  }
+  .circular-icon{
+    width: 80px;
+    height: 70px;
+    margin-right: 5%;
+  }
+}
+
 @media  screen and (max-width:767.5px) {
   .elementor-icon-box-title span{
     font-size: 20px;
@@ -232,9 +285,7 @@
   img{
     width: 100%;
     height: 100%;
-    margin: 0 auto;
   }
-
 }
 
 
@@ -245,6 +296,19 @@
     height: 100rem;
   }
 } */
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
