@@ -12,6 +12,7 @@ import { HeaderComponent } from './Components/Pages/Home/header/header.component
 import { SampleProductsComponent } from './Components/Pages/Home/sample-products/sample-products.component';
 import { ReviewComponent } from './Components/Pages/Home/review/review.component';
 import { FooterComponent } from './Components/Pages/Home/footer/footer.component';
+import { SupportComponent } from './Components/Pages/Home/support/support.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FooterComponent } from './Components/Pages/Home/footer/footer.component
     HeaderComponent,
     ReviewComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    SupportComponent
   ],
   imports: [
     BrowserModule,
