@@ -154,7 +154,7 @@
   left: -80px;
   margin-top: 18%;
   z-index: 2;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 
@@ -163,7 +163,7 @@
   left: -50px;
   margin-top: 10%;
   z-index: 3;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 @keyframes k {
