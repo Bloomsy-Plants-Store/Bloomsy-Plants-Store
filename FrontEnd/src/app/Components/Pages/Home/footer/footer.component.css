@@ -82,3 +82,17 @@ footer .header {
   color: #ffffff;
   transform: translateY(-30px);
 }
+
+/***********payment Logo section***********/
+.logo-imgs {
+  width: auto !important;
+  margin-left: 0;
+  margin-right: 0;
+}
+/*********copy rights section********/
+.copy-right {
+  border-style: solid;
+  border-width: 1px 0px 0px 0px;
+  border-color: #3c5742;
+  padding:15px;
+}
