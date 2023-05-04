@@ -31,7 +31,6 @@ export class FooterComponent {
       alert_text.classList.add("text-danger");
       alert_text.innerHTML="This Field is Required";
     }
-    console.log("Marioma")
   }
 
 }
