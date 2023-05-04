@@ -13,6 +13,7 @@ import { HeaderComponent } from './Components/Pages/Home/header/header.component
 import { ReviewComponent } from './Components/Pages/Home/review/review.component';
 import { FooterComponent } from './Components/Pages/Home/footer/footer.component';
 import { SupportComponent } from './Components/Pages/Home/support/support.component';
+import { BannersComponent } from './Components/Pages/Home/banners/banners.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SupportComponent } from './Components/Pages/Home/support/support.compon
     FooterComponent,
     SupportComponent,
     AboutComponent,
+    BannersComponent,
   ],
   imports: [
     BrowserModule,

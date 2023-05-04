@@ -1,138 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap');
 
-.header-sample-section {
-  background-color: #f9f4ef;
-}
-
-.banner-wrapper{
-  height: 100%;
-  position: relative;
-}
-
-.banner-wrapper-infor {
-  position: absolute;
-  bottom: 5px;
-  left: 0;
-  padding: 20px;
-  font-size: 20px;
-  color: #313232;
-  font-family: 'Libre Baskerville', serif;
-}
-
-.middle-banner{
-  position: absolute;
-  bottom: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 20px;
-  font-size: 20px;
-  color: #313232;
-  font-family: 'Libre Baskerville', serif;
-  text-align: center;
-}
-
-.title-banner {
-  white-space: nowrap;
-}
-
-
-.title-banner span{
-  font-style: italic;
-}
-
-.bwp-image:hover {
-  animation: bounce 1s;
-}
-
-
-.banner-wrapper-infor a, .middle-banner a {
-  position: relative;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 400;
-  color: #313232;
-}
-
-.banner-wrapper-infor a.button::before{
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #313232;
-  transition: transform 0.3s ease-out;
-  transform-origin: left center;
-}
-
-.banner-wrapper-infor a.button:hover::before{
-  transform: scaleX(0.5);
-}
-
-
-
-.middle-banner a.button::before{
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 1px;
-  background-color: #313232;
-  transition: transform 0.3s ease-out;
-}
-
-.middle-banner a.button:hover::before{
-  transform: translateX(-50%) scaleX(0.5);
-}
-
-
-
-@keyframes bounce {
-  0% {
-    transform: translateX(0);
-  }
-  15% {
-    transform: translateX(-9px);
-  }
-  30% {
-    transform: translateX(0);
-  }
-  45% {
-    transform: translateX(-6px);
-  }
-  60% {
-    transform: translateX(0);
-  }
-  75% {
-    transform: translateX(-3px);
-  }
-  100%{
-    transform: translateX(0);
-  }
-}
-
-.banner-wrapper .bwp-image img {
-  height: 250px;
-  top: 100px;
-  z-index: 1000000;
-}
-
-
-
-
-
-
-
-
-
-/************************************************************************************************************/
-
-
-
 .about-section {
   background-color: #f9f4ef;
+  padding-top: 15%;
 }
 
 .about-section .content-column{
@@ -280,8 +150,8 @@
   align-items: center;
 }
 .circular-icon svg {
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
   fill: #fff;
 }
 .circular-icon:hover {
@@ -325,37 +195,6 @@
     height: 90%;
     margin: 0 auto;
   }
-
-  .banner-wrapper-infor {
-    position: absolute;
-    bottom: 2px;
-    left: 0;
-    padding: 20px;
-    font-size: 15px;
-    color: #313232;
-    font-family: serif;
-  }
-
-  .middle-banner{
-    position: absolute;
-    bottom: 2px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 20px;
-    font-size: 15px;
-    color: #313232;
-    font-family: serif;
-    text-align: center;
-  }
-
-  .banner-wrapper-infor a{
-    font-size: 15px;
-    font-weight: 400;
-    color: #313232;
-  }
-  .banner-wrapper .bwp-image img {
-    height: 200px;
-  }
 }
 
 @media only screen and (min-width:1001px) and  (max-width: 1200px) {
@@ -382,36 +221,7 @@
     height: 85%;
     margin: 0 auto;
   }
-  .banner-wrapper-infor {
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    padding: 20px;
-    font-size: 15px;
-    color: #313232;
-    font-family: 'Libre Baskerville', serif;
-  }
 
-  .middle-banner{
-    position: absolute;
-    bottom: 5px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 20px;
-    font-size: 15px;
-    color: #313232;
-    font-family: 'Libre Baskerville', serif;
-    text-align: center;
-  }
-
-  .banner-wrapper-infor a{
-    font-size: 12px;
-    font-weight: 400;
-    color: #313232;
-  }
-  .banner-wrapper .bwp-image img {
-    height: 200px;
-  }
 }
 
 @media only screen and (min-width:768px) and (max-width: 1000px) {
@@ -439,7 +249,7 @@
   .circular-icon{
     width: 80px;
     height: 75px;
-    margin-bottom: 10%;
+    margin-bottom: 9%;
   }
 }
 
@@ -471,12 +281,10 @@
     text-align: center;
   }
   .elementor-image img{
-    width: 100%;
-    height: 100%;
+    width: 70%;
+    height: 80%;
   }
-  .banner-wrapper .bwp-image img {
-    height: 350px;
-  }
+
 }
 
 
