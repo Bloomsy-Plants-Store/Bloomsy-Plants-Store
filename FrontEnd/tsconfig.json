@@ -23,7 +23,7 @@
       "ES2022",
       "dom"
     ],
-    // "types": ["bootstrap"]
+    "types": ["bootstrap"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
