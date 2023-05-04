@@ -7,7 +7,6 @@
 .banner-wrapper{
   height: 100%;
   position: relative;
-  z-index: 5;
 }
 
 .banner-wrapper-infor {
@@ -116,6 +115,8 @@
 
 .banner-wrapper .bwp-image img {
   height: 250px;
+  top: 100px;
+  z-index: 1000000;
 }
 
 
