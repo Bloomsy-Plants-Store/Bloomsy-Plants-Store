@@ -18,7 +18,7 @@ export class ReviewComponent {
   onWindowScroll() {
     const elementTop = this.review_secion.getBoundingClientRect().top;
     const windowHeight = window.innerHeight;
-    let content=document.querySelector(".content")!;
+    let content=document.querySelector(".review-content")!;
     if (elementTop < windowHeight) {
       content.classList.add("active");
     }
