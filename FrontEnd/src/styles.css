@@ -9,3 +9,6 @@ body {
   color: #828787;
   text-align: left;
 }
+.text-line-through {
+  text-decoration: line-through;
+}
