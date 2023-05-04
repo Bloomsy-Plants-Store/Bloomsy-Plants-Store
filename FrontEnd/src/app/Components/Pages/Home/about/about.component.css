@@ -3,6 +3,7 @@
 .about-section {
   background-color: #f9f4ef;
   padding-top: 15%;
+  overflow: hidden;
 }
 
 .about-section .content-column{
@@ -176,7 +177,7 @@
   }
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1005px) {
   .elementor-absolute {
     position: relative;
   }
@@ -194,9 +195,12 @@
     height: 90%;
     margin: 0 auto;
   }
+  .anime-image{
+    display: none;
+  }
 }
 
-@media only screen and (min-width:1001px) and  (max-width: 1200px) {
+@media only screen and (min-width:1000px) and  (max-width: 1200px) {
 
   .sec-title .title{
     font-size: 28px;
@@ -220,10 +224,17 @@
     height: 85%;
     margin: 0 auto;
   }
+  .elementor-absolute:last-child {
+    right: 0;
+    top: -80;
+    left: 80px;
+    margin-top: 17%;
+    z-index: 3;
+  }
 
 }
 
-@media only screen and (min-width:768px) and (max-width: 1000px) {
+@media only screen and (min-width:768px) and (max-width: 999px) {
   .elementor-absolute {
     position: relative;
   }
@@ -282,6 +293,18 @@
   .elementor-image img{
     width: 80%;
     height: 90%;
+  }
+
+}
+
+@media  screen and (min-width:1201px) and (max-width:1401px) {
+
+  .elementor-absolute:nth-child(2) {
+    right: 0;
+    left: 60px;
+    margin-top: 20%;
+    z-index: 2;
+
   }
 
 }
