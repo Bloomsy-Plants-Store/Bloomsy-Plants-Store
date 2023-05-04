@@ -117,9 +117,9 @@
             <p>Stay in the loop with special offers,plant-parenting tips, and more.</p>
           </li>
           <li class="mb-2">
-            <div class="form-control bg-transparent border-0 ">
-              <input type="email" name="your-email" value="" size="40" class="" aria-required="true" aria-invalid="true"
-                required>
+            <form class="form-control bg-transparent border-0" [formGroup]="validationForm">
+              <input #email type="email" name="your-email" value="" size="40" class="email-input" aria-required="true" aria-invalid="true"
+              required formControlName="email">
               <label>
                 <span style="transition-delay:0ms">E</span><span style="transition-delay:50ms">n</span><span
                   style="transition-delay:100ms">t</span><span style="transition-delay:150ms">e</span><span
@@ -131,7 +131,13 @@
                 <span style="transition-delay:650ms">a</span><span style="transition-delay:700ms">i</span>
                 <span style="transition-delay:750ms">l</span>
               </label>
+              <a class="email-icon" (click)="checkEmail()"><i class="bi bi-envelope ml-2 envelope fs-5"></i></a>
+
+            </form>
+            <div class="email-alert d-none py-2 px-0">
+              <span id="text"></span>
             </div>
+
           </li>
           <li class="mb-2">
             <ul id="social-link" class="list-unstyled d-flex mt-4">
