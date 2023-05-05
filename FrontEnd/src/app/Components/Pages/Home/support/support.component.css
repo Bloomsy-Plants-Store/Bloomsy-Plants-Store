@@ -20,23 +20,25 @@
 
 /* Define the style of the icon when it is hovered over */
 i:hover {
-  animation: slide 1s ease-in-out infinite;
-  -webkit-animation: slide 1s ease-in-out infinite;
+  animation: slide 0.4s linear ;
+  -webkit-animation: slide 0.4s linear ;
 }
 
 @keyframes slide {
   0% {
-    transform: translateX(-10px);
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
   }
   50% {
-    transform: translateX(10px);
-    -webkit-transform: translateX(10px);
-    -moz-transform: translateX(10px);
-    -ms-transform: translateX(10px);
-    -o-transform: translateX(10px);
-}
+    transform: translateX(0);
+  }
+  75% {
+    transform: translateX(5px);
+  }
   100% {
-    transform: translateX(-10px);
+    transform: translateX(0);
   }
 }
 
