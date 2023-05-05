@@ -12,7 +12,7 @@
   font-style: italic;
 }
 
-.content{
+.review-content{
   opacity: 0;
 }
 
@@ -21,7 +21,7 @@
   padding-right: 5px;
 }
 
-.content.active {
+.review-content.active {
   animation: content-animation 2s ease forwards;
   animation-delay: 0s;
 }
