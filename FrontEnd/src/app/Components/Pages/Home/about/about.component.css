@@ -226,15 +226,23 @@
     height: 85%;
     margin: 0 auto;
   }
+  .elementor-absolute:nth-child(2) {
+    right: 0;
+    left: 60px;
+    margin-top: 15%;
+    z-index: 2;
+
+  }
   .elementor-absolute:last-child {
     right: 0;
     top: -80;
     left: 80px;
-    margin-top: 17%;
+    margin-top: 14%;
     z-index: 3;
   }
 
 }
+
 
 @media only screen and (min-width:768px) and (max-width: 999px) {
   .elementor-absolute {
@@ -299,6 +307,7 @@
 
 }
 
+/************************animation*******************************/
 @media  screen and (min-width:1201px) and (max-width:1401px) {
 
   .elementor-absolute:nth-child(2) {
@@ -311,7 +320,54 @@
 
 }
 
+@media only screen and (min-width:1008px) and  (max-width: 1081px) {
+  .elementor-absolute:nth-child(2) {
+    right: 0;
+    left: 60px;
+    margin-top: 17%;
+    z-index: 2;
 
+  }
+  .elementor-absolute:last-child {
+    right: 0;
+    top: -80;
+    left: 80px;
+    margin-top: 15%;
+    z-index: 3;
+  }
+}
+@media only screen and (min-width:1049px) and  (max-width: 1067px) {
+  .elementor-absolute:nth-child(2) {
+    right: 0;
+    left: 60px;
+    margin-top: 19%;
+    z-index: 2;
+
+  }
+  .elementor-absolute:last-child {
+    right: 0;
+    top: -80;
+    left: 80px;
+    margin-top: 17%;
+    z-index: 3;
+  }
+}
+@media only screen and (min-width:1005px) and  (max-width: 1039px) {
+  .elementor-absolute:nth-child(2) {
+    right: 0;
+    left: 60px;
+    margin-top: 20%;
+    z-index: 2;
+
+  }
+  .elementor-absolute:last-child {
+    right: 0;
+    top: -80;
+    left: 80px;
+    margin-top: 18%;
+    z-index: 3;
+  }
+}
 
 
 
