@@ -39,22 +39,6 @@
 	position:relative;
 }
 
-/* .about-section .image-column .inner-column{
-	position:relative;
-	padding:40px 40px 0px 0px;
-	margin-left:50px;
-} */
-
-/* .about-section .image-column .inner-column:after{
-	position:absolute;
-	content:'';
-	right:0px;
-	top:100px;
-	left:40px;
-	bottom:100px;
-	z-index:-1;
-} */
-
 .about-section .image-column .inner-column .image{
 	position:relative;
 }
