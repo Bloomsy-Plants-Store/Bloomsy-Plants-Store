@@ -82,6 +82,10 @@
   height: 1.5px;
   background-color: #313232;
   transition: transform 0.3s ease-out;
+  -webkit-transition: transform 0.3s ease-out;
+  -moz-transition: transform 0.3s ease-out;
+  -ms-transition: transform 0.3s ease-out;
+  -o-transition: transform 0.3s ease-out;
 }
 
 .middle-banner a.button:hover::before{
