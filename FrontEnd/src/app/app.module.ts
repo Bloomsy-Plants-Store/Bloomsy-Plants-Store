@@ -14,6 +14,8 @@ import { ReviewComponent } from './Components/Pages/Home/review/review.component
 import { FooterComponent } from './Components/Pages/Home/footer/footer.component';
 import { SupportComponent } from './Components/Pages/Home/support/support.component';
 import { BannersComponent } from './Components/Pages/Home/banners/banners.component';
+import { LoginOrRegisterComponent } from './Components/Pages/login-or-register/login-or-register.component';
+import { RegisterComponent } from './Components/Pages/Login-or-Register/register/register.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { BannersComponent } from './Components/Pages/Home/banners/banners.compon
     SupportComponent,
     AboutComponent,
     BannersComponent,
+    LoginOrRegisterComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
