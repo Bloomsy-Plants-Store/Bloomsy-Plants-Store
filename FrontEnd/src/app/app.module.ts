@@ -14,6 +14,7 @@ import { ReviewComponent } from './Components/Pages/Home/review/review.component
 import { FooterComponent } from './Components/Pages/Home/footer/footer.component';
 import { SupportComponent } from './Components/Pages/Home/support/support.component';
 import { BannersComponent } from './Components/Pages/Home/banners/banners.component';
+import { ScrollTopComponent } from './Components/Pages/Home/scroll-top/scroll-top.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { BannersComponent } from './Components/Pages/Home/banners/banners.compon
     SupportComponent,
     AboutComponent,
     BannersComponent,
+    ScrollTopComponent,
   ],
   imports: [
     BrowserModule,
