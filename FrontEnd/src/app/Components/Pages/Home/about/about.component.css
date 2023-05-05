@@ -99,6 +99,7 @@
 
 .img-animation-2 .elementor-image img{
   animation: k 5s infinite alternate ease-in-out 0s none running;
+  -webkit-animation: k 5s infinite alternate ease-in-out 0s none running;
 }
 
 
@@ -157,6 +158,7 @@
 }
 .circular-icon:hover {
   animation: shake 0.4s linear;
+  -webkit-animation: shake 0.4s linear;
 }
 
 @keyframes shake {
