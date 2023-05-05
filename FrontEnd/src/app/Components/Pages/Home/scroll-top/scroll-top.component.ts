@@ -11,7 +11,7 @@ export class ScrollTopComponent {
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const scrollTop = document.documentElement.scrollTop;
-    this.showArrow = scrollTop > 600;
+    this.showArrow = scrollTop > 850;
   }
 
   scrollToTop() {
