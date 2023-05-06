@@ -19,10 +19,10 @@ import { FooterComponent } from './Components/Partials/footer/footer.component';
 
 import { ScrollTopComponent } from './Components/Pages/Home/scroll-top/scroll-top.component';
 
-import { LoginOrRegisterComponent } from './Components/Pages/Login_Register/login-or-register/login-or-register.component';
 import { RegisterComponent } from './Components/Pages/Login_Register/register/register.component';
 
 import { ContactUsPageComponent } from './Components/Pages/Contact Us/contact-us-page/contact-us-page.component';
+import { LoginComponent } from './Components/Pages/Login_Register/login/login.component';
 
 @NgModule({
   declarations: [
@@ -36,10 +36,10 @@ import { ContactUsPageComponent } from './Components/Pages/Contact Us/contact-us
     SupportComponent,
     AboutComponent,
     BannersComponent,
-    LoginOrRegisterComponent,
     RegisterComponent,
     ScrollTopComponent,
     ContactUsPageComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
