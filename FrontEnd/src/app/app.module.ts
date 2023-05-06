@@ -16,9 +16,11 @@ import { AboutComponent } from './Components/Pages/Home/about/about.component';
 import { SupportComponent } from './Components/Pages/Home/support/support.component';
 import { FooterComponent } from './Components/Partials/footer/footer.component';
 
-import { LoginOrRegisterComponent } from './Components/Pages/login-or-register/login-or-register.component';
+
 import { ScrollTopComponent } from './Components/Pages/Home/scroll-top/scroll-top.component';
-import { RegisterComponent } from './Components/Pages/login-or-register/register/register.component';
+
+import { LoginOrRegisterComponent } from './Components/Pages/Login_Register/login-or-register/login-or-register.component';
+import { RegisterComponent } from './Components/Pages/Login_Register/register/register.component';
 
 import { ContactUsPageComponent } from './Components/Pages/Contact Us/contact-us-page/contact-us-page.component';
 import { ContactUsBannerComponent } from './Components/Pages/Contact Us/contact-us-banner/contact-us-banner/contact-us-banner.component';
