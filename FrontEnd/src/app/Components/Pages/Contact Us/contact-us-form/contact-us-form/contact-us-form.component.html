@@ -1,1 +1,53 @@
-<p>contact-us-form works!</p>
+<div class="contact-container d-flex justify-content-center my-5">
+  <div class="container contact col-8" id="contact-container">
+
+    <div class="form-container map">
+      <iframe
+          src="https://maps.google.com/maps?q=London%20Eye%2C%20London%2C%20United%20Kingdom&amp;t=m&amp;z=10&amp;output=embed&amp;iwloc=near"
+          aria-label="El Raml Station, Alexandria, Egypt"
+          style="width:100%;height:75vh"
+        ></iframe>
+    </div>
+
+    <div class="form-container contact-form col-12 col-md-6">
+        <h2 class="contact-form-title my-1 mb-4">Contact Us</h2>
+        <form>
+          <input type="text" class="field" placeholder="Enter Your Name" />
+          <input type="text" class="field" placeholder="Enter Your Email" />
+          <input type="text" class="field" placeholder="Enter Your Phone" />
+          <textarea placeholder="Message" class="field"></textarea>
+          <button class="btn">Send your message</button>
+        </form>
+    </div>
+
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel panel-left">
+          <h4 class="contact-title my-5 text-center">QUICK CONTACTS</h4>
+          <div class="mx-5 my-5">
+            <i class="fas fa-map-marker-alt" style="font-size: 24px"></i>
+            <span class="fs-5 mx-2 fw-bold">Location</span>
+            <div class="mx-4"><i>El Raml Station, Alexandria, Egypt</i></div>
+          </div>
+          <div class="mx-5 my-5">
+            <i class="fas fa-phone-volume" style="font-size: 24px"></i>
+            <span class="fs-5 mx-2 fw-bold">Phone</span>
+            <div class="mx-4"><i>(+20)1005551550</i></div>
+          </div>
+          <div class="mx-5 my-5">
+            <i class="fas fa-at" style="font-size: 22px"></i>
+            <span class="fs-5 mx-2 fw-bold">Email</span>
+            <div class="mx-4"><i>flacio@gmail.com</i></div>
+          </div>
+          <a id="map-btn" class="btn bg-transparent border-white">Discover Our Location</a>
+        </div>
+
+        <div class="overlay-panel panel-right">
+          <div class='icon fa fa fa-envelope' id='form-container-icon'></div>
+          <p>Send Us Message</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
