@@ -21,23 +21,27 @@ import { ScrollTopComponent } from './Components/Pages/Home/scroll-top/scroll-to
 import { RegisterComponent } from './Components/Pages/login-or-register/register/register.component';
 
 import { ContactUsPageComponent } from './Components/Pages/Contact Us/contact-us-page/contact-us-page.component';
+import { ContactUsBannerComponent } from './Components/Pages/Contact Us/contact-us-banner/contact-us-banner/contact-us-banner.component';
+import { ContactUsFormComponent } from './Components/Pages/Contact Us/contact-us-form/contact-us-form/contact-us-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SampleProductsComponent,
     HomePageComponent,
-    HeaderComponent,
-    ReviewComponent,
     NavbarComponent,
-    FooterComponent,
+    BannersComponent,
+    HeaderComponent,
+    SampleProductsComponent,
+    ReviewComponent,
     SupportComponent,
     AboutComponent,
-    BannersComponent,
+    ScrollTopComponent,
+    FooterComponent,
     LoginOrRegisterComponent,
     RegisterComponent,
-    ScrollTopComponent,
     ContactUsPageComponent,
+    ContactUsBannerComponent,
+    ContactUsFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,3 +54,4 @@ import { ContactUsPageComponent } from './Components/Pages/Contact Us/contact-us
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
