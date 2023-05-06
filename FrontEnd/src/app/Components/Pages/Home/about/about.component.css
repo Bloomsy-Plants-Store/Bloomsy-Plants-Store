@@ -24,13 +24,13 @@
 }
 
 
-.elementor-icon-box-title span{
+.about-icon-box-title span{
   font-size: 22px;
   color: #313232;
   font-family: 'Libre Baskerville', serif;
 }
 
-.elementor-icon-box-description{
+.about-icon-box-description{
   font-size: 14px;
   color: #828787;
 }
@@ -81,22 +81,22 @@
 }
 
 
-.img-animation-2 .elementor-image img{
+.img-animation-2 .about-image img{
   animation: k 5s infinite alternate ease-in-out 0s none running;
   -webkit-animation: k 5s infinite alternate ease-in-out 0s none running;
 }
 
 
-.elementor-widget-image {
+.about-widget-image {
   position: relative;
   z-index: 1;
 }
 
-.elementor-absolute {
+.about-absolute {
   position: absolute;
 }
 
-.elementor-absolute:nth-child(2) {
+.about-absolute:nth-child(2) {
   right: 0;
   left: 60px;
   margin-top: 15%;
@@ -105,7 +105,7 @@
 }
 
 
-.elementor-absolute:last-child {
+.about-absolute:last-child {
   right: 0;
   top: -80;
   left: 80px;
@@ -164,7 +164,7 @@
 }
 
 @media only screen and (max-width: 1005px) {
-  .elementor-absolute {
+  .about-absolute {
     position: relative;
   }
 
@@ -172,11 +172,11 @@
     font-size: 25px;
     line-height: 40px;
   }
-  .elementor-element{
+  .about-element{
     padding: 0;
   }
 
-  .elementor-image img{
+  .about-image img{
     margin: auto 0;
     height: 90%;
     margin: 0 auto;
@@ -193,31 +193,31 @@
     line-height: 35px;
   }
 
-  .elementor-icon-box-title span{
+  .about-icon-box-title span{
     font-size: 20px;
     color: #313232;
     font-family: 'Libre Baskerville', serif;
   }
 
-  .elementor-icon-box-description{
+  .about-icon-box-description{
     font-size: 15px;
     color: #828787;
   }
 
-  .elementor-image img{
+  .about-image img{
     margin: 2% 0;
     width: 85%;
     height: 85%;
     margin: 0 auto;
   }
-  .elementor-absolute:nth-child(2) {
+  .about-absolute:nth-child(2) {
     right: 0;
     left: 60px;
     margin-top: 15%;
     z-index: 2;
 
   }
-  .elementor-absolute:last-child {
+  .about-absolute:last-child {
     right: 0;
     top: -80;
     left: 80px;
@@ -229,7 +229,7 @@
 
 
 @media only screen and (min-width:768px) and (max-width: 999px) {
-  .elementor-absolute {
+  .about-absolute {
     position: relative;
   }
 
@@ -237,15 +237,15 @@
     font-size: 27px;
     line-height: 40px;
   }
-  .elementor-element{
+  .about-element{
     padding: 0;
   }
-  .elementor-widget-container{
+  .about-widget-container{
     display: flex;
     justify-content: center;
   }
 
- .elementor-image img{
+ .about-image img{
     width: 100%;
     height: 70%;
     margin: 10% auto;
@@ -260,13 +260,13 @@
 
 
 @media  screen and (max-width:767.5px) {
-  .elementor-icon-box-title span{
+  .about-icon-box-title span{
     font-size: 20px;
     color: #313232;
     font-family: 'Libre Baskerville', serif;
   }
 
-  .elementor-icon-box-description{
+  .about-icon-box-description{
     font-size: 15px;
     color: #828787;
   }
@@ -279,12 +279,12 @@
     width: 90px;
     height: 90px;
   }
-  .elementor-icon-box-wrappe{
+  .about-icon-box-wrappe{
     display: flex;
     flex-direction: column;
     text-align: center;
   }
-  .elementor-image img{
+  .about-image img{
     width: 80%;
     height: 90%;
   }
@@ -294,7 +294,7 @@
 /************************animation*******************************/
 @media  screen and (min-width:1201px) and (max-width:1401px) {
 
-  .elementor-absolute:nth-child(2) {
+  .about-absolute:nth-child(2) {
     right: 0;
     left: 60px;
     margin-top: 20%;
@@ -305,14 +305,14 @@
 }
 
 @media only screen and (min-width:1008px) and  (max-width: 1081px) {
-  .elementor-absolute:nth-child(2) {
+  .about-absolute:nth-child(2) {
     right: 0;
     left: 60px;
     margin-top: 17%;
     z-index: 2;
 
   }
-  .elementor-absolute:last-child {
+  .about-absolute:last-child {
     right: 0;
     top: -80;
     left: 80px;
@@ -321,14 +321,14 @@
   }
 }
 @media only screen and (min-width:1049px) and  (max-width: 1067px) {
-  .elementor-absolute:nth-child(2) {
+  .about-absolute:nth-child(2) {
     right: 0;
     left: 60px;
     margin-top: 19%;
     z-index: 2;
 
   }
-  .elementor-absolute:last-child {
+  .about-absolute:last-child {
     right: 0;
     top: -80;
     left: 80px;
@@ -337,14 +337,14 @@
   }
 }
 @media only screen and (min-width:1005px) and  (max-width: 1039px) {
-  .elementor-absolute:nth-child(2) {
+  .about-absolute:nth-child(2) {
     right: 0;
     left: 60px;
     margin-top: 20%;
     z-index: 2;
 
   }
-  .elementor-absolute:last-child {
+  .about-absolute:last-child {
     right: 0;
     top: -80;
     left: 80px;
