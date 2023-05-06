@@ -14,9 +14,9 @@ import { ReviewComponent } from './Components/Pages/Home/review/review.component
 import { FooterComponent } from './Components/Pages/Home/footer/footer.component';
 import { SupportComponent } from './Components/Pages/Home/support/support.component';
 import { BannersComponent } from './Components/Pages/Home/banners/banners.component';
-import { LoginOrRegisterComponent } from './Components/Pages/login-or-register/login-or-register.component';
+import { LoginOrRegisterComponent } from './Components/Pages/Login_Register/login-or-register/login-or-register.component';
 import { ScrollTopComponent } from './Components/Pages/Home/scroll-top/scroll-top.component';
-import { RegisterComponent } from './Components/Pages/login-or-register/register/register.component';
+import { RegisterComponent } from './Components/Pages/Login_Register/register/register.component';
 
 @NgModule({
   declarations: [
