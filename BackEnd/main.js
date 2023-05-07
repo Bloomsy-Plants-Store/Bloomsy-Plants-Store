@@ -12,6 +12,10 @@ app.use(bodyparser.json());
 const logging = require("./MiddleWares/Logging");
 app.use("/",logging);
 
+// Register
+const UserRoutes = require("./Routes/UsersRoutes");
+app.use("/api/users",UserRoutes)
+
 //LogIn Routes
 const LoginRoutes = require("./Routes/LoginRoutes");
 app.use("/api/login",LoginRoutes);
