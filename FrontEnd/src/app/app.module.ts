@@ -23,6 +23,8 @@ import { LoginOrRegisterComponent } from './Components/Pages/Login_Register/logi
 import { RegisterComponent } from './Components/Pages/Login_Register/register/register.component';
 
 import { ContactUsPageComponent } from './Components/Pages/Contact Us/contact-us-page/contact-us-page.component';
+import { AboutUsComponent } from './Components/Pages/about-us/about-us.component';
+import { AboutUsHeaderComponent } from './Components/Pages/about-us/about-us-header/about-us-header.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { ContactUsPageComponent } from './Components/Pages/Contact Us/contact-us
     RegisterComponent,
     ScrollTopComponent,
     ContactUsPageComponent,
+    AboutUsComponent,
+    AboutUsHeaderComponent,
   ],
   imports: [
     BrowserModule,
