@@ -7,6 +7,7 @@ const userModel = require("../Models/UsersModel");
 const loginValid = require("../Utils/LoginValidate");
 
 router.post("/",async(req,res)=>{
+
     //Check Email
     var user = await userModel.findOne({email:req.body.email}).exec();
     if(!user) return res.status(400).send("Invalid Email Or Password")
@@ -22,4 +23,4 @@ router.post("/",async(req,res)=>{
 
 })
 
-
+module.exports = router;
