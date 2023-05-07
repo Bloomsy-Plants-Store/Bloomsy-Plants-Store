@@ -1,0 +1,8 @@
+{
+    "monogdbURL": "mongodb+srv://Mariam_Reda:Mariam_Reda@cluster0.jnz2ud6.mongodb.net/users",
+    "vaildation":{
+        "namePattern":"/^[a-zA-z\\s]{3,30}$/i",
+        "passwordPattern":"/^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/",
+        "phonePattern":"/^01[0-9]{9}$/"
+    }
+}
