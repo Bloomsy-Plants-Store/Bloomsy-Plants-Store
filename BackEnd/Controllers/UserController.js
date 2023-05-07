@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const userModel = require("../Models/UsersModel");
 const userValid = require("../Utils/AuthValidate");
+const UsersModel = require("../Models/UsersModel");
 
 var Register = async(req,res)=>{
     try{
@@ -16,13 +17,13 @@ var Register = async(req,res)=>{
             name:req.body.name,
             phone:req.body.phone,
             email:req.body.email,
-            password:hashedPassword
+            password: req.body.password
         })
 
         var valid = userValid(user);
-        console.log(valid)
         
-        if(valid){
+       if(valid){
+            user.password = hashedPassword
             await user.save()
             res.status(201).send("User Added Successfully");
         }else{
