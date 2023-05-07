@@ -12,6 +12,9 @@ app.use(bodyparser.json());
 const logging = require("./MiddleWares/Logging");
 app.use("/",logging);
 
+//LogIn Routes
+const LoginRoutes = require("./Routes/LoginRoutes");
+app.use("/api/login",LoginRoutes);
 
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})
 
