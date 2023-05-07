@@ -13,7 +13,7 @@ let UsersSchema = new mongoose.Schema({
             validator: (val) => {
                 return /^[a-zA-Z\s]{3,30}$/i.test(val);
             },
-            message: (props) => `${props.value} is not a valid Email !`,
+            message: (props) => `${props.value} is not a valid name !`,
         },
 
     },
@@ -36,7 +36,7 @@ let UsersSchema = new mongoose.Schema({
             validator: (val) => {
                 return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(val);
             },
-            message: (props) => `${props.value} is not a valid Email !`,
+            message: (props) => `${props.value} is not a valid Password !`,
         },
     },
     phone: {
