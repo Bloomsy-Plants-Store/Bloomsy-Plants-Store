@@ -23,7 +23,7 @@ span {
 }
 
 input {
-  margin: 10px auto;
+  margin: 8px auto;
   padding: 10px 16px;
   width: 100%;
   font-size: 1rem;
@@ -81,7 +81,7 @@ button:active {
 
 .container {
   position: relative;
-  min-height: 460px;
+  min-height: 500px;
   max-width: 800px;
   width: 90%;
   background-color: transparent;
@@ -126,12 +126,13 @@ button:active {
 
 .form-container form {
   padding: 0 40px;
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center;
+  justify-content: center; */
   text-align: center;
+  margin: 50px 0;
 }
 
 .overlay-container {
@@ -196,6 +197,13 @@ button:active {
 a{
   text-decoration: none;
   border: none;
+}
+input.is-invalid {
+  border: 1px solid red;
+}
+
+input.is-valid {
+  border: 1px solid green;
 }
 
 @media (max-width: 900px) {
