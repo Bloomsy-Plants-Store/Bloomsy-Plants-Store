@@ -23,6 +23,8 @@ import { LoginOrRegisterComponent } from './Components/Pages/Login_Register/logi
 import { RegisterComponent } from './Components/Pages/Login_Register/register/register.component';
 
 import { ContactUsPageComponent } from './Components/Pages/Contact Us/contact-us-page/contact-us-page.component';
+import { ALlProductsComponent } from './Components/Pages/All_Products/all-products/all-products.component';
+import { AllProductsHeaderComponent } from './Components/Pages/All_Products/all-products-header/all-products-header.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { ContactUsPageComponent } from './Components/Pages/Contact Us/contact-us
     RegisterComponent,
     ScrollTopComponent,
     ContactUsPageComponent,
+    ALlProductsComponent,
+    AllProductsHeaderComponent,
   ],
   imports: [
     BrowserModule,
