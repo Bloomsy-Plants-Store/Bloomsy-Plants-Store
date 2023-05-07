@@ -5,13 +5,12 @@ const userModel = require("../Models/UsersModel");
 const loginValid = require("../Utils/LoginValidate");
 
 var Login = async(req,res)=>{
-
     //Check Email
     var user = await userModel.findOne({email:req.body.email}).exec();
     if(!user) return res.status(400).send("Invalid Email Or Password")
     
     //Check Password
-    var checkpass = await bcrypt.compare(req.body.password, user.password).exec();
+    var checkpass = await bcrypt.compare(req.body.password, user.password);
     if(!checkpass) return res.status(400).send("Invalid Email Or Password")
     
     //Login
@@ -21,4 +20,4 @@ var Login = async(req,res)=>{
 
 }
 
-module.exports = Login;
+module.exports = {Login};
