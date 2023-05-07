@@ -45,7 +45,7 @@ import { AllProductsHeaderComponent } from './Components/Pages/All_Products/all-
     ContactUsPageComponent,
     ContactUsBannerComponent,
     ContactUsFormComponent,
-    AboutUsHeaderComponent
+    AboutUsHeaderComponent,
     ALlProductsComponent,
     AllProductsHeaderComponent,
   ],

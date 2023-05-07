@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:'',component:HomePageComponent},
   {path:'about-us',component:AboutUsComponent},
   {path: 'login', component: LoginOrRegisterComponent},
-  {path:'contact-us',component:ContactUsPageComponent}
+  {path:'contact-us',component:ContactUsPageComponent},
   {path:'products',component:ALlProductsComponent},
 ];
 
