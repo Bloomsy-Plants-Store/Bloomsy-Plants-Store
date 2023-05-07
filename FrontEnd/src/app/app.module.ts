@@ -16,13 +16,14 @@ import { AboutComponent } from './Components/Pages/Home/about/about.component';
 import { SupportComponent } from './Components/Pages/Home/support/support.component';
 import { FooterComponent } from './Components/Partials/footer/footer.component';
 
-
 import { ScrollTopComponent } from './Components/Pages/Home/scroll-top/scroll-top.component';
 
 import { LoginOrRegisterComponent } from './Components/Pages/Login_Register/login-or-register/login-or-register.component';
 import { RegisterComponent } from './Components/Pages/Login_Register/register/register.component';
-
+import { ContactUsBannerComponent } from './Components/Pages/Contact Us/contact-us-banner/contact-us-banner/contact-us-banner.component';
 import { ContactUsPageComponent } from './Components/Pages/Contact Us/contact-us-page/contact-us-page.component';
+import { ContactUsFormComponent } from './Components/Pages/Contact Us/contact-us-form/contact-us-form/contact-us-form.component';
+import { AboutUsHeaderComponent } from './Components/Pages/about-us/about-us-header/about-us-header.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,9 @@ import { ContactUsPageComponent } from './Components/Pages/Contact Us/contact-us
     LoginOrRegisterComponent,
     RegisterComponent,
     ContactUsPageComponent,
+    ContactUsBannerComponent,
+    ContactUsFormComponent,
+    AboutUsHeaderComponent
   ],
   imports: [
     BrowserModule,
