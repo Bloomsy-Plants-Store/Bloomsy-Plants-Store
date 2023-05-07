@@ -9,11 +9,9 @@ let UsersSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        minlength: 3,
-        maxlength: 50,
         validate: {
             validator: (val) => {
-                return /^[a-zA-z\s]{3,30}$/i.test(val);
+                return /^[a-zA-Z\s]{3,30}$/i.test(val);
             },
             message: (props) => `${props.value} is not a valid Email !`,
         },
