@@ -18,7 +18,6 @@ import { FooterComponent } from './Components/Partials/footer/footer.component';
 
 import { ScrollTopComponent } from './Components/Pages/Home/scroll-top/scroll-top.component';
 
-import { LoginOrRegisterComponent } from './Components/Pages/Login_Register/login-or-register/login-or-register.component';
 import { RegisterComponent } from './Components/Pages/Login_Register/register/register.component';
 import { ContactUsBannerComponent } from './Components/Pages/Contact Us/contact-us-banner/contact-us-banner/contact-us-banner.component';
 import { ContactUsPageComponent } from './Components/Pages/Contact Us/contact-us-page/contact-us-page.component';
@@ -26,6 +25,7 @@ import { ContactUsFormComponent } from './Components/Pages/Contact Us/contact-us
 import { AboutUsHeaderComponent } from './Components/Pages/about-us/about-us-header/about-us-header.component';
 import { ALlProductsComponent } from './Components/Pages/All_Products/all-products/all-products.component';
 import { AllProductsHeaderComponent } from './Components/Pages/All_Products/all-products-header/all-products-header.component';
+import { LoginComponent } from './Components/Pages/Login_Register/login/login.component';
 
 @NgModule({
   declarations: [
@@ -40,9 +40,9 @@ import { AllProductsHeaderComponent } from './Components/Pages/All_Products/all-
     AboutComponent,
     ScrollTopComponent,
     FooterComponent,
-    LoginOrRegisterComponent,
     RegisterComponent,
     ContactUsPageComponent,
+    LoginComponent,
     ContactUsBannerComponent,
     ContactUsFormComponent,
     AboutUsHeaderComponent,

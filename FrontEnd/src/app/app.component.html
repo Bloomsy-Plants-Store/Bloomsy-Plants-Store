@@ -1,5 +1,5 @@
 
-<app-navbar></app-navbar>
+<app-navbar *ngIf="!isLoginPage &&  !isSignUpPage"></app-navbar>
 <router-outlet></router-outlet>
-<!-- <app-home-page></app-home-page> -->
-<app-footer></app-footer>
+<app-footer *ngIf="!isLoginPage &&  !isSignUpPage"></app-footer>
+
