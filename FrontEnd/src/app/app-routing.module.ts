@@ -4,6 +4,7 @@ import { ContactUsPageComponent } from './Components/Pages/Contact Us/contact-us
 import { HomePageComponent } from './Components/Pages/Home/home-page/home-page.component';
 import { AboutUsComponent } from './Components/Pages/about-us/about-us.component';
 import { LoginOrRegisterComponent } from './Components/Pages/Login_Register/login-or-register/login-or-register.component';
+import { ALlProductsComponent } from './Components/Pages/All_Products/all-products/all-products.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path:'about-us',component:AboutUsComponent},
   {path: 'login', component: LoginOrRegisterComponent},
   {path:'contact-us',component:ContactUsPageComponent}
+  {path:'products',component:ALlProductsComponent},
 ];
 
 

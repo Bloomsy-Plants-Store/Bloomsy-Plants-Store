@@ -24,6 +24,8 @@ import { ContactUsBannerComponent } from './Components/Pages/Contact Us/contact-
 import { ContactUsPageComponent } from './Components/Pages/Contact Us/contact-us-page/contact-us-page.component';
 import { ContactUsFormComponent } from './Components/Pages/Contact Us/contact-us-form/contact-us-form/contact-us-form.component';
 import { AboutUsHeaderComponent } from './Components/Pages/about-us/about-us-header/about-us-header.component';
+import { ALlProductsComponent } from './Components/Pages/All_Products/all-products/all-products.component';
+import { AllProductsHeaderComponent } from './Components/Pages/All_Products/all-products-header/all-products-header.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { AboutUsHeaderComponent } from './Components/Pages/about-us/about-us-hea
     ContactUsBannerComponent,
     ContactUsFormComponent,
     AboutUsHeaderComponent
+    ALlProductsComponent,
+    AllProductsHeaderComponent,
   ],
   imports: [
     BrowserModule,
