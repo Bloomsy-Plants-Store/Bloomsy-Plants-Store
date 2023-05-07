@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const config=require("../config.json");
 
 const userModel = require("../Models/UsersModel");
 const loginValid = require("../Utils/LoginValidate");
@@ -14,7 +15,7 @@ var Login = async(req,res)=>{
     if(!checkpass) return res.status(400).send("Invalid Email Or Password")
     
     //Login
-    var Token = jwt.sign({UserId:user._id},"thisistokensecret")
+    var Token = jwt.sign({UserId:user._id},config.SECRETKEY)
     res.header("x-auth-token",Token);
     res.status(200).send("Logged In Successfully!")
 

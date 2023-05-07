@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const config=require("../config.json")
-var DB_URL =config.monogdbURL;
+var DB_URL =config.MONGODBURL;
 var validator = require("validator");
 //(1)Connect ---> (3)Listen mongoose.connection.once("open",()=>{}) --> model.find({}).exec()
 mongoose.connect(DB_URL, { useNewUrlParser: true });
