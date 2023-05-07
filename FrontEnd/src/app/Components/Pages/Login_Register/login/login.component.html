@@ -1,17 +1,32 @@
 <div class="sign-container">
   <div class="container" id="container">
     <div class="form-container sign-in">
-      <form>
-        <h1>Sign In</h1>
+      <h1 class="text-center " style="margin:45px 0;">Sign In</h1>
+      <form [formGroup]="validationForm">
+
         <div class="social-wrapper">
           <a href="#"><i class="fab fa-facebook"></i></a>
           <a href="#"><i class="fab fa-google"></i></a>
           <a href="#"><i class="fab fa-linkedin"></i></a>
         </div>
-        <input type="email" name="email" placeholder="Your Email" />
-        <input type="password" name="password" placeholder="Your Password" />
-        <a href="#">Forgot Your Password?</a>
-        <button type="button">Sign In</button>
+        <input type="email" class="form-control" name="email" placeholder="Email" formControlName="email"
+          [ngClass]="{'is-invalid': email?.invalid && (email?.dirty || email?.touched), 'is-valid': !email?.invalid && (email?.dirty || email?.touched)}" autocomplete="off"/>
+        <div class="alert alert-danger text-danger p-0 text-start px-3"
+          *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+          <p style="font-size: small; margin: 0;">
+            <small *ngIf="email?.errors?.['required']">Email is required.</small>
+            <small *ngIf="email?.errors?.['email']">Please enter a valid email address.</small>
+          </p>
+        </div>
+        <input type="password" class="form-control" name="password" placeholder="Password" formControlName="password"
+        [ngClass]="{'is-invalid': password?.invalid && (password?.dirty || password?.touched), 'is-valid': !password?.invalid && (password?.dirty || password?.touched)}"  autocomplete="off" />
+        <div class="alert alert-danger text-danger p-0 text-start px-3" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+          <p style="font-size: small; margin: 0;">
+          <small *ngIf="password?.errors?.['required']">Password number is required.</small>
+          <small *ngIf="password?.errors?.['pattern']">please enter password contain capital word , number and special character  .</small>
+        </p>
+        </div>
+        <button type="button" [disabled]="validationForm.invalid">Sign Up</button>
       </form>
     </div>
 
