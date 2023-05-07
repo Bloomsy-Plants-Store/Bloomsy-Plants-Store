@@ -1,4 +1,4 @@
 module.exports = ("/",(req,res,next)=>{
-    console.log("logging...")
+    console.log("MiddleWare Called..")
     next();
 })
