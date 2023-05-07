@@ -1,7 +1,5 @@
-{
-  "products": [
+[
     {
-      "id": 1,
       "name": "Jade Succulent",
       "price": 150,
       "imageUrl": ["https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/4-1.jpg",
@@ -18,7 +16,6 @@
       "itemsinStock": 5
     },
     {
-      "id": 2,
       "name": "Aurora",
       "price": 1200,
       "imageUrl": ["https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/11-3.jpg",
@@ -36,7 +33,6 @@
       "itemsinStock": 5
     },
     {
-      "id": 3,
       "name": "Echeveria Succulent",
       "price": 100,
       "imageUrl": ["https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/04/13-2.jpg",
@@ -54,7 +50,6 @@
       "itemsinStock": 5
     },
     {
-      "id": 4,
       "name": "Devil’s Ivy",
       "price": 140,
       "imageUrl": ["https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2018/05/9.jpg",
@@ -70,5 +65,4 @@
       "description": "",
       "itemsinStock": 5
     }
-  ]
-}
+]
