@@ -16,6 +16,8 @@ router.post("/",async(req,res)=>{
     if(!checkpass) return res.status(400).send("Invalid Email Or Password")
     
     //Login
+    var Token = jwt.sign({UserId:user._id},"thisistokensecret")
+    res.header("x-auth-token",Token);
     res.status(200).send("Logged In Successfully!")
 
 })
