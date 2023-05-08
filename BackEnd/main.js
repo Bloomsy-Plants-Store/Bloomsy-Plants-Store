@@ -24,7 +24,7 @@ app.use(passport.session());
 const logging = require("./MiddleWares/Logging");
 app.use("/",logging);
 
-// Register
+// Users Routes
 const UserRoutes = require("./Routes/UsersRoutes");
 app.use("/api/users",UserRoutes)
 

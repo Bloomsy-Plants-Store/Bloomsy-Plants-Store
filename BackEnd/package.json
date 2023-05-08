@@ -11,10 +11,12 @@
   "dependencies": {
     "ajv": "^8.12.0",
     "bcrypt": "^5.1.0",
+    "crypto": "^1.0.1",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.1.0",
+    "nodemailer": "^6.9.1",
     "passport": "^0.6.0",
     "passport-facebook": "^3.0.0",
     "passport-twitter": "^1.0.4",
