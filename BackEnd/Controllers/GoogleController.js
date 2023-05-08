@@ -1,6 +1,9 @@
 const passport = require('passport');
 const config = require("../config.json");
-
+const userModel = require("../Models/UsersModel");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const randomPass = require('../Utils/RandomPassword');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 
@@ -12,7 +15,6 @@ passport.use(new GoogleStrategy({
 },
     async (accessToken, refreshToken, profile, done) => {
         try {
-            console.log(profile);
             let user = await userModel.findOne({ email: profile.emails[0].value }).exec();
             if (!user) {
                 const salt = await bcrypt.genSalt(10);
@@ -25,9 +27,9 @@ passport.use(new GoogleStrategy({
                 });
                 await user.save();
             }
-            const token = jwt.sign({ userId: user._id },
-                done(null, { user, token }));
-        } catch (err) { 
+            done(null, {user});
+        } catch (err) {
+            consloe.log(err)
             done(err);
         }
 }
