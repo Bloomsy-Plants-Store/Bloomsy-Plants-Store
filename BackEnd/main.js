@@ -11,6 +11,8 @@ const bodyparser = require("body-parser");
 
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(bodyparser.json());
+
+//Facebook middlewares
 app.use(session({
     secret: config.SECRETKEY,
     resave: false,
