@@ -47,6 +47,8 @@ let UsersSchema = new mongoose.Schema({
             message: (props) => `${props.value} is not a valid phone number!`,
         },
     },
+    resetToken: String,
+    resetTokenExpiration: Date
 });
 
 module.exports = mongoose.model("users", UsersSchema);

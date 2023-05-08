@@ -4,13 +4,14 @@ const passport = require("./Utils/passportConfig");
 const config = require('./config.json');
 const app = express();
 
-
 const PORT = process.env.PORT||7400
 
 const bodyparser = require("body-parser");
 
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(bodyparser.json());
+
+//Facebook and Twitter middlewares
 app.use(session({
     secret: config.SECRETKEY,
     resave: false,
@@ -23,7 +24,7 @@ app.use(passport.session());
 const logging = require("./MiddleWares/Logging");
 app.use("/",logging);
 
-// Register
+// Users Routes
 const UserRoutes = require("./Routes/UsersRoutes");
 app.use("/api/users",UserRoutes)
 
@@ -34,7 +35,8 @@ app.use("/api/login",LoginRoutes);
 const facebookRoutes = require('./Routes/FacebookRoutes');
 app.use('/auth/facebook', facebookRoutes);
 
-
+const twitterRoutes = require('./Routes/TwitterRoutes');
+app.use('/auth/twitter', twitterRoutes);
 
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})
 
