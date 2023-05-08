@@ -21,7 +21,7 @@ const userSchema = {
       pattern: "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d$!%*#?&@]{8,}$"
     },
   },
-  required: ["name", "phone", "email", "password"],
+  required: ["name", "email", "password"],
 };
 
 module.exports = ajv.compile(userSchema);
