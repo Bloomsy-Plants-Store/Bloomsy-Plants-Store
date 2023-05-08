@@ -38,5 +38,10 @@ app.use('/auth/facebook', facebookRoutes);
 const twitterRoutes = require('./Routes/TwitterRoutes');
 app.use('/auth/twitter', twitterRoutes);
 
+// Privacy Policy placeholder route
+app.get("/privacy-policy", (req, res) => {
+  res.send("Privacy Policy will be available soon."); 
+});
+
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})
 
