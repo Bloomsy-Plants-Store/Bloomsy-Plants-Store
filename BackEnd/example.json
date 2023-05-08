@@ -1,6 +1,6 @@
 {
-    "MONGODBURL": "mongodb+srv://Mariam_Reda:Mariam_Reda@cluster0.jnz2ud6.mongodb.net/Plants-Shop",
-    "SECRETKEY": "ButterflyTeam",
+    "MONGODBURL": "MONGODBURL",
+    "SECRETKEY": "SECRETKEY",
     "FB_APP_KEY": "FB_APP_KEY",
     "FB_SECRET_KEY": "FB_SECRET_KEY",
     "FB_CALLBACK_URL": "FB_CALLBACK_URL",
