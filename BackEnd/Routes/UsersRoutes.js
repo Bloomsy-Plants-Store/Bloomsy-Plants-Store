@@ -3,7 +3,7 @@ const router = new express.Router();
 const UserController = require("../Controllers/UserController");
 
 // Register
-router.post("/register",UserController.Register)
+router.post("/",UserController.Register)
 
 // Forgot password
 router.post("/forgot-password",UserController.forgetPassword)

@@ -11,7 +11,7 @@ const bodyparser = require("body-parser");
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(bodyparser.json());
 
-//Facebook and Twitter middlewares
+//Facebook , Google and Twitter middlewares 
 app.use(session({
     secret: config.SECRETKEY,
     resave: false,
@@ -37,6 +37,9 @@ app.use('/auth/facebook', facebookRoutes);
 
 const twitterRoutes = require('./Routes/TwitterRoutes');
 app.use('/auth/twitter', twitterRoutes);
+
+const googleRoutes = require('./Routes/GoogleRoutes');
+app.use('/auth/google', googleRoutes);
 
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})
 
