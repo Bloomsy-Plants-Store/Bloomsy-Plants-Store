@@ -54,7 +54,8 @@ import { LoginComponent } from './Components/Pages/Login_Register/login/login.co
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
