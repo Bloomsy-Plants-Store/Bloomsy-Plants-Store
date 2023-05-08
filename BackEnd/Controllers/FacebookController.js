@@ -16,14 +16,13 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
-        let user = await userModel.findOne({ email: profile.emails[0].value }).exec();
-        
+        let user = await userModel.findOne({ email: profile.emails[0].value }).exec();      
         if (!user) {
           const salt = await bcrypt.genSalt(10);
-          
+  
           // User doesn't exist, create a new user
           user = new userModel({
-            name: profile.name.givenName + " " + profile.name.familyName,
+            name: profile.name.givenName + " " + profile.name.middleName,
             email: profile.emails[0].value,
             password: await bcrypt.hash(randomPass, salt),
             phone: profile.phone || ""
@@ -46,7 +45,7 @@ const loginWithFacebook = passport.authenticate("facebook", { scope: ["email"] }
 const handleFacebookLoginCallback = (req, res) => {
   passport.authenticate("facebook", (err, user, info) => {
     if (err) {
-      return res.status(500).send("An error occurred");
+      return res.status(500).send("An error occurred when loggin with facebook!");
     }
     if (!user) {
       return res.status(401).send("Facebook login failed");
