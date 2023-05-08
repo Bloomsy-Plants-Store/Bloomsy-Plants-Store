@@ -14,6 +14,6 @@ function generateRandomPassword() {
     return password;
   }
   
-  module.exports = generateRandomPassword;
+  module.exports = generateRandomPassword();
 
   

@@ -1,8 +1,10 @@
 const passport = require("passport");
 const FacebookStrategy = require("passport-facebook").Strategy;
 const userModel = require("../Models/UsersModel");
-const config=require("../config.json");
-const RandomPassword = require("../Utils/RandomPassword");
+const config = require("../config.json");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const randomPass = require('../Utils/RandomPassword');
 
 passport.use(
   new FacebookStrategy(
@@ -14,22 +16,24 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
-        // Check if the user already exists in the database
         let user = await userModel.findOne({ email: profile.emails[0].value }).exec();
         
         if (!user) {
+          const salt = await bcrypt.genSalt(10);
+          
           // User doesn't exist, create a new user
           user = new userModel({
-            name: profile.displayName,
+            name: profile.name.givenName + " " + profile.name.familyName,
             email: profile.emails[0].value,
-            password: RandomPassword,
+            password: await bcrypt.hash(randomPass, salt),
             phone: profile.phone || ""
           });
 
           await user.save();
         }
-
-        done(null, user);
+        
+        const token = jwt.sign({ userId: user._id }, config.SECRETKEY);
+        done(null, { user, token });
       } catch (err) {
         done(err);
       }
@@ -37,13 +41,22 @@ passport.use(
   )
 );
 
-// Facebook login route
 const loginWithFacebook = passport.authenticate("facebook", { scope: ["email"] });
 
-// Facebook callback route
-const loginWithFacebookCallback = passport.authenticate("facebook", {
-  successRedirect: "/api/login/facebook/success",
-  failureRedirect: "/api/login/facebook/failure",
-});
+const handleFacebookLoginCallback = (req, res) => {
+  passport.authenticate("facebook", (err, user, info) => {
+    if (err) {
+      return res.status(500).send("An error occurred");
+    }
+    if (!user) {
+      return res.status(401).send("Facebook login failed");
+    }
 
-module.exports = { loginWithFacebook, loginWithFacebookCallback };
+    // Successful login, generate token and include it in the response header
+    const token = jwt.sign({ userId: user._id }, config.SECRETKEY);
+    res.header("x-auth-token", token);
+    res.status(200).send("Facebook login successful");
+  })(req, res);
+};
+
+module.exports = { loginWithFacebook, handleFacebookLoginCallback };

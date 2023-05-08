@@ -38,7 +38,11 @@ let UsersSchema = new mongoose.Schema({
         // required: true,
         validate: {
             validator: (val) => {
-                return /^01[0125][0-9]{8}$/.test(val);
+                if (!val || val.trim() === "") {
+                    return true; //allow empty phone number
+                } else {
+                    return /^01[0125][0-9]{8}$/.test(val);
+                }
             },
             message: (props) => `${props.value} is not a valid phone number!`,
         },

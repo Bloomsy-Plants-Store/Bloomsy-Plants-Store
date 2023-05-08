@@ -6,7 +6,7 @@ const FacebookController = require("../Controllers/FacebookController");
 router.get("/", FacebookController.loginWithFacebook);
 
 // Route for handling the Facebook callback
-router.get("/callback", FacebookController.loginWithFacebookCallback);
+router.get("/callback", FacebookController.handleFacebookLoginCallback);
 
 // Route for successful Facebook login
 router.get("/success", (req, res) => {

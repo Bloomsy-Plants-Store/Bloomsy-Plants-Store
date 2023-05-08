@@ -1,4 +1,7 @@
 const express = require("express");
+const session = require('express-session');
+const passport = require("./Utils/passportConfig");
+const config = require('./config.json');
 const app = express();
 
 
@@ -8,6 +11,13 @@ const bodyparser = require("body-parser");
 
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(bodyparser.json());
+app.use(session({
+    secret: config.SECRETKEY,
+    resave: false,
+    saveUninitialized: true
+  }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Global MiddleWare
 const logging = require("./MiddleWares/Logging");

@@ -1,0 +1,9 @@
+{
+    "MONGODBURL": "mongodb+srv://Radwa_Hassan:Radwa_Hassan@cluster0.jnz2ud6.mongodb.net/Plants-Shop",
+    "SECRETKEY":"ButterflyTeam",
+
+    "FB_APP_KEY": "686903589861834",
+    "FB_SECRET_KEY" : "15cd3455120f4f98939b8e16c8598781",
+    "FB_CALLBACK_URL" : "http://localhost:7400/auth/facebook/callback" 
+
+}
