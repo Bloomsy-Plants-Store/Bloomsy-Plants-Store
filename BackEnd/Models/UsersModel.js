@@ -35,7 +35,7 @@ let UsersSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
-        required: true,
+        // required: true,
         validate: {
             validator: (val) => {
                 return /^01[0125][0-9]{8}$/.test(val);
