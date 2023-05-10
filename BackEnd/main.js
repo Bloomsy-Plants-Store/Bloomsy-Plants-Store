@@ -12,22 +12,12 @@ const bodyparser = require("body-parser");
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(bodyparser.json());
 
-
-// Enable CORS for a specific origin
-// Set up CORS middleware
-// app.use(
-//   cors({
-//     origin: 'http://localhost:4200', // Replace with your frontend URL
-//     optionsSuccessStatus: 200, // Some legacy browsers (e.g., IE11) choke on 204
-//     exposedHeaders: ['x-auth-token'] 
-//   })
-// );
 const corsOptions = {
-  origin: 'http://localhost:4200', // Replace with your allowed origin
+  origin: 'http://localhost:4200', 
   optionsSuccessStatus: 200,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Replace with your allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'], // Replace with your allowed headers
-  exposedHeaders: ['x-auth-token'] // Replace with your exposed headers
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'], 
+  exposedHeaders: ['x-auth-token'] 
 };
 
 app.use(cors(corsOptions));
