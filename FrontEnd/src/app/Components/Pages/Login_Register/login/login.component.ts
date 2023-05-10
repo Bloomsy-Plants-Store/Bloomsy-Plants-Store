@@ -28,49 +28,28 @@ export class LoginComponent {
     return this.validationForm.get('password');
   }
 
-<<<<<<<<< Temporary merge branch 1
-  Login(email:any ,password:any): void {
-    if(this.validationForm.valid){
-      this.authService.login(email.value, password.value).subscribe(
-        response => {
-          console.log(response);
-          const token = response.headers;
-          console.log(token);
-        },
-        error => {
-          if(error.status == 400){
-            this.errorMessage = 'Invalid Email or Password';
-          }else{
-            this.errorMessage = 'Login Failed,Please Try Again';
-          }
-        }
-      );
-    }else{
-      console.log("Invalid Data")
-=========
   Login(email: any, password: any): void {
     if (this.validationForm.valid) {
       this.authService.login(email.value, password.value).subscribe({
         next: (response: any) => {
           const token = response.headers.get('x-auth-token');
           console.log('Token:', token);
-          // Do something with the token
         },
         error: (err: any) => {
-          // Handle errors
+          if(err.status == 400){
+            this.errorMessage = 'Invalid Email or Password';
+          }else{
+            this.errorMessage = 'Login Failed,Please Try Again';
+          }
         }
       });
     } else {
       console.log('Invalid Data');
->>>>>>>>> Temporary merge branch 2
     }
 
-    setInterval(()=>{
+    setInterval(() => {
       this.errorMessage = '';
-    },5000)
-
+    }, 5000);
   }
-
-
 
 }
