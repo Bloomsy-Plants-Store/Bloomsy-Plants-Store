@@ -11,6 +11,17 @@ const bodyparser = require("body-parser");
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(bodyparser.json());
 
+
+// Enable CORS for a specific origin
+app.use(
+  cors({
+    origin: 'http://localhost:4200', 
+    optionsSuccessStatus: 200,
+    exposedHeaders: ['x-auth-token'] 
+  })
+);
+
+
 //Facebook , Google and Twitter middlewares 
 app.use(session({
     secret: config.SECRETKEY,
