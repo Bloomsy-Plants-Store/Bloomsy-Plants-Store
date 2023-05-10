@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
@@ -30,19 +30,20 @@ export class LoginComponent {
 
   Login(email:any ,password:any): void {
     if(this.validationForm.valid){
-      this.authService.login(email.value, password.value).subscribe({
-        next: data => {
-          // const token = this.http.headers.common.Authorization.split(' ')[1]; // Extract token from header
-          console.log(this.http);
+      this.authService.login(email.value, password.value).subscribe(
+        response => {
+          console.log(response);
+          const token = response.headers;
+          console.log(token);
         },
-        error: err => {
-          if(err.status == 400){
+        error => {
+          if(error.status == 400){
             this.errorMessage = 'Invalid Email or Password';
           }else{
             this.errorMessage = 'Login Failed,Please Try Again';
           }
         }
-      });
+      );
     }else{
       console.log("Invalid Data")
     }
