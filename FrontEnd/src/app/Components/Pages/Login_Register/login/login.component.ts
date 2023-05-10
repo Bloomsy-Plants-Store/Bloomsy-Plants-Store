@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
@@ -34,10 +34,13 @@ export class LoginComponent {
         next: (response: any) => {
           const token = response.headers.get('x-auth-token');
           console.log('Token:', token);
-          // Do something with the token
         },
         error: (err: any) => {
-          // Handle errors
+          if(err.status == 400){
+            this.errorMessage = 'Invalid Email or Password';
+          }else{
+            this.errorMessage = 'Login Failed,Please Try Again';
+          }
         }
       });
     } else {
@@ -48,7 +51,5 @@ export class LoginComponent {
       this.errorMessage = '';
     }, 5000);
   }
-
-
 
 }
