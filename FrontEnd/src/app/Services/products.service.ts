@@ -11,6 +11,6 @@ export class ProductsService {
   constructor(private readonly myClient : HttpClient) { }
 
   GetTopRating(){
-    return this.myClient.get(this.Base_URL+"topRating?limit=6");
+    return this.myClient.get(this.Base_URL+"topRating?limit=8");
   }
 }
