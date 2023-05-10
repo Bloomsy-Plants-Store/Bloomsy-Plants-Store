@@ -52,4 +52,7 @@ app.use('/api/auth/twitter', twitterRoutes);
 const googleRoutes = require('./Routes/GoogleRoutes');
 app.use('/api/auth/google', googleRoutes);
 
+const productsRoutes=require('./Routes/ProductsRoutes');
+app.use('/api/products', productsRoutes);
+
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})
