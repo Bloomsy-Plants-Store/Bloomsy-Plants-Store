@@ -49,9 +49,7 @@ export class LoginComponent {
 
     setInterval(() => {
       this.errorMessage = '';
-    }, 10000);
+    }, 5000);
   }
-
-
 
 }
