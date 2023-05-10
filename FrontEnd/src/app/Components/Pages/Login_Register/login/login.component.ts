@@ -28,6 +28,7 @@ export class LoginComponent {
     return this.validationForm.get('password');
   }
 
+<<<<<<<<< Temporary merge branch 1
   Login(email:any ,password:any): void {
     if(this.validationForm.valid){
       this.authService.login(email.value, password.value).subscribe(
@@ -46,6 +47,22 @@ export class LoginComponent {
       );
     }else{
       console.log("Invalid Data")
+=========
+  Login(email: any, password: any): void {
+    if (this.validationForm.valid) {
+      this.authService.login(email.value, password.value).subscribe({
+        next: (response: any) => {
+          const token = response.headers.get('x-auth-token');
+          console.log('Token:', token);
+          // Do something with the token
+        },
+        error: (err: any) => {
+          // Handle errors
+        }
+      });
+    } else {
+      console.log('Invalid Data');
+>>>>>>>>> Temporary merge branch 2
     }
 
     setInterval(()=>{
@@ -53,6 +70,7 @@ export class LoginComponent {
     },5000)
 
   }
+
 
 
 }
