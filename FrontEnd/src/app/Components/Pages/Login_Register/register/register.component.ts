@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-register',
@@ -9,11 +12,10 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class RegisterComponent {
   validationForm: FormGroup;
-  isSuccessful = false;
-  isSignUpFailed = false;
   errorMessage = '';
+  successMessage ='';
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService,private router: Router) {
     this.validationForm = this.fb.group({
       name: [
         '',
@@ -56,7 +58,7 @@ export class RegisterComponent {
         .register(name.value, email.value, phone.value, password.value)
         .subscribe({
           next: (response:any) => {
-            // console.log(response.body);
+            console.log('Registeration successedd')
           },
           error: (err:any) => {
             if(err.status == 400){
@@ -73,4 +75,9 @@ export class RegisterComponent {
       this.errorMessage = '';
     }, 5000);
   }
+
+  redirectToLogin() {
+    this.router.navigate(['/login']);
+  }
+
 }
