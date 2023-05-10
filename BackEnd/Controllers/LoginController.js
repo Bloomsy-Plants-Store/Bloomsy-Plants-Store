@@ -21,13 +21,13 @@ var Login = async(req,res)=>{
             if(!checkpass) return res.status(400).json({ message: 'Invalid Email Or Password' });
 
             //Login
-            var Token = jwt.sign({UserId:user._id},config.SECRETKEY)
+            var Token = jwt.sign({UserId:user._id,UserName:user.name},config.SECRETKEY)
             res.header({"x-auth-token":Token});
             res.status(200).json({ message:"Logged In Successfully!"})
         }
-    
+
     //   });
-    
+
 // }
 
 module.exports = {Login};
