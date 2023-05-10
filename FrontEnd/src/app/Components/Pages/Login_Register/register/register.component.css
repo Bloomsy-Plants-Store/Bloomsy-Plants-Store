@@ -132,7 +132,8 @@ button:active {
   /* align-items: center;
   justify-content: center; */
   text-align: center;
-  margin: 50px 0;
+  margin: 35px 0;
+  margin-bottom: 5px;
 }
 
 .overlay-container {

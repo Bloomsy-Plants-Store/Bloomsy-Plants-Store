@@ -1,8 +1,8 @@
 <div class="sign-container">
   <div class="container right-panel-active" id="container">
     <div class="form-container sign-up overflow-auto ">
-      <h1 class="text-center " style="margin:40px 0;">Create Account</h1>
-      <form [formGroup]="validationForm">
+      <h1 class="text-center mt-5">Create Account</h1>
+      <form [formGroup]="validationForm" (ngSubmit)="register(name, email, phone, password)">
         <!-- <div class="social-wrapper">
           <a href="#"><i class="fab fa-facebook"></i></a>
           <a href="#"><i class="fab fa-google"></i></a>
@@ -47,7 +47,14 @@
         </p>
         </div>
 
-        <button type="button" [disabled]="validationForm.invalid">Sign Up</button>
+        <button type="submit" [disabled]="validationForm.invalid">Sign Up</button>
+
+        <div
+        class="text-danger text-danger p-0 text-start px-3 my-3 text-center"
+        *ngIf="errorMessage">
+        <p>{{ errorMessage }}</p>
+      </div>
+
       </form>
     </div>
 

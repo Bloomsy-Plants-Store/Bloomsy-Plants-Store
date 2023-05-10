@@ -29,6 +29,8 @@ export class AuthService {
       email,
       phone,
       password
-    }, httpOptions);
+    },{
+    ...httpOptions,
+    observe: 'response'});
   }
 }
