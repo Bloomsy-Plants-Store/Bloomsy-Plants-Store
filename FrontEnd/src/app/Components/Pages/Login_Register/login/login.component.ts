@@ -28,30 +28,27 @@ export class LoginComponent {
     return this.validationForm.get('password');
   }
 
-  Login(email:any ,password:any): void {
-    if(this.validationForm.valid){
+  Login(email: any, password: any): void {
+    if (this.validationForm.valid) {
       this.authService.login(email.value, password.value).subscribe({
-        next: data => {
-          // const token = this.http.headers.common.Authorization.split(' ')[1]; // Extract token from header
-          console.log(this.http);
+        next: (response: any) => {
+          const token = response.headers.get('x-auth-token');
+          console.log('Token:', token);
+          // Do something with the token
         },
-        error: err => {
-          if(err.status == 400){
-            this.errorMessage = 'Invalid Email or Password';
-          }else{
-            this.errorMessage = 'Login Failed,Please Try Again';
-          }
+        error: (err: any) => {
+          // Handle errors
         }
       });
-    }else{
-      console.log("Invalid Data")
+    } else {
+      console.log('Invalid Data');
     }
 
-    setInterval(()=>{
+    setInterval(() => {
       this.errorMessage = '';
-    },5000)
-
+    }, 5000);
   }
+
 
 
 }

@@ -22,7 +22,7 @@ var Login = async(req,res)=>{
 
             //Login
             var Token = jwt.sign({UserId:user._id},config.SECRETKEY)
-            res.header("x-auth-token",Token);
+            res.header({"x-auth-token":Token});
             res.status(200).json({ message:"Logged In Successfully!"})
         }
     
