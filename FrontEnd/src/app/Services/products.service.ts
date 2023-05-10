@@ -13,4 +13,8 @@ export class ProductsService {
   GetTopRating(){
     return this.myClient.get(this.Base_URL+"topRating?limit=8");
   }
+  GetBestSelling(){
+    return this.myClient.get(this.Base_URL+"bestSelling?limit=4");
+  }
 }
+

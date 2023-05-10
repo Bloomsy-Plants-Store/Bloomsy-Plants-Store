@@ -3,14 +3,14 @@
   <div class="filter-heading d-flex justify-content-center my-5 w-100">
     <div class="filter-order-by">
       <div class="filter-orderby">
-        <a routerLink="/" routerLinkActive="active" class="px-3"
+        <a  class="px-3 filter" [ngClass]="{ 'active': activeFilter === 'top-rate' }" (click)="filterProductsByTopRating('top-rate')"
           >Top <span>Rating</span></a
         >
         <a routerLink="" class="fw-lighter px-3">/</a>
         <a
-          routerLink="/home/best-selling"
-          routerLinkActive="active"
-          class="px-3"
+          [ngClass]="{ 'active': activeFilter === 'best-sell' }"
+          class="px-3 filter"
+          (click)="filterProductsByBestSelling('best-sell')"
           >Best <span>Selling</span></a
         >
       </div>
