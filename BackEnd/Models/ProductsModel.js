@@ -15,7 +15,7 @@ let productSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
-        required: true
+        required: true,
     },
     imageUrl:
     {
@@ -52,7 +52,9 @@ let productSchema = new mongoose.Schema({
     },
     itemsinStock: {
         type: Number,
-        required: true
+        required: true,
+        min: [0, 'Items In Stock Number cannot be less than 0'], // specify the minimum value and error message if it's violated
+
     }
 });
 
