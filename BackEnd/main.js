@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors');
 const session = require('express-session');
 const passport = require("./Utils/passportConfig");
 const config = require('./config.json');
@@ -10,6 +11,17 @@ const bodyparser = require("body-parser");
 
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(bodyparser.json());
+
+
+// Enable CORS for a specific origin
+app.use(
+  cors({
+    origin: 'http://localhost:4200', // Replace with your frontend URL
+    optionsSuccessStatus: 200, // Some legacy browsers (e.g., IE11) choke on 204
+    exposedHeaders: ['x-auth-token'] 
+  })
+);
+
 
 //Facebook , Google and Twitter middlewares 
 app.use(session({
@@ -24,22 +36,30 @@ app.use(passport.session());
 const logging = require("./MiddleWares/Logging");
 app.use("/",logging);
 
-// Users Routes
+//CORS MiddleWare
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  next();
+});
+
+// Register Routes
 const UserRoutes = require("./Routes/UsersRoutes");
-app.use("/api/users",UserRoutes)
+app.use("/api/auth/register",UserRoutes)
 
 //LogIn Routes
 const LoginRoutes = require("./Routes/LoginRoutes");
-app.use("/api/login",LoginRoutes);
+app.use("/api/auth/login",LoginRoutes);
 
 const facebookRoutes = require('./Routes/FacebookRoutes');
-app.use('/auth/facebook', facebookRoutes);
+app.use('/api/auth/facebook', facebookRoutes);
 
 const twitterRoutes = require('./Routes/TwitterRoutes');
-app.use('/auth/twitter', twitterRoutes);
+app.use('/api/auth/twitter', twitterRoutes);
 
 const googleRoutes = require('./Routes/GoogleRoutes');
-app.use('/auth/google', googleRoutes);
+app.use('/api/auth/google', googleRoutes);
 
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})
 
