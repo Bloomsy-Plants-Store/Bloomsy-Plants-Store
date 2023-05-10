@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 const config=require("../config.json")
 var DB_URL =config.MONGODBURL;
 var validator = require("validator");
@@ -51,4 +52,18 @@ let UsersSchema = new mongoose.Schema({
     resetTokenExpiration: Date
 });
 
-module.exports = mongoose.model("users", UsersSchema);
+// Document middleware
+UsersSchema.pre('save', function(next) {
+    // Hash the password before saving
+    bcrypt.hash(this.password, 10)
+      .then(hash => {
+        this.password = hash;
+        next();
+      })
+      .catch(error => {
+        next(error);
+      });
+  });
+  
+const User = mongoose.model('User', UsersSchema);
+module.exports = User;

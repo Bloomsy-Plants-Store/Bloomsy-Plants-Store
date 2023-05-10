@@ -22,7 +22,7 @@ passport.use(new GoogleStrategy({
                 user = new userModel({
                     name: profile.displayName,
                     email: profile.emails[0].value,
-                    password: await bcrypt.hash(randomPass, salt),
+                    password: randomPass,
                     phone: profile.phone || ""
                 });
                 await user.save();

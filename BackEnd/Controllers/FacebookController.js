@@ -17,14 +17,12 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       try {
         let user = await userModel.findOne({ email: profile.emails[0].value }).exec();      
-        if (!user) {
-          const salt = await bcrypt.genSalt(10);
-  
+        if (!user) {  
           // User doesn't exist, create a new user
           user = new userModel({
             name: profile.name.givenName + " " + profile.name.middleName,
             email: profile.emails[0].value,
-            password: await bcrypt.hash(randomPass, salt),
+            password: randomPass,
             phone: profile.phone || ""
           });
           await user.save();

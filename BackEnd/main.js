@@ -17,7 +17,7 @@ app.use(bodyparser.json());
 // Set up CORS middleware
 
 const corsOptions = {
-  origin: 'http://localhost:4200', // Replace with your allowed origin
+  origin: 'http://localhost:4200', //allowed origin
   optionsSuccessStatus: 200,
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Replace with your allowed methods
   allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'], // Replace with your allowed headers
@@ -68,5 +68,8 @@ app.use('/api/auth/twitter', twitterRoutes);
 
 const googleRoutes = require('./Routes/GoogleRoutes');
 app.use('/api/auth/google', googleRoutes);
+
+const productsRoutes=require('./Routes/ProductsRoutes');
+app.use('/api/products', productsRoutes);
 
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})

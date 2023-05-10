@@ -66,6 +66,12 @@
 .image-container:hover .overlay button:nth-child(even){
   animation: overlay-animation-even 0.6s;
 }
+.filter{
+  cursor: pointer;
+}
+.filter .active{
+  color: black !important;
+}
 @keyframes overlay-animation-odd {
   0%{
     transform: translateY(0px);
