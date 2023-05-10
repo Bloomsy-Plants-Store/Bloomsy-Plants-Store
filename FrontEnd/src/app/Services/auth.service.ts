@@ -18,7 +18,7 @@ export class AuthService {
   login(email: string, password: string): Observable<any> {
     return this.http.post(AUTH_API + 'login', { email, password }, {
       ...httpOptions,
-      observe: 'response' // Include the headers in the response
+      observe: 'response'
     });
   }
 
