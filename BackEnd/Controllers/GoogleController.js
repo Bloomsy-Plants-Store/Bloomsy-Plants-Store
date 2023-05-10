@@ -41,15 +41,15 @@ const LoginWithGoogle = passport.authenticate('google', { scope:  ['profile', 'e
 const handleLoginWithGoogleCallback = (req, res) => {
     passport.authenticate('google', (err, user, info) => {
         if (err) {
-            return res.status(500).send('An error occurred when loggin with google!');
+            return res.status(500).json({  error: 'An error occurred when loggin with google!'});
         }
         if (!user) {
-            return res.status(401).send('Google login failed');
+            return res.status(401).json({ error: 'Google login failed' });
         }
         // Successful login, generate token and include it in the response header
         const token = jwt.sign({ userId: user._id }, config.SECRETKEY);
         res.header('x-auth-token', token);
-        res.status(200).send('Google login successful');
+        res.status(200).json({ message  : 'Google login successful'});
     })(req, res);
 };
  

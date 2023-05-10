@@ -23,6 +23,7 @@ export class AuthService {
   }
 
 
+
   register(name: string, email: string, phone:string, password: string): Observable<any> {
     return this.http.post(AUTH_API + 'register', {
       name,
@@ -30,5 +31,19 @@ export class AuthService {
       phone,
       password
     }, httpOptions);
+  }
+
+  loginWithGoogle(): Observable<any> {
+
+    return this.http.get(AUTH_API + 'google', {
+      ...httpOptions,
+      observe: 'response'
+    });
+  }
+  loginWithFacebook(): Observable<any> {
+    return this.http.get(AUTH_API + 'facebook', {
+      ...httpOptions,
+      observe: 'response'
+    });
   }
 }
