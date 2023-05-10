@@ -27,12 +27,9 @@ passport.use(
             password: await bcrypt.hash(randomPass, salt),
             phone: profile.phone || ""
           });
-
           await user.save();
         }
-        
-        const token = jwt.sign({ userId: user._id }, config.SECRETKEY);
-        done(null, { user, token });
+        done(null, {user});
       } catch (err) {
         done(err);
       }
