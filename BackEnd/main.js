@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors');
 const session = require('express-session');
 const passport = require("./Utils/passportConfig");
 const config = require('./config.json');
@@ -10,6 +11,17 @@ const bodyparser = require("body-parser");
 
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(bodyparser.json());
+
+
+// Enable CORS for a specific origin
+app.use(
+  cors({
+    origin: 'http://localhost:4200', // Replace with your frontend URL
+    optionsSuccessStatus: 200, // Some legacy browsers (e.g., IE11) choke on 204
+    exposedHeaders: ['x-auth-token'] 
+  })
+);
+
 
 //Facebook , Google and Twitter middlewares 
 app.use(session({
