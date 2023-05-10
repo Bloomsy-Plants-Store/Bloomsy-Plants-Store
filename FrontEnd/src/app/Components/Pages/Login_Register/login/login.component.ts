@@ -11,10 +11,9 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class LoginComponent {
   validationForm: FormGroup;
-  isLoginFailed = false;
-  errorMessage = '';
+  errorMessage:any;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private http: HttpClient) {
     this.validationForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['',[ Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d$!%*#?&@]{8,}$/)]],
@@ -33,20 +32,26 @@ export class LoginComponent {
     if(this.validationForm.valid){
       this.authService.login(email.value, password.value).subscribe({
         next: data => {
-          console.log(data);
+          // const token = this.http.headers.common.Authorization.split(' ')[1]; // Extract token from header
+          console.log(this.http);
         },
         error: err => {
-          this.errorMessage = err.error.message;
-          this.isLoginFailed = true;
+          if(err.status == 400){
+            this.errorMessage = 'Invalid Email or Password';
+          }else{
+            this.errorMessage = 'Login Failed,Please Try Again';
+          }
         }
       });
     }else{
-      console.log("Invalid")
+      console.log("Invalid Data")
     }
 
+    setInterval(()=>{
+      this.errorMessage = '';
+    },5000)
+
   }
 
-  reloadPage(): void {
-    window.location.reload();
-  }
+
 }

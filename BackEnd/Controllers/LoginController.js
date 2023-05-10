@@ -14,7 +14,6 @@ var Login = async(req,res)=>{
     //     }else{
             //Check Email
             var user = await userModel.findOne({email:req.body.email}).exec();
-            console.log(req.body.email, req.body.password)
             if(!user) return res.status(400).json({ message: 'Invalid Email Or Password' });
 
             //Check Password
