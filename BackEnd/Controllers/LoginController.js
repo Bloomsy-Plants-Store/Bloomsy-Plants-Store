@@ -14,16 +14,17 @@ var Login = async(req,res)=>{
     //     }else{
             //Check Email
             var user = await userModel.findOne({email:req.body.email}).exec();
-            if(!user) return res.status(400).send("Invalid Email Or Password")
+            console.log(req.body.email, req.body.password)
+            if(!user) return res.status(400).json({ message: 'Invalid Email Or Password' });
 
             //Check Password
             var checkpass = await bcrypt.compare(req.body.password, user.password);
-            if(!checkpass) return res.status(400).send("Invalid Email Or Password")
+            if(!checkpass) return res.status(400).json({ message: 'Invalid Email Or Password' });
 
             //Login
             var Token = jwt.sign({UserId:user._id},config.SECRETKEY)
             res.header("x-auth-token",Token);
-            res.status(200).send("Logged In Successfully!")
+            res.status(200).json({ message:"Logged In Successfully!"})
         }
     
     //   });

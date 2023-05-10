@@ -2,12 +2,12 @@
   <div class="container" id="container">
     <div class="form-container sign-in">
       <h1 class="text-center " style="margin:45px 0;">Sign In</h1>
-      <form [formGroup]="validationForm">
+      <form [formGroup]="validationForm" (ngSubmit)="Login(email, password)" method="post">
 
         <div class="social-wrapper">
           <a href="#"><i class="fab fa-facebook"></i></a>
           <a href="#"><i class="fab fa-google"></i></a>
-          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
         </div>
         <input type="email" class="form-control" name="email" placeholder="Email" formControlName="email"
           [ngClass]="{'is-invalid': email?.invalid && (email?.dirty || email?.touched), 'is-valid': !email?.invalid && (email?.dirty || email?.touched)}" autocomplete="off"/>
@@ -26,7 +26,7 @@
           <small *ngIf="password?.errors?.['pattern']">please enter password contain capital word , number and special character  .</small>
         </p>
         </div>
-        <button type="button" [disabled]="validationForm.invalid">Sign Up</button>
+        <button type="submit" [disabled]="validationForm.invalid">LOGIN</button>
       </form>
     </div>
 
