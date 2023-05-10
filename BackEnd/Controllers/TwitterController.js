@@ -19,12 +19,12 @@ passport.use(new TwitterStrategy({
         try { 
             let user=await userModel.findOne({ email: profile.emails[0].value }).exec(); 
             if (!user) {
-                const salt = await bcrypt.genSalt(10);
+
                 // User doesn't exist, create a new user
                 user = new userModel({
                   name: profile.displayName,
                   email: profile.emails[0].value,
-                  password: await bcrypt.hash(randomPass, salt),
+                  password: randomPass,
                   phone: profile.phone || ""
                 });
                 await user.save();

@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+
 const userModel = require("../Models/UsersModel");
 const userValid = require("../Utils/AuthValidate");
 const crypto = require('crypto');
@@ -11,9 +11,6 @@ var Register = async(req,res)=>{
             return res.status(400).send("User Already Exist");
         }
 
-        let salt = await bcrypt.genSalt(10);
-        let hashedPassword = await bcrypt.hash(req.body.password,salt);
-
         let user = new userModel({
             name:req.body.name,
             phone:req.body.phone,
@@ -24,7 +21,6 @@ var Register = async(req,res)=>{
         let valid = userValid(user);
         
        if(valid){
-            user.password = hashedPassword
             await user.save()
             res.status(201).send("User Added Successfully");
         }else{
@@ -116,9 +112,9 @@ var resetPassword = async(req,res)=>{
             return res.status(400).json({ error: 'Not Compatible..' });
         }
 
-        let hashedPassword = await bcrypt.hash(password, 10);
+        // let hashedPassword = await bcrypt.hash(password, 10);
   
-        user.password = hashedPassword;
+        user.password = password;
         user.resetToken = undefined;
         user.resetTokenExpiration = undefined;
         await user.save();

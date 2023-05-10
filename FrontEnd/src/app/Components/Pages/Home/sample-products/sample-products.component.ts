@@ -13,9 +13,10 @@ export class SampleProductsComponent implements OnInit{
   constructor(private elementRef: ElementRef,public myService : ProductsService){}
 
   ngOnInit(): void {
-    this.myService.GetAllProducts().subscribe({
-      next:(data)=>{
-        this.Products = data;
+    this.myService.GetTopRating().subscribe({
+      next:(response:any)=>{
+        console.log(response.data)
+        this.Products = response.data;
       },
       error:(err)=>{
         console.log(err);

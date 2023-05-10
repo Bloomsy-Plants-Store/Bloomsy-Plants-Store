@@ -13,11 +13,11 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.use(bodyparser.json());
 
 const corsOptions = {
-  origin: 'http://localhost:4200', 
+  origin: 'http://localhost:4200', //allowed origin
   optionsSuccessStatus: 200,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
-  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'], 
-  exposedHeaders: ['x-auth-token'] 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], //allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'], //allowed headers
+  exposedHeaders: ['x-auth-token'] //exposed headers
 };
 
 app.use(cors(corsOptions));
@@ -35,14 +35,6 @@ app.use(passport.session());
 const logging = require("./MiddleWares/Logging");
 app.use("/",logging);
 
-// //CORS MiddleWare
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-//   next();
-// });
-
 // Register Routes
 const UserRoutes = require("./Routes/UsersRoutes");
 app.use("/api/auth/register",UserRoutes)
@@ -59,5 +51,8 @@ app.use('/api/auth/twitter', twitterRoutes);
 
 const googleRoutes = require('./Routes/GoogleRoutes');
 app.use('/api/auth/google', googleRoutes);
+
+const productsRoutes=require('./Routes/ProductsRoutes');
+app.use('/api/products', productsRoutes);
 
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})
