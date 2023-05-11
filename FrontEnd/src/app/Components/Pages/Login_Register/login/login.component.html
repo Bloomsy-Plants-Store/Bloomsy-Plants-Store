@@ -201,22 +201,29 @@
         <div class="d-flex flex-column justify-content-center w-100">
           <div class="icon-box text-center">
             <img
-              src="./assets/images/icons/Plant Stickers.gif"
-              width="500"
-              height="500"
+              src="./assets/images/icons/resetpassword.gif"
             />
           </div>
-          <h4 class="modal-title">Awesome!</h4>
+          <h4 class="mb-1">Reset Password</h4>
         </div>
       </div>
       <div class="modal-body text-center">
-        <p>Your Registration has been successfully completed</p>
-        <small class="text-center">Welcome to our garden :)</small>
-      </div>
-      <div class="modal-footer w-100 d-flex justify-content-evenly mt-0">
-        <button type="button" class="btn btn-info" data-bs-dismiss="modal">
-          Continue
-        </button>
+        <form class="input-group w-100" [formGroup]="validationEmail" (ngSubmit)="sentEmail()" method="post">
+          <input type="email" class="reset-input" id="resetEmail" name="resetEmail" formControlName="resetEmail" placeholder="Example@gmail.com" autocomplete="off">
+          <input class="button--submit" value="SEND" type="submit">
+        </form>
+        <div
+          class="w-100 text-danger my-3 text-center"
+          *ngIf="resetErrorMessage"
+        >
+          <p>{{ resetErrorMessage }}</p>
+        </div>
+        <div
+          class="w-100 my-3 text-center" style="color: #6b8f6e;"
+          *ngIf="sendEmailMessage"
+        >
+          <p>{{ sendEmailMessage }}</p>
+        </div>
       </div>
     </div>
   </div>
