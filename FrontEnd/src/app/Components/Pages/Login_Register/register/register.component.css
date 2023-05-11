@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+
 h1 {
   font-size: 2rem;
   font-weight: 700;
@@ -22,14 +24,23 @@ span {
   letter-spacing: 0.5px;
 }
 
-input {
-  margin: 8px auto;
-  padding: 10px 16px;
+.input-group input {
+   margin: 8px auto;
+  /*padding: 10px 16px;
   width: 100%;
   font-size: 1rem;
   background-color: #eaeaea;
   color: #000;
-  border: none;
+  border: none; */
+  width: 100%;
+  height: 40px;
+  padding: 0 0 0 40px;
+  border-radius: 7px;
+  outline: none;
+  border: 1px solid #e5e5e5;
+  filter: drop-shadow(0px 1px 0px #efefef)
+    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
 }
 
 button {
@@ -47,6 +58,10 @@ button {
   border-radius: 20px;
   cursor: pointer;
   transition: transform 0.2s linear;
+}
+
+button:hover{
+  background-color: #293b2d;
 }
 
 button:active {
@@ -72,10 +87,13 @@ button:active {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url(https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/slider-10-4.jpg);
+  background-image: url(https://i.pinimg.com/564x/9c/78/70/9c787043ea585082c2d9ceb11e61ccb4.jpg);
+  /* background-image: url(https://i.pinimg.com/564x/1a/de/fc/1adefc52595c789bb721bc2019265822.jpg); */
+  /* background-image: url(https://i.pinimg.com/736x/5f/4f/aa/5f4faa3177241186c524ee4755d65f12.jpg); */
+  /* background-image: url(https://i.pinimg.com/564x/fa/3a/6e/fa3a6ee938cbc049ed70f298e0da25ed.jpg); */
   background-size: cover;
   background-position: center;
-  filter: blur(3px); /* Adjust the blur amount as desired */
+  filter: blur(2px);
   z-index: -1;
 }
 
@@ -88,7 +106,7 @@ button:active {
   border-radius: 10px;
   box-shadow: 0 14px 30px #00000020, 0 6px 10px #00000022;
   overflow: hidden;
-  margin: 8.5% auto;
+  margin: 8% auto;
 }
 
 .social-wrapper {
@@ -207,6 +225,24 @@ input.is-valid {
   border: 1px solid green;
 }
 
+.input_container {
+  width: 100%;
+  height: fit-content;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.icon {
+  width: 20px;
+  position: absolute;
+  z-index: 99;
+  left: 12px;
+  bottom: 15px;
+}
+
+
 @media (max-width: 900px) {
   .container {
     margin: 20px auto;
@@ -268,6 +304,9 @@ input.is-valid {
   }
 }
 
+
+
+
 /****************************Modal*********************************/
 @keyframes bounceIn {
   0% {
@@ -292,6 +331,12 @@ input.is-valid {
   color: #636363;
   width: 325px;
   font-size: 14px;
+}
+
+.modal-title{
+  font-family: 'Dancing Script', cursive;
+  font-style: italic;
+  font-weight: bold;
 }
 
 .modal-confirm .modal-content {
@@ -364,7 +409,7 @@ input.is-valid {
 .modal-confirm .btn {
   color: #fff;
   border-radius: 4px;
-  background: #86b68a;
+  background: #557758;
   text-decoration: none;
   transition: all 0.4s;
   line-height: normal;
@@ -373,13 +418,13 @@ input.is-valid {
 
 .modal-confirm .btn:hover,
 .modal-confirm .btn:focus {
-  background: #6b8f6e;
+  background: #618264;
   outline: none;
 }
 
 .trigger-btn {
   display: inline-block;
-  margin: 100px auto;
+  margin: 10px auto;
 }
 
 @media (max-width: 576px) {
