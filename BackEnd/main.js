@@ -4,6 +4,7 @@ const session = require('express-session');
 const passport = require("./Utils/passportConfig");
 const config = require('./config.json');
 const app = express();
+const multer = require('multer');
 
 const PORT = process.env.PORT||7400
 
@@ -11,6 +12,7 @@ const bodyparser = require("body-parser");
 
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(bodyparser.json());
+
 
 const corsOptions = {
   origin: 'http://localhost:4200', //allowed origin
@@ -21,6 +23,11 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(express.json());
+
+// Multer configuration
+const ProductsRoutes = require("./Routes/ProductsRoutes");
+app.use('/api/products', express.static('uploads'), ProductsRoutes); // Serve uploaded files statically
 
 //Facebook , Google and Twitter middlewares 
 app.use(session({
@@ -50,6 +57,7 @@ const twitterRoutes = require('./Routes/TwitterRoutes');
 app.use('/api/auth/twitter', twitterRoutes);
 
 const googleRoutes = require('./Routes/GoogleRoutes');
+const busboy = require("busboy");
 app.use('/api/auth/google', googleRoutes);
 
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})
