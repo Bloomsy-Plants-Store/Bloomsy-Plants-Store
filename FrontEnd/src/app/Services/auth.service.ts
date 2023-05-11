@@ -30,7 +30,9 @@ export class AuthService {
       email,
       phone,
       password
-    }, httpOptions);
+    },{
+    ...httpOptions,
+    observe: 'response'});
   }
 
   loginWithGoogle(): Observable<any> {
