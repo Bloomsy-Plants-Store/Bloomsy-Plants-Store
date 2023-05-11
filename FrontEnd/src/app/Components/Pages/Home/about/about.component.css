@@ -82,8 +82,10 @@
 
 
 .img-animation-2 .about-image img{
-  animation: k 5s infinite alternate ease-in-out 0s none running;
-  -webkit-animation: k 5s infinite alternate ease-in-out 0s none running;
+  animation: k 5s infinite alternate ease-in-out;
+  -webkit-animation: k 5s infinite alternate ease-in-out;
+  animation-delay: 0s;
+  -webkit-animation-delay: 0s;
 }
 
 
