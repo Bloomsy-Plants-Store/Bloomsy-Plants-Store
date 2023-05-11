@@ -7,12 +7,7 @@
         <a (click)="LoginWithGoogle()"><i class="fab fa-google"></i></a>
         <a href="#"><i class="fab fa-twitter"></i></a>
       </div>
-      <form
-        [formGroup]="validationForm"
-        (ngSubmit)="Login(email, password)"
-        method="post"
-      >
-
+      <form [formGroup]="validationForm" (ngSubmit)="Login()" method="post">
       <div class="input-group flex-nowrap my-2">
         <div class="input-group-prepend">
 
@@ -95,13 +90,13 @@
         <div class="d-flex justify-content-between align-items-center">
           <div class="checkbox-wrapper-33 my-3 mx-1">
             <label class="checkbox">
-              <input type="checkbox" class="checkbox__trigger visuallyhidden">
+              <input type="checkbox" [formControlName]="'rememberMe'" class="checkbox__trigger visuallyhidden" name="rememberMe">
               <span class="checkbox__symbol">
                 <svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 28 28" height="28px" width="28px" class="icon-checkbox" aria-hidden="true">
                   <path d="M4 14l8 7L24 7"></path>
                 </svg>
               </span>
-              <p class="checkbox__textwrapper">Remember Me</p>
+              <p class="checkbox__textwrapper" >Remember Me</p>
             </label>
           </div>
           <div>

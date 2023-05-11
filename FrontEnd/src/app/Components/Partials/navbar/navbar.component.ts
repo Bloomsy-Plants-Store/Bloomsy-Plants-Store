@@ -25,15 +25,12 @@ export class NavbarComponent {
   }
 
   getUserNameFromLocalStorage(): any {
-    console.log("*************")
     const token = localStorage.getItem('access_token');
-    console.log(token)
     if (token != null) {
       this.userName = JSON.parse(token).UserName;
     } else {
       this.userName = null;
     }
-    console.log(token)
     return this.userName;
   }
 }
