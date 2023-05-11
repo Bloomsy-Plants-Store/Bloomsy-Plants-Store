@@ -3,7 +3,6 @@ const bcrypt = require("bcrypt");
 const config=require("../config.json")
 var DB_URL =config.MONGODBURL;
 var validator = require("validator");
-//(1)Connect ---> (3)Listen mongoose.connection.once("open",()=>{}) --> model.find({}).exec()
 mongoose.connect(DB_URL, { useNewUrlParser: true });
 
 let UsersSchema = new mongoose.Schema({
@@ -30,6 +29,12 @@ let UsersSchema = new mongoose.Schema({
             message: (props) => `${props.value} is not a valid Email !`,
         },
     },
+    
+    rememberMeToken: {
+        type: String,
+        default: null,
+    },
+
     password: {
         type: String,
         required: true

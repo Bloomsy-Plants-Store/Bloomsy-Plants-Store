@@ -58,7 +58,7 @@ export class RegisterComponent {
         .register(name.value, email.value, phone.value, password.value)
         .subscribe({
           next: (response:any) => {
-            console.log('Registeration successedd')
+            console.log('Registeration successful')
           },
           error: (err:any) => {
             if(err.status == 400){

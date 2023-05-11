@@ -3,7 +3,6 @@ const router = new express.Router();
 const GoogleController = require("../Controllers/GoogleController");
 
 
-
 router.get('/', GoogleController.LoginWithGoogle);
 router.get('/callback', GoogleController.handleLoginWithGoogleCallback);
 

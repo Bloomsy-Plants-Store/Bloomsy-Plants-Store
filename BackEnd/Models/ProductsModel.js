@@ -5,54 +5,50 @@ var validator = require("validator");
 mongoose.connect(DB_URL, { useNewUrlParser: true });
 
 let productSchema = new mongoose.Schema({
-    _id: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true
-    },
     name: {
         type: String,
-        required: true
+        //required: true
     },
     price: {
         type: Number,
-        required: true,
+        //required: true,
     },
     imageUrl:
     {
         type: [String], // specify that this is an array of strings
-        required: true, // or false if it's optional
+        //required: true, // or false if it's optional
         default: [], // set a default value for the array,
     },
     category: {
         type: String,
-        required: true
+        //required: true
     },
     rate: {
         type: Number,
-        required: true,
+        //required: true,
         min: [0, 'Rate cannot be less than 0'], // specify the minimum value and error message if it's violated
         max: [5, 'Rate cannot be greater than 5'], // specify the maximum value and error message if it's violated
     },
     reviews_num: {
         type: Number,
-        required: true,
+        //required: true,
         min: [0, 'Reviews Number cannot be less than 0'], // specify the minimum value and error message if it's violated
     },
     discount: {
         type: Number,
-        required: true
+        //required: true
     },
     bestSelling: {
         type: Boolean,
-        required: true
+       // required: true
     },
     description: {
         type: String,
-        required: true
+        //required: true
     },
     itemsinStock: {
         type: Number,
-        required: true,
+        //required: true,
         min: [0, 'Items In Stock Number cannot be less than 0'], // specify the minimum value and error message if it's violated
 
     }

@@ -11,7 +11,6 @@ export class ReviewComponent {
   constructor() { }
   ngOnInit() {
     this.review_secion = document.querySelector(".review")!;
-    console.log(this.review_secion);
   }
 
   @HostListener("window:scroll", [])
