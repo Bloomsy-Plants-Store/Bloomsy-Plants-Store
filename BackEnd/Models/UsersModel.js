@@ -53,22 +53,35 @@ let UsersSchema = new mongoose.Schema({
             message: (props) => `${props.value} is not a valid phone number!`,
         },
     },
+    status: {
+        type: String, 
+        enum: ['Pending', 'Active'],
+        default: 'Pending'
+      },
+      confirmationCode: { 
+        type: String, 
+        unique: true },
     resetToken: String,
-    resetTokenExpiration: Date
+    resetTokenExpiration: Date,
 });
 
 // Document middleware
 UsersSchema.pre('save', function(next) {
-    // Hash the password before saving
-    bcrypt.hash(this.password, 10)
-      .then(hash => {
-        this.password = hash;
-        next();
-      })
-      .catch(error => {
-        next(error);
-      });
-  });
+    if (this.isNew || this.isModified('password')) {
+      // Hash the password only when creating a new user or modifying the password
+      bcrypt.hash(this.password, 10)
+        .then(hash => {
+          this.password = hash;
+          next();
+        })
+        .catch(error => {
+          next(error);
+        });
+    } else {
+      next();
+    }
+});
+  
   
 const User = mongoose.model('User', UsersSchema);
 module.exports = User;

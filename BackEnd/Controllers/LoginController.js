@@ -11,7 +11,8 @@ var Login = async (req, res) => {
   //Check Email
   var user = await userModel.findOne({ email: req.body.email }).exec();
   if (!user) return res.status(400).json({ message: 'Invalid Email Or Password' });
-
+  if(user.status != "Active") return res.status(401).json({message: "Pending Account. Please Verify Your Email!"});
+  
   //Check Password
   var checkpass = await bcrypt.compare(req.body.password, user.password);
   if (!checkpass) return res.status(400).json({ message: 'Invalid Email Or Password' });
