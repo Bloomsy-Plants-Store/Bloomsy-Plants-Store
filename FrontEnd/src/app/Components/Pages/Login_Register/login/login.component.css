@@ -196,13 +196,17 @@ button {
   letter-spacing: 1px;
   font-size: 1rem;
   font-weight: bold;
-  background-color: #3c5742;
+  background-color: #628665;
   color: #fff;
-  border: 1px solid #3c5742;
+  border: 1px solid #628665;
   outline: none;
   border-radius: 20px;
   cursor: pointer;
   transition: transform 0.2s linear;
+}
+
+button:hover{
+  background-color: #537355;
 }
 
 button:active {
@@ -211,8 +215,7 @@ button:active {
 
 .btn {
   padding: 15px 25px;
-  background-color: transparent;
-  border: 3px solid #3c5742;
+  border: 3px solid #547156;
 }
 
 .sign-container {
@@ -228,7 +231,8 @@ button:active {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url(https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/slider-10-4.jpg);
+  /* background-image: url(https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/slider-10-4.jpg); */
+  background-image: url(https://i.pinimg.com/564x/9c/78/70/9c787043ea585082c2d9ceb11e61ccb4.jpg);
   background-size: cover;
   background-position: center;
   filter: blur(3px); /* Adjust the blur amount as desired */
@@ -259,9 +263,9 @@ button:active {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #3c5742;
+  border: 2px solid #628665;
   border-radius: 50%;
-  background-color: #3c5742;
+  background-color: #628665;
 }
 
 .form-container {
