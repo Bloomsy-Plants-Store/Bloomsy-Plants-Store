@@ -9,10 +9,10 @@ nav .fa-bars {
     color: white !important;
   }
 
-  .navbar-nav .nav-item .nav-link.active ,.nav-link:hover , .nav-link:focus {
-    text-decoration: underline solid #224229 !important;
-    text-underline-offset: 10px !important;
-  }
+.navbar-nav .nav-item .nav-link.active ,.nav-link:hover , .nav-link:focus {
+  text-decoration: underline solid #224229 !important;
+  text-underline-offset: 10px !important;
+}
 
 
 
@@ -33,7 +33,6 @@ nav .fa-bars {
   margin: 0!important;
 }
 }
-
 
 .navbar-brand {
   letter-spacing: 3px;
@@ -63,6 +62,7 @@ nav .fa-bars {
 .navbar-scrolled {
   background-color: black;
 }
+
 @media (max-width: 450px) {
   #intro {
     height: 950px !important;
@@ -92,4 +92,107 @@ nav .fa-bars {
   }
 }
 
+
+.custom-modal {
+  animation: bounceIn 0.5s;
+}
+
+.modal-title{
+  font-family: 'Dancing Script', cursive;
+}
+
+.modal-confirm {
+  color: #636363;
+  width: 325px;
+  font-size: 14px;
+}
+
+.modal-confirm .modal-content {
+  padding: 20px;
+  border-radius: 5px;
+  border: none;
+}
+
+.modal-confirm{
+  border-bottom: none;
+  position: relative;
+}
+
+.modal-confirm h4 {
+  text-align: center;
+  font-size: 26px;
+  margin: 30px 0 -15px;
+}
+
+.modal-confirm .form-control,
+.modal-confirm .btn {
+  min-height: 40px;
+  border-radius: 3px;
+}
+
+.modal-confirm .close {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+.modal-confirm .modal-footer{
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.modal-confirm .icon-box {
+  color: #fff;
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: -80px;
+  bottom: 0;
+  width: 200px;
+  height: 150px;
+  z-index: 9;
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-confirm .icon-box img {
+  font-size: 58px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.modal-confirm.modal-dialog {
+  margin-top: 80px;
+}
+
+.modal-confirm .btn {
+  color: #fff;
+  border-radius: 4px;
+  background: #86b68a;
+  text-decoration: none;
+  transition: all 0.4s;
+  line-height: normal;
+  border: none;
+}
+
+.modal-confirm .btn:hover,
+.modal-confirm .btn:focus {
+  background: #6b8f6e;
+  outline: none;
+}
+
+.trigger-btn {
+  display: inline-block;
+  margin: 100px auto;
+}
+
+.userName-Style{
+  color:#6b8f6e;
+}
 

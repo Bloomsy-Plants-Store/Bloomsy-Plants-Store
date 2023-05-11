@@ -1,4 +1,6 @@
 import { Component, HostListener } from '@angular/core';
+import { AuthService } from 'src/app/Services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,14 +9,15 @@ import { Component, HostListener } from '@angular/core';
 })
 export class NavbarComponent {
   nav!: HTMLElement;
-  userName= null;
-  constructor() { }
+  userName:any;
+  errorMessage:any;
+  constructor(private authService: AuthService, private router: Router ) { }
 
   ngOnInit() {
   this.nav = document.querySelector("nav")!;
-  // console.log(this.nav);
 
   }
+
   @HostListener("window:scroll", [])
   onWindowScroll() {
     if (window.scrollY > 0) {
@@ -25,15 +28,27 @@ export class NavbarComponent {
   }
 
   getUserNameFromLocalStorage(): any {
-    console.log("*************")
     const token = localStorage.getItem('access_token');
-    console.log(token)
     if (token != null) {
       this.userName = JSON.parse(token).UserName;
     } else {
       this.userName = null;
     }
-    console.log(token)
     return this.userName;
   }
+
+  logout(): void {
+       this.authService.logout().subscribe({
+        next: async() => {
+          await localStorage.removeItem("access_token");
+          window.location.reload();
+          console.log('Logout Successfully');
+        },
+        error: (err: any) => {
+            this.errorMessage = 'LogOut Failed,Please Try Again';
+        }
+    })
+  }
+
 }
+

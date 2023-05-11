@@ -14,9 +14,11 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.use(bodyparser.json());
 
 
-// Enable CORS for a specific origin
-// Set up CORS middleware
+//Global MiddleWare
+const logging = require("./MiddleWares/Logging");
+app.use("/",logging);
 
+// CORS middleware
 const corsOptions = {
   origin: 'http://localhost:4200', //allowed origin
   optionsSuccessStatus: 200,
@@ -39,24 +41,14 @@ app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 app.use(express.json());
 
-// Multer configuration
-const ProductsRoutes = require("./Routes/ProductsRoutes");
-app.use('/api/products', express.static('uploads'), ProductsRoutes); // Serve uploaded files statically
-
-
-//Facebook , Google and Twitter middlewares 
+//Facebook , Google and Twitter Middlewares 
 app.use(session({
-    secret: config.SECRETKEY,
-    resave: false,
-    saveUninitialized: true
-  }));
+  secret: config.SECRETKEY,
+  resave: false,
+  saveUninitialized: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
-
-//Global MiddleWare
-const logging = require("./MiddleWares/Logging");
-app.use("/",logging);
-
 
 // Register Routes
 const UserRoutes = require("./Routes/UsersRoutes");
@@ -76,6 +68,15 @@ const googleRoutes = require('./Routes/GoogleRoutes');
 const busboy = require("busboy");
 app.use('/api/auth/google', googleRoutes);
 
+//LogOut Routes
+const LogoutRoutes = require("./Routes/LogoutRoutes");
+app.use("/api/auth/logout",LogoutRoutes);
+
+// Multer configuration
+const ProductsRoutes = require("./Routes/ProductsRoutes");
+app.use('/api/products', express.static('uploads'), ProductsRoutes); // Serve uploaded files statically
+
+//All Products Routes
 const productsRoutes=require('./Routes/ProductsRoutes');
 app.use('/api/products', productsRoutes);
 

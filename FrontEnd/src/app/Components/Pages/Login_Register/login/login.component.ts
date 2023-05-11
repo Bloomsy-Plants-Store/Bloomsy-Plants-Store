@@ -67,7 +67,6 @@ export class LoginComponent {
         console.log('Token:', token);
       },
       error: (err: any) => {
-        // console.log(err);
       }
     });
   }
