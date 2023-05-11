@@ -1,19 +1,23 @@
-
-
 <!-- Navbar -->
 
-<nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-scroll d-flex ">
+<nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-scroll d-flex">
   <div class="container-fluid">
-    <div class="d-flex align-items-start ms-3 ">
-      <button class="navbar-toggler ms-auto mx-4" type="button" data-mdb-toggle="collapse"
-        data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">
+    <div class="d-flex align-items-start ms-3">
+      <button
+        class="navbar-toggler ms-auto mx-4"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0 d-flex gap-3">
-          <li class="nav-item" >
-            <a class="nav-link " routerLinkActive="active" routerLink="" >HOME</a>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="">HOME</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active">SHOP</a>
@@ -30,19 +34,29 @@
         </ul>
       </div>
     </div>
-    <a class="navbar-brand mx-auto ms-auto title" routerLink="">flacio</a>
-    <ul class="navbar-nav d-flex flex-row gap-3 ms-auto align-items-end">
+    <a class="navbar-brand mx-auto ms-auto title" routerLink="/">flacio</a>
+    <ul class="navbar-nav d-flex flex-row gap-3 ms-auto align-items-center">
       <li class="nav-item me-lg-0">
         <a class="nav-link" routerLink="#!">
           <i class="fa-solid fa-magnifying-glass"></i>
         </a>
       </li>
-      <li class="nav-item me-lg-0">
+      <li class="nav-item me-lg-0" *ngIf="!getUserNameFromLocalStorage()">
         <a class="nav-link" routerLinkActive="active" routerLink="/login">
           <i class="fa-solid fa-user"></i>
         </a>
       </li>
-      <li  class="nav-item me-lg-0">{{ getUserNameFromLocalStorage() }}</li>
+      <li
+        class="nav-item me-lg-0"
+        *ngIf="getUserNameFromLocalStorage()"
+        data-bs-toggle="modal"
+        data-bs-target="#ProfileModal"
+      >
+        <a class="text-white text-decoration-none" routerLink="/">
+          <i class="fa-solid fa-user mx-2"></i>
+          {{ getUserNameFromLocalStorage() }}
+        </a>
+      </li>
       <li class="nav-item me-lg-0">
         <a class="nav-link" routerLink="#!">
           <i class="fa-solid fa-heart"></i>
@@ -57,3 +71,33 @@
   </div>
 </nav>
 
+<!--Profile Modal-->
+<div class="modal fade" id="ProfileModal">
+  <div class="modal-dialog modal-confirm modal-dialog-centered my-auto">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="d-flex flex-column justify-content-center w-100">
+          <div class="icon-box text-center">
+            <img
+              src="./assets/images/icons/usericon.gif"
+            />
+          </div>
+          <h4 class="modal-title">Welcome Back <br><span class="userName-Style">{{userName}}</span></h4>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <form class="w-100" (ngSubmit)="logout()">
+          <button type="submit" class="btn btn-info w-100">
+            LogOut
+          </button>
+        </form>
+        <div
+          class="w-100 text-danger my-3 text-center"
+          *ngIf="errorMessage"
+        >
+          <p>{{ errorMessage }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

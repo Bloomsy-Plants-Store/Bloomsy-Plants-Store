@@ -79,7 +79,6 @@ export class LoginComponent {
         const token = response.headers.get('x-auth-token');
       },
       error: (err: any) => {
-        // console.log(err);
       }
     });
   }
