@@ -18,7 +18,7 @@ var Login = async (req, res) => {
 
   return passport.authenticate('local', { failureRedirect: '/login' })
     (req, res, async () => {
-
+      
       if (req.body.rememberMe) {
         const token = await rememberMeToken;
         await User.updateOne({ email: req.body.email }, { $set: { rememberMeToken: token } });
