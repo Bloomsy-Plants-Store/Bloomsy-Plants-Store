@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators,  FormControl  } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from 'src/app/Services/auth.service';
@@ -14,12 +14,15 @@ import jwt_decode from 'jwt-decode';
 })
 export class LoginComponent {
   validationForm: FormGroup;
-  errorMessage:any;
+  errorMessage: any;
+  rememberMe!: FormControl;
+
 
   constructor(private fb: FormBuilder, private authService: AuthService, private http: HttpClient, private router: Router ,  private tokenService: TokenService) {
     this.validationForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['',[ Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d$!%*#?&@]{8,}$/)]],
+      rememberMe: [false],
     });
   }
 
@@ -31,14 +34,25 @@ export class LoginComponent {
     return this.validationForm.get('password');
   }
 
-  Login(email: any, password: any): void {
+  Login(): void {
     if (this.validationForm.valid) {
-      this.authService.login(email.value, password.value).subscribe({
+      const email = this.email!.value;
+      const password = this.password!.value;
+      const rememberMe = this.validationForm.get('rememberMe')!.value;
+      console.log(rememberMe);
+      this.authService.login(email, password, rememberMe).subscribe({
         next: (response: any) => {
+          console.log("AfterAuth");
           const token = response.headers.get('x-auth-token');
+          // const rememberMe = response.headers.get('rememberMe');
           this.tokenService.setToken(token);
           const decodedToken: any = jwt_decode(token);
           localStorage.setItem('access_token', JSON.stringify(decodedToken));
+          console.log(rememberMe);
+          if (rememberMe) {
+            console.log('Remember Me');
+            // localStorage.setItem('remember_me_token', rememberMe);
+          }
           this.router.navigate(['/']);
         },
         error: (err: any) => {
@@ -62,9 +76,7 @@ export class LoginComponent {
     console.log('Login With Google');
     this.authService.loginWithGoogle().subscribe({
       next: (response: any) => {
-
         const token = response.headers.get('x-auth-token');
-        console.log('Token:', token);
       },
       error: (err: any) => {
       }
@@ -84,4 +96,5 @@ export class LoginComponent {
       }
     });
   }
+
 }
