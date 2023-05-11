@@ -48,7 +48,10 @@ export class AuthService {
     });
   }
 
-  logout(){
-    return this.http.post(AUTH_API + 'logout', {});
+  logout(id : any){
+    return this.http.post(AUTH_API + 'logout', {id},{
+      ...httpOptions,
+      observe: 'response'
+    });
   }
 }
