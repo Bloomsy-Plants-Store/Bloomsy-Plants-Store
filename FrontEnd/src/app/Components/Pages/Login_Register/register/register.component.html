@@ -3,11 +3,6 @@
     <div class="form-container sign-up overflow-auto ">
       <h1 class="text-center mt-5">Create Account</h1>
       <form [formGroup]="validationForm" (ngSubmit)="register(name, email, phone, password)">
-        <!-- <div class="social-wrapper">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-google"></i></a>
-          <a href="#"><i class="fab fa-linkedin"></i></a>
-        </div> -->
 
         <input type="text" class="form-control" name="name" placeholder="Name" formControlName="name"
           [ngClass]="{'is-invalid': name?.invalid && (name?.dirty || name?.touched), 'is-valid': !name?.invalid && (name?.dirty || name?.touched)}" autocomplete="off"/>
@@ -72,7 +67,7 @@
 </div>
 
 
-<div class="modal fade custom-modal" id="SuccessModal" (click)="redirectToLogin()">
+<div class="modal fade custom-modal" id="SuccessModal" (click)="redirectToLogin()"></div>
   <div class="modal-dialog modal-confirm modal-dialog-centered my-auto">
     <div class="modal-content">
       <div class="modal-header">
@@ -91,5 +86,5 @@
         <button type="button" class="btn btn-info" data-bs-dismiss="modal" (click)="redirectToLogin()">Continue</button>
       </div>
     </div>
-  </div>
 </div>
+

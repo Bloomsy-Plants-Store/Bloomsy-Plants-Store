@@ -69,7 +69,7 @@ export class RegisterComponent {
           },
         });
     }else {
-      console.log('Invalid Data');
+      this.errorMessage = 'Invalid Data,Please Try Again';
     }
     setInterval(() => {
       this.errorMessage = '';
