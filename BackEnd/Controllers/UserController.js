@@ -3,9 +3,8 @@ const userModel = require("../Models/UsersModel");
 const userValid = require("../Utils/AuthValidate");
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
-const config = require("../config.json");
 const confirmation = require("./VerifyUserController");
-const jwt = require("jsonwebtoken");
+
 
 var Register = async(req,res)=>{
     try{
@@ -13,15 +12,8 @@ var Register = async(req,res)=>{
         if(foundedUser) {
             return res.status(400).json({message:"User Already Exist"});
         }
-
-        const confirmationToken = jwt.sign({email: req.body.email}, config.SECRETKEY);
-        const transport = nodemailer.createTransport({
-          service: "Gmail",
-          auth: {
-            user: config.GMAIL_EMAIL,
-            pass: config.GMAIL_PASS
-          },
-        });
+        
+        const confirmationToken = confirmation.setVerificationToken('48h',req.body.email); //email verification token which expires in 48 hours
 
         let user = new userModel({
             name:req.body.name,
@@ -36,8 +28,7 @@ var Register = async(req,res)=>{
         
        if(valid){
             await user.save();
-            console.log("send:" + user.password);
-            sendVerificationEmail(transport,user.name,user.email,user.confirmationCode);
+            await confirmation.sendVerificationEmail(user.name,user.email,user.confirmationCode);
             res.status(201).json({message:"Verification Sent Successfully"});
         }else{
             res.status(400).json({message:"Not Compatible.."})
@@ -142,10 +133,7 @@ var resetPassword = async(req,res)=>{
 }
 
 
-sendVerificationEmail = async(transport,name,email,code) => {
-    let confirmationEmail=confirmation.prepareConfirmationMail(name,email,code);
-    await transport.sendMail(confirmationEmail);
-}
+
 
 
 

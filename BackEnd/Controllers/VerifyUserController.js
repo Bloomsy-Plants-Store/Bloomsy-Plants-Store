@@ -1,6 +1,29 @@
 
+const nodemailer = require('nodemailer');
+const jwt = require("jsonwebtoken");
 const userModel = require("../Models/UsersModel");
 const config = require("../config.json");
+
+
+const setVerificationToken = (expireDate,email)=>{
+    const expiresIn = expireDate; 
+    const confirmationToken = jwt.sign({ email: email }, config.SECRETKEY, { expiresIn });
+    return confirmationToken;
+}
+
+
+const transport = nodemailer.createTransport({
+  service: "Gmail",
+  auth: {
+    user: config.GMAIL_EMAIL,
+    pass: config.GMAIL_PASS
+  }
+});
+
+var sendVerificationEmail = async (username,email,code) => {
+    let confirmationEmail= prepareConfirmationMail(username,email,code);
+    transport.sendMail(confirmationEmail);
+}
 
 
 var prepareConfirmationMail = (name, email, confirmationCode) => {
@@ -17,7 +40,6 @@ var prepareConfirmationMail = (name, email, confirmationCode) => {
     return mailOptions;
 };
   
-
 
   var verifyUser = async (req, res, next) => {
       userModel.findOne({
@@ -37,4 +59,4 @@ var prepareConfirmationMail = (name, email, confirmationCode) => {
   }; 
 
 
-module.exports = {verifyUser,prepareConfirmationMail};
+module.exports = {verifyUser,sendVerificationEmail,prepareConfirmationMail,setVerificationToken};
