@@ -340,7 +340,7 @@ input.is-valid {
 }
 
 .modal-confirm .modal-content {
-  padding: 20px;
+  padding: 5px;
   border-radius: 5px;
   border: none;
 }
@@ -364,7 +364,7 @@ input.is-valid {
 
 .modal-confirm .close {
   position: absolute;
-  top: -5px;
+  top: -10px;
   right: -5px;
 }
 
@@ -373,6 +373,7 @@ input.is-valid {
   text-align: center;
   border-radius: 5px;
   font-size: 13px;
+  padding: 0;
 }
 
 .modal-confirm .icon-box {
@@ -424,7 +425,6 @@ input.is-valid {
 
 .trigger-btn {
   display: inline-block;
-  margin: 10px auto;
 }
 
 @media (max-width: 576px) {
