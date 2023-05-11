@@ -8,22 +8,36 @@ import * as bootstrap from 'bootstrap';
   templateUrl: './sample-products.component.html',
   styleUrls: ['./sample-products.component.css']
 })
-export class SampleProductsComponent implements OnInit{
-  Products:any;
-  constructor(private elementRef: ElementRef,public myService : ProductsService){}
+export class SampleProductsComponent implements OnInit {
+  Products: any;
+  topRatingProducts: any;
+  bestSellingProducts: any;
+  activeFilter: any = null;
+
+  constructor(private elementRef: ElementRef, public myService: ProductsService) { }
 
   ngOnInit(): void {
+
     this.myService.GetTopRating().subscribe({
-      next:(response:any)=>{
-        console.log(response.data)
-        this.Products = response.data;
+      next: (response: any) => {
+        this.topRatingProducts = response.data;
+        this.Products = this.topRatingProducts;
+        this.activeFilter = 'top-rate';
       },
-      error:(err)=>{
+      error: (err) => {
         console.log(err);
       }
     })
-  }
+    this.myService.GetBestSelling().subscribe({
+      next: (response: any) => {
+        this.bestSellingProducts = response.data;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
 
+  }
   // Bootstrap Tooltip Intialization
   ngAfterViewInit() {
     const tooltipTriggerList: Element[] = Array.from(this.elementRef.nativeElement.querySelectorAll('[data-bs-toggle="tooltip"]'));
@@ -31,5 +45,13 @@ export class SampleProductsComponent implements OnInit{
       return new bootstrap.Tooltip(tooltipTriggerEl);
     });
 
-}
+  }
+  filterProductsByBestSelling(filter: string) {
+    this.activeFilter = filter;
+    this.Products = this.bestSellingProducts;
+  }
+  filterProductsByTopRating(filter: string) {
+    this.activeFilter = filter;
+    this.Products = this.topRatingProducts;
+  }
 }

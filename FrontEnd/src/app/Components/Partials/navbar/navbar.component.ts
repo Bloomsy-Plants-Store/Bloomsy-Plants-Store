@@ -7,6 +7,7 @@ import { Component, HostListener } from '@angular/core';
 })
 export class NavbarComponent {
   nav!: HTMLElement;
+  userName= null;
   constructor() { }
 
   ngOnInit() {
@@ -21,5 +22,18 @@ export class NavbarComponent {
     } else {
       this.nav.classList.remove("scrolled",".navbar-brand",".nav-link",".fa-bars");
     }
+  }
+
+  getUserNameFromLocalStorage(): any {
+    console.log("*************")
+    const token = localStorage.getItem('access_token');
+    console.log(token)
+    if (token != null) {
+      this.userName = JSON.parse(token).UserName;
+    } else {
+      this.userName = null;
+    }
+    console.log(token)
+    return this.userName;
   }
 }
