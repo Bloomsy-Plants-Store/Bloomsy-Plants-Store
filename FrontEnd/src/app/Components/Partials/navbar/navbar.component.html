@@ -1,19 +1,23 @@
-
-
 <!-- Navbar -->
 
-<nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-scroll d-flex ">
+<nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-scroll d-flex">
   <div class="container-fluid">
-    <div class="d-flex align-items-start ms-3 ">
-      <button class="navbar-toggler ms-auto mx-4" type="button" data-mdb-toggle="collapse"
-        data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">
+    <div class="d-flex align-items-start ms-3">
+      <button
+        class="navbar-toggler ms-auto mx-4"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0 d-flex gap-3">
-          <li class="nav-item" >
-            <a class="nav-link " routerLinkActive="active" routerLink="" >HOME</a>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="">HOME</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active">SHOP</a>
@@ -42,7 +46,12 @@
           <i class="fa-solid fa-user"></i>
         </a>
       </li>
-      <li class="nav-item me-lg-0" *ngIf="getUserNameFromLocalStorage()">
+      <li
+        class="nav-item me-lg-0"
+        *ngIf="getUserNameFromLocalStorage()"
+        data-bs-toggle="modal"
+        data-bs-target="#ProfileModal"
+      >
         <a class="text-white text-decoration-none" routerLink="/">
           <i class="fa-solid fa-user mx-2"></i>
           {{ getUserNameFromLocalStorage() }}
@@ -62,3 +71,31 @@
   </div>
 </nav>
 
+<!--Profile Modal-->
+<div class="modal fade" id="ProfileModal">
+  <div class="modal-dialog modal-confirm modal-dialog-centered my-auto">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="d-flex flex-column justify-content-center w-100">
+          <div class="icon-box text-center">
+            <img
+              src="./assets/images/icons/Plant Stickers.gif"
+              width="500"
+              height="500"
+            />
+          </div>
+          <h4 class="modal-title">Awesome!</h4>
+        </div>
+      </div>
+      <div class="modal-body text-center">
+        <p>Your Registration has been successfully completed</p>
+        <small class="text-center">Welcome to our garden :)</small>
+      </div>
+      <div class="modal-footer w-100 d-flex justify-content-evenly mt-0">
+        <button type="button" class="btn btn-info" data-bs-dismiss="modal">
+          Continue
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
