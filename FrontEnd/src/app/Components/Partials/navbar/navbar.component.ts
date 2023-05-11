@@ -38,7 +38,8 @@ export class NavbarComponent {
   }
 
   logout(): void {
-       this.authService.logout().subscribe({
+   const id = JSON.parse(localStorage.getItem('access_token')!).UserId;
+       this.authService.logout(id).subscribe({
         next: async() => {
           await localStorage.removeItem("access_token");
           window.location.reload();
