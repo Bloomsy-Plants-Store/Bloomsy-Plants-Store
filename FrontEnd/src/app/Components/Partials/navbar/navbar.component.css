@@ -9,10 +9,10 @@ nav .fa-bars {
     color: white !important;
   }
 
-  .navbar-nav .nav-item .nav-link.active ,.nav-link:hover , .nav-link:focus {
-    text-decoration: underline solid #224229 !important;
-    text-underline-offset: 10px !important;
-  }
+.navbar-nav .nav-item .nav-link.active ,.nav-link:hover , .nav-link:focus {
+  text-decoration: underline solid #224229 !important;
+  text-underline-offset: 10px !important;
+}
 
 
 
@@ -63,6 +63,7 @@ nav .fa-bars {
 .navbar-scrolled {
   background-color: black;
 }
+
 @media (max-width: 450px) {
   #intro {
     height: 950px !important;

@@ -30,19 +30,24 @@
         </ul>
       </div>
     </div>
-    <a class="navbar-brand mx-auto ms-auto title" routerLink="">flacio</a>
-    <ul class="navbar-nav d-flex flex-row gap-3 ms-auto align-items-end">
+    <a class="navbar-brand mx-auto ms-auto title" routerLink="/">flacio</a>
+    <ul class="navbar-nav d-flex flex-row gap-3 ms-auto align-items-center">
       <li class="nav-item me-lg-0">
         <a class="nav-link" routerLink="#!">
           <i class="fa-solid fa-magnifying-glass"></i>
         </a>
       </li>
-      <li class="nav-item me-lg-0">
+      <li class="nav-item me-lg-0" *ngIf="!getUserNameFromLocalStorage()">
         <a class="nav-link" routerLinkActive="active" routerLink="/login">
           <i class="fa-solid fa-user"></i>
         </a>
       </li>
-      <li  class="nav-item me-lg-0">{{ getUserNameFromLocalStorage() }}</li>
+      <li class="nav-item me-lg-0" *ngIf="getUserNameFromLocalStorage()">
+        <a class="text-white text-decoration-none" routerLink="/">
+          <i class="fa-solid fa-user mx-2"></i>
+          {{ getUserNameFromLocalStorage() }}
+        </a>
+      </li>
       <li class="nav-item me-lg-0">
         <a class="nav-link" routerLink="#!">
           <i class="fa-solid fa-heart"></i>
