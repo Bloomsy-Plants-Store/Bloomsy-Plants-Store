@@ -54,4 +54,11 @@ export class AuthService {
       observe: 'response'
     });
   }
+
+  forgotPassword(email: string): Observable<any> {
+    return this.http.post(AUTH_API + 'register/forgot-password', { email}, {
+      ...httpOptions,
+      observe: 'response'
+    });
+  }
 }

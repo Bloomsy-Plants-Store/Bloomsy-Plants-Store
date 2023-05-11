@@ -14,7 +14,10 @@ import jwt_decode from 'jwt-decode';
 })
 export class LoginComponent {
   validationForm: FormGroup;
+  validationEmail: FormGroup;
   errorMessage: any;
+  resetErrorMessage: any;
+  sendEmailMessage: any;
   rememberMe!: FormControl;
 
 
@@ -24,6 +27,9 @@ export class LoginComponent {
       password: ['',[ Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d$!%*#?&@]{8,}$/)]],
       rememberMe: [false],
     });
+    this.validationEmail = this.fb.group({
+      resetEmail: ['', [Validators.required, Validators.email]]
+    })
   }
 
   get email() {
@@ -32,6 +38,10 @@ export class LoginComponent {
 
   get password() {
     return this.validationForm.get('password');
+  }
+
+  get resetEmail() {
+    return this.validationEmail.get('resetEmail');
   }
 
   Login(): void {
@@ -64,7 +74,7 @@ export class LoginComponent {
         }
       });
     } else {
-      console.log('Invalid Data');
+      this.errorMessage = 'Invalid Data';
     }
 
     setInterval(() => {
@@ -95,6 +105,26 @@ export class LoginComponent {
         // console.log(err);
       }
     });
+  }
+
+  sentEmail(){
+    if (this.validationEmail.valid) {
+      const resetEmail = this.resetEmail!.value;
+      this.authService.forgotPassword(resetEmail).subscribe({
+        next: (response: any) => {
+          this.sendEmailMessage = 'An Email is sent Successfully,Please Check your Inbox'
+        },
+        error: (err: any) => {
+          if(err.status == 404){
+            this.resetErrorMessage = 'Not Found User';
+          }else{
+            this.resetErrorMessage = 'Failed,Please Try Again';
+          }
+        }
+      });
+    } else {
+      this.resetErrorMessage = 'Invalid Email Format';
+    }
   }
 
 }
