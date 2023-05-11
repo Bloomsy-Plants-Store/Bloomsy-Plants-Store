@@ -8,7 +8,7 @@ var Register = async(req,res)=>{
     try{
         let foundedUser = await userModel.findOne({email:req.body.email}).exec();
         if(foundedUser) {
-            return res.status(400).send("User Already Exist");
+            return res.status(400).json({message:"User Already Exist"});
         }
 
         let user = new userModel({
@@ -22,9 +22,9 @@ var Register = async(req,res)=>{
         
        if(valid){
             await user.save()
-            res.status(201).send("User Added Successfully");
+            res.status(201).json({message:"User Added Successfully"});
         }else{
-            res.status(400).send("Not Compatible..")
+            res.status(400).json({message:"Not Compatible.."})
         } 
     }catch(err){
         console.log(err);
@@ -36,19 +36,19 @@ var forgetPassword = async(req,res)=>{
 
         let email = req.body.email;
         let user = await userModel.findOne({email:email}).exec();
-    
+
         if (!user) {
           return res.status(404).json({ error: 'User not found' });
         }
-  
+
         let resetToken = crypto.randomBytes(20).toString('hex');
-  
+
         let resetTokenExpiration = Date.now() + 3600000; // 1 hour
- 
+
         user.resetToken = resetToken;
         user.resetTokenExpiration = resetTokenExpiration;
         await user.save();
-  
+
         let transporter = nodemailer.createTransport({
           service: 'Gmail',
           auth: {
@@ -56,16 +56,16 @@ var forgetPassword = async(req,res)=>{
             pass: 'srljpnmjsbnmedfc'
           }
         });
-  
+
         let mailOptions = {
           from: 'omnia.goher9@gmail.com',
           to: email,
           subject: 'Password Reset Request',
           text: `Please click the following link to reset your password: http://localhost:7400/api/users/reset-password/${resetToken} ` 
         };
-  
+
         await transporter.sendMail(mailOptions);
-  
+
         return res.status(200).json({ message: 'Password reset email sent' });
       } catch (error) {
         console.error(error);
@@ -81,11 +81,11 @@ var displayResetPasswordForm = async(req,res)=>{
           resetToken: token,
           resetTokenExpiration: { $gt: Date.now() }
         });
-  
+
         if (!user) {
           return res.status(400).json({ error: 'Invalid or expired reset token' });
         }
-  
+
         return res.status(200).json({ message: 'password reset token', token });
       } catch (error) {
         console.error(error);
@@ -101,7 +101,7 @@ var resetPassword = async(req,res)=>{
           resetToken: token,
           resetTokenExpiration: { $gt: Date.now() }
         });
-  
+
         if (!user) {
           return res.status(400).json({ error: 'Invalid or expired reset token' });
         }
@@ -111,14 +111,12 @@ var resetPassword = async(req,res)=>{
         if (!checkPassword) {
             return res.status(400).json({ error: 'Not Compatible..' });
         }
-
         // let hashedPassword = await bcrypt.hash(password, 10);
-  
         user.password = password;
         user.resetToken = undefined;
         user.resetTokenExpiration = undefined;
         await user.save();
-  
+
         return res.status(200).json({ message: 'Password reset successful' });
       } catch (error) {
         console.error(error);

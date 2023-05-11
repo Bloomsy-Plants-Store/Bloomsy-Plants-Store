@@ -1,10 +1,17 @@
-// routes/productRoutes.js
 const express = require('express');
 const router = express.Router();
-const productController = require('../controllers/ProductController');
+const ProductController = require('../controllers/ProductController');
 const upload = require('../MiddleWares/MutlerUpload');
 
+// mutler upload
+router.post('/upload', upload.single('jsonFile') ,ProductController.uploadProducts);
 
-router.post('/upload', upload.single('jsonFile') ,productController.uploadProducts);
+
+// get all products
+router.get('/', ProductController.getAllProducts);
+router.get('/bestSelling', ProductController.getBestSellingProducts);
+router.get('/topRating', ProductController.getTopRatingProducts);
+
 
 module.exports = router;
+

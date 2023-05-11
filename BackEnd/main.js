@@ -14,20 +14,35 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.use(bodyparser.json());
 
 
+// Enable CORS for a specific origin
+// Set up CORS middleware
+
 const corsOptions = {
   origin: 'http://localhost:4200', //allowed origin
   optionsSuccessStatus: 200,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], //allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'], //allowed headers
-  exposedHeaders: ['x-auth-token'] //exposed headers
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Replace with your allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'], // Replace with your allowed headers
+  exposedHeaders: ['x-auth-token'], // Replace with your exposed headers
+  preflightContinue: true, // Enable preflight requests
+  preflight: function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-auth-token');
+    res.setHeader('Access-Control-Expose-Headers', 'x-auth-token');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+  },
+  credentials: true,
 };
 
+app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 app.use(express.json());
 
 // Multer configuration
 const ProductsRoutes = require("./Routes/ProductsRoutes");
 app.use('/api/products', express.static('uploads'), ProductsRoutes); // Serve uploaded files statically
+
 
 //Facebook , Google and Twitter middlewares 
 app.use(session({
@@ -41,6 +56,7 @@ app.use(passport.session());
 //Global MiddleWare
 const logging = require("./MiddleWares/Logging");
 app.use("/",logging);
+
 
 // Register Routes
 const UserRoutes = require("./Routes/UsersRoutes");
@@ -59,5 +75,8 @@ app.use('/api/auth/twitter', twitterRoutes);
 const googleRoutes = require('./Routes/GoogleRoutes');
 const busboy = require("busboy");
 app.use('/api/auth/google', googleRoutes);
+
+const productsRoutes=require('./Routes/ProductsRoutes');
+app.use('/api/products', productsRoutes);
 
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})
