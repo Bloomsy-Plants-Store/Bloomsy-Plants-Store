@@ -3,6 +3,7 @@ const nodemailer = require('nodemailer');
 const jwt = require("jsonwebtoken");
 const userModel = require("../Models/UsersModel");
 const config = require("../config.json");
+const emailBody = require("../Utils/emailBodyBuilder");
 
 
 const setVerificationToken = (expireDate,email)=>{
@@ -31,11 +32,7 @@ var prepareConfirmationMail = (name, email, confirmationCode) => {
       from: config.GMAIL_EMAIL,
       to: email,
       subject: "Please confirm your account",
-      html: `<h1>Email Confirmation</h1>
-          <h2>Hello ${name}</h2>
-          <p>Thank you for subscribing in Bloomsy Plants_Shop. Please confirm your email by clicking on the following link</p>
-          <a href=http://localhost:7400/api/auth/register/confirm/${confirmationCode}> Click here</a>
-          </div>`,
+      html: emailBody.getEmailTemplate(name,confirmationCode),
     };
     return mailOptions;
 };
@@ -47,9 +44,8 @@ var verifyUser = async (req, res, next) => {
     })
     .then((user) => {
       if (!user) {
-        return res.status(404).send({ message: "User Not found." });
+        return res.status(404).jspn({ message: "User Not found"});
       }
-  
       try {
         jwt.verify(req.params.confirmationCode, config.SECRETKEY); // Verify the token isn't expired
         user.status = "Active";
@@ -61,7 +57,7 @@ var verifyUser = async (req, res, next) => {
     .then(() => {
       return res.status(200).json({ message: "User Verified successfully." });
     })
-    .catch((e) => res.status(401).json({ message: "Error occurs while verification." }));
+    .catch((e) => res.status(401).json({ message: "Error occurs while verification" }));
 };
 
 
