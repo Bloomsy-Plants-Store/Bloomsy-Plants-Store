@@ -216,7 +216,7 @@
 
         <button
           type="submit"
-          [disabled]="validationForm.invalid"
+          [disabled]="validationForm.invalid || errorMessage !== ''"
           data-bs-toggle="modal"
           data-bs-target="#SuccessModal"
         >
@@ -250,39 +250,42 @@
   </div>
 </div>
 
+
 <div
-  class="modal fade custom-modal"
-  id="SuccessModal"
-  (click)="redirectToLogin()"
->
-  <div class="modal-dialog modal-confirm modal-dialog-centered my-auto">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="d-flex flex-column justify-content-center w-100">
-          <div class="icon-box text-center">
-            <img
-              src="./assets/images/icons/Plant Stickers.gif"
-              width="500"
-              height="500"
-            />
+    class="modal fade custom-modal"
+    id="SuccessModal"
+    (click)="redirectToLogin()"
+    *ngIf="errorMessage === ''"
+   >
+    <div class="modal-dialog modal-confirm modal-dialog-centered my-auto">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="d-flex flex-column justify-content-center w-100">
+            <div class="icon-box text-center">
+              <img
+                src="./assets/images/icons/Plant Stickers.gif"
+                width="500"
+                height="500"
+              />
+            </div>
+            <h4 class="modal-title">Awesome!</h4>
           </div>
-          <h4 class="modal-title">Awesome!</h4>
         </div>
-      </div>
-      <div class="modal-body text-center">
-        <p>Your Registration has been successfully completed :)</p>
-        <h6 class="mt-2">Please Check Your Email</h6>
-      </div>
-      <div class="modal-footer w-100 d-flex justify-content-center mt-0">
-        <button
-          type="button"
-          class="btn btn-info"
-          data-bs-dismiss="modal"
-          (click)="redirectToLogin()"
-        >
-          Continue
-        </button>
+        <div class="modal-body text-center">
+          <p>Your Registration has been successfully completed :)</p>
+          <h6 class="mt-2">Please Check Your Email</h6>
+        </div>
+        <div class="modal-footer w-100 d-flex justify-content-center mt-0">
+          <button
+            type="button"
+            class="btn btn-info"
+            data-bs-dismiss="modal"
+            (click)="redirectToLogin()"
+          >
+            Continue
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+

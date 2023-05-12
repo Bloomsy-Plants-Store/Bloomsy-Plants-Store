@@ -14,6 +14,8 @@ export class RegisterComponent {
   validationForm: FormGroup;
   errorMessage = '';
   successMessage ='';
+  
+
 
   constructor(private fb: FormBuilder, private authService: AuthService,private router: Router) {
     this.validationForm = this.fb.group({
@@ -58,7 +60,7 @@ export class RegisterComponent {
         .register(name.value, email.value, phone.value, password.value)
         .subscribe({
           next: (response:any) => {
-            console.log('Registeration successful')
+            this.errorMessage = '';
           },
           error: (err:any) => {
             if(err.status == 400){
@@ -79,5 +81,4 @@ export class RegisterComponent {
   redirectToLogin() {
     this.router.navigate(['/login']);
   }
-
 }
