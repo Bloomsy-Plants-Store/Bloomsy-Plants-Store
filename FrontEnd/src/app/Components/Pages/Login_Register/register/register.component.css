@@ -84,13 +84,10 @@ button:active {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url(https://i.pinimg.com/564x/9c/78/70/9c787043ea585082c2d9ceb11e61ccb4.jpg);
-  /* background-image: url(https://i.pinimg.com/564x/1a/de/fc/1adefc52595c789bb721bc2019265822.jpg); */
-  /* background-image: url(https://i.pinimg.com/736x/5f/4f/aa/5f4faa3177241186c524ee4755d65f12.jpg); */
-  /* background-image: url(https://i.pinimg.com/564x/fa/3a/6e/fa3a6ee938cbc049ed70f298e0da25ed.jpg); */
+  background-image: url(https://i.pinimg.com/564x/fa/3a/6e/fa3a6ee938cbc049ed70f298e0da25ed.jpg);
   background-size: cover;
   background-position: center;
-  filter: blur(2px);
+  filter: blur(3px);
   z-index: -1;
 }
 

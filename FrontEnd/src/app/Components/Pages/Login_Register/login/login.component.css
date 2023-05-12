@@ -121,11 +121,6 @@
   }
 }
 
-
-
-
-
-/* --------------------------------- */
 .input_container {
   width: 100%;
   height: fit-content;
@@ -169,14 +164,6 @@ span {
 }
 
 input {
-  /* margin: 10px auto;
-  padding: 10px 16px;
-  width: 100%;
-  font-size: 1rem;
-  background-color: #eaeaea;
-  color: #000;
-  border: none; */
-
   width: auto;
   height: 40px;
   padding: 0 0 0 40px;
@@ -231,11 +218,10 @@ button:active {
   left: 0;
   right: 0;
   bottom: 0;
-  /* background-image: url(https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/slider-10-4.jpg); */
-  background-image: url(https://i.pinimg.com/564x/9c/78/70/9c787043ea585082c2d9ceb11e61ccb4.jpg);
+  background-image: url(https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/slider-10-4.jpg);
   background-size: cover;
   background-position: center;
-  filter: blur(3px); /* Adjust the blur amount as desired */
+  filter: blur(3px);
   z-index: -1;
 }
 
@@ -379,4 +365,129 @@ a{
     transform: translateY(0);
   }
 
+}
+
+.forgot-password{
+  color: #3c5742;
+  cursor: pointer;
+}
+
+.custom-modal {
+  animation: bounceIn 0.5s;
+}
+
+.modal-confirm {
+  color: #636363;
+  width: 325px;
+  font-size: 14px;
+}
+
+.modal-confirm .modal-content {
+  padding: 20px;
+  border-radius: 5px;
+  border: none;
+}
+
+.modal-confirm{
+  border-bottom: none;
+  position: relative;
+}
+
+.modal-confirm h4 {
+  text-align: center;
+  font-size: 26px;
+  margin: 30px 0 -15px;
+  font-family: 'Dancing Script', cursive;
+}
+
+.modal-confirm .form-control,
+.modal-confirm .btn {
+  min-height: 40px;
+  border-radius: 3px;
+}
+
+.modal-confirm .close {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+.modal-confirm .icon-box {
+  color: #fff;
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: -80px;
+  bottom: 0;
+  width: 150px;
+  height: 150px;
+  background-color:#fff;
+  border-radius:50%;
+  z-index: 9;
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-confirm .icon-box img {
+  font-size: 58px;
+  max-width: 100%;
+  max-height: 100%;
+  transform: scale(1.4);
+  border-radius:50%;
+}
+
+.modal-confirm.modal-dialog {
+  margin-top: 80px;
+}
+
+.input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reset-input {
+  min-height: 50px;
+  max-width: 180px;
+  padding: 0 1rem;
+  font-size: 15px;
+  border: 1px solid #99ce9d;
+  border-radius: 6px 0 0 6px;
+  background-color: transparent;
+}
+
+.button--submit {
+  min-height: 50px;
+  padding: .5em 1em;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  background-color: #99ce9d;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.4s;
+  line-height: normal;
+}
+
+.button--submit:hover {
+  background-color: #6b8f6e;
+}
+
+.reset-input:focus, .reset-input:focus-visible {
+  outline: none;
+}
+
+.code-input {
+  min-height: 45px;
+  max-width: 240px;
+  padding: 0 1rem;
+  color: #fff;
+  font-size: 15px;
+  border: 1px solid #99ce9d;
+  background-color: transparent;
 }

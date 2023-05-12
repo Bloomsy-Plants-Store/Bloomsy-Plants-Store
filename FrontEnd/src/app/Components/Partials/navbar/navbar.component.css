@@ -92,7 +92,6 @@ nav .fa-bars {
   }
 }
 
-
 .custom-modal {
   animation: bounceIn 0.5s;
 }
@@ -185,11 +184,6 @@ nav .fa-bars {
 .modal-confirm .btn:focus {
   background: #6b8f6e;
   outline: none;
-}
-
-.trigger-btn {
-  display: inline-block;
-  margin: 100px auto;
 }
 
 .userName-Style{

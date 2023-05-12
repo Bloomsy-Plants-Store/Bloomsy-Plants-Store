@@ -6,6 +6,10 @@ const config = require('./config.json');
 const app = express();
 const multer = require('multer');
 
+// const cookieParser = require('cookie-parser');
+
+// app.use(cookieParser());
+
 const PORT = process.env.PORT||7400
 
 const bodyparser = require("body-parser");

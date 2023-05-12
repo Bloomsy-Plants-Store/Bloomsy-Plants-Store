@@ -60,13 +60,13 @@ var forgetPassword = async(req,res)=>{
         let transporter = nodemailer.createTransport({
           service: 'Gmail',
           auth: {
-            user: 'omnia.goher9@gmail.com',
-            pass: 'srljpnmjsbnmedfc'
+            user: 'bloomsyplants@gmail.com',
+            pass: 'zmccjnuhohyilqfc'
           }
         });
 
         let mailOptions = {
-          from: 'omnia.goher9@gmail.com',
+          from: 'bloomsyplants@gmail.com',
           to: email,
           subject: 'Password Reset Request',
           text: `Please click the following link to reset your password: http://localhost:7400/api/auth/register/reset-password/${resetToken} ` 

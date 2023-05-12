@@ -48,7 +48,17 @@ export class AuthService {
     });
   }
 
-  logout(){
-    return this.http.post(AUTH_API + 'logout', {});
+  logout(id : any){
+    return this.http.post(AUTH_API + 'logout', {id},{
+      ...httpOptions,
+      observe: 'response'
+    });
+  }
+
+  forgotPassword(email: string): Observable<any> {
+    return this.http.post(AUTH_API + 'register/forgot-password', { email}, {
+      ...httpOptions,
+      observe: 'response'
+    });
   }
 }
