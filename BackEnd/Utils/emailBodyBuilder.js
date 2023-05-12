@@ -101,7 +101,6 @@ const getResetPasswordEmailTemplate = (name, resetToken) => {
                 </tr>
                 <tr>
                     <td style="height:80px;">&nbsp;</td>
-                    ${resetToken}
                 </tr>
             </table>
         </td>

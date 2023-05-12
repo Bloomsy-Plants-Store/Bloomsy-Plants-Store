@@ -5,7 +5,6 @@ const config = require("../config.json");
 const emailBody = require("../Utils/emailBodyBuilder");
 
 
-
 const setVerificationToken = (expireDate,email)=>{
     const expiresIn = expireDate; 
     const confirmationToken = jwt.sign({ email: email }, config.SECRETKEY, { expiresIn });
