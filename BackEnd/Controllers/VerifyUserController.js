@@ -71,7 +71,8 @@ var verifyUser = async (req, res, next) => {
       }
     })
     .then(() => {
-      // sendVerificationResponseEmail(req.params.name,req.params.email);  
+      // sendVerificationResponseEmail(req.params.name,req.params.email); 
+      res.header({"confirmation-token": req.params.confirmationCode  });
       return res.status(200).json({ message: "User Verified successfully." });
     })
     .catch((e) => res.status(401).json({ message: "Error occurs while verification" }));
