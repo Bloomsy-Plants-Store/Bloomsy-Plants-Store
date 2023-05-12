@@ -2,12 +2,9 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require("../config.json");
 const passport = require('passport');
-// const userModel = require("../Models/UsersModel");
 const User = require("../Models/UsersModel");
 const getRememberMeToken = require("../Utils/rememberMeToken");
 const RememberMeStrategy = require('passport-remember-me').Strategy;
-
-
 
 
 var Login = async (req, res) => {
@@ -18,6 +15,7 @@ var Login = async (req, res) => {
   
   //Check Password
   var checkpass = await bcrypt.compare(req.body.password, user.password);
+  console.log(req.body.password , user.password)
   if (!checkpass) return res.status(400).json({ message: 'Invalid Email Or Password' });
 
   return passport.authenticate('local', { failureRedirect: '/login' })
