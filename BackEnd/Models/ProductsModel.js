@@ -20,8 +20,9 @@ let productSchema = new mongoose.Schema({
         default: [], // set a default value for the array,
     },
     category: {
-        type: String,
-        //required: true
+        type: [String],
+        //required: true,
+        default: [],
     },
     rate: {
         type: Number,
