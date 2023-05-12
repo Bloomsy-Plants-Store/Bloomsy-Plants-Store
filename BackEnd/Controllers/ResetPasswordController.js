@@ -2,6 +2,7 @@ const userModel = require("../Models/UsersModel");
 const config = require("../config.json");
 const emailBody = require("../Utils/emailBodyBuilder");
 const crypto = require('crypto');
+const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 
 var forgetPassword = async(req,res)=>{
@@ -11,7 +12,7 @@ var forgetPassword = async(req,res)=>{
         let user = await userModel.findOne({email:email}).exec();
 
         if (!user) {
-          return res.status(404).json({ error: 'User not found' });
+          return res.status(404).json({ error: 'User Not Found' });
         }
 
         let resetToken = crypto.randomBytes(20).toString('hex');
@@ -49,7 +50,7 @@ var forgetPassword = async(req,res)=>{
 
 var resetPassword = async(req,res)=>{
     try {
-        let  token  = req.body.token;
+        let token  = req.body.token;
         let password = req.body.password;
         let user = await userModel.findOne({
           resetToken: token,
@@ -74,7 +75,6 @@ var resetPassword = async(req,res)=>{
 
         return res.status(200).json({ message: 'Password reset successful' });
       } catch (error) {
-        console.error(error);
         return res.status(500).json({ error: 'Internal server error' });
       }
 }
