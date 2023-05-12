@@ -10,6 +10,9 @@ userSchema = {
         password: {
             type: "string",
             pattern: "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d$!%*#?&@]{8,}$"
+        },
+        rememberMe: {
+            type: "boolean",
         }
     },
     "required":["email","password"]

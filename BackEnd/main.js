@@ -6,6 +6,10 @@ const config = require('./config.json');
 const app = express();
 const multer = require('multer');
 
+// const cookieParser = require('cookie-parser');
+
+// app.use(cookieParser());
+
 const PORT = process.env.PORT||7400
 
 const bodyparser = require("body-parser");
@@ -22,10 +26,10 @@ app.use("/",logging);
 const corsOptions = {
   origin: 'http://localhost:4200', //allowed origin
   optionsSuccessStatus: 200,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Replace with your allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'], // Replace with your allowed headers
-  exposedHeaders: ['x-auth-token'], // Replace with your exposed headers
-  preflightContinue: true, // Enable preflight requests
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
+  exposedHeaders: ['x-auth-token', 'rememberMe'], 
+  preflightContinue: true, 
   preflight: function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -33,7 +37,7 @@ const corsOptions = {
     res.setHeader('Access-Control-Expose-Headers', 'x-auth-token');
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
-  },
+  }, 
   credentials: true,
 };
 

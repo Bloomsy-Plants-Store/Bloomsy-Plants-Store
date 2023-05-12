@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators,  FormControl  } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from 'src/app/Services/auth.service';
@@ -14,13 +14,22 @@ import jwt_decode from 'jwt-decode';
 })
 export class LoginComponent {
   validationForm: FormGroup;
-  errorMessage:any;
+  validationEmail: FormGroup;
+  errorMessage: any;
+  resetErrorMessage: any;
+  sendEmailMessage: any;
+  rememberMe!: FormControl;
+
 
   constructor(private fb: FormBuilder, private authService: AuthService, private http: HttpClient, private router: Router ,  private tokenService: TokenService) {
     this.validationForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['',[ Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d$!%*#?&@]{8,}$/)]],
+      rememberMe: [false],
     });
+    this.validationEmail = this.fb.group({
+      resetEmail: ['', [Validators.required, Validators.email]]
+    })
   }
 
   get email() {
@@ -31,9 +40,16 @@ export class LoginComponent {
     return this.validationForm.get('password');
   }
 
-  Login(email: any, password: any): void {
+  get resetEmail() {
+    return this.validationEmail.get('resetEmail');
+  }
+
+  Login(): void {
     if (this.validationForm.valid) {
-      this.authService.login(email.value, password.value).subscribe({
+      const email = this.email!.value;
+      const password = this.password!.value;
+      const rememberMe = this.validationForm.get('rememberMe')!.value;
+      this.authService.login(email, password, rememberMe).subscribe({
         next: (response: any) => {
           const token = response.headers.get('x-auth-token');
           this.tokenService.setToken(token);
@@ -50,7 +66,7 @@ export class LoginComponent {
         }
       });
     } else {
-      console.log('Invalid Data');
+      this.errorMessage = 'Invalid Data';
     }
 
     setInterval(() => {
@@ -62,9 +78,7 @@ export class LoginComponent {
     console.log('Login With Google');
     this.authService.loginWithGoogle().subscribe({
       next: (response: any) => {
-
         const token = response.headers.get('x-auth-token');
-        console.log('Token:', token);
       },
       error: (err: any) => {
       }
@@ -84,4 +98,26 @@ export class LoginComponent {
       }
     });
   }
+
+  sentEmail(){
+    if (this.validationEmail.valid) {
+      const resetEmail = this.resetEmail!.value;
+      this.authService.forgotPassword(resetEmail).subscribe({
+        next: (response: any) => {
+          localStorage.setItem('reset-token', response.body.token);
+          this.sendEmailMessage = 'An Email is sent Successfully,Please Check your Inbox'
+        },
+        error: (err: any) => {
+          if(err.status == 404){
+            this.resetErrorMessage = 'Not Found User';
+          }else{
+            this.resetErrorMessage = 'Failed,Please Try Again';
+          }
+        }
+      });
+    } else {
+      this.resetErrorMessage = 'Invalid Email Format';
+    }
+  }
+
 }

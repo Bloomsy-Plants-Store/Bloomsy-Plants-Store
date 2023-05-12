@@ -15,8 +15,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post(AUTH_API + 'login', { email, password }, {
+  login(email: string, password: string, rememberMe:any ): Observable<any> {
+    return this.http.post(AUTH_API + 'login', { email, password ,rememberMe }, {
       ...httpOptions,
       observe: 'response'
     });
@@ -48,7 +48,25 @@ export class AuthService {
     });
   }
 
-  logout(){
-    return this.http.post(AUTH_API + 'logout', {});
+  logout(id : any){
+    return this.http.post(AUTH_API + 'logout', {id},{
+      ...httpOptions,
+      observe: 'response'
+    });
   }
+
+  forgotPassword(email: string): Observable<any> {
+    return this.http.post(AUTH_API + 'register/forgot-password', { email}, {
+      ...httpOptions,
+      observe: 'response'
+    });
+  }
+
+  resetPassword(password: any, token: any): Observable<any> {
+    return this.http.post(AUTH_API + 'register/reset-password', { password , token }, {
+      ...httpOptions,
+      observe: 'response'
+    });
+  }
+
 }
