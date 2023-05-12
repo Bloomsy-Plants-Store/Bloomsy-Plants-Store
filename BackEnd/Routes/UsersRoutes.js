@@ -1,20 +1,19 @@
 const express = require("express");
 const router = new express.Router();
 const UserController = require("../Controllers/UserController");
+const ResetPasswordController = require("../Controllers/ResetPasswordController");
 const UserVerifyController = require("../Controllers/VerifyUserController");
 
 // Register
 router.post("/",UserController.Register)
 
 // Forgot password
-router.post("/forgot-password",UserController.forgetPassword)
+router.post("/forgot-password", ResetPasswordController.forgetPassword)
 
-// password reset
-router.get('/reset-password/:token', UserController.displayResetPasswordForm);
-router.post('/reset-password/:token', UserController.resetPassword);
+// Reset Password
+router.post('/reset-password', ResetPasswordController.resetPassword);
 
-
-// verify account
+// Verify Account
 router.get("/confirm/:confirmationCode", UserVerifyController.verifyUser);
 
 module.exports = router;
