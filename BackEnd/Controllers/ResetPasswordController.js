@@ -36,8 +36,7 @@ var forgetPassword = async(req,res)=>{
           to: email,
           subject: 'Reset Password',
           html: emailBody.getResetPasswordEmailTemplate(user.name,resetToken),
-          // text: `Please click the following link to reset your password: http://localhost:7400/api/auth/register/reset-password/${resetToken} ` 
-        };
+          };
 
         await transporter.sendMail(mailOptions);
 
