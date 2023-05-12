@@ -269,6 +269,9 @@ button:active {
   z-index: 999;
 }
 
+.sign-in-title{
+  font-family: 'Dancing Script', cursive;;
+}
 
 .form-container form {
   padding: 0 40px;
