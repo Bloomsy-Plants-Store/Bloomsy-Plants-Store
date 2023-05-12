@@ -3,6 +3,8 @@ const userModel = require("../Models/UsersModel");
 const userValid = require("../Utils/AuthValidate");
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
+const confirmation = require("./VerifyUserController");
+
 
 var Register = async(req,res)=>{
     try{
@@ -10,19 +12,24 @@ var Register = async(req,res)=>{
         if(foundedUser) {
             return res.status(400).json({message:"User Already Exist"});
         }
+        
+        const confirmationToken = confirmation.setVerificationToken('48h',req.body.email); //email verification token which expires in 48 hours
 
         let user = new userModel({
             name:req.body.name,
             phone:req.body.phone,
             email:req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            confirmationCode: confirmationToken,
+            status:"Pending"
         })
 
         let valid = userValid(user);
         
        if(valid){
-            await user.save()
-            res.status(201).json({message:"User Added Successfully"});
+            await user.save();
+            await confirmation.sendVerificationEmail(user.name,user.email,user.confirmationCode);
+            res.status(201).json({message:"Verification Sent Successfully"});
         }else{
             res.status(400).json({message:"Not Compatible.."})
         } 
@@ -44,6 +51,7 @@ var forgetPassword = async(req,res)=>{
         let resetToken = crypto.randomBytes(20).toString('hex');
 
         let resetTokenExpiration = Date.now() + 3600000; // 1 hour
+
 
         user.resetToken = resetToken;
         user.resetTokenExpiration = resetTokenExpiration;
@@ -123,6 +131,13 @@ var resetPassword = async(req,res)=>{
         return res.status(500).json({ error: 'Internal server error' });
       }
 }
+
+
+
+
+
+
+
 
 
 module.exports = {Register,forgetPassword,resetPassword,displayResetPasswordForm};
