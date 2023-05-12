@@ -37,7 +37,8 @@ export class AuthService {
 
     return this.http.get(AUTH_API + 'google', {
       ...httpOptions,
-      observe: 'response'
+      observe: 'response',
+      withCredentials: true
     });
   }
 
