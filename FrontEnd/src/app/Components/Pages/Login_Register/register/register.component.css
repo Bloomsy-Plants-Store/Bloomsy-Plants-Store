@@ -25,23 +25,19 @@ span {
 }
 
 .input-group input {
-   margin: 8px auto;
-  /*padding: 10px 16px;
-  width: 100%;
-  font-size: 1rem;
-  background-color: #eaeaea;
-  color: #000;
-  border: none; */
-  width: 100%;
+  margin: 8px auto;
+  width: 10%;
   height: 40px;
   padding: 0 0 0 40px;
   border-radius: 7px;
   outline: none;
   border: 1px solid #e5e5e5;
   filter: drop-shadow(0px 1px 0px #efefef)
-    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+  drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
   transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
 }
+
+
 
 button {
   margin-top: 20px;
@@ -59,6 +55,7 @@ button {
   cursor: pointer;
   transition: transform 0.2s linear;
 }
+
 
 button:hover{
   background-color: #293b2d;
@@ -131,7 +128,6 @@ button:active {
   left: 0;
   height: 100%;
   width: 50%;
-  /* background-color: #fff; */
   background-image: url("https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/background-2.jpg");
   transition: 0.6s ease;
 }
@@ -144,11 +140,8 @@ button:active {
 
 .form-container form {
   padding: 0 40px;
-  /* height: 100%; */
   display: flex;
   flex-direction: column;
-  /* align-items: center;
-  justify-content: center; */
   text-align: center;
   margin: 35px 0;
   margin-bottom: 5px;
