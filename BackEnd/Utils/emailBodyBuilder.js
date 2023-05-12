@@ -82,7 +82,7 @@ const getResetPasswordEmailTemplate = (name, resetToken) => {
                                     <p style="font-size:15px; color:#455056; margin:8px 0 0; line-height:24px;">
                                         Your account has been created on the <br> <strong style="@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap'); font-family: 'Dancing Script', cursive; font-style:italic; font-weight:bold"> Bloomsy Plants_Shop </strong><br><strong>Please verify your account
                                             Click On Below Button to Reset Your Password</p> <br>
-                                    <a href="http://localhost:7400/api/auth/register/reset-password"
+                                    <a href="http://localhost:4200/reset-password"
                                         style="background:rgb(20, 85, 38);text-decoration:none !important; display:block; font-weight:500; margin-top:24px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">
                                         RESET PASSWORD</a>
                                 </td>
@@ -101,6 +101,7 @@ const getResetPasswordEmailTemplate = (name, resetToken) => {
                 </tr>
                 <tr>
                     <td style="height:80px;">&nbsp;</td>
+                    ${resetToken}
                 </tr>
             </table>
         </td>
