@@ -67,8 +67,9 @@ let UsersSchema = new mongoose.Schema({
 
 // Document middleware
 UsersSchema.pre('save', function(next) {
+    console.log('before: ',this.password)
     if (this.isNew || this.isModified('password')) {
-      // Hash the password only when creating a new user or modifying the password
+        console.log('before: ',this.password)
       bcrypt.hash(this.password, 10)
         .then(hash => {
           this.password = hash;

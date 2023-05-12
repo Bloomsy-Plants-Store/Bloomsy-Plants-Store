@@ -15,6 +15,8 @@ export class RegisterComponent {
   errorMessage = '';
   successMessage ='';
 
+
+
   constructor(private fb: FormBuilder, private authService: AuthService,private router: Router) {
     this.validationForm = this.fb.group({
       name: [
@@ -58,11 +60,11 @@ export class RegisterComponent {
         .register(name.value, email.value, phone.value, password.value)
         .subscribe({
           next: (response:any) => {
-            console.log('Registeration successful')
+            this.errorMessage = '';
           },
           error: (err:any) => {
             if(err.status == 400){
-              this.errorMessage = 'Invalid Data,Please Try Again';
+              this.errorMessage = 'User Already Exist';
             }else{
               this.errorMessage = 'Registration Failed,Please Try Again';
             }
@@ -79,5 +81,4 @@ export class RegisterComponent {
   redirectToLogin() {
     this.router.navigate(['/login']);
   }
-
 }

@@ -62,4 +62,12 @@ export class AuthService {
       observe: 'response'
     });
   }
+
+  resetPassword(password: any, token: any): Observable<any> {
+    return this.http.post(AUTH_API + 'register/reset-password', { password , token }, {
+      ...httpOptions,
+      observe: 'response'
+    });
+  }
+
 }

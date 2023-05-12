@@ -23,6 +23,7 @@ import { ALlProductsComponent } from './Components/Pages/All_Products/all-produc
 import { AllProductsHeaderComponent } from './Components/Pages/All_Products/all-products-header/all-products-header.component';
 import { LoginComponent } from './Components/Pages/Login_Register/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ResetPasswordComponent } from './Components/Pages/Login_Register/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AboutUsHeaderComponent,
     ALlProductsComponent,
     AllProductsHeaderComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,

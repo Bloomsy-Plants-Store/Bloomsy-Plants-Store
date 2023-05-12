@@ -49,20 +49,12 @@ export class LoginComponent {
       const email = this.email!.value;
       const password = this.password!.value;
       const rememberMe = this.validationForm.get('rememberMe')!.value;
-      console.log(rememberMe);
       this.authService.login(email, password, rememberMe).subscribe({
         next: (response: any) => {
-          console.log("AfterAuth");
           const token = response.headers.get('x-auth-token');
-          // const rememberMe = response.headers.get('rememberMe');
           this.tokenService.setToken(token);
           const decodedToken: any = jwt_decode(token);
           localStorage.setItem('access_token', JSON.stringify(decodedToken));
-          console.log(rememberMe);
-          if (rememberMe) {
-            console.log('Remember Me');
-            // localStorage.setItem('remember_me_token', rememberMe);
-          }
           this.router.navigate(['/']);
         },
         error: (err: any) => {
@@ -112,6 +104,7 @@ export class LoginComponent {
       const resetEmail = this.resetEmail!.value;
       this.authService.forgotPassword(resetEmail).subscribe({
         next: (response: any) => {
+          localStorage.setItem('reset-token', response.body.token);
           this.sendEmailMessage = 'An Email is sent Successfully,Please Check your Inbox'
         },
         error: (err: any) => {
