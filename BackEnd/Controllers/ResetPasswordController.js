@@ -67,8 +67,7 @@ var resetPassword = async(req,res)=>{
             return res.status(400).json({ error: 'Not Compatible..' });
         }
 
-        let hashedPassword = await bcrypt.hash(password, 10);
-        user.password = hashedPassword;
+        user.password = password;
         user.resetToken = undefined;
         user.resetTokenExpiration = undefined;
         await user.save();

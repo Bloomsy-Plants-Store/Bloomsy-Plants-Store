@@ -14,7 +14,7 @@ export class RegisterComponent {
   validationForm: FormGroup;
   errorMessage = '';
   successMessage ='';
-  
+
 
 
   constructor(private fb: FormBuilder, private authService: AuthService,private router: Router) {
@@ -64,7 +64,7 @@ export class RegisterComponent {
           },
           error: (err:any) => {
             if(err.status == 400){
-              this.errorMessage = 'Invalid Data,Please Try Again';
+              this.errorMessage = 'User Already Exist';
             }else{
               this.errorMessage = 'Registration Failed,Please Try Again';
             }
