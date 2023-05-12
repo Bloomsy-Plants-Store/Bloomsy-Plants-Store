@@ -35,7 +35,7 @@ var forgetPassword = async(req,res)=>{
           from: config.GMAIL_EMAIL,
           to: email,
           subject: 'Reset Password',
-          html: emailBody.getResetPasswordEmailTemplate(user.name,resetToken),
+          html: emailBody.getResetPasswordEmailTemplate(user.name),
           };
 
         await transporter.sendMail(mailOptions);
