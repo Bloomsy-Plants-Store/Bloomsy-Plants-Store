@@ -9,6 +9,7 @@ const getEmailTemplate = (name, confirmationCode) => {
                 <tr>
                     <td style="height:80px;">&nbsp;</td>
                 </tr>
+
                 <tr>
                     <td style="height:20px;">&nbsp;</td>
                 </tr>
