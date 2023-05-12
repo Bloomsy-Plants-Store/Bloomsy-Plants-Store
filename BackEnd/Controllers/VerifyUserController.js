@@ -1,4 +1,3 @@
-
 const nodemailer = require('nodemailer');
 const jwt = require("jsonwebtoken");
 const userModel = require("../Models/UsersModel");
@@ -13,7 +12,6 @@ const setVerificationToken = (expireDate,email)=>{
     return confirmationToken;
 }
 
-
 const transport = nodemailer.createTransport({
   service: "Gmail",
   auth: {
@@ -26,7 +24,6 @@ var sendVerificationEmail = async (username,email,code) => {
     let confirmationEmail= prepareConfirmationMail(username,email,code);
     transport.sendMail(confirmationEmail);
 }
-
 
 var sendVerificationResponseEmail = async (username) => {
     let confirmationEmail= prepareResponseEmail(username);
@@ -53,7 +50,6 @@ var prepareResponseEmail = (name,email)=>{
       return mailOptions;
 }
   
-
 var verifyUser = async (req, res, next) => {
     userModel.findOne({
       confirmationCode: req.params.confirmationCode 
@@ -76,6 +72,5 @@ var verifyUser = async (req, res, next) => {
     })
     .catch((e) => res.status(401).json({ message: "Error occurs while verification" }));
 };
-
 
 module.exports = {verifyUser,sendVerificationEmail,prepareConfirmationMail,setVerificationToken};
