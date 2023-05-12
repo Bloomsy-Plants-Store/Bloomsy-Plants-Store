@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const userModel = require("../Models/UsersModel");
 const config = require("../config.json");
 const emailBody = require("../Utils/emailBodyBuilder");
-const emailResponse = require("../Utils/responseEmail");
+
 
 
 const setVerificationToken = (expireDate,email)=>{
@@ -27,12 +27,6 @@ var sendVerificationEmail = async (username,email,code) => {
     transport.sendMail(confirmationEmail);
 }
 
-
-var sendVerificationResponseEmail = async (username) => {
-    let confirmationEmail= prepareResponseEmail(username);
-    transport.sendMail(confirmationEmail);
-}
-
 var prepareConfirmationMail = (name, email, confirmationCode) => {
     let mailOptions = {
       from: config.GMAIL_EMAIL,
@@ -42,17 +36,6 @@ var prepareConfirmationMail = (name, email, confirmationCode) => {
     };
     return mailOptions;
 };
-
-var prepareResponseEmail = (name,email)=>{
-    let mailOptions = {
-        from: config.GMAIL_EMAIL,
-        to: email,
-        subject: "Account is Verified",
-        html: emailBody.emailResponse(name),
-      };
-      return mailOptions;
-}
-  
 
 var verifyUser = async (req, res, next) => {
     userModel.findOne({
@@ -71,9 +54,7 @@ var verifyUser = async (req, res, next) => {
       }
     })
     .then(() => {
-      // sendVerificationResponseEmail(req.params.name,req.params.email); 
-      res.header({"confirmation-token": req.params.confirmationCode  });
-      return res.status(200).json({ message: "User Verified successfully." });
+       res.redirect(config.FRONTEND_URL+'login');
     })
     .catch((e) => res.status(401).json({ message: "Error occurs while verification" }));
 };
