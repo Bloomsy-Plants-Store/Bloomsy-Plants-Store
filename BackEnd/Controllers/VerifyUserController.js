@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const userModel = require("../Models/UsersModel");
 const config = require("../config.json");
 const emailBody = require("../Utils/emailBodyBuilder");
+const emailResponse = require("../Utils/responseEmail");
 
 
 const setVerificationToken = (expireDate,email)=>{
@@ -27,6 +28,11 @@ var sendVerificationEmail = async (username,email,code) => {
 }
 
 
+var sendVerificationResponseEmail = async (username) => {
+    let confirmationEmail= prepareResponseEmail(username);
+    transport.sendMail(confirmationEmail);
+}
+
 var prepareConfirmationMail = (name, email, confirmationCode) => {
     let mailOptions = {
       from: config.GMAIL_EMAIL,
@@ -36,6 +42,16 @@ var prepareConfirmationMail = (name, email, confirmationCode) => {
     };
     return mailOptions;
 };
+
+var prepareResponseEmail = (name,email)=>{
+    let mailOptions = {
+        from: config.GMAIL_EMAIL,
+        to: email,
+        subject: "Account is Verified",
+        html: emailBody.emailResponse(name),
+      };
+      return mailOptions;
+}
   
 
 var verifyUser = async (req, res, next) => {
@@ -55,6 +71,7 @@ var verifyUser = async (req, res, next) => {
       }
     })
     .then(() => {
+      sendVerificationResponseEmail(req.params.name,req.params.email);  
       return res.status(200).json({ message: "User Verified successfully." });
     })
     .catch((e) => res.status(401).json({ message: "Error occurs while verification" }));

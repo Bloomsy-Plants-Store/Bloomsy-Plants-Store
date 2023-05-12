@@ -31,18 +31,13 @@ const getEmailTemplate = (name, confirmationCode) => {
                                     <h1 style="color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">Hi ${name}</h1>
                                     <p style="font-size:15px; color:#455056; margin:8px 0 0; line-height:24px;">
                                         Your account has been created on the <br> <strong style="@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap'); font-family: 'Dancing Script', cursive; font-style:italic; font-weight:bold"> Bloomsy Plants_Shop </strong><br><strong>Please verify your account
-                                            by click on the button below</strong>.</p>
-                                    <span
-                                        style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
-
+                                            by click on the button below</strong>.</p> <br>
                                     <a href="http://localhost:7400/api/auth/register/confirm/${confirmationCode}"
-                                        style="background:rgb(20, 85, 38);text-decoration:none !important; display:inline-block; font-weight:500; margin-top:24px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">
+                                        style="background:rgb(20, 85, 38);text-decoration:none !important; display:block; font-weight:500; margin-top:24px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">
                                         Verify Account</a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td style="height:40px;">&nbsp;</td>
-                            </tr>
+                    
                         </table>
                     </td>
                 </tr>
