@@ -10,11 +10,13 @@ export class AppComponent {
 
   isLoginPage!: boolean;
   isSignUpPage!: boolean;
+  isResetPasswordPage!: boolean;
 
   constructor(private router: Router) {
     this.router.events.subscribe((val) => {
       this.isLoginPage = (this.router.url === '/login');
       this.isSignUpPage = (this.router.url === '/register');
+      this.isResetPasswordPage = (this.router.url === '/reset-password');
     });
   }
 }
