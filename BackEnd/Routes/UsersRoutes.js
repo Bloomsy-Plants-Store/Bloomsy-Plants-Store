@@ -11,8 +11,7 @@ router.post("/",UserController.Register)
 router.post("/forgot-password", ResetPasswordController.forgetPassword)
 
 // Reset Password
-router.get('/reset-password/:token', ResetPasswordController.displayResetPasswordForm);
-router.post('/reset-password/:token', ResetPasswordController.resetPassword);
+router.post('/reset-password', ResetPasswordController.resetPassword);
 
 // Verify Account
 router.get("/confirm/:confirmationCode", UserVerifyController.verifyUser);
