@@ -6,7 +6,7 @@
         <a href="http://localhost:7400/api/auth/facebook"
           ><i class="fab fa-facebook"></i
         ></a>
-        <a (click)="LoginWithGoogle()"><i class="fab fa-google"></i></a>
+        <button (click)="LoginWithGoogle()"><i class="fab fa-google"></i></button>
         <a href="#"><i class="fab fa-twitter"></i></a>
       </div>
       <form [formGroup]="validationForm" (ngSubmit)="Login()" method="post">

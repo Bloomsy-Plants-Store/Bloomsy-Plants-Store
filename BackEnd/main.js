@@ -28,7 +28,7 @@ const corsOptions = {
   optionsSuccessStatus: 200,
   methods: ['GET', 'POST', 'PUT', 'DELETE'], 
   allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
-  exposedHeaders: ['x-auth-token', 'rememberMe'], 
+  exposedHeaders: ['x-auth-token', 'remember_me'], 
   preflightContinue: true, 
   preflight: function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
