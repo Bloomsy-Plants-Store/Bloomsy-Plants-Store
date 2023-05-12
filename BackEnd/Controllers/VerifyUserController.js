@@ -70,12 +70,15 @@ var verifyUser = async (req, res, next) => {
         return res.status(401).json({ message: "Invalid or expired token." });
       }
     })
-    .then(() => {
-      sendVerificationResponseEmail(req.params.name,req.params.email);  
-      return res.status(200).json({ message: "User Verified successfully." });
+    .then(() => { 
+      return res.status(302).redirect("http://localhost:7400/api/auth/register");
     })
     .catch((e) => res.status(401).json({ message: "Error occurs while verification" }));
 };
 
 
 module.exports = {verifyUser,sendVerificationEmail,prepareConfirmationMail,setVerificationToken};
+
+
+
+// sendVerificationResponseEmail(req.params.name,req.params.email); 

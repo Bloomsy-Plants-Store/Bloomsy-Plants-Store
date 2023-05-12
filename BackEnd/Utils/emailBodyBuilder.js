@@ -10,13 +10,6 @@ const getEmailTemplate = (name, confirmationCode) => {
                     <td style="height:80px;">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td style="text-align:center;">
-                        <a href="https://rakeshmandal.com" title="logo" target="_blank">
-                        <img width="300" height="150" src="https://media.tenor.com/q2lP9vEriZUAAAAC/party-plants.gif" title="logo" alt="logo">
-                      </a>
-                    </td>
-                </tr>
-                <tr>
                     <td style="height:20px;">&nbsp;</td>
                 </tr>
                 <tr>
@@ -27,7 +20,8 @@ const getEmailTemplate = (name, confirmationCode) => {
                                 <td style="height:40px;">&nbsp;</td>
                             </tr>
                             <tr>
-                                <td style="padding:0 35px;">
+                                <td style="padding:15px 35px;">
+                                    <img width="300" height="150" src="https://media.tenor.com/q2lP9vEriZUAAAAC/party-plants.gif" title="logo" alt="logo">
                                     <h1 style="color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">Hi ${name}</h1>
                                     <p style="font-size:15px; color:#455056; margin:8px 0 0; line-height:24px;">
                                         Your account has been created on the <br> <strong style="@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap'); font-family: 'Dancing Script', cursive; font-style:italic; font-weight:bold"> Bloomsy Plants_Shop </strong><br><strong>Please verify your account
