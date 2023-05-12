@@ -10,11 +10,11 @@ router.post("/",UserController.Register)
 // Forgot password
 router.post("/forgot-password", ResetPasswordController.forgetPassword)
 
-// password reset
+// Reset Password
 router.get('/reset-password/:token', ResetPasswordController.displayResetPasswordForm);
 router.post('/reset-password/:token', ResetPasswordController.resetPassword);
 
-// verify account
+// Verify Account
 router.get("/confirm/:confirmationCode", UserVerifyController.verifyUser);
 
 module.exports = router;
