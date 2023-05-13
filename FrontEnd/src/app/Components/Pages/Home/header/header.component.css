@@ -57,7 +57,7 @@
 
 @media only screen and (min-width: 768px) {
     .carousel-caption {
-        bottom: 300px;
+        bottom: 400px;
         transform: translateY(0);
     }
 
@@ -79,7 +79,7 @@
 
 @media only screen and (max-width: 767px) {
     .carousel-caption {
-        bottom: 100px;
+        bottom: 400px;
         transform: translateY(0);
     }
 
@@ -100,7 +100,7 @@
 
 @media only screen and (max-width: 575px) {
     .carousel-caption {
-        bottom: 250px;
+        bottom: 400px;
     }
 
     .header-title {
