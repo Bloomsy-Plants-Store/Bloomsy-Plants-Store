@@ -270,7 +270,7 @@ button:active {
 }
 
 .sign-in-title{
-  font-family: 'Dancing Script', cursive;;
+  font-family: 'Dancing Script', cursive;
 }
 
 .form-container form {
@@ -661,7 +661,7 @@ a{
 
 @keyframes lightText {
   0% {
-    color: #fbfd7b;
+    color: #99ce9d;
     text-shadow: 0 0 5px #fbfd7b8a;
   }
 
