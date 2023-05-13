@@ -65,11 +65,8 @@ let UsersSchema = new mongoose.Schema({
     resetTokenExpiration: Date,
 });
 
-// Document middleware
 UsersSchema.pre('save', function(next) {
-    console.log('before: ',this.password)
     if (this.isNew || this.isModified('password')) {
-        console.log('before: ',this.password)
       bcrypt.hash(this.password, 10)
         .then(hash => {
           this.password = hash;
