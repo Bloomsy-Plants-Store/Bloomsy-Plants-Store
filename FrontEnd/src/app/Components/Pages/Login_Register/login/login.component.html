@@ -6,8 +6,8 @@
         <a href="http://localhost:7400/api/auth/facebook"
           ><i class="fab fa-facebook"></i
         ></a>
-        <a (click)="LoginWithGoogle()"><i class="fab fa-google"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a (click)="LoginWithGoogle()" href="http://localhost:7400/api/auth/google"><i class="fab fa-google"></i></a>
+        <a href="http://localhost:7400/api/auth/twitter"><i class="fab fa-twitter"></i></a>
       </div>
       <form [formGroup]="validationForm" (ngSubmit)="Login()" method="post">
         <div class="input-group flex-nowrap my-2">
