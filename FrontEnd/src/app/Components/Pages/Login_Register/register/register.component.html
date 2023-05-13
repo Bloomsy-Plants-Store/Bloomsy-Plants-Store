@@ -6,7 +6,7 @@
         [formGroup]="validationForm"
         (ngSubmit)="register(name, email, phone, password)"
       >
-        <div class="input-group flex-nowrap my-1">
+        <div class="input-group flex-nowrap my-2">
           <div class="input-group-prepend">
             <svg
               fill="none"
@@ -32,6 +32,7 @@
               ></path>
             </svg>
           </div>
+          <div class="input_container">
           <input
             type="text"
             class="form-control"
@@ -44,6 +45,7 @@
             }"
             autocomplete="off"
           />
+        </div>
         </div>
 
         <div
@@ -58,7 +60,7 @@
           </p>
         </div>
 
-        <div class="input-group flex-nowrap my-1">
+        <div class="input-group flex-nowrap my-2">
           <div class="input-group-prepend">
             <svg
               class="fixed"
@@ -84,6 +86,7 @@
               ></path>
             </svg>
           </div>
+          <div class="input_container">
           <input
             type="email"
             class="form-control"
@@ -96,6 +99,7 @@
             }"
             autocomplete="off"
           />
+        </div>
         </div>
         <div
           class="alert alert-danger text-danger p-0 text-start px-3"
@@ -111,7 +115,7 @@
           </p>
         </div>
 
-        <div class="input-group flex-nowrap my-1">
+        <div class="input-group flex-nowrap my-2">
           <div class="input-group-prepend">
             <svg
               aria-hidden="true"
@@ -127,6 +131,7 @@
               />
             </svg>
           </div>
+          <div class="input_container">
           <input
             type="text"
             name="phone"
@@ -139,6 +144,7 @@
             }"
             autocomplete="off"
           />
+          </div>
         </div>
         <div
           class="alert alert-danger text-danger p-0 text-start px-3"
@@ -154,7 +160,7 @@
           </p>
         </div>
 
-        <div class="input-group flex-nowrap my-1">
+        <div class="input-group flex-nowrap my-2">
           <div class="input-group-prepend">
             <svg
               fill="none"
@@ -183,7 +189,7 @@
               ></path>
             </svg>
           </div>
-
+          <div class="input_container">
           <input
             type="password"
             class="form-control"
@@ -198,6 +204,7 @@
             }"
             autocomplete="off"
           />
+          </div>
         </div>
         <div
           class="alert alert-danger text-danger p-0 text-start px-3"

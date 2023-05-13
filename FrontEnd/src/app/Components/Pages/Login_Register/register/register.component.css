@@ -1,3 +1,8 @@
+
+
+
+
+
 h1 {
   font-size: 2rem;
   font-weight: 700;
@@ -22,20 +27,23 @@ span {
   letter-spacing: 0.5px;
 }
 
-.input-group input {
-  margin: 8px auto;
-  width: 10%;
+input {
+  width: auto;
   height: 40px;
   padding: 0 0 0 40px;
   border-radius: 7px;
   outline: none;
   border: 1px solid #e5e5e5;
   filter: drop-shadow(0px 1px 0px #efefef)
-  drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
   transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
 }
 
-
+.input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 button {
   margin-top: 20px;
   padding: 10px 20px;
@@ -205,13 +213,7 @@ a{
   text-decoration: none;
   border: none;
 }
-input.is-invalid {
-  border: 1px solid red;
-}
 
-input.is-valid {
-  border: 1px solid green;
-}
 
 .input_container {
   width: 100%;
@@ -227,7 +229,7 @@ input.is-valid {
   position: absolute;
   z-index: 99;
   left: 12px;
-  bottom: 15px;
+  bottom: 7px;
 }
 
 
