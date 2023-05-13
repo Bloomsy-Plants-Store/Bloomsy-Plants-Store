@@ -352,7 +352,7 @@ input.is-valid {
   transform: translate(0, -50%) rotate(45deg);
   width: 2.5rem;
   height: auto;
-  filter: blur(.1rem) opacity(.5);
+  filter: blur(.1rem) opacity(0.9);
   z-index: -5;
 }
 

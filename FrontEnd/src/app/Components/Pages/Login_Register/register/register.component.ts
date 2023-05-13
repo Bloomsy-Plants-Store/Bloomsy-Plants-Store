@@ -1,9 +1,8 @@
-import { Component} from '@angular/core';
+import { Component, ElementRef, ViewChild} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Router } from '@angular/router';
-
-
+import * as bootstrap from 'bootstrap';
 
 @Component({
   selector: 'app-register',
@@ -12,10 +11,9 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   validationForm: FormGroup;
+  @ViewChild('successModal') successModal!: ElementRef;
   errorMessage = '';
   successMessage ='';
-
-
 
   constructor(private fb: FormBuilder, private authService: AuthService,private router: Router) {
     this.validationForm = this.fb.group({
@@ -54,6 +52,11 @@ export class RegisterComponent {
     return this.validationForm.get('phone');
   }
 
+  showModal(){
+    const modal = new bootstrap.Modal(this.successModal.nativeElement);
+    modal.show();
+  }
+
   register(name: any, email: any, phone: any, password: any): void {
     if (this.validationForm.valid) {
       this.authService
@@ -61,6 +64,7 @@ export class RegisterComponent {
         .subscribe({
           next: (response:any) => {
             this.errorMessage = '';
+            this.showModal();
           },
           error: (err:any) => {
             if(err.status == 400){
@@ -81,4 +85,5 @@ export class RegisterComponent {
   redirectToLogin() {
     this.router.navigate(['/login']);
   }
+
 }

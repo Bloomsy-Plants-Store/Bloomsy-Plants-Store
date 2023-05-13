@@ -216,9 +216,6 @@
 
         <button
           type="submit"
-          [disabled]="validationForm.invalid || errorMessage !== ''"
-          data-bs-toggle="modal"
-          data-bs-target="#SuccessModal"
         >
           Sign Up
         </button>
@@ -255,7 +252,8 @@
 <!--Success Modal-->
 <div
     class="modal fade custom-modal"
-    id="SuccessModal"
+    id="successModal"
+    #successModal
     (click)="redirectToLogin()"
    >
     <div class="modal-dialog modal-confirm modal-dialog-centered my-auto">
@@ -276,15 +274,15 @@
           <p>Your Registration has been successfully completed :)</p>
           <h6 class="mt-2">Please Check Your Email</h6>
         </div>
-        <div class="modal-footer w-100 d-flex justify-content-center mt-0">
-          <button
+        <div class="modal-footer w-100 d-flex justify-content-center align-items-center">
+            <button
             type="button"
-            class="btn btn-info"
+            class="btn btn-info mt-0 mb-3"
             data-bs-dismiss="modal"
             (click)="redirectToLogin()"
-          >
-            Continue
-          </button>
+            >
+              Continue
+            </button>
         </div>
       </div>
     </div>
