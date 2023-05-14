@@ -3,18 +3,18 @@ const productModel = require('../Models/ProductsModel');
 
 
 var uploadProducts = async (req, res) => {
-  try {
-    let file = req.file;
-    if (!file) {
-      return res.status(400).json({ error: 'No file uploaded.' });
+    try {
+        let file = req.file;
+        if (!file) {
+            return res.status(400).json({ error: 'No file uploaded.' });
+        }
+        let products = require("../uploads/" + file.originalname);
+        await productModel.insertMany(products);
+        res.send({ message: `${products.length} products added successfully.` });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to add products.' });
     }
-    let products = require("../uploads/" + file.originalname);
-    await productModel.insertMany(products);
-    res.send({ message: `${products.length} products added successfully.` });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Failed to add products.' });
-  }
 };
 
 
@@ -73,4 +73,24 @@ var getTopRatingProducts = async (req, res) => {
     }
 };
 
-module.exports = { getAllProducts, getBestSellingProducts, getTopRatingProducts, uploadProducts };
+getProductsByType = async (req, res) => {
+    try {
+        let type = req.params.type;
+        console.log(type)
+        if (!type) {
+            return res.status(400).send("Bad Request You must Enter Type of Data");
+        }
+        let Products = await productModel.find({
+            category: { $in: [type] }
+        }).lean();
+        if (!Products) {
+            return res.status(404).send("No Data Found");
+        }
+        return res.status(200).json({ data: Products });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send("Server Error");
+    }
+};
+
+module.exports = { getAllProducts, getBestSellingProducts, getTopRatingProducts, uploadProducts, getProductsByType };
