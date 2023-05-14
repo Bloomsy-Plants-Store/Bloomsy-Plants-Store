@@ -1,29 +1,6 @@
 
 const productModel = require('../Models/ProductsModel');
-const multer = require('multer');
 const MutlerUpload = require('../MiddleWares/MutlerUpload');
-
-
-
-//multer
-// Set storage engine
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './uploads');
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  }
-});
-
-// Create instance of Multer and specify image upload settings
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 1024 * 1024 * 5 } // 5MB max file size
-}).array('imageUrl', 3); // specify field name for single file upload
-
-
-
 
 
 var uploadProducts = async (req, res) => {
