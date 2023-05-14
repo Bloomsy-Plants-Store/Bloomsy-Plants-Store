@@ -13,5 +13,9 @@ router.get('/bestSelling', ProductController.getBestSellingProducts);
 router.get('/topRating', ProductController.getTopRatingProducts);
 
 
+
+router.post('/store', ProductController.storeProducts);
+
+
 module.exports = router;
 

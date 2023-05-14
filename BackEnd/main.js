@@ -77,11 +77,13 @@ const LogoutRoutes = require("./Routes/LogoutRoutes");
 app.use("/api/auth/logout",LogoutRoutes);
 
 // Multer configuration
-const ProductsRoutes = require("./Routes/ProductsRoutes");
-app.use('/api/products', express.static('uploads'), ProductsRoutes); // Serve uploaded files statically
+// const ProductsRoutes = require("./Routes/ProductsRoutes");
+// app.use('/api/products', express.static('uploads'), ProductsRoutes); // Serve uploaded files statically
 
 //All Products Routes
 const productsRoutes=require('./Routes/ProductsRoutes');
 app.use('/api/products', productsRoutes);
+
+
 
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})
