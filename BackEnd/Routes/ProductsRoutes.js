@@ -11,7 +11,7 @@ router.post('/upload', upload.single('jsonFile') ,ProductController.uploadProduc
 router.get('/', ProductController.getAllProducts);
 router.get('/bestSelling', ProductController.getBestSellingProducts);
 router.get('/topRating', ProductController.getTopRatingProducts);
-router.get('/:type', ProductController.getProductsByType);
+router.get('/:category', ProductController.getProductsByCategory);
 
 
 module.exports = router;

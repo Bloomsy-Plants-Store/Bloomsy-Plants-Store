@@ -73,15 +73,14 @@ var getTopRatingProducts = async (req, res) => {
     }
 };
 
-getProductsByType = async (req, res) => {
+getProductsByCategory = async (req, res) => {
     try {
-        let type = req.params.type;
-        console.log(type)
-        if (!type) {
-            return res.status(400).send("Bad Request You must Enter Type of Data");
+        let category = req.params.category;
+        if (!category) {
+            return res.status(400).send("Bad Request: You must enter a category of data");
         }
         let Products = await productModel.find({
-            category: { $in: [type] }
+            category: { $in: [category] }
         }).lean();
         if (!Products) {
             return res.status(404).send("No Data Found");
@@ -93,4 +92,4 @@ getProductsByType = async (req, res) => {
     }
 };
 
-module.exports = { getAllProducts, getBestSellingProducts, getTopRatingProducts, uploadProducts, getProductsByType };
+module.exports = { getAllProducts, getBestSellingProducts, getTopRatingProducts, uploadProducts, getProductsByCategory };
