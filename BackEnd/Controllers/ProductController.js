@@ -165,7 +165,7 @@ var deleteProduct = async (req, res) => {
   }
 };
 
-getProductsByCategory = async (req, res) => {
+var getProductsByCategory = async (req, res) => {
     try {
         let category = req.params.category;
         if (!category) {
