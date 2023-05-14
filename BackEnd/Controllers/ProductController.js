@@ -24,79 +24,35 @@ const storage = multer.diskStorage({
 
 
 
-  
 
 var uploadProducts = async (req, res) => {
   try {
     let file = req.file;
     if (!file) {
-      return res.status(400).json({ error: 'No file uploaded.' });
+      return res.status(400).json({ error: "No file uploaded." });
     }
     let products = require("../uploads/" + file.originalname);
     await productModel.insertMany(products);
     res.send({ message: `${products.length} products added successfully.` });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Failed to add products.' });
+    res.status(500).json({ error: "Failed to add products." });
   }
 };
 
-
 var getAllProducts = async (req, res) => {
-    try {
-        //lean() is a method that is used to retrieve documents from MongoDB as plain JavaScript objects instead of Mongoose model instances.
-        //Faster to create than model instances, and they consume less memory.
-        let AllProducts = await productModel.find().lean();
-        if (!AllProducts) {
-            return res.status(400).send("No Data Found");
-        }
-        return res.status(200).json({ data: AllProducts });
-    } catch (err) {
-        console.log(err);
+  try {
+    //lean() is a method that is used to retrieve documents from MongoDB as plain JavaScript objects instead of Mongoose model instances.
+    //Faster to create than model instances, and they consume less memory.
+    let AllProducts = await productModel.find().lean();
+    if (!AllProducts) {
+      return res.status(400).send("No Data Found");
     }
-}
-var getBestSellingProducts = async (req, res) => {
-    try {
-        let query = productModel.find({ bestSelling: true });
-        if (req.query.limit) {
-            //The second argument to parseInt() is the base of the number system to use. In this case, we are using base 10 (decimal). This ensures that the function correctly interprets the value as a decimal number
-            const limit = parseInt(req.query.limit, 10);
-            if (!isNaN(limit)) {
-                query = query.limit(limit);
-            }
-        }
-        let BestSellingProducts = await query.lean();
-        if (!BestSellingProducts) {
-            return res.status(400).send("No Data Found");
-        }
-        return res.status(200).json({ data: BestSellingProducts });
-    } catch (err) {
-        console.log(err);
-        return res.status(500).send("Server Error");
-    }
-}
-
-var getTopRatingProducts = async (req, res) => {
-    try {
-        let query = productModel.find().sort({ rating: -1 });
-        if (req.query.limit) {
-            //The second argument to parseInt() is the base of the number system to use. In this case, we are using base 10 (decimal). This ensures that the function correctly interprets the value as a decimal number
-            const limit = parseInt(req.query.limit, 10);
-            if (!isNaN(limit)) {
-                query = query.limit(limit);
-            }
-        }
-        let TopRatingProducts = await query.lean();
-        if (!TopRatingProducts) {
-            return res.status(400).send("No Data Found");
-        }
-        return res.status(200).json({ data: TopRatingProducts });
-    } catch (err) {
-        console.log(err);
-        return res.status(500).send("Server Error");
-    }
+    return res.status(200).json({ data: AllProducts });
+  } catch (err) {
+    console.log(err);
+  }
 };
-
 
 
 
@@ -136,4 +92,86 @@ var storeProducts = async function (req, res) {
 };
 
 
-module.exports = { getAllProducts, getBestSellingProducts, getTopRatingProducts, uploadProducts , storeProducts };
+
+var getBestSellingProducts = async (req, res) => {
+  try {
+    let query = productModel.find({ bestSelling: true });
+    if (req.query.limit) {
+      //The second argument to parseInt() is the base of the number system to use. In this case, we are using base 10 (decimal). This ensures that the function correctly interprets the value as a decimal number
+      const limit = parseInt(req.query.limit, 10);
+      if (!isNaN(limit)) {
+        query = query.limit(limit);
+      }
+    }
+    let BestSellingProducts = await query.lean();
+    if (!BestSellingProducts) {
+      return res.status(400).send("No Data Found");
+    }
+    return res.status(200).json({ data: BestSellingProducts });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send("Server Error");
+  }
+};
+
+var getTopRatingProducts = async (req, res) => {
+  try {
+    let query = productModel.find().sort({ rating: -1 });
+    if (req.query.limit) {
+      //The second argument to parseInt() is the base of the number system to use. In this case, we are using base 10 (decimal). This ensures that the function correctly interprets the value as a decimal number
+      const limit = parseInt(req.query.limit, 10);
+      if (!isNaN(limit)) {
+        query = query.limit(limit);
+      }
+    }
+    let TopRatingProducts = await query.lean();
+    if (!TopRatingProducts) {
+      return res.status(400).send("No Data Found");
+    }
+    return res.status(200).json({ data: TopRatingProducts });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send("Server Error");
+  }
+};
+
+var GetProductByID = async (req, res) => {
+  try {
+    var id = req.params.id;
+    var foundProduct = await productModel.findOne({ _id: id }).exec();
+    if (!foundProduct) {
+      return res.status(400).send("No Data Found");
+    }
+    return res.status(200).json({ data: foundProduct });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send("Server Error, Failed to get the product");
+  }
+};
+
+var deleteProduct = async (req, res) => {
+  try {
+    let product = await productModel.findById(req.params.id);
+    if (!product) {
+      return res
+        .status(400)
+        .json({ message: "There is No Product With this ID" });
+    } else {
+      await productModel.findByIdAndDelete(req.params.id);
+      return res.status(200).json({ message: "Deleted Successfully..." });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = {
+  getAllProducts,
+  getBestSellingProducts,
+  getTopRatingProducts,
+  uploadProducts,
+  GetProductByID,
+  deleteProduct,
+  storeProducts
+};
+

@@ -80,7 +80,7 @@ app.use("/api/auth/logout",LogoutRoutes);
 // const ProductsRoutes = require("./Routes/ProductsRoutes");
 // app.use('/api/products', express.static('uploads'), ProductsRoutes); // Serve uploaded files statically
 
-//All Products Routes
+//Products Routes
 const productsRoutes=require('./Routes/ProductsRoutes');
 app.use('/api/products', productsRoutes);
 

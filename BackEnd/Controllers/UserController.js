@@ -9,7 +9,7 @@ var Register = async(req,res)=>{
             return res.status(400).json({message:"User Already Exist"});
         }
         
-        const confirmationToken = confirmation.setVerificationToken('48h',req.body.email); //email verification token which expires in 48 hours
+        const confirmationToken = confirmation.setVerificationToken('48h',req.body.email); 
 
         let user = new userModel({
             name:req.body.name,

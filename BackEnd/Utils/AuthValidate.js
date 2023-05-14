@@ -14,7 +14,7 @@ const userSchema = {
     },
     email: {
       type: "string",
-      pattern: "^[a-zA-Z0-9]+@[a-zA-Z0-9]+(.com){1}$"
+      pattern: "^[a-zA-Z0-9._]+@[a-zA-Z0-9]+(\.[a-zA-Z]{2,}){1,}$"
     },
     password: {
       type: "string",
