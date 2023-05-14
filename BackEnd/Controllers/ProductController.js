@@ -71,7 +71,7 @@ var getTopRatingProducts = async (req, res) => {
   }
 };
 
-var GetProductByID = async (req, res) => {
+var getProductByID = async (req, res) => {
   try {
     var id = req.params.id;
     var foundProduct = await productModel.findOne({ _id: id }).exec();
@@ -106,6 +106,6 @@ module.exports = {
   getBestSellingProducts,
   getTopRatingProducts,
   uploadProducts,
-  GetProductByID,
+  getProductByID,
   deleteProduct,
 };
