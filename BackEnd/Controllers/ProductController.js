@@ -25,20 +25,20 @@ const storage = multer.diskStorage({
 
 
 
-var uploadProducts = async (req, res) => {
-  try {
-    let file = req.file;
-    if (!file) {
-      return res.status(400).json({ error: "No file uploaded." });
+  var uploadProducts = async (req, res) => {
+    try {
+      let file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "No file uploaded." });
+      }
+      let products = require("../uploads/" + file.originalname);
+      await productModel.insertMany(products);
+      res.send({ message: `${products.length} products added successfully.` });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Failed to add products." });
     }
-    let products = require("../uploads/" + file.originalname);
-    await productModel.insertMany(products);
-    res.send({ message: `${products.length} products added successfully.` });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Failed to add products." });
-  }
-};
+  };
 
 var getAllProducts = async (req, res) => {
   try {
@@ -165,6 +165,25 @@ var deleteProduct = async (req, res) => {
   }
 };
 
+getProductsByCategory = async (req, res) => {
+    try {
+        let category = req.params.category;
+        if (!category) {
+            return res.status(400).send("Bad Request: You must enter a category of data");
+        }
+        let Products = await productModel.find({
+            category: { $in: [category] }
+        }).lean();
+        if (!Products) {
+            return res.status(404).send("No Data Found");
+        }
+        return res.status(200).json({ data: Products });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send("Server Error");
+    }
+};
+
 module.exports = {
   getAllProducts,
   getBestSellingProducts,
@@ -172,6 +191,8 @@ module.exports = {
   uploadProducts,
   GetProductByID,
   deleteProduct,
-  storeProducts
+  storeProducts,
+  getProductsByCategory
 };
+
 

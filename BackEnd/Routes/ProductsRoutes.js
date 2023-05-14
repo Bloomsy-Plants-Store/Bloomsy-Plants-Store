@@ -12,12 +12,10 @@ router.get('/', ProductController.getAllProducts);
 router.get('/bestSelling', ProductController.getBestSellingProducts);
 router.get('/topRating', ProductController.getTopRatingProducts);
 router.get("/:id",ProductController.GetProductByID);
-
 // Delete Product 
 router.delete("/:id", ProductController.deleteProduct);
-
-
 router.post('/store', ProductController.storeProducts);
+router.get('/:category', ProductController.getProductsByCategory);
 
 
 module.exports = router;
