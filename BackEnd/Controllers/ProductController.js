@@ -24,6 +24,8 @@ const storage = multer.diskStorage({
 
 
 
+  
+
 var uploadProducts = async (req, res) => {
   try {
     let file = req.file;
