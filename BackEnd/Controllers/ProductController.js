@@ -137,15 +137,14 @@ var getTopRatingProducts = async (req, res) => {
 
 var getProductByID = async (req, res) => {
   try {
-    var id = req.params.id;
-    var foundProduct = await productModel.findOne({ _id: id }).exec();
-    if (!foundProduct) {
-      return res.status(400).send("No Data Found");
+    let product = await productModel.findById(req.params.id);
+    if (!product) {
+      return res.status(400).send("There is No Product With this ID!");
     }
-    return res.status(200).json({ data: foundProduct });
+    return res.status(200).json({ data: product });
   } catch (err) {
     console.log(err);
-    return res.status(500).send("Server Error, Failed to get the product");
+    return res.status(500).send("Server Error, Failed to get the product!");
   }
 };
 
@@ -153,9 +152,7 @@ var deleteProduct = async (req, res) => {
   try {
     let product = await productModel.findById(req.params.id);
     if (!product) {
-      return res
-        .status(400)
-        .json({ message: "There is No Product With this ID" });
+      return res.status(400).json({ message: "There is No Product With this ID" });
     } else {
       await productModel.findByIdAndDelete(req.params.id);
       return res.status(200).json({ message: "Deleted Successfully..." });
