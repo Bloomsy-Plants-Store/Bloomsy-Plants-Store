@@ -11,10 +11,15 @@ router.post('/upload', upload.single('jsonFile') ,ProductController.uploadProduc
 router.get('/', ProductController.getAllProducts);
 router.get('/bestSelling', ProductController.getBestSellingProducts);
 router.get('/topRating', ProductController.getTopRatingProducts);
+
+// Get Product By ID
 router.get("/:id",ProductController.getProductByID);
 
 // Delete Product 
 router.delete("/:id", ProductController.deleteProduct);
+router.post('/store', ProductController.storeProducts);
+router.get('/:category', ProductController.getProductsByCategory);
+
 
 module.exports = router;
 
