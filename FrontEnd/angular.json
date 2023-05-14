@@ -27,7 +27,9 @@
             "styles": [
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.min.css"
+              "node_modules/bootstrap-icons/font/bootstrap-icons.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
