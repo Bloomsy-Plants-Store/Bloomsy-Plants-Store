@@ -17,7 +17,6 @@ var uploadProducts = async (req, res) => {
   }
 };
 
-
 var getAllProducts = async (req, res) => {
     try {
         //lean() is a method that is used to retrieve documents from MongoDB as plain JavaScript objects instead of Mongoose model instances.
@@ -31,6 +30,7 @@ var getAllProducts = async (req, res) => {
         console.log(err);
     }
 }
+
 var getBestSellingProducts = async (req, res) => {
     try {
         let query = productModel.find({ bestSelling: true });
@@ -73,4 +73,19 @@ var getTopRatingProducts = async (req, res) => {
     }
 };
 
-module.exports = { getAllProducts, getBestSellingProducts, getTopRatingProducts, uploadProducts };
+var deleteProduct = async (req, res) => {
+    try {
+        let product = await productModel.findById(req.params.id);
+        if (!product) {
+            return res.status(400).json({ message: 'There is No Product With this ID'});
+        }else{
+            await productModel.findByIdAndDelete(req.params.id);
+            return res.status(200).json({ message: 'Deleted Successfully...' });
+        }
+        
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+module.exports = { getAllProducts, getBestSellingProducts, getTopRatingProducts, uploadProducts, deleteProduct};
