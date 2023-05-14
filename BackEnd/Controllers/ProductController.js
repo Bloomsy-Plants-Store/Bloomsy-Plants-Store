@@ -28,6 +28,7 @@ var getAllProducts = async (req, res) => {
     console.log(err);
   }
 };
+
 var getBestSellingProducts = async (req, res) => {
   try {
     let query = productModel.find({ bestSelling: true });
@@ -84,10 +85,27 @@ var GetProductByID = async (req, res) => {
   }
 };
 
+var deleteProduct = async (req, res) => {
+  try {
+    let product = await productModel.findById(req.params.id);
+    if (!product) {
+      return res
+        .status(400)
+        .json({ message: "There is No Product With this ID" });
+    } else {
+      await productModel.findByIdAndDelete(req.params.id);
+      return res.status(200).json({ message: "Deleted Successfully..." });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   getAllProducts,
   getBestSellingProducts,
   getTopRatingProducts,
   uploadProducts,
   GetProductByID,
+  deleteProduct,
 };

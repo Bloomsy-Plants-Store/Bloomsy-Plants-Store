@@ -7,12 +7,14 @@ const upload = require('../MiddleWares/MutlerUpload');
 router.post('/upload', upload.single('jsonFile') ,ProductController.uploadProducts);
 
 
-// get all products
+// Get All Products
 router.get('/', ProductController.getAllProducts);
 router.get('/bestSelling', ProductController.getBestSellingProducts);
 router.get('/topRating', ProductController.getTopRatingProducts);
 router.get("/:id",ProductController.GetProductByID);
 
+// Delete Product 
+router.delete("/:id", ProductController.deleteProduct);
 
 module.exports = router;
 
