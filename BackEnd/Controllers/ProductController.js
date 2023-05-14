@@ -139,12 +139,12 @@ var getProductByID = async (req, res) => {
   try {
     let product = await productModel.findById(req.params.id);
     if (!product) {
-      return res.status(400).send("There is No Product With this ID!");
+      return res.status(400).send("There is No Product With this ID !");
     }
     return res.status(200).json({ data: product });
   } catch (err) {
     console.log(err);
-    return res.status(500).send("Server Error, Failed to get the product!");
+    return res.status(500).send("Server Error, Failed to get the product !");
   }
 };
 
@@ -159,6 +159,7 @@ var deleteProduct = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
+    return res.status(500).send("Server Error, Failed to delete the product!");
   }
 };
 
