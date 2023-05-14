@@ -27,6 +27,7 @@
     "passport-local": "^1.0.0",
     "passport-remember-me": "^0.0.1",
     "passport-twitter": "^0.1.5",
+    "path": "^0.12.7",
     "validator": "^13.9.0"
   }
 }

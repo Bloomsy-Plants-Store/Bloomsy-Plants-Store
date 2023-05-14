@@ -1,4 +1,29 @@
-const productModel = require("../Models/ProductsModel");
+
+const productModel = require('../Models/ProductsModel');
+const multer = require('multer');
+
+
+
+//multer
+// Set storage engine
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+      cb(null, './uploads');
+    },
+    filename: function(req, file, cb) {
+      cb(null, file.originalname);
+    }
+  });
+
+  // Create instance of Multer and specify image upload settings
+  const upload = multer({
+    storage: storage,
+    limits: { fileSize: 1024 * 1024 * 5 } // 5MB max file size
+  }).array('imageUrl', 3); // specify field name for single file upload
+
+
+
+
 
 var uploadProducts = async (req, res) => {
   try {
@@ -28,6 +53,45 @@ var getAllProducts = async (req, res) => {
     console.log(err);
   }
 };
+
+
+
+var storeProducts = async function (req, res) {
+    try {
+        await upload(req, res, function(err) {
+          if (err) {
+            // Handle error
+            console.log(err);
+            return res.status(500).send("Error uploading file");
+          } else {
+
+              //map req.file to git file name
+              let filenames = req.files.map(file => file.filename);
+
+            // Save product details to database
+              let product = new productModel({
+                  name: req.body.name,
+                  price: req.body.price,
+                  category: req.body.category,
+                  rate: 0,
+                  reviews_num: 0,
+                  discount: req.body.discount,
+                  bestSelling: false,
+                  description: req.body.description,
+                  itemsinStock: req.body.itemsinStock,
+                  imageUrl: filenames,
+              });
+              product.save();
+            return res.status(200).json({ message: "Product Upload Successfully " });
+          }
+        });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send("Server Error");
+    }
+};
+
+
 
 var getBestSellingProducts = async (req, res) => {
   try {
@@ -108,4 +172,6 @@ module.exports = {
   uploadProducts,
   GetProductByID,
   deleteProduct,
+  storeProducts
 };
+
