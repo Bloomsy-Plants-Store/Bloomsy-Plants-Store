@@ -31,15 +31,16 @@ var updateCartItemById = async (req, res) => {
       if (req.body.quantity) {
         user.cart[cartItemIndex].quantity = req.body.quantity;
       }
-
-      if (req.body.product_id) {
-        user.cart[cartItemIndex].product_id = req.body.product_id;
+      
+      if (req.body.productId) {
+        user.cart[cartItemIndex].product_id = req.body.productId;
       }
-
+      console.log(user.cart[cartItemIndex].product_id);
       await user.save();
       console.log(user.cart);
       return res.status(200).json({ message: 'Cart item quantity updated successfully' });
     } catch (error) {
+      console.log(error)
       return res.status(500).json({ error: 'Server Error, Failed to update the cart' });
     }
 };
