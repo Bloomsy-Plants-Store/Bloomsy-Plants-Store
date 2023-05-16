@@ -12,7 +12,7 @@ var updateCart = async (req, res) => {
       console.log(user.cart);
       return res.status(200).json({ message: 'Cart updated successfully' });
     } catch (error) {
-      return res.status(500).json({ error: 'Server Error' });
+      return res.status(500).json({ error: 'Server Error, Failed to update the cart' });
     }
 }
 
@@ -40,7 +40,7 @@ var updateCartItemById = async (req, res) => {
       console.log(user.cart);
       return res.status(200).json({ message: 'Cart item quantity updated successfully' });
     } catch (error) {
-      return res.status(500).json({ error: 'Server Error' });
+      return res.status(500).json({ error: 'Server Error, Failed to update the cart' });
     }
 };
 
@@ -69,12 +69,10 @@ var updateCartItems = async (req, res) => {
       console.log(user.cart);
       return res.status(200).json({ message: 'Cart items updated successfully' });
     } catch (error) {
-      return res.status(500).json({ error: 'Server Error' });
+      return res.status(500).json({ error: 'Server Error, Failed to update the cart' });
     }
 };
   
-
-
 
 module.exports = {
     updateCart,
