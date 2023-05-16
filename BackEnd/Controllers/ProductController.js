@@ -2,22 +2,6 @@
 const productModel = require('../Models/ProductsModel');
 const MutlerUpload = require('../MiddleWares/MutlerUpload');
 
-
-var uploadProducts = async (req, res) => {
-  try {
-    let file = req.file;
-    if (!file) {
-      return res.status(400).json({ error: "No file uploaded." });
-    }
-    let products = require("../uploads/" + file.originalname);
-    await productModel.insertMany(products);
-    res.send({ message: `${products.length} products added successfully.` });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Failed to add products." });
-  }
-};
-
 var getAllProducts = async (req, res) => {
   try {
     //lean() is a method that is used to retrieve documents from MongoDB as plain JavaScript objects instead of Mongoose model instances.
@@ -204,7 +188,6 @@ module.exports = {
   getAllProducts,
   getBestSellingProducts,
   getTopRatingProducts,
-  uploadProducts,
   getProductByID,
   deleteProduct,
   storeProducts,

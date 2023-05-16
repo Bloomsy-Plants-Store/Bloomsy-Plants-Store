@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const cartSchema = require("./CartModel"); 
 const config=require("../config.json")
 var DB_URL =config.MONGODBURL;
 var validator = require("validator");
@@ -53,6 +54,10 @@ let UsersSchema = new mongoose.Schema({
             message: (props) => `${props.value} is not a valid phone number!`,
         },
     },
+    cart:  {
+        type: [cartSchema],
+        default: []
+    },
     status: {
         type: String, 
         enum: ['Pending', 'Active'],
@@ -63,6 +68,7 @@ let UsersSchema = new mongoose.Schema({
         unique: true },
     resetToken: String,
     resetTokenExpiration: Date,
+
 });
 
 UsersSchema.pre('save', function(next) {

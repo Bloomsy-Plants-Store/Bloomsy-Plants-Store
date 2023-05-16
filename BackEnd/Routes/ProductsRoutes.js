@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const ProductController = require('../Controllers/ProductController');
-const MutlerUpload = require('../MiddleWares/MutlerUpload');
-
-// mutler upload
-router.post('/upload', MutlerUpload.upload.single('jsonFile') ,ProductController.uploadProducts);
 
 
 // Get All Products

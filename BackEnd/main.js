@@ -76,13 +76,15 @@ app.use('/api/auth/google', googleRoutes);
 const LogoutRoutes = require("./Routes/LogoutRoutes");
 app.use("/api/auth/logout",LogoutRoutes);
 
-// Multer configuration
-// const ProductsRoutes = require("./Routes/ProductsRoutes");
-// app.use('/api/products', express.static('uploads'), ProductsRoutes); // Serve uploaded files statically
 
 //Products Routes
 const productsRoutes=require('./Routes/ProductsRoutes');
 app.use('/api/products', productsRoutes);
+
+// Cart Route
+const cartRoutes = require('./Routes/CartRoutes');
+app.use('/users', cartRoutes);
+
 
 
 
