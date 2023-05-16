@@ -23,9 +23,9 @@ var updateCartItemById = async (req, res) => {
       if (!user) {
         return res.status(404).json({ error: 'User not found' });
       }
-      const cartItemIndex = user.cart.findIndex((item) => item.product_id.toString() === req.params.productId);
+      const cartItemIndex = user.cart.findIndex((item) => item._id.toString() === req.params.cartItemId);
       if (cartItemIndex === -1) {
-        return res.status(404).json({ error: 'Product not found in cart' });
+        return res.status(404).json({ error: 'Cart item not found in cart' });
       }
 
       if (req.body.quantity) {
@@ -53,7 +53,7 @@ var updateCartItems = async (req, res) => {
       }
       for (const update of updates) {
         const { cartItemId, quantity, productId } = update;
-        const cartItemIndex = user.cart.findIndex((item) => item.product_id.toString() === cartItemId.toString());
+        const cartItemIndex = user.cart.findIndex((item) => item._id.toString() === cartItemId);
 
         if (cartItemIndex === -1) {
           return res.status(404).json({ error: `Cart item with ID ${cartItemId} not found` });

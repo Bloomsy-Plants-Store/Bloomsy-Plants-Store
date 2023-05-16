@@ -6,7 +6,7 @@ const CartController = require("../Controllers/CartController");
 // Update cart route
 router.put('/:id/cart', CartController.updateCart);
 router.put('/:id/cart/items', CartController.updateCartItems);
-router.put('/:id/cart/:productId', CartController.updateCartItemById);
+router.put('/:id/cart/:cartItemId', CartController.updateCartItemById);
 
 
 
