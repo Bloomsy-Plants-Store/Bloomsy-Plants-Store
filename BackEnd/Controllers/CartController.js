@@ -1,4 +1,39 @@
-const User = require("../Models/UsersModel");
+const User = require('../Models/UsersModel');
+const Product = require('../Models/ProductsModel');
+
+var addToCart = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    let { product_id, quantity } = req.body;
+
+    const product = await Product.findById(product_id);
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    const cartItemIndex = user.cart.findIndex(item => item.product_id == product_id);
+    if (cartItemIndex !== -1) {
+      return res.status(404).json({ error: 'Product already exists in the cart' });
+    }
+
+    const cartItem = {
+      product_id: product_id,
+      quantity: quantity,
+    }
+    
+    user.cart.push(cartItem);
+    await user.save();
+
+    return res.status(200).json({ message: 'Product added to cart successfully' });
+  } catch (error) {
+    return res.status(500).json({ error: 'Server Error, Failed to add product to cart' });
+  }
+};
+
 
 var updateCart = async (req, res) => {
     try {
@@ -128,6 +163,7 @@ const clearUserCart = async (req, res) => {
   }
 };
 module.exports = {
+  addToCart,
   updateCart,
   updateCartItemById,
   updateCartItems,
