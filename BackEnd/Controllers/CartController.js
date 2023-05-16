@@ -103,9 +103,9 @@ var updateCartItems = async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
     for (const update of updates) {
-      const { cartItemId, quantity, productId } = update;
+      const { cartItemId, quantity, product_id } = update;
       const cartItemIndex = user.cart.findIndex(
-        (item) => item.product_id.toString() === productId
+        (item) => item.product_id.toString() ===  product_id
       );
 
       if (cartItemIndex === -1) {
