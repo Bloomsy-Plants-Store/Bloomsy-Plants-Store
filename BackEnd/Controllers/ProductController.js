@@ -2,6 +2,7 @@
 const productModel = require('../Models/ProductsModel');
 const multer = require('multer');
 const MutlerUpload = require('../MiddleWares/MutlerUpload');
+const config = require('../config.json');
 
 var getAllProducts = async (req, res) => {
   try {
@@ -35,7 +36,7 @@ var updateProduct = async (req, res) => {
         if(req.files){
           let images = req.files
           images.forEach(img => {
-            product["imageUrl"].push(img.filename)
+            product["imageUrl"].push(config.CLOUD_PATH + img.filename)
           });
         }
         
@@ -82,7 +83,7 @@ var storeProducts = async function (req, res) {
           bestSelling: false,
           description: req.body.description,
           itemsinStock: req.body.itemsinStock,
-          imageUrl: filenames,
+          imageUrl: config.CLOUD_PATH + filenames
         });
         product.save();
         return res.status(200).json({ message: "Product Upload Successfully " });
