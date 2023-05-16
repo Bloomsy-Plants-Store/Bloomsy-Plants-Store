@@ -32,8 +32,8 @@ var updateCartItemById = async (req, res) => {
         user.cart[cartItemIndex].quantity = req.body.quantity;
       }
 
-      if (req.params.productId) {
-        user.cart[cartItemIndex].product_id = req.params.productId;
+      if (req.body.product_id) {
+        user.cart[cartItemIndex].product_id = req.body.product_id;
       }
 
       await user.save();
