@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const ProductController = require('../Controllers/ProductController');
-const upload = require('../MiddleWares/MutlerUpload');
-
-// mutler upload
-router.post('/upload', upload.single('jsonFile') ,ProductController.uploadProducts);
 
 
 // Get All Products
@@ -14,6 +10,9 @@ router.get('/topRating', ProductController.getTopRatingProducts);
 
 // Get Specific Product By ID
 router.get("/:id",ProductController.getProductByID);
+
+// update product
+router.get("/update/:id",ProductController.updateProduct);
 
 // Delete Product 
 router.delete("/:id", ProductController.deleteProduct);
