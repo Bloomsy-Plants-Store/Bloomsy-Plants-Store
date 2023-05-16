@@ -107,12 +107,32 @@ const deleteCartItemById = async (req, res) => {
     return res.status(500).json({ error: 'Server Error, Failed to delete this item' });
   }
 };
+const clearUserCart = async (req, res) => {
+  try {
+    const user_id = req.params.id;
+    if (!user_id) {
+      return res.status(400).send("Bad Request: You must enter a user id");
+    }
+    const user = await User.findById(user_id);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    await User.updateOne(
+      { _id: user_id },
+      { $set: { cart: [] } }
+    );
 
+    return res.status(200).json({ message: 'All Cart items deleted successfully' });
+  } catch (error) {
+    return res.status(500).json({ error: 'Server Error, Failed to delete this item' });
+  }
+};
 module.exports = {
   updateCart,
   updateCartItemById,
   updateCartItems,
-  deleteCartItemById
+  deleteCartItemById,
+  clearUserCart
 };
 
 
