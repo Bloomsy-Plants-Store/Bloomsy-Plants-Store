@@ -1,4 +1,39 @@
-const User = require("../Models/UsersModel");
+const User = require('../Models/UsersModel');
+const Product = require('../Models/ProductsModel');
+
+var addToCart = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    let { product_id, quantity } = req.body;
+
+    const product = await Product.findById(product_id);
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    const cartItemIndex = user.cart.findIndex(item => item.product_id == product_id);
+    if (cartItemIndex !== -1) {
+      return res.status(404).json({ error: 'Product already exists in the cart' });
+    }
+
+    const cartItem = {
+      product_id: product_id,
+      quantity: quantity,
+    }
+    
+    user.cart.push(cartItem);
+    await user.save();
+
+    return res.status(200).json({ message: 'Product added to cart successfully' });
+  } catch (error) {
+    return res.status(500).json({ error: 'Server Error, Failed to add product to cart' });
+  }
+};
+
 
 var updateCart = async (req, res) => {
   try {
@@ -124,12 +159,33 @@ const deleteCartItemById = async (req, res) => {
     return res.status(500).json({ error: "Server Error, Failed to delete this item" });
   }
 };
+const clearUserCart = async (req, res) => {
+  try {
+    const user_id = req.params.id;
+    if (!user_id) {
+      return res.status(400).send("Bad Request: You must enter a user id");
+    }
+    const user = await User.findById(user_id);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    await User.updateOne(
+      { _id: user_id },
+      { $set: { cart: [] } }
+    );
 
+    return res.status(200).json({ message: 'All Cart items deleted successfully' });
+  } catch (error) {
+    return res.status(500).json({ error: 'Server Error, Failed to delete this item' });
+  }
+};
 module.exports = {
+  addToCart,
   updateCart,
   updateCartItemById,
   updateCartItems,
   deleteCartItemById,
+  clearUserCart
 };
 
 

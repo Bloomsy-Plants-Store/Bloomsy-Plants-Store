@@ -1,6 +1,5 @@
 
 const productModel = require('../Models/ProductsModel');
-const multer = require('multer');
 const MutlerUpload = require('../MiddleWares/MutlerUpload');
 
 var getAllProducts = async (req, res) => {
