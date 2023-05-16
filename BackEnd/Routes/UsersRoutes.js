@@ -16,5 +16,9 @@ router.post('/reset-password', ResetPasswordController.resetPassword);
 // Verify Account
 router.get("/confirm/:confirmationCode", UserVerifyController.verifyUser);
 
+
+
+
+
 module.exports = router;
 

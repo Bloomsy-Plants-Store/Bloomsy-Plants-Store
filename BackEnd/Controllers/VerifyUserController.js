@@ -45,6 +45,7 @@ var verifyUser = async (req, res, next) => {
       try {
         jwt.verify(req.params.confirmationCode, config.SECRETKEY); 
         user.status = "Active";
+        console.log(user);
         return user.save();
       } catch (error) {
         return res.status(401).json({ message: "Invalid or expired token." });

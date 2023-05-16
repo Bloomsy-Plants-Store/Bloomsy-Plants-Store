@@ -84,6 +84,11 @@ app.use("/api/auth/logout",LogoutRoutes);
 const productsRoutes=require('./Routes/ProductsRoutes');
 app.use('/api/products', productsRoutes);
 
+// Cart Route
+const cartRoutes = require('./Routes/CartRoutes');
+app.use('/users', cartRoutes);
+
+
 
 
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})
