@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResetPasswordComponent } from './Components/Pages/Login_Register/reset-password/reset-password.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { DashboardPageComponent } from './Components/Dashboard/dashboard-page/dashboard-page/dashboard-page.component';
+import { AboutUsComponent } from './Components/Pages/about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { DashboardPageComponent } from './Components/Dashboard/dashboard-page/da
     ALlProductsComponent,
     AllProductsHeaderComponent,
     ResetPasswordComponent,
-    DashboardPageComponent
+    DashboardPageComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
