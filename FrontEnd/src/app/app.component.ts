@@ -18,7 +18,8 @@ export class AppComponent {
       this.isLoginPage = (this.router.url === '/login');
       this.isSignUpPage = (this.router.url === '/register');
       this.isResetPasswordPage = (this.router.url === '/reset-password');
-      this.isDashboardPage = (this.router.url === '/dashboard');
+      this.isDashboardPage = this.router.url.startsWith('/dashboard');
+
     });
   }
 }

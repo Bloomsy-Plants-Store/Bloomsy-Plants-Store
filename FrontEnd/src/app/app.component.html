@@ -1,5 +1,14 @@
+<app-navbar
+  *ngIf="
+    !isLoginPage && !isSignUpPage && !isResetPasswordPage && !isDashboardPage
+  "
+>
+</app-navbar>
 
-<app-navbar *ngIf="!isLoginPage &&  !isSignUpPage && !isResetPasswordPage && !isDashboardPage"></app-navbar>
 <router-outlet></router-outlet>
-<app-footer *ngIf="!isLoginPage &&  !isSignUpPage && !isResetPasswordPage && !isDashboardPage"></app-footer>
 
+<app-footer
+  *ngIf="
+    !isLoginPage && !isSignUpPage && !isResetPasswordPage && !isDashboardPage
+  "
+></app-footer>
