@@ -2,13 +2,15 @@
 
 .about-section {
   background-color: #f9f4ef;
-  padding-top: 15%;
+  padding-top: 14%;
   overflow: hidden;
+  padding-bottom: 5%;
 }
 
 .about-section .content-column{
 	position:relative;
 	margin-bottom:40px;
+  padding-left: 3%;
 }
 
 .about-section .content-column .inner-column{
@@ -81,6 +83,7 @@
 }
 
 
+
 .img-animation-2 .about-image img{
   animation: k 5s infinite alternate ease-in-out;
   -webkit-animation: k 5s infinite alternate ease-in-out;
@@ -104,6 +107,7 @@
   margin-top: 15%;
   z-index: 2;
 
+
 }
 
 
@@ -113,7 +117,10 @@
   left: 80px;
   margin-top: 10%;
   z-index: 3;
+
 }
+
+
 
 @keyframes k {
   0% {
@@ -273,7 +280,7 @@
     color: #828787;
   }
   .sec-title .title{
-    font-size: 25px;
+    font-size: 35px;
     line-height: 40px;
   }
   .circular-icon{
