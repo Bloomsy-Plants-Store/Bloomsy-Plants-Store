@@ -13,13 +13,11 @@ body{
     margin: 0 auto;
 }
 
-img{
-    width: 70%;
-}
 button{
   background-color: transparent;
   border: none;
 }
+
 
 .carousel-item {
   position: absolute;
@@ -130,7 +128,7 @@ hr{
     font-weight: 400;
 }
 .purchase-info{
-    margin: 1.5rem 0;
+    margin-top: 1.5rem;
 }
 .purchase-info input{
     border: 1.5px solid #ddd;
@@ -145,19 +143,35 @@ hr{
     width: 60px;
 }
 .round-black-btn {
-  border-radius: 0%;
+    border-radius: 0%;
     margin-bottom: 20px;
     background: #757474;
     color: #fff;
-    margin-left: 2%;
+    text-transform: lowercase;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 1.5%;
     padding: 10px 50px;
     display: inline-block;
     transition: all 0.5s ease-in-out 0s;
+}
+
+.round-black-btn::first-letter {
+  text-transform: uppercase;
 }
 .round-black-btn:hover,
 .round-black-btn:focus {
 	background: #224229;
 	text-decoration: none;
+}
+
+.buy-now button{
+  background: #224229;
+}
+
+.buy-now button:hover,
+.buy-now button:focus {
+	background: #142718;
 }
 
 
@@ -212,54 +226,7 @@ hr{
     transform: scale(1);
   }
 }
-.social-cont{
-  padding-left: 1%;
-}
-.social-links{
-    display: flex;
-    align-items: center;
-}
-.social-links a{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    height: 35px;
-    color: #224229;
-    border:2px solid #e1e0e0;
-    margin: 0 0.3rem;
-    border-radius: 50%;
-    text-decoration: none;
-    font-size: 0.8rem;
-    transition: all 0.5s ease;
-}
-.social-links a:hover{
-    background: #000;
-    border-color: transparent;
-    color: #fff;
-}
 
-@media screen and (min-width: 992px){
-    .product{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 1.5rem;
-    }
-    .product-wrapper{
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .product-imgs{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    .product-content{
-        padding-top: 0;
-    }
-}
 
 .quantity {
   display: flex;
@@ -318,21 +285,49 @@ hr{
 .quantity input[type="number"]:focus {
   border-color: #ccc;
 }
+/* .social-cont{
+  padding-left: 1%;
+} */
+.social-links{
+    display: flex;
+    align-items: center;
+}
+.social-links a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    color: #224229;
+    border:2px solid #e1e0e0;
+    margin: 0 0.3rem;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all 0.5s ease;
+}
+.social-links a:hover{
+    background: #000;
+    border-color: transparent;
+    color: #fff;
+}
 
 
+
+
+
+/*
 @media screen and (min-width:991px) and (max-width:1192){
   #carouselExampleFade{
     height:  100px !important;
   }
-
-}
+} */
 
 
 @media screen and (max-width:900px){
-  #carouselExampleFade{
-    height:  600px !important;
-  }
-
+  /* .img-item a{
+    width: 100% !important;
+} */
   img{
     width: 100%;
   }
@@ -344,6 +339,63 @@ hr{
   }
 }
 
+
+
+
+@media screen and (min-width: 992px) and (max-width:1192px){
+  .product-wrapper{
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .product-imgs{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
+  .product-content{
+      padding-top: 0;
+  }
+  .round-black-btn {
+      border-radius: 0%;
+      margin-bottom: 20px;
+      background: #757474;
+      color: #fff;
+      font-size: small;
+      margin-left: 2%;
+      display: inline-block;
+      transition: all 0.5s ease-in-out 0s;
+  }
+  .quantity button {
+    color: #7a7a7a;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 1;
+    margin: 0;
+    outline: none;
+    padding: 0 1px;
+    text-align: center;
+    transition: all 0.3s ease;
+    width: 15px;
+  }
+
+
+  .quantity input[type="number"] {
+    appearance: none;
+    border: none;
+    color: #292929;
+    font-size: 18px;
+    font-weight: 400;
+    font-family:Arial, Helvetica, sans-serif;
+    height: 50px;
+    margin: 0;
+    outline: none;
+    text-align: center;
+    width: 33px;
+  }
+}
 
 
 /*********************************************************************/

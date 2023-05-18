@@ -2,39 +2,38 @@
   <div class = "product-section container-fluid">
 
     <!-- product left -->
-    <div class="row">
+    <div class="row justify-content-center">
 
       <!-- product left -->
-      <div class="product-imgs col-lg-7 col-xl-7 col-xxl-7 col-md-12 col-sm-12 col-xs-12">
-
-        <div class="row gap-1">
-          <div class="col-lg-2 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-xs-12 order-lg-1 order-md-2 order-xs-2 order-xxs-2 banner-button">
-            <div class="img-select w-100 gap-0">
-              <div class="img-item w-100 col-3 col-lg-12">
-                <a href="#carouselExampleFade" data-bs-slide-to="0">
-                  <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/11-3-600x713.jpg" alt="shoe image" class="img-select-image">
+      <div class="product-imgs col-lg-7 col-xl-7 col-xxl-7 col-md-12 col-sm-12 col-xs-12 mb-5 p-0">
+        <div class="row gap-5">
+          <div class="col-lg-2 col-xl-2 col-xxl-2 col-md-2 col-sm-12 col-xs-12 order-lg-1 order-md-1 order-xs-2 order-xxs-2 banner-button">
+            <div class="img-select row gap-1 justify-content-center">
+              <div class="img-item col-2 col-lg-12 col-md-12">
+                <a href="#carouselExampleFade" class="d-block w-100" data-bs-slide-to="0">
+                  <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/11-3-600x713.jpg" alt="shoe image" class="img-select-image w-100">
                 </a>
               </div>
-              <div class="img-item col-3 col-lg-12">
-                <a href="#carouselExampleFade" data-bs-slide-to="1">
-                  <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/11-4-600x713.jpg" alt="shoe image" class="img-select-image">
+              <div class="img-item col-2 col-lg-12 col-md-12">
+                <a href="#carouselExampleFade" class="d-block w-100" data-bs-slide-to="1">
+                  <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/11-4-600x713.jpg" alt="shoe image" class="img-select-image w-100">
                 </a>
               </div>
-              <div class="img-item col-3 col-lg-12">
-                <a href="#carouselExampleFade" data-bs-slide-to="2">
-                  <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/11-5-600x713.jpg" alt="shoe image" class="img-select-image">
+              <div class="img-item col-2 col-lg-12 col-md-12">
+                <a href="#carouselExampleFade" class="d-block w-100" data-bs-slide-to="2">
+                  <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/11-5-600x713.jpg" alt="shoe image" class="img-select-image w-100">
                 </a>
               </div>
-              <div class="img-item col-3 col-lg-12">
-                <a href="#carouselExampleFade" data-bs-slide-to="3">
-                  <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/11-6-600x713.jpg" alt="shoe image" class="img-select-image">
+              <div class="img-item col-2 col-lg-12 col-md-12">
+                <a href="#carouselExampleFade" class="d-block w-100" data-bs-slide-to="3">
+                  <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/11-6-600x713.jpg" alt="shoe image" class="img-select-image w-100">
                 </a>
               </div>
             </div>
           </div>
-          <div class="col-lg-9 col-xl-9 col-xxl-9 col-md-12 col-sm-12 col-xs-12 order-lg-2 order-md-1 order-sm-1 order-xs-1 order-xxs-1 banner">
+          <div class="col-lg-9 col-xl-9 col-xxl-9 col-md-9 col-sm-12 col-xs-12 order-lg-2 order-md-2 order-sm-1 order-xs-1 order-xxs-1 banner">
             <div class="img-display d-flex justify-content-center">
-              <div id="carouselExampleFade" class="carousel slide carousel-fade" style="height: 650px;width: 650px; overflow: hidden;">
+              <div id="carouselExampleFade" class="carousel slide carousel-fade">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img class="d-block w-100" src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/11-3-600x713.jpg" alt="First slide">
@@ -83,7 +82,7 @@
           </p>
         </div>
 
-        <div class = "purchase-info d-flex flex-lg-row flex-md-column align-baseline justify-content-center">
+        <div class = "purchase-info d-flex align-baseline justify-content-center flex-wrap">
           <div class="quantity">
             <button type="button" class="minus" (click)="decreaseQuantity()">&minus;</button>
             <input type="number" class="input-text qty text" step="1" min="1" name="quantity" [value]="quantity">
@@ -91,7 +90,7 @@
           </div>
 
           <button type = "button" class = "btn round-black-btn">
-            Add to Cart &nbsp;<i class = "fas fa-shopping-cart"></i>
+            Add to  Cart &nbsp;<i class = "fas fa-shopping-cart"></i>
           </button>
 
           <button id="fav" (click)="toggleFavorite()">
@@ -104,9 +103,15 @@
               <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path>
             </svg>
           </button>
-
-
         </div>
+
+        <div class = "buy-now d-flex justify-content-center">
+          <button type = "button" class = "w-75 btn round-black-btn">
+            Buy Now &nbsp;<i class = "fas fa-shopping-cart"></i>
+          </button>
+        </div>
+
+
         <hr class="mt-4 mb-4">
 
         <div class = "product-detail">
@@ -118,7 +123,7 @@
         </div>
 
         <div class = "social-cont d-flex flex-column">
-          <div class = "social-links d-flex flex-wrap justify-content-center mt-3">
+          <div class = "social-links d-flex flex-wrap mt-3">
           <a href = "#">
             <i class = "fab fa-facebook-f"></i>
           </a>
@@ -136,12 +141,8 @@
           </a>
         </div>
         </div>
-
       </div>
       </div>
-
-
-
   </div>
 </div>
 
