@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { CarouselComponent } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-product-details',
@@ -8,6 +9,9 @@ import { Component } from '@angular/core';
 export class ProductDetailsComponent {
   quantity: number = 1;
   isFavorited: boolean = false;
+
+  @ViewChild('carousel') carousel?: CarouselComponent;
+  // Rest of your component code
 
   decreaseQuantity(): void {
     if (this.quantity > 1) {
@@ -22,4 +26,5 @@ export class ProductDetailsComponent {
   toggleFavorite(): void {
     this.isFavorited = !this.isFavorited;
   }
+
 }
