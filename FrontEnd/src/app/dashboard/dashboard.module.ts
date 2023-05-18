@@ -6,20 +6,23 @@ import { DashboardPageComponent } from '../Components/Dashboard/dashboard-page/d
 import { DashboardAllProductsComponent } from '../Components/Dashboard/dashboard-all-products/dashboard-all-products.component';
 import { DashboardSidebarComponent } from '../Components/Dashboard/dashboard-sidebar/dashboard-sidebar.component';
 import { DashboardRevenueComponent } from '../Components/Dashboard/dashboard-revenue/dashboard-revenue.component';
+import { AllProductsTablePaginationComponent } from '../Components/Dashboard/all-products-table-pagination/all-products-table-pagination.component';
 
 
 @NgModule({
   declarations: [
     DashboardPageComponent,
-    DashboardAllProductsComponent,
     DashboardSidebarComponent,
+    DashboardAllProductsComponent,
+    AllProductsTablePaginationComponent,
     DashboardRevenueComponent
   ],
   exports: [
     DashboardPageComponent,
-    DashboardAllProductsComponent,
     DashboardSidebarComponent,
-    DashboardRevenueComponent
+    DashboardAllProductsComponent,
+    AllProductsTablePaginationComponent,
+    DashboardRevenueComponent,
   ],
   imports: [
     CommonModule,

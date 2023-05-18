@@ -25,6 +25,7 @@ import { LoginComponent } from './Components/Pages/Login_Register/login/login.co
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResetPasswordComponent } from './Components/Pages/Login_Register/reset-password/reset-password.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { MatFormField } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    CarouselModule
+    CarouselModule,
+    MatFormField
   ],
   providers: [],
   bootstrap: [AppComponent]
