@@ -310,9 +310,6 @@ hr {
 } */
 
 @media screen and (max-width: 700px) {
-  /* .img-item a{
-    width: 100% !important;
-} */
   img {
     width: 100%;
   }
@@ -322,23 +319,32 @@ hr {
   .banner {
     order: 1 !important;
   }
-  .quantity button {
-    color: #7a7a7a;
-    cursor: pointer;
-    font-size: 15px;
-    padding: 0 2px;
-    width: 20px;
+  .quantity {
+    width: 25%;
   }
 
-  .quantity input[type="number"] {
-    font-size: 18px;
-    width: 32px;
+  .quantity button {
+    font-size: 15px;
+    padding: 0 2px;
+    text-align: center;
   }
+  .quantity input[type="number"] {
+    font-size: 15px;
+  }
+
+  .round-black-btn {
+    font-size: 8px;
+    width: 57%;
+  }
+  .buy-now{
+    padding: 10%;
+  }
+
 }
 
 
 
-@media screen and (min-width: 1108px) and (max-width: 1250px) {
+@media screen and (min-width: 1100px) and (max-width: 1520px) {
   .product-wrapper {
     height: 100vh;
     display: flex;
@@ -357,54 +363,20 @@ hr {
     width: 80%;
   }
   .quantity {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    display: inline-block;
-    background-color: transparent;
-    border: 2px solid #f4f4f4;
     width: 22%;
   }
 
   .quantity button {
-    color: #7a7a7a;
-    cursor: pointer;
     font-size: 18px;
-    font-weight: 900;
-    height: 50px;
-    line-height: 1;
-    margin: 0;
-    outline: none;
     padding: 0 2px;
-    text-align: center;
-    transition: all 0.3s ease;
   }
   .quantity input[type="number"] {
-    appearance: none;
-    border: none;
-    color: #292929;
     font-size: 20px;
-    font-weight: 400;
-    font-family: Arial, Helvetica, sans-serif;
-    height: 50px;
-    margin: 0;
-    outline: none;
-    text-align: center;
   }
 
   .round-black-btn {
-    border-radius: 0%;
-    margin-bottom: 20px;
-    background: #757474;
-    color: #fff;
-    text-transform: lowercase;
     font-size: 15px;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-left: 1.5%;
-    display: inline-block;
     width: 30%;
-    transition: all 0.5s ease-in-out 0s;
   }
 
 }
@@ -428,57 +400,24 @@ hr {
     font-size: small;
   }
   .round-black-btn {
-    width: 80%;
+    width: 90%;
   }
   .quantity {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    display: inline-block;
-    background-color: transparent;
-    border: 2px solid #f4f4f4;
-    width: 30%;
+    width: 25%;
   }
 
   .quantity button {
-    color: #7a7a7a;
-    cursor: pointer;
     font-size: 18px;
-    font-weight: 900;
-    height: 50px;
-    line-height: 1;
-    margin: 0;
-    outline: none;
     padding: 0 2px;
-    text-align: center;
-    transition: all 0.3s ease;
   }
   .quantity input[type="number"] {
-    appearance: none;
-    border: none;
-    color: #292929;
     font-size: 20px;
-    font-weight: 400;
-    font-family: Arial, Helvetica, sans-serif;
     height: 50px;
-    margin: 0;
-    outline: none;
-    text-align: center;
   }
 
   .round-black-btn {
-    border-radius: 0%;
-    margin-bottom: 20px;
-    background: #757474;
-    color: #fff;
-    text-transform: lowercase;
     font-size: 15px;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-left: 1.5%;
-    display: inline-block;
     width: 30%;
-    transition: all 0.5s ease-in-out 0s;
   }
 
 }
