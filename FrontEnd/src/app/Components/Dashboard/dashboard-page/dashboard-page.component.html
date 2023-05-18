@@ -3,12 +3,12 @@
   <label class="menu__btn" for="menu__toggle">
     <span></span>
   </label>
-  
+
   <div class="sidebar">
     <app-dashboard-sidebar></app-dashboard-sidebar>
   </div>
 
-  <section class="home bg-light">
+  <section class="home bg-light" [style.background]="'url(./assets/images/bg.jpg) '">
     <router-outlet></router-outlet>
   </section>
 </div>
