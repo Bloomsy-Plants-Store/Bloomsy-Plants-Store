@@ -1,12 +1,8 @@
-table {
-  width: 100%;
+.section{
+  height: 90vh;
 }
-
-.mat-mdc-form-field {
-  font-size: 14px;
+table{
   width: 100%;
-}
-
-td, th {
-  width: 25%;
+  border: solid thin var(--primary-color);
+  text-align: center;
 }
