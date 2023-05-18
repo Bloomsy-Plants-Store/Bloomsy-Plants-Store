@@ -68,7 +68,6 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     MatButtonModule,
     NgxSliderModule,
     BsDropdownModule.forRoot()
-
   ],
   providers: [],
   bootstrap: [AppComponent]
