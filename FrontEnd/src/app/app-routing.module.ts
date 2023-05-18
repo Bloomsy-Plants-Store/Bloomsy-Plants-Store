@@ -6,6 +6,7 @@ import { LoginComponent } from './Components/Pages/Login_Register/login/login.co
 import { RegisterComponent } from './Components/Pages/Login_Register/register/register.component';
 import { ALlProductsComponent } from './Components/Pages/All_Products/all-products/all-products.component';
 import { ResetPasswordComponent } from './Components/Pages/Login_Register/reset-password/reset-password.component';
+import { CheckoutComponent } from './Components/Pages/checkout/checkout.component';
 import { ProductDetailsPageComponent } from './Components/Pages/product-details/product-details-page/product-details-page.component';
 import { DashboardPageComponent } from './Components/Dashboard/dashboard-page/dashboard-page.component';
 import { AboutUsPageComponent } from './Components/Pages/about-us/about-us-page/about-us-page.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsPageComponent},
   { path: 'contact-us', component: ContactUsPageComponent},
   { path: 'products', component: ALlProductsComponent},
+  {path: 'checkout', component: CheckoutComponent},
   { path: 'reset-password', component: ResetPasswordComponent},
   {path: 'product-details', component:ProductDetailsPageComponent},
   { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)}

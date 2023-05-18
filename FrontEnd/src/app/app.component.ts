@@ -12,6 +12,7 @@ export class AppComponent {
   isSignUpPage!: boolean;
   isResetPasswordPage!: boolean;
   isDashboardPage!: boolean;
+  isCheckoutPage!: boolean
 
   constructor(private router: Router) {
     this.router.events.subscribe((val) => {
@@ -19,7 +20,7 @@ export class AppComponent {
       this.isSignUpPage = (this.router.url === '/register');
       this.isResetPasswordPage = (this.router.url === '/reset-password');
       this.isDashboardPage = this.router.url.startsWith('/dashboard');
-
+      this.isCheckoutPage = (this.router.url==='/checkout');
     });
   }
 }

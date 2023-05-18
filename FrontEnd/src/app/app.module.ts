@@ -31,8 +31,7 @@ import { AboutUsGalleryComponent } from './Components/Pages/about-us/about-us-ga
 import { AboutUsInfoComponent } from './Components/Pages/about-us/about-us-info/about-us-info.component';
 import { AboutUsReviewComponent } from './Components/Pages/about-us/about-us-review/about-us-review.component';
 import { AboutUsPageComponent } from './Components/Pages/about-us/about-us-page/about-us-page.component';
-
-
+import { CheckoutComponent } from './Components/Pages/checkout/checkout.component';
 import { FilterSideBarComponent } from './Components/Pages/All_Products/filter-side-bar/filter-side-bar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
@@ -73,7 +72,8 @@ import { ProductDetailsPageComponent } from './Components/Pages/product-details/
     FilterSideBarComponent,
     AllProductDataComponent,
     ProductDetailsHeaderComponent,
-    ProductDetailsPageComponent
+    ProductDetailsPageComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,7 +87,7 @@ import { ProductDetailsPageComponent } from './Components/Pages/product-details/
     MatButtonModule,
     NgxSliderModule,
     BsDropdownModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
