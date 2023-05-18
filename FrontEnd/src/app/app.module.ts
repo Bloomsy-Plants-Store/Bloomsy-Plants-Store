@@ -29,7 +29,8 @@ import { DashboardPageComponent } from './Components/Dashboard/dashboard-page/da
 import { FilterSideBarComponent } from './Components/Pages/All_Products/filter-side-bar/filter-side-bar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSliderModule } from '@angular/material/slider';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +66,7 @@ import { MatSliderModule } from '@angular/material/slider';
     CarouselModule,
     MatSidenavModule,
     MatButtonModule,
-    MatSliderModule
+    NgxSliderModule
 
   ],
   providers: [],

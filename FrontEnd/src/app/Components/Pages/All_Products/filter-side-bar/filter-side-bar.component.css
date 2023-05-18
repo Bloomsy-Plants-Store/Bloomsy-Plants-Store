@@ -138,3 +138,7 @@
   line-height: 25px;
   font-size: 12px;
 }
+/* .ngx-slider .ngx-slider-pointer,
+.ngx-slider .ngx-slider-selection  {
+  background-color: #224229 !important;
+} */

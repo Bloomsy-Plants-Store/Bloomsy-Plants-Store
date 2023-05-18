@@ -16,7 +16,7 @@
     </div>
     <mat-sidenav-container style="height: 35vh;">
       <mat-sidenav #sidenav mode="side">
-        <div class="filter-sidebar">
+        <div class="filter-sidebar w-100">
           <div class="button-filter-close" (click)="sidenav.close();">
             Close
             <i class="bi bi-x-lg"></i>
@@ -55,9 +55,7 @@
                         class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span>
                     </div>
                     <div class="price-input">
-                      <mat-slider class="w-100 text-success" [min]="0" [max]="100"  (input)="onRangeChange($event)"></mat-slider>
-                      <p>Range Values: {{ rangeValues[0] }} - {{ rangeValues[1] }}</p>
-
+                      <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
                     </div>
                   </div>
                 </div>

@@ -1,35 +1,29 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
-import { MatSliderModule } from '@angular/material/slider';
+import { LabelType, Options } from '@angular-slider/ngx-slider';
 @Component({
   selector: 'app-filter-side-bar',
   templateUrl: './filter-side-bar.component.html',
   styleUrls: ['./filter-side-bar.component.css'],
-  animations: [
-    trigger('fadeIn', [
-      state('void', style({ opacity: 0 })),
-      transition(':enter', [
-        animate('500ms', style({ opacity: 1 }))
-      ])
-    ]),
-    trigger('fadeOut', [
-      state('*', style({ opacity: 1 })),
-      transition(':leave', [
-        animate('500ms', style({ opacity: 0 }))
-      ])
-    ])
-  ]
-
 })
 
 export class FilterSideBarComponent {
-  rangeValues: number[] = [20, 80]; // Example range values
-
-  onRangeChange(event: any) {
-    // Update the range values
-    this.rangeValues = event.value;
-  }
+  minValue: number = 100;
+  maxValue: number = 750;
+  options: Options = {
+    floor: 100,  //the minimum value of the slider
+    ceil: 1500, //the maximum value of the slider
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return "<b>Min price:</b> $" + value;
+        case LabelType.High:
+          return "<b>Max price:</b> $" + value;
+        default:
+          return "$" + value;
+      }
+    }
+  };
   @ViewChild('sidenav', { static: true })
   sidenav!: MatSidenav;
 
