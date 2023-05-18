@@ -25,6 +25,10 @@ import { LoginComponent } from './Components/Pages/Login_Register/login/login.co
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResetPasswordComponent } from './Components/Pages/Login_Register/reset-password/reset-password.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { FilterSideBarComponent } from './Components/Pages/All_Products/filter-side-bar/filter-side-bar.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { MatFormField } from '@angular/material/form-field';
 
 @NgModule({
@@ -49,6 +53,7 @@ import { MatFormField } from '@angular/material/form-field';
     ALlProductsComponent,
     AllProductsHeaderComponent,
     ResetPasswordComponent,
+    FilterSideBarComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,11 @@ import { MatFormField } from '@angular/material/form-field';
     HttpClientModule,
     BrowserAnimationsModule,
     CarouselModule,
+    MatSidenavModule,
+    MatButtonModule,
+    NgxSliderModule,
     MatFormField
+
   ],
   providers: [],
   bootstrap: [AppComponent]
