@@ -10,7 +10,7 @@ body {
   line-height: 1.5;
 }
 .product-wrapper {
-  margin: 0 auto;
+  margin: 10% auto;
 }
 
 button {
@@ -302,12 +302,6 @@ hr {
   color: #fff;
 }
 
-/*
-@media screen and (min-width:991px) and (max-width:1192){
-  #carouselExampleFade{
-    height:  100px !important;
-  }
-} */
 
 @media screen and (max-width: 700px) {
   img {
@@ -333,11 +327,11 @@ hr {
   }
 
   .round-black-btn {
-    font-size: 8px;
+    font-size: 15px;
     width: 57%;
   }
   .buy-now{
-    padding: 10%;
+    padding: 7%;
   }
 
 }
@@ -346,7 +340,6 @@ hr {
 
 @media screen and (min-width: 1100px) and (max-width: 1520px) {
   .product-wrapper {
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -383,7 +376,6 @@ hr {
 
 @media screen and (min-width: 992px) and (max-width: 1107px) {
   .product-wrapper {
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -422,66 +414,3 @@ hr {
 
 }
 
-/*********************************************************************/
-.product-info-tabs {
-  margin-top: 25px;
-}
-.product-info-tabs .nav-tabs {
-  border-bottom: 2px solid #d8d8d8;
-}
-.product-info-tabs .nav-tabs .nav-item {
-  margin-bottom: 0;
-}
-.product-info-tabs .nav-tabs .nav-link {
-  border: none;
-  border-bottom: 2px solid transparent;
-  color: #323232;
-}
-.product-info-tabs .nav-tabs .nav-item .nav-link:hover {
-  border: none;
-}
-.product-info-tabs .nav-tabs .nav-item.show .nav-link,
-.product-info-tabs .nav-tabs .nav-link.active,
-.product-info-tabs .nav-tabs .nav-link.active:hover {
-  border: none;
-  border-bottom: 2px solid #d8d8d8;
-  font-weight: bold;
-}
-.product-info-tabs .tab-content .tab-pane {
-  padding: 30px 20px;
-  font-size: 15px;
-  line-height: 24px;
-  color: #7a7a7a;
-}
-.review-form .form-group {
-  clear: both;
-}
-.mb-20 {
-  margin-bottom: 20px;
-}
-
-.review-form .rate {
-  float: none;
-  display: inline-block;
-}
-.review-heading {
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 24px;
-  margin-bottom: 6px;
-  text-transform: uppercase;
-  color: #000;
-}
-.review-form .form-control {
-  font-size: 14px;
-}
-.review-form input.form-control {
-  height: 40px;
-}
-.review-form textarea.form-control {
-  resize: none;
-}
-.review-form .round-black-btn {
-  text-transform: uppercase;
-  cursor: pointer;
-}
