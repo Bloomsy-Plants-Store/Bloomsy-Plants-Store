@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
 
 *{
-    padding: 0;
-    margin: 0;
     box-sizing: border-box;
 }
 
@@ -92,7 +90,7 @@ h1,h2,p,span{
     gap: .8rem;
 }
 form .input-field label{
-    color: hsl(278, 68%, 11%);
+    color: #2c432e;
     font-size: .8rem;
     text-transform: uppercase;
 }
@@ -111,23 +109,16 @@ form .input-field label{
     font-size: 1.125rem;
     font-family: 'Space Grotesk', sans-serif;
 }
-.input-field.error-empty input,.input-field.error-invalid input{
-    border: 1px solid hsl(0, 100%, 66%);
-}
+
 .input-field input:focus{
     border: 1px solid transparent;
     background:
         linear-gradient(to right, hsl(0, 0%, 100%), hsl(0, 0%, 100%)),
-        linear-gradient(to left, hsl(278, 94%, 30%) , hsl(249, 99%, 64%));
+        linear-gradient(to left, #628665 , #537355);
     background-clip: padding-box, border-box;
     background-origin: padding-box, border-box;
 }
-.input-field .error{
-    color: hsl(0, 100%, 66%);
-    font-size: .7rem;
-    letter-spacing: normal;
-    display: none;
-}
+
 .input-field.error-empty .empty{
     display: block;
 }
@@ -147,20 +138,6 @@ form .flex-row{
     gap: .5rem;
 }
 
-.modal{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:hsl(0, 0%, 100%);
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 1.5rem;
-}
 
 button {
   margin-top: 20px;
@@ -314,28 +291,116 @@ button:active {
 .fil0 {
   fill: #3c5742bc
 }
-.modal img{
-    margin-bottom: 2rem;
+
+
+.custom-modal {
+  animation: bounceIn 0.5s;
 }
-.modal h2{
-    color: hsl(278, 68%, 11%);
-    font-size: 2rem;
-    text-transform: uppercase;
+
+.modal-confirm {
+  color: #636363;
+  width: 325px;
+  font-size: 14px;
 }
-.modal p{
-    margin: 1rem 0 2rem 0;
+
+.modal-title{
+  font-family: 'Dancing Script', cursive;
+  font-style: italic;
+  font-weight: bold;
 }
-footer{
-    color: hsl(278, 68%, 11%);
-    font-size: .8rem;
-    margin-top: 2rem;
-    text-align: center;
+
+.modal-confirm .modal-content {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
 }
-footer a{
-    color:hsl(278, 68%, 11%);
+
+.modal-confirm{
+  border-bottom: none;
+  position: relative;
 }
-footer a:hover{
-    text-decoration: none;
+
+.modal-confirm h4 {
+  text-align: center;
+  font-size: 26px;
+  margin: 30px 0 -15px;
+}
+
+.modal-confirm .form-control,
+.modal-confirm .btn {
+  min-height: 40px;
+  border-radius: 3px;
+}
+
+.modal-confirm .close {
+  position: absolute;
+  top: -10px;
+  right: -5px;
+}
+
+.modal-confirm .modal-footer{
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 0;
+}
+
+.modal-confirm .icon-box {
+  color: #fff;
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: -65px;
+  bottom: 0;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  z-index: 9;
+  background: white;
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-confirm .icon-box img {
+  font-size: 58px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.modal-confirm.modal-dialog {
+  margin-top: 80px;
+}
+
+.modal-confirm .btn {
+  color: #fff;
+  border-radius: 4px;
+  background: #557758;
+  text-decoration: none;
+  transition: all 0.4s;
+  line-height: normal;
+  border: none;
+}
+
+.modal-confirm .btn:hover,
+.modal-confirm .btn:focus {
+  background: #618264;
+  outline: none;
+}
+
+.trigger-btn {
+  display: inline-block;
+}
+
+@media (max-width: 576px) {
+  .modal-confirm {
+      margin: 0 auto;
+      width: 90%;
+  }
 }
 
 @media(min-width: 1020px){
@@ -367,9 +432,6 @@ footer a:hover{
         align-items: center;
     }
     .input-section form{
-        max-width: 425px;
-    }
-    .modal>*{
         max-width: 425px;
     }
 }
