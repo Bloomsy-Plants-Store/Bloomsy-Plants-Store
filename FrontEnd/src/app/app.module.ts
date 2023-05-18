@@ -26,11 +26,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResetPasswordComponent } from './Components/Pages/Login_Register/reset-password/reset-password.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { DashboardPageComponent } from './Components/Dashboard/dashboard-page/dashboard-page/dashboard-page.component';
-import { AboutUsComponent } from './Components/Pages/about-us/about-us.component';
 import { AboutUsBriefComponent } from './Components/Pages/about-us/about-us-brief/about-us-brief.component';
 import { AboutUsGalleryComponent } from './Components/Pages/about-us/about-us-gallery/about-us-gallery.component';
 import { AboutUsInfoComponent } from './Components/Pages/about-us/about-us-info/about-us-info.component';
 import { AboutUsReviewComponent } from './Components/Pages/about-us/about-us-review/about-us-review.component';
+import { AboutUsPageComponent } from './Components/Pages/about-us/about-us-page/about-us-page.component';
 
 
 @NgModule({
@@ -56,11 +56,11 @@ import { AboutUsReviewComponent } from './Components/Pages/about-us/about-us-rev
     AllProductsHeaderComponent,
     ResetPasswordComponent,
     DashboardPageComponent,
-    AboutUsComponent,
     AboutUsBriefComponent,
     AboutUsGalleryComponent,
     AboutUsInfoComponent,
     AboutUsReviewComponent,
+    AboutUsPageComponent,
   ],
   imports: [
     BrowserModule,
