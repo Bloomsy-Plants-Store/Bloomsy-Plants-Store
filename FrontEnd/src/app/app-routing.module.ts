@@ -4,25 +4,23 @@ import { ContactUsPageComponent } from './Components/Pages/Contact Us/contact-us
 import { HomePageComponent } from './Components/Pages/Home/home-page/home-page.component';
 import { LoginComponent } from './Components/Pages/Login_Register/login/login.component';
 import { RegisterComponent } from './Components/Pages/Login_Register/register/register.component';
-import { AboutUsComponent } from './Components/Pages/about-us/about-us.component';
 import { ALlProductsComponent } from './Components/Pages/All_Products/all-products/all-products.component';
 import { ResetPasswordComponent } from './Components/Pages/Login_Register/reset-password/reset-password.component';
 import { ProductDetailsComponent } from './Components/Pages/product-details/product-details.component';
+import { DashboardPageComponent } from './Components/Dashboard/dashboard-page/dashboard-page.component';
+import { AboutUsPageComponent } from './Components/Pages/about-us/about-us-page/about-us-page.component';
 
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'about-us', component: AboutUsComponent},
+  { path: 'about-us', component: AboutUsPageComponent},
   { path: 'contact-us', component: ContactUsPageComponent},
   { path: 'products', component: ALlProductsComponent},
   { path: 'reset-password', component: ResetPasswordComponent},
   {path: 'product-details', component:ProductDetailsComponent}
 ]
-
-
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

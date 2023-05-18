@@ -26,7 +26,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResetPasswordComponent } from './Components/Pages/Login_Register/reset-password/reset-password.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ProductDetailsComponent } from './Components/Pages/product-details/product-details.component';
+import { AboutUsBriefComponent } from './Components/Pages/about-us/about-us-brief/about-us-brief.component';
+import { AboutUsGalleryComponent } from './Components/Pages/about-us/about-us-gallery/about-us-gallery.component';
+import { AboutUsInfoComponent } from './Components/Pages/about-us/about-us-info/about-us-info.component';
+import { AboutUsReviewComponent } from './Components/Pages/about-us/about-us-review/about-us-review.component';
+import { AboutUsPageComponent } from './Components/Pages/about-us/about-us-page/about-us-page.component';
 
+
+import { FilterSideBarComponent } from './Components/Pages/All_Products/filter-side-bar/filter-side-bar.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { AllProductDataComponent } from './Components/Pages/All_Products/all-product-data/all-product-data.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +63,13 @@ import { ProductDetailsComponent } from './Components/Pages/product-details/prod
     AllProductsHeaderComponent,
     ResetPasswordComponent,
     ProductDetailsComponent
+    AboutUsBriefComponent,
+    AboutUsGalleryComponent,
+    AboutUsInfoComponent,
+    AboutUsReviewComponent,
+    AboutUsPageComponent,
+    FilterSideBarComponent,
+    AllProductDataComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +78,12 @@ import { ProductDetailsComponent } from './Components/Pages/product-details/prod
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    CarouselModule
+    CarouselModule,
+    MatSidenavModule,
+    MatButtonModule,
+    NgxSliderModule,
+    BsDropdownModule.forRoot(),
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
