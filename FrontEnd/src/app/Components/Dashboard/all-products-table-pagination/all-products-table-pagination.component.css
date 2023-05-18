@@ -1,8 +1,18 @@
 .section{
-  height: 90vh;
+  background-color: transparent !important;
 }
+th{
+  font-family: 'Dancing Script', cursive;
+  font-size: larger;
+  font-weight: bolder;
+  color: var(--primary-color);
+  text-align: center;
+}
+td{
+  text-align: center;
+}
+
 table{
   width: 100%;
   border: solid thin var(--primary-color);
-  text-align: center;
 }
