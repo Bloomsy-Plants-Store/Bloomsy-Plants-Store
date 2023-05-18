@@ -28,6 +28,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { DashboardPageComponent } from './Components/Dashboard/dashboard-page/dashboard-page/dashboard-page.component';
 import { AboutUsComponent } from './Components/Pages/about-us/about-us.component';
 import { AboutUsBriefComponent } from './Components/Pages/about-us/about-us-brief/about-us-brief.component';
+import { AboutUsGalleryComponent } from './Components/Pages/about-us/about-us-gallery/about-us-gallery.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { AboutUsBriefComponent } from './Components/Pages/about-us/about-us-brie
     DashboardPageComponent,
     AboutUsComponent,
     AboutUsBriefComponent,
+    AboutUsGalleryComponent,
   ],
   imports: [
     BrowserModule,
