@@ -6,15 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard-page.component.css']
 })
 export class DashboardPageComponent {
-  body = document.querySelector("body");
-  sidebar = this.body?.querySelector("nav");
-  toggle = this.body?.querySelector(".toggle");
-
-  constructor() {
-    this.toggle?.addEventListener("click", () => {
-      this.sidebar?.classList.toggle("close");
-    });
-
-  }
+  
 
 }

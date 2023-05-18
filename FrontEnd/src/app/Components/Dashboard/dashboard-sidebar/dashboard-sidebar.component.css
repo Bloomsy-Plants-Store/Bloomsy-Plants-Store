@@ -13,7 +13,8 @@
   width: 250px;
   padding: 10px 14px;
   background: var(--sidebar-color);
-  transition: var(--tran-05);
+  transition: all 0.3s ease;
+  filter: drop-shadow(2px 2px 3px var(--shadow-color));
   z-index: 100;
 }
 .sidebar.close {
@@ -41,7 +42,7 @@
 .sidebar .text,
 .sidebar .icon {
   color: var(--text-color);
-  transition: var(--tran-03);
+  transition: all 0.3s ease;
 }
 .sidebar .text {
   font-size: 17px;
@@ -71,24 +72,24 @@
   justify-content: center;
 }
 .sidebar header .image img {
-  width: 200px;
+  width: 150px;
   border-radius: 6px;
 }
 .sidebar header .toggle {
   position: absolute;
   right: -25px;
   transform: translateY(-50%) rotate(180deg);
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
   background-color: var(--primary-color);
   color: var(--sidebar-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 20px;
   cursor: pointer;
-  transition: var(--tran-05);
+  transition: all 0.3s ease;
 }
 .sidebar.close .toggle {
   transform: translateY(-50%) rotate(0deg);
@@ -106,7 +107,7 @@
   width: 100%;
   border-radius: 6px;
   text-decoration: none;
-  transition: var(--tran-03);
+  transition: all 0.3s ease;
 }
 .sidebar li a:hover {
   background-color: var(--primary-color);
@@ -116,13 +117,12 @@
   color: var(--sidebar-color);
 }
 .sidebar .menu-bar {
-  height: calc(100% - 194px);
+  height: calc(100% - 150px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow-y: scroll;
 }
-
 .menu-bar::-webkit-scrollbar {
   display: none;
 }
@@ -158,7 +158,7 @@
   width: 40px;
   border-radius: 25px;
   background-color: var(--toggle-color);
-  transition: var(--tran-05);
+  transition: all 0.3s ease;
 }
 
 .switch::before {
@@ -170,6 +170,5 @@
   top: 50%;
   left: 5px;
   transform: translateY(-50%);
-  background-color: var(--sidebar-color);
-  transition: var(--tran-04);
+  transition: all 0.3s ease;
 }
