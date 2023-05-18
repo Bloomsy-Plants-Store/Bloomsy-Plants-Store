@@ -344,6 +344,9 @@ hr {
     justify-content: center;
     align-items: center;
   }
+  .product-detail{
+    font-size: 10px;
+  }
   .product-imgs {
     display: flex;
     flex-direction: column;
@@ -389,7 +392,7 @@ hr {
     padding-top: 0;
   }
   .product-detail{
-    font-size: small;
+    font-size: 10px;
   }
   .round-black-btn {
     width: 90%;
