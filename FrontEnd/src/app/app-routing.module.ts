@@ -7,6 +7,7 @@ import { RegisterComponent } from './Components/Pages/Login_Register/register/re
 import { AboutUsComponent } from './Components/Pages/about-us/about-us.component';
 import { ALlProductsComponent } from './Components/Pages/All_Products/all-products/all-products.component';
 import { ResetPasswordComponent } from './Components/Pages/Login_Register/reset-password/reset-password.component';
+import { ProductDetailsComponent } from './Components/Pages/product-details/product-details.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent},
   { path: 'contact-us', component: ContactUsPageComponent},
   { path: 'products', component: ALlProductsComponent},
-  { path: 'reset-password', component: ResetPasswordComponent}
+  { path: 'reset-password', component: ResetPasswordComponent},
+  {path: 'product-details', component:ProductDetailsComponent}
 ]
 
 
