@@ -29,7 +29,6 @@ import { FilterSideBarComponent } from './Components/Pages/All_Products/filter-s
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-import { DashboardPageComponent } from './Components/Dashboard/dashboard-page/dashboard-page.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +52,6 @@ import { DashboardPageComponent } from './Components/Dashboard/dashboard-page/da
     ALlProductsComponent,
     AllProductsHeaderComponent,
     ResetPasswordComponent,
-    DashboardPageComponent,
     FilterSideBarComponent
   ],
   imports: [
