@@ -1,3 +1,4 @@
+/*******filter button*********/
 .filter-button {
   width: 50px;
   height: 50px;
@@ -56,6 +57,7 @@
   transition-duration: 0.3s;
 }
 
+/********filter side bar*********/
 .filter-sidebar {
   opacity: 1;
   visibility: visible;
@@ -68,13 +70,14 @@
   left: 0;
   background: #fff;
   height: 100%;
-  z-index: 50;
+  z-index: 200 !important;
   overflow: auto;
   padding: 0 0 50px !important;
   margin: 0;
   box-shadow: 0 1px 12px 2px hsla(0, 0%, 56%, 0.3);
   color: black;
 }
+
 .button-filter-close {
   color: #313232;
   font-size: 12px;
@@ -137,4 +140,38 @@
   text-align: center;
   line-height: 25px;
   font-size: 12px;
+}
+.sidebar-container {
+  position: relative;
+  z-index: 9999;
+}
+
+/**********Sort Drop down************/
+.dropdown-toggle {
+  position: relative;
+  border: 1px solid #313232;
+  display: inline-block;
+  line-height: 34px;
+  padding: 0 20px;
+  color: #313232;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 33px;
+  text-transform: capitalize;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.dropdown-li{
+  line-height: 28px;
+  text-transform: capitalize;
+  font-weight: 400;
+}
+.dropdown-item {
+  color: #828787;
+  cursor: pointer;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+  background-color: #ffffff;
+  color: #224229;
 }
