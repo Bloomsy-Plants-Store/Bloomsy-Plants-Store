@@ -29,7 +29,6 @@ import { FilterSideBarComponent } from './Components/Pages/All_Products/filter-s
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-import { MatFormField } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -66,8 +65,6 @@ import { MatFormField } from '@angular/material/form-field';
     MatSidenavModule,
     MatButtonModule,
     NgxSliderModule,
-    MatFormField
-
   ],
   providers: [],
   bootstrap: [AppComponent]

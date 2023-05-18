@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { RouterModule } from '@angular/router';
 import { DashboardPageComponent } from '../Components/Dashboard/dashboard-page/dashboard-page.component';
@@ -22,11 +25,14 @@ import { AllProductsTablePaginationComponent } from '../Components/Dashboard/all
     DashboardSidebarComponent,
     DashboardAllProductsComponent,
     AllProductsTablePaginationComponent,
-    DashboardRevenueComponent,
+    DashboardRevenueComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatTableModule,
     RouterModule.forChild([
       { path: '', component: DashboardPageComponent }
     ])
