@@ -29,6 +29,7 @@ import { DashboardPageComponent } from './Components/Dashboard/dashboard-page/da
 import { AboutUsComponent } from './Components/Pages/about-us/about-us.component';
 import { AboutUsBriefComponent } from './Components/Pages/about-us/about-us-brief/about-us-brief.component';
 import { AboutUsGalleryComponent } from './Components/Pages/about-us/about-us-gallery/about-us-gallery.component';
+import { AboutUsInfoComponent } from './Components/Pages/about-us/about-us-info/about-us-info.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { AboutUsGalleryComponent } from './Components/Pages/about-us/about-us-ga
     AboutUsComponent,
     AboutUsBriefComponent,
     AboutUsGalleryComponent,
+    AboutUsInfoComponent,
   ],
   imports: [
     BrowserModule,
