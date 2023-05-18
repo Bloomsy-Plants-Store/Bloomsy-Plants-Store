@@ -30,6 +30,7 @@ import { AboutUsComponent } from './Components/Pages/about-us/about-us.component
 import { AboutUsBriefComponent } from './Components/Pages/about-us/about-us-brief/about-us-brief.component';
 import { AboutUsGalleryComponent } from './Components/Pages/about-us/about-us-gallery/about-us-gallery.component';
 import { AboutUsInfoComponent } from './Components/Pages/about-us/about-us-info/about-us-info.component';
+import { AboutUsReviewComponent } from './Components/Pages/about-us/about-us-review/about-us-review.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { AboutUsInfoComponent } from './Components/Pages/about-us/about-us-info/
     AboutUsBriefComponent,
     AboutUsGalleryComponent,
     AboutUsInfoComponent,
+    AboutUsReviewComponent,
   ],
   imports: [
     BrowserModule,
