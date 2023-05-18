@@ -145,8 +145,9 @@ hr {
   font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
   margin-left: 1.5%;
-  padding: 10px 70px;
+  /* padding: 10px 120px; */
   display: inline-block;
+  width: 67.5%;
   transition: all 0.5s ease-in-out 0s;
 }
 
@@ -159,13 +160,15 @@ hr {
   text-decoration: none;
 }
 
-.buy-now button {
+.buy-now {
   background: #224229;
-  height: 50px;
+  padding: 15px 150px;
+  font-size: 20px;
+  margin-left: 0%;
 }
 
-.buy-now button:hover,
-.buy-now button:focus {
+.buy-now:hover,
+.buy-now:focus {
   background: #142718;
 }
 
@@ -173,7 +176,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 14px;
+  padding: 15px;
   margin-left: 1.5%;
   border: 2px solid #f4f4f4;
   border-style: solid;
@@ -224,6 +227,7 @@ hr {
   display: inline-block;
   background-color: transparent;
   border: 2px solid #f4f4f4;
+  width: 20%;
 }
 
 .quantity button {
@@ -238,7 +242,6 @@ hr {
   padding: 0 5px;
   text-align: center;
   transition: all 0.3s ease;
-  width: 40px;
 }
 
 .quantity input {
@@ -260,7 +263,6 @@ hr {
   margin: 0;
   outline: none;
   text-align: center;
-  width: 50px;
 }
 
 .quantity input[type="number"]::-webkit-inner-spin-button,
@@ -286,8 +288,9 @@ hr {
   width: 35px;
   height: 35px;
   color: #224229;
-  border: 2px solid #e1e0e0;
-  margin: 0 0.3rem;
+  border: 2px solid #f7f7f7;
+  margin-right: 0.3rem;
+  margin-bottom: 10%;
   border-radius: 50%;
   text-decoration: none;
   font-size: 0.8rem;
@@ -333,7 +336,9 @@ hr {
   }
 }
 
-@media screen and (min-width: 992px) and (max-width: 1192px) {
+
+
+@media screen and (min-width: 1108px) and (max-width: 1250px) {
   .product-wrapper {
     height: 100vh;
     display: flex;
@@ -349,42 +354,133 @@ hr {
     padding-top: 0;
   }
   .round-black-btn {
-    border-radius: 0%;
-    margin-bottom: 20px;
-    background: #757474;
-    color: #fff;
-    font-size: small;
-    margin-left: 2%;
-    display: inline-block;
-    transition: all 0.5s ease-in-out 0s;
+    width: 80%;
   }
+  .quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    display: inline-block;
+    background-color: transparent;
+    border: 2px solid #f4f4f4;
+    width: 22%;
+  }
+
   .quantity button {
     color: #7a7a7a;
     cursor: pointer;
     font-size: 18px;
     font-weight: 900;
+    height: 50px;
     line-height: 1;
     margin: 0;
     outline: none;
-    padding: 0 1px;
+    padding: 0 2px;
     text-align: center;
     transition: all 0.3s ease;
-    width: 15px;
   }
-
   .quantity input[type="number"] {
     appearance: none;
     border: none;
     color: #292929;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
     font-family: Arial, Helvetica, sans-serif;
     height: 50px;
     margin: 0;
     outline: none;
     text-align: center;
-    width: 33px;
   }
+
+  .round-black-btn {
+    border-radius: 0%;
+    margin-bottom: 20px;
+    background: #757474;
+    color: #fff;
+    text-transform: lowercase;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 1.5%;
+    display: inline-block;
+    width: 30%;
+    transition: all 0.5s ease-in-out 0s;
+  }
+
+}
+
+@media screen and (min-width: 992px) and (max-width: 1107px) {
+  .product-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .product-imgs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .product-content {
+    padding-top: 0;
+  }
+  .product-detail{
+    font-size: small;
+  }
+  .round-black-btn {
+    width: 80%;
+  }
+  .quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    display: inline-block;
+    background-color: transparent;
+    border: 2px solid #f4f4f4;
+    width: 30%;
+  }
+
+  .quantity button {
+    color: #7a7a7a;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 900;
+    height: 50px;
+    line-height: 1;
+    margin: 0;
+    outline: none;
+    padding: 0 2px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .quantity input[type="number"] {
+    appearance: none;
+    border: none;
+    color: #292929;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 50px;
+    margin: 0;
+    outline: none;
+    text-align: center;
+  }
+
+  .round-black-btn {
+    border-radius: 0%;
+    margin-bottom: 20px;
+    background: #757474;
+    color: #fff;
+    text-transform: lowercase;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 1.5%;
+    display: inline-block;
+    width: 30%;
+    transition: all 0.5s ease-in-out 0s;
+  }
+
 }
 
 /*********************************************************************/
