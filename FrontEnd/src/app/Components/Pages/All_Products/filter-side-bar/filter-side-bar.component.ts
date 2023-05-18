@@ -10,6 +10,9 @@ import { LabelType, Options } from '@angular-slider/ngx-slider';
 export class FilterSideBarComponent {
   minValue: number = 100;
   maxValue: number = 750;
+  selectedOption: string | undefined;
+  sortOptions: string[] = ['Default sorting','Sort by average rating', 'Sort by price: low to high', 'Sort by price: high to low'];
+
   options: Options = {
     floor: 100,  //the minimum value of the slider
     ceil: 1500, //the maximum value of the slider
@@ -33,6 +36,13 @@ export class FilterSideBarComponent {
 
   closeSidenav() {
     this.sidenav.close();
+  }
+
+
+  onOptionSelected(option: string) {
+    this.selectedOption = option;
+    // Perform sorting logic or other actions based on the selected option
+    console.log('Selected Option:', this.selectedOption);
   }
   categories = [
     {

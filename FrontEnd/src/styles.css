@@ -12,3 +12,17 @@ body {
 .text-line-through {
   text-decoration: line-through;
 }
+/* Override the background color of the slider bar */
+/* Override the color of the slider pointer */
+
+.ngx-slider-bar,
+.ngx-slider-pointer
+ {
+  background-color:#86b68a !important;
+}
+
+/* Override the background color of the slider selection */
+.ngx-slider-selection,
+.ngx-slider-pointer.ngx-slider-active::after{
+  background-color: #224229 !important;
+}

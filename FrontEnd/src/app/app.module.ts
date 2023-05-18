@@ -29,7 +29,8 @@ import { FilterSideBarComponent } from './Components/Pages/All_Products/filter-s
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-
+import { AllProductDataComponent } from './Components/Pages/All_Products/all-product-data/all-product-data.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     ALlProductsComponent,
     AllProductsHeaderComponent,
     ResetPasswordComponent,
-    FilterSideBarComponent
+    FilterSideBarComponent,
+    AllProductDataComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +67,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     MatSidenavModule,
     MatButtonModule,
     NgxSliderModule,
+    BsDropdownModule.forRoot()
+
   ],
   providers: [],
   bootstrap: [AppComponent]
