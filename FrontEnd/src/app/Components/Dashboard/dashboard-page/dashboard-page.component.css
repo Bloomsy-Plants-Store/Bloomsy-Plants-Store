@@ -8,20 +8,17 @@
 :host {
   --body-color: #eef2ff;
   --sidebar-color: #fff;
-  --primary-color: #86b68a;
+  --primary-color: #628665;
+  --shadow-color: rgba(98, 134, 101, 0.8);
   --primary-color-light: #f6f5ff;
   --toggle-color: #ddd;
   --text-color: #707070;
-  --tran-03: all 0.2s ease;
-  --tran-03: all 0.3s ease;
-  --tran-04: all 0.3s ease;
-  --tran-05: all 0.3s ease;
 }
 
-body {
+.body {
   min-height: 100vh;
   background-color: var(--body-color);
-  transition: var(--tran-05);
+  transition: all 0.3s ease;
 }
 
 ::selection {
