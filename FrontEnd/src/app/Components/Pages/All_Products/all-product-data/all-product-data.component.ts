@@ -8,10 +8,9 @@ import { ProductsService } from 'src/app/Services/products.service';
 })
 export class AllProductDataComponent implements OnInit {
   Products: any;
-  topRatingProducts: any;
-  bestSellingProducts: any;
-  activeFilter: any = null;
-
+  currentPage = 1; // Current page number
+  itemsPerPage = 12; // Number of items to display per page
+  totalItems=0;
   constructor(private elementRef: ElementRef, public myService: ProductsService) { }
 
   ngOnInit(): void {
@@ -19,10 +18,15 @@ export class AllProductDataComponent implements OnInit {
     this.myService.GetAllProdducts().subscribe({
       next: (response: any) => {
         this.Products = response.data;
+        this.totalItems= this.Products.length;
       },
       error: (err) => {
         console.log(err);
       }
     })
+  }
+  getUpperBound(): number {
+    const upperBound = (this.currentPage - 1) * this.itemsPerPage + this.itemsPerPage;
+    return Math.min(upperBound, this.totalItems);
   }
 }

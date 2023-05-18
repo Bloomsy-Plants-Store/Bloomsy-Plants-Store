@@ -132,3 +132,11 @@
   z-index: 100;
   margin-left:-12px;
 }
+
+.pagniation-p{
+  color: #828787;
+text-transform: none;
+font-weight: 400;
+font-family: Poppins,sans-serif;
+
+}

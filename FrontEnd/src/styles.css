@@ -26,3 +26,6 @@ body {
 .ngx-slider-pointer.ngx-slider-active::after{
   background-color: #224229 !important;
 }
+.ngx-pagination a{
+  text-decoration: none !important;
+}

@@ -31,6 +31,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { AllProductDataComponent } from './Components/Pages/All_Products/all-product-data/all-product-data.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,8 +68,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     MatSidenavModule,
     MatButtonModule,
     NgxSliderModule,
-    BsDropdownModule.forRoot()
-
+    BsDropdownModule.forRoot(),
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
