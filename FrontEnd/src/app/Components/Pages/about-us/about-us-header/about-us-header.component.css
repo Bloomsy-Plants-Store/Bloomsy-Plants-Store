@@ -1,115 +1,3 @@
-/* 
-.aboutUs-header {
-    margin: 0 0 60px;
-    height: 450px;
-    font-size: 20px;
-    padding-top: 200px;
-    padding-bottom: 90px;
-    background-position: 50%;
-}
-
-.aboutUs-header h1{
-    font-size: 55px;
-}
-
-.after-header-container{
-    height: 870px;
-    margin-bottom: 100px;
-}
-
-.after-header{
-    background-image: url(https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/about-1.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin-left: 25px;
-    margin-right: 25px;
-    height: 800px;
-}
-
-.after-header img{
-    height: auto;
-    max-width: 100%;
-}
-
-
-
- @media (max-width: 768px) {
-    .aboutUs-header {
-        height: 300px;
-        padding-top: 150px;
-        padding-bottom: 60px;
-    }
-    
-    .aboutUs-header h1 {
-        font-size: 40px;
-    }
-
-    .after-header-container{
-        height: 679px;
-    }
-
-    .after-header img{
-        max-width: 80%;
-    }
-
-    .after-header {
-        height: 600px;
-    }
-}
-
-@media (max-width: 576px) {
-    .aboutUs-header {
-        height: 200px;
-        padding-top: 110px;
-        padding-bottom: 30px;
-    }
-    
-    .aboutUs-header h1 {
-        font-size: 30px;
-    }
-
-    .after-header img{
-        max-width: 70%;
-    }
-}
-
-@media (max-width: 503px) {
-    .aboutUs-header {
-        height: 200px;
-        padding-top: 110px;
-        padding-bottom: 30px;
-    }
-    .after-header-container{
-        height: 665px;
-    }
-    .aboutUs-header h1 {
-        font-size: 30px;
-    }
-}
-@media (max-width: 398px) {
-    .after-header-container {
-      height: 490px;
-    }
-
-    .after-header-container{
-        height: 654px;
-    }
-}
-
-@media (max-width: 319px) {
-    .aboutUs-header {
-        height: 250px;
-        padding-top: 150px;
-        padding-bottom: 30px;
-    }
-    
-    .aboutUs-header h1 {
-        font-size: 30px;
-    }
-}   */
-
-
 .aboutUs-header {
     margin: 0 0 4vw;
     height: 24vw;
@@ -120,12 +8,12 @@
 }
 
 .aboutUs-header h1 {
-    font-size: 4vw;
+    font-size: 3vw;
 }
 
 .after-header-container {
     height: 55vw;
-    margin-bottom: 8vw;
+    margin-bottom: 5vw;
 }
 
 .after-header {
@@ -141,7 +29,32 @@
 .after-header img {
     height: auto;
     max-width: 100%;
+     transform: translateX(-50%);
+    left: 50%;
 }
+
+.after-header img:hover {
+    animation: slide 0.4s linear ;
+    -webkit-animation: slide 0.4s linear ;
+  }
+  
+  @keyframes slide {
+    0% {
+      transform: translateX(-50%);
+    }
+    25% {
+      transform: translateX(-55%);
+    }
+    50% {
+      transform: translateX(-50%);
+    }
+    75% {
+      transform: translateX(-55%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
 
 /* Responsive Styles */
 @media (max-width: 1200px) {
@@ -152,7 +65,7 @@
     }
 
     .aboutUs-header h1 {
-        font-size: 4vw;
+        font-size: 3vw;
     }
 
     .after-header-container {
@@ -176,12 +89,12 @@
     }
 
     .aboutUs-header h1 {
-        font-size: 5vw;
+        font-size: 3vw;
     }
 
     .after-header-container {
         height: 77vw;
-        margin-bottom: 4vw;
+        margin-bottom: 5vw;
     }
 
     .after-header {
@@ -200,12 +113,12 @@
     }
 
     .aboutUs-header h1 {
-        font-size: 5vw;
+        font-size: 3vw;
     }
 
     .after-header-container {
         height: 88vw;
-        margin-bottom: 3vw;
+        margin-bottom: 5vw;
     }
 
     .after-header {
@@ -229,12 +142,12 @@
     }
 
     .aboutUs-header h1 {
-        font-size: 5vw;
+        font-size: 3vw;
     }
 
     .after-header-container {
         height: 88vw;
-        margin-bottom: 3vw;
+        margin-bottom: 5vw;
     }
 
     .after-header {
