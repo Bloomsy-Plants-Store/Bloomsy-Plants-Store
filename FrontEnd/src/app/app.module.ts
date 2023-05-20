@@ -41,6 +41,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ProductDetailsHeaderComponent } from './Components/Pages/product-details/product-details-header/product-details-header.component';
 import { ProductDetailsPageComponent } from './Components/Pages/product-details/product-details-page/product-details-page.component';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,6 +89,7 @@ import { ProductDetailsPageComponent } from './Components/Pages/product-details/
     NgxSliderModule,
     BsDropdownModule.forRoot(),
     NgxPaginationModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
