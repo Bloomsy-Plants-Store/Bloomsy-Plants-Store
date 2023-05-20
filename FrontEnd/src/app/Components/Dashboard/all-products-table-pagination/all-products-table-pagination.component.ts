@@ -46,14 +46,23 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
 }
 
 interface PeriodicElement {
+  _id:any,
   name:String,
   price:Number,
+  imageUrl:[String],
   category:[String],
   rate:Number,
+  reviews_num:Number,
   discount:Number,
+  bestSelling:Boolean,
+  description: String,
   itemsinStock: Number,
   action:any,
 }
+
+
+
+
 
 
 
