@@ -1,6 +1,7 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { ProductsService } from 'src/app/Services/products.service';
 
 
 
@@ -13,6 +14,11 @@ import {MatTableDataSource} from '@angular/material/table';
 export class AllProductsTablePaginationComponent implements AfterViewInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','action'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  selectedID:any;
+  errorMessage:any;
+
+
+  constructor(private elementRef: ElementRef, public myService: ProductsService) { }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -26,7 +32,24 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
   editElement(element: PeriodicElement) {
     // Implement the logic to edit the element
   }
-
+  setSelectedId(id:number)
+  {
+    this.selectedID=id;
+    console.log(this.selectedID)
+    console.log(id)
+  }
+  deletedSelectedProduct()
+  {
+    this.myService.DeleteProductById(this.selectedID).subscribe({
+      next: (response: any) => {
+        console.log(response)
+      },
+      error: (err) => {
+        console.log(err);
+        this.errorMessage = 'Deleted this product Failed,Please Try Again';
+      }
+    })
+  }
 }
 export interface PeriodicElement {
   name: string;
