@@ -10,6 +10,7 @@ th{
 }
 td{
   text-align: center;
+  font-size: 12px;
 }
 
 table{
@@ -139,3 +140,4 @@ table{
 button{
   margin-right: 2%;
 }
+
