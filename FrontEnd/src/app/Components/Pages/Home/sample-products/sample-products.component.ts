@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ProductsService } from 'src/app/Services/products.service';
+import { CartService } from 'src/app/Services/cart.service';
 import * as bootstrap from 'bootstrap';
 
 
@@ -14,7 +15,7 @@ export class SampleProductsComponent implements OnInit {
   bestSellingProducts: any;
   activeFilter: any = null;
 
-  constructor(private elementRef: ElementRef, public myService: ProductsService) { }
+  constructor(private elementRef: ElementRef, public myService: ProductsService, public myCartService :CartService) { }
 
   ngOnInit(): void {
 
@@ -54,4 +55,17 @@ export class SampleProductsComponent implements OnInit {
     this.activeFilter = filter;
     this.Products = this.topRatingProducts;
   }
+
+
+   // add product to cart
+  addProductToCart(id: any) {
+    let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
+    this.myCartService.addProductToCart(userId, id).subscribe({
+      next: (response: any) => { },
+      error: (err: any) => {
+        console.log(err);
+      }
+    });
+  }
+
 }
