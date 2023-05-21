@@ -24,12 +24,12 @@ export class ProductDetailsComponent {
     this.route.params.subscribe((params) => {
       const productId = params['id'];
 
-      this.myService.GetProduct(productId).subscribe({
+      this.myService.GetProductByID(productId).subscribe({
         next: (response: any) => {
           this.Product = response.data;
           console.log(this.Product);
         },
-        error: (err) => {
+        error: (err:any) => {
           console.log(err);
         }
       });
@@ -51,7 +51,7 @@ export class ProductDetailsComponent {
   }
 
   getStarsArray(rate: number): any[] {
-    const starsCount = Math.floor(rate); 
+    const starsCount = Math.floor(rate);
     const isHalfStar = rate % 1 !== 0;
 
     const starsArray = Array(starsCount).fill(0);
