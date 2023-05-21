@@ -12,7 +12,7 @@ router.get('/topRating', ProductController.getTopRatingProducts);
 router.get("/:id",ProductController.getProductByID);
 
 // update product
-router.get("/update/:id",ProductController.updateProduct);
+router.put("/update/:id",ProductController.updateProduct);
 
 // Delete Product 
 router.delete("/:id", ProductController.deleteProduct);
