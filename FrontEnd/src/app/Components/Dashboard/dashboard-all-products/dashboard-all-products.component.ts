@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductsService } from 'src/app/Services/products.service';
 
 @Component({
@@ -9,18 +9,62 @@ import { ProductsService } from 'src/app/Services/products.service';
 })
 export class DashboardAllProductsComponent {
   productForm: FormGroup;
+  errorMessage = '';
+  successMessage = '';
+  formErrorMessage = ''
 
   constructor(private formBuilder: FormBuilder, private productService: ProductsService) {
     this.productForm = this.formBuilder.group({
-      name: new FormControl(),
-      description: new FormControl(),
-      price: new FormControl(),
-      discount: new FormControl(),
-      itemsinStock: new FormControl(),
-      category: new FormControl(),
-      imageUrl: this.formBuilder.array([]),
+      name: [
+        '',
+        [Validators.required, Validators.pattern(/^[a-zA-Z\s]{3,30}$/)],
+      ],
+      description: [
+        '',
+        [Validators.required],
+      ],
+      price:[
+        '', 
+        [Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]
+      ],
+      discount: ['', 
+      [Validators.required, Validators.pattern(/^[0-9]+$/)]
+      ],
+      itemsinStock:['', [Validators.required, Validators.pattern(/^[1-9][0-9]*$/)]],
+      category: ['', [Validators.required]],
+      imageUrl: this.formBuilder.array([],Validators.required),
     });
   }
+
+
+  get name() {
+    return this.productForm.get('name');
+  }
+
+  get description() {
+    return this.productForm.get('description');
+  }
+
+  get price() {
+    return this.productForm.get('price');
+  }
+
+  get discount() {
+    return this.productForm.get('discount');
+  }
+
+  get itemsinStock() {
+    return this.productForm.get('itemsinStock');
+  }
+
+  get category() {
+    return this.productForm.get('category');
+  }
+
+  get imageUrl() {
+    return this.productForm.get('imageUrl');
+  }
+  
 
   onSubmit() {
     if (this.productForm.valid) {
@@ -44,14 +88,25 @@ export class DashboardAllProductsComponent {
       formData.append('discount', this.productForm.get('discount')?.value);
       this.productService.StoreProduct(formData).subscribe(
         (response) => {
-          // Handle the response from the API if needed
-          console.log(response);
+          this.errorMessage = '';
+          this.formErrorMessage = '';
+          this.successMessage='This product addedd Successfully.';
+          setTimeout(() => {
+          this.successMessage = "";
+          window.location.reload();
+        }, 7000);
+        console.log(response);
+          console.log(this.successMessage);
         },
         (error) => {
-          // Handle error if the API request fails
-          console.error(error);
+          if(error.status == 500){
+            this.formErrorMessage = ''
+            this.errorMessage = 'Error in uploading product';
+          }
         }
       );
+    }else {
+      this.formErrorMessage = 'Invalid Data, Please Enter all fields';
     }
   }
 

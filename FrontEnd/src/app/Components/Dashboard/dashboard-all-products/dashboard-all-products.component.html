@@ -44,119 +44,155 @@
   </button>
 
   <!-- All Products Table -->
+  <div class="w-75 alert-danger  my-3 text-center" *ngIf="errorMessage">
+    <p>{{ errorMessage }}</p>
+  </div>
+  <div class="w-75 alert-success  my-3 text-center" *ngIf="successMessage">
+    <p>{{ successMessage }}</p>
+  </div>
   <app-all-products-table-pagination class="w-75"></app-all-products-table-pagination>
 </div>
 
 <!--Edit Modal-->
 <div class="modal fade" id="addNewModal">
-  <div
-    class="modal-dialog modal-confirm modal-dialog-centered modal-md my-auto"
-  >
+  <div class="modal-dialog modal-confirm modal-dialog-centered modal-lg my-auto">
     <div class="modal-content">
       <div class="modal-header">
         <div class="d-flex flex-column justify-content-center w-100">
-          <div class="icon-box text-center">
-            <img src="./assets/images/icons/usericon.gif" />
-          </div>
-          <h4 class="modal-title">Add new Product</h4>
+          <h4 class="modal-title m-0">Add new Product</h4>
         </div>
       </div>
       <div class="modal-body">
         <form [formGroup]="productForm" (ngSubmit)="onSubmit()" method="post" enctype="multipart/form-data">
           <div class="col-12 d-flex justify-content-between flex-wrap">
             <div class="form-group my-2 col-12">
-              <input
-                  type="text"
-                  class="form-control w-100"
-                  name="name"
-                  placeholder="Product Name"
-                  formControlName="name"
-                  autocomplete="off"
-                />
+              <label class="mb-2">Product Name</label>
+              <input type="text" class="form-control w-100" name="name" placeholder="Product Name"
+                formControlName="name" autocomplete="off" [ngClass]="{
+                    'is-invalid': name?.invalid && (name?.dirty || name?.touched),
+                    'is-valid': !name?.invalid && (name?.dirty || name?.touched)
+                  }" />
+            </div>
+            <div class="alert alert-danger text-danger p-0 text-start px-3"
+              *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+              <p style="font-size: small; margin: 0">
+                <small *ngIf="name?.errors?.['required']">Name is required.</small>
+                <small *ngIf="name?.errors?.['pattern']">Name must be greater than 3.</small>
+              </p>
             </div>
             <div class="form-group my-2 col-12">
-              <label>Product Description</label>
-              <textarea
-                  type="text"
-                  class="form-control"
-                  name="description"
-                  placeholder="Product Description"
-                  formControlName="description"
-                  rows="3"
-                  autocomplete="off"
-                >
+              <label class="mb-2">Product Description</label>
+              <textarea type="text" class="form-control" name="description" placeholder="Product Description"
+                formControlName="description" rows="3" autocomplete="off" [ngClass]="{
+                    'is-invalid': description?.invalid && (description?.dirty || description?.touched),
+                    'is-valid': !description?.invalid && (description?.dirty || description?.touched)
+                  }">
               </textarea>
+              <div class="alert alert-danger text-danger p-0 text-start px-3"
+                *ngIf="description?.invalid && (description?.dirty || description?.touched)">
+                <p style="font-size: small; margin: 0">
+                  <small *ngIf="description?.errors?.['required']">Description is required.</small>
+                </p>
+              </div>
             </div>
             <div class="form-group my-2 col-2">
-              <input
-                  type="number"
-                  class="form-control w-100"
-                  name="price"
-                  placeholder="Price"
-                  formControlName="price"
-                  autocomplete="off"
-                />
+              <label class="mb-2">Product Price</label>
+              <input type="number" class="form-control w-100" name="price" placeholder="Price" formControlName="price"
+                autocomplete="off" [ngClass]="{
+                  'is-invalid': price?.invalid && (price?.dirty || price?.touched),
+                  'is-valid': !price?.invalid && (price?.dirty || price?.touched)
+                }"/>
+                <div class="alert alert-danger text-danger p-0 mt-2 text-start px-3"
+                *ngIf="price?.invalid && (price?.dirty || price?.touched)">
+                <p style="font-size: small; margin: 0">
+                  <small *ngIf="price?.errors?.['required']">price is required.</small>
+                  <small *ngIf="price?.errors?.['pattern']">price must be a valid number.</small>
+                </p>
+              </div>
             </div>
             <div class="form-group my-2 col-3">
-              <input
-                  type="number"
-                  class="form-control w-100"
-                  name="discount"
-                  placeholder="Discount"
-                  formControlName="discount"
-                  autocomplete="off"
-                />
+              <label class="mb-2">Product Discount</label>
+              <input type="number" class="form-control w-100" name="discount" placeholder="Discount"
+                formControlName="discount" autocomplete="off" [ngClass]="{
+                  'is-invalid': discount?.invalid && (discount?.dirty || discount?.touched),
+                  'is-valid': !discount?.invalid && (discount?.dirty || discount?.touched)
+                }" />
+                <div class="alert alert-danger text-danger p-0 mt-2 text-start px-3"
+                *ngIf="discount?.invalid && (discount?.dirty || discount?.touched)">
+                <p style="font-size: small; margin: 0">
+                  <small *ngIf="discount?.errors?.['required']">Discount is required.</small>
+                  <small *ngIf="discount?.errors?.['pattern']">Discount must be a valid number.</small>
+                </p>
+              </div>
             </div>
             <div class="form-group my-2 col-6">
-              <input
-                  type="number"
-                  class="form-control w-100"
-                  name="itemsinStock"
-                  placeholder="No. of Items in Stock"
-                  formControlName="itemsinStock"
-                  autocomplete="off"
-                />
+              <label class="mb-2">Product in Stock</label>
+              <input type="number" class="form-control w-100" name="itemsinStock" placeholder="No. of Items in Stock"
+                formControlName="itemsinStock" autocomplete="off" [ngClass]="{
+                  'is-invalid': itemsinStock?.invalid && (itemsinStock?.dirty || itemsinStock?.touched),
+                  'is-valid': !itemsinStock?.invalid && (itemsinStock?.dirty || itemsinStock?.touched)
+                }"/>
+                <div class="alert alert-danger text-danger p-0 mt-2 text-start px-3"
+                *ngIf="itemsinStock?.invalid && (itemsinStock?.dirty || itemsinStock?.touched)">
+                <p style="font-size: small; margin: 0">
+                  <small *ngIf="itemsinStock?.errors?.['required']">ItemsinStock is required.</small>
+                  <small *ngIf="itemsinStock?.errors?.['pattern']">ItemsinStock must be a valid number.</small>
+                </p>
+              </div>
             </div>
             <div class="form-group my-2 col-12">
-              <label
-                >Category
+              <label class="mb-2">Category
                 <i class="fw-light text-secondary">
                   (Hint: You can Choose Multiple Ones)
-                </i></label
-              >
+                </i></label>
               <div>
-                <select multiple class="selectpicker form-control" formControlName="category">
+                <select multiple class="selectpicker form-control" formControlName="category" [ngClass]="{
+                  'is-invalid': category?.invalid && (category?.dirty || category?.touched),
+                  'is-valid': !category?.invalid && (category?.dirty || category?.touched)
+                }" style="height: 120px;">
                   <option value="Indoor Plants">Indoor Plants</option>
                   <option value="Ceramic Pots">Ceramic Pots</option>
                   <option value="Low Maintenance">Low Maintenance</option>
                   <option value="Plant Bundle">Plant Bundle</option>
                   <option value="Air Purifying">Air Purifying</option>
                 </select>
+                <div class="alert alert-danger text-danger p-0 text-start px-3"
+                *ngIf="category?.invalid && (category?.dirty || category?.touched)">
+                <p style="font-size: small; margin: 0">
+                  <small *ngIf="category?.errors?.['required']">Category is required.</small>
+                </p>
+              </div>
               </div>
             </div>
             <div class="form-group my-2 col-12">
-              <label
-                >Images
+              <label class="mb-2">Images
                 <i class="fw-light text-secondary">
                   (Hint: You can Choose Multiple Ones)
-                </i></label
-              >
-              <input
-                  type="file"
-                  class="form-control w-100"
-                  name="imageUrl"
-                  formControlName="imageUrl"
-                  (change)="onFileInputChange($event)"
-                  multiple
-                />
+                </i></label>
+              <input type="file" class="form-control w-100" name="imageUrl" formControlName="imageUrl"
+                (change)="onFileInputChange($event)" multiple [ngClass]="{
+                  'is-invalid': imageUrl?.invalid && (imageUrl?.dirty || imageUrl?.touched),
+                  'is-valid': !imageUrl?.invalid && (imageUrl?.dirty || imageUrl?.touched)
+                }"/>
+                <div class="alert alert-danger text-danger p-0 text-start px-3"
+                *ngIf="imageUrl?.invalid && (imageUrl?.dirty || imageUrl?.touched)">
+                <p style="font-size: small; margin: 0">
+                  <small *ngIf="imageUrl?.errors?.['required']">imageUrl is required.</small>
+                </p>
+              </div>
             </div>
+            <div
+          class="text-danger text-danger p-0 text-start px-3 mt-3 text-center"
+          *ngIf="formErrorMessage"
+        >
+          <p>{{ formErrorMessage }}</p>
+        </div>
           </div>
-
-          <div class="d-flex justify-content-end my-3">
-            <button type="button" class="btn btn-light border" data-bs-dismiss="modal">
+          <div class="d-flex justify-content-end mb-3 mt-2">
+            <button type="button" class="btn btn-light border me-3" data-bs-dismiss="modal">
               Cancel
             </button>
-            <button class="btn btn-info submit-btn" type="submit">
+            <button class="btn btn-info submit-btn" type="submit" data-bs-dismiss="modal"  [disabled]="!productForm.valid">
               Update
             </button>
           </div>
@@ -165,4 +201,3 @@
     </div>
   </div>
 </div>
-
