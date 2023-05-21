@@ -11,12 +11,13 @@ import { ProductsService } from '../../../Services/products.service';
 export class AllProductsTablePaginationComponent implements AfterViewInit {
   selectedID:any;
   errorMessage:any;
-
-  displayedColumns: string[] = ['name','price', 'category','discount','itemsinStock','action'];
+  successMessage:any;
+   displayedColumns: string[] = ['name','price', 'category','discount','itemsinStock','action'];
   dataSource = new MatTableDataSource<PeriodicElement>();
 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   constructor(private elementRef: ElementRef, public myService: ProductsService,private productsService: ProductsService,private changeDetectorRef: ChangeDetectorRef) { }
 
   ngAfterViewInit() {
@@ -35,9 +36,6 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
     }
   }
 
-
-
-
   deleteElement(element: PeriodicElement) {
     // Implement the logic to delete the element
   }
@@ -48,24 +46,31 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
   setSelectedId(id:number)
   {
     this.selectedID=id;
-    console.log(this.selectedID)
-    console.log(id)
   }
-  deletedSelectedProduct()
-  {
+
+  deletedSelectedProduct() {
     this.myService.DeleteProductById(this.selectedID).subscribe({
       next: (response: any) => {
-        console.log(response)
+        console.log(response);
+        this.fetchAllProducts();
+        this.successMessage='This product deleted Successfully.';
+        setTimeout(() => {
+          this.successMessage = "";
+        }, 3000);
       },
       error: (err) => {
         console.log(err);
-        this.errorMessage = 'Deleted this product Failed,Please Try Again';
+        this.errorMessage = 'Deleting this product failed. Please try again.';
+        setTimeout(() => {
+          this.errorMessage = "";
+        }, 3000);
       }
-    })
+    });
   }
 }
 
 interface PeriodicElement {
+  _id:any,
   name:String,
   price:Number,
   category:[String],
