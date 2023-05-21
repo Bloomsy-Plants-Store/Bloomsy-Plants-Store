@@ -59,7 +59,7 @@
         <div cellspacing="0" class="shop_table shop_table_responsive">
           <div class="cart-subtotal">
             <div class="title">Subtotal</div>
-            <div data-title="Subtotal"><span class="amount"><bdi><span class="symbol">&#36;</span>000.00</bdi></span>
+            <div data-title="Subtotal"><span class="amount"><bdi><span class="symbol">&#36;</span>{{totalPriceForAllProduct()}}</bdi></span>
             </div>
           </div>
           <div class="shipping-totals shipping">
@@ -84,7 +84,7 @@
       <div class="order-total">
         <div class="title">Total</div>
         <div data-title="Total"><strong><span class="woocommerce-Price-amount amount"><bdi><span
-                  class="woocommerce-Price-currencySymbol">&#36;</span>000.00</bdi></span></strong>
+                  class="woocommerce-Price-currencySymbol">&#36;</span>{{totalPriceForAllProduct()}}</bdi></span></strong>
         </div>
       </div>
       <div class="to-checkout">

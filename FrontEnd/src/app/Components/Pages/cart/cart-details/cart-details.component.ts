@@ -31,13 +31,22 @@ export class CartDetailsComponent implements OnInit{
   increaseQuantity(element:any) {
     element.quantity++;
   }
+
+  totalPriceForAllProduct() {
+    let total = 0;
+    this.dataSource.forEach((element: any) => {
+      total += element.product_id.price * element.quantity;
+    });
+    return total;
+  }
+
+
   removeCartItem(element: any) { }
 
   ngOnInit(): void {
     this.myService.GetAllProductsInCart().subscribe({
       next: (response: any) => {
         this.dataSource = response.cart;
-       console.log(response);
       },
       error: (err) => {
         console.log(err);

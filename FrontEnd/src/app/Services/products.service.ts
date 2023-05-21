@@ -19,5 +19,8 @@ export class ProductsService {
   GetBestSelling(){
     return this.myClient.get(this.Base_URL+"bestSelling?limit=4");
   }
+  DeleteProductById(id:any){
+    return this.myClient.delete(this.Base_URL+id);
+  }
 }
 
