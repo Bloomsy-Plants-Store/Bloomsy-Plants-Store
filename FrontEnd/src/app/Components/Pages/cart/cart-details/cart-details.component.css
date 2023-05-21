@@ -30,7 +30,28 @@ td{}
   width: 100%;
 }
 .cart_input{
-  max-width: 60px;
+  max-width: 35px;
+  text-align: center;
+  border: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.quantity-btn{
+  background: #3c5742;
+  border: 1px solid transparent;
+  cursor: pointer;
+  color: white;
+}
+.dec-btn{
+  border-radius: 0.2rem 0 0  0.2rem;
+}
+.inc-btn{
+  border-radius: 0 0.2rem 0.2rem 0;
+  width: 20px;
 }
 .mat-table {
   width: 100%;

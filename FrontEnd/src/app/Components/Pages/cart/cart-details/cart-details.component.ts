@@ -21,4 +21,13 @@ export class CartDetailsComponent {
   dataSource: Product[] = [
     { name: 'Product 1', price: 10, quantity: 2, total: 20 },
   ];
+  decreaseQuantity(element:any) {
+    if (element.quantity > 1) {
+      element.quantity--;
+    }
+  }
+
+  increaseQuantity(element:any) {
+    element.quantity++;
+  }
 }
