@@ -141,7 +141,7 @@ button{
   margin-right: 2%;
 }
 
-/* Modal Style */
+/* Modal */
 
 .custom-modal {
   animation: bounceIn 0.5s;
@@ -153,12 +153,10 @@ button{
 
 .modal-confirm {
   color: #636363;
-  width: 325px;
   font-size: 14px;
 }
 
 .modal-confirm .modal-content {
-  padding: 20px;
   border-radius: 5px;
   border: none;
 }
@@ -191,7 +189,6 @@ button{
   text-align: center;
   border-radius: 5px;
   font-size: 13px;
-  height: 55px;
 }
 
 .modal-confirm .icon-box {
@@ -222,24 +219,35 @@ button{
   margin-top: 80px;
 }
 
-.modal-confirm .btn {
+.modal-confirm .submit-btn {
   color: #fff;
   border-radius: 4px;
-  background: #8d0b0b;
+  background: #86b68a;
   text-decoration: none;
   transition: all 0.4s;
   line-height: normal;
   border: none;
-  --mdb-btn-box-shadow:none;
 }
 
-.modal-confirm .btn:hover,
-.modal-confirm .btn:focus {
-  background: #8d0b0b;
+.modal-confirm .submit-btn:hover,
+.modal-confirm .submit-btn:focus {
+  background: #6b8f6e;
   outline: none;
-  --mdb-btn-box-shadow:inset 0 3px 5px #8d0b0b;
 }
 
-.userName-Style{
-  color:#6b8f6e;
+/* Modal Form */
+input {
+  width: auto;
+  border-radius: 7px;
+  outline: none;
+  border: 1px solid #e5e5e5;
+  filter: drop-shadow(0px 1px 0px #efefef)
+    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+input:focus{
+  outline: none;
+}
+.selectpicker{
+  height: 8vh;
 }
