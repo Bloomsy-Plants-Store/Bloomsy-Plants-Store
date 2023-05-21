@@ -24,24 +24,25 @@ var updateProduct = async (req, res) => {
         console.log(err)
         return res.status(500).send("Error uploading file");
       } else {
-
+          
         let product = await productModel.findById(req.params.id);
         if (!product) {
           return res.status(400).send("There is No Product With this ID !");
         }
 
-        let updatedProduct = req.body
-
+        let updatedProduct = req.body;
+        console.log(req.files)
+        
         if(req.files){
-          let images = req.files
+          let images = req.files;
           images.forEach(img => {
+            console.log(img)
             product["imageUrl"].push(config.CLOUD_PATH + img.filename)
           });
         }
         
         Object.keys(updatedProduct).forEach(key => {
           if (key in product) {
-            console.log(key)
             if(key == "category"){
               product[key].push(updatedProduct[key])
             }else{
@@ -59,18 +60,15 @@ var updateProduct = async (req, res) => {
   }
 }
 
-
-
 var storeProducts = async function (req, res) {
   try {
-    await MutlerUpload.uploadProduct(req, res, function (err) {
+    await MutlerUpload.uploadProduct(req, res, async function (err) {
       if (err) {
         return res.status(500).send("Error uploading file");
       } else {
 
-        //map req.file to git file name
-        let filenames = req.files.map(file => file.filename);
-
+        let filenames = await req.files.map(file => config.CLOUD_PATH + file.filename)
+        
         // Save product details to database
         let product = new productModel({
           name: req.body.name,
@@ -82,9 +80,10 @@ var storeProducts = async function (req, res) {
           bestSelling: false,
           description: req.body.description,
           itemsinStock: req.body.itemsinStock,
-          imageUrl: config.CLOUD_PATH + filenames
+          imageUrl: filenames
         });
-        product.save();
+  
+        await product.save();
         return res.status(200).json({ message: "Product Upload Successfully " });
       }
     });
@@ -93,8 +92,6 @@ var storeProducts = async function (req, res) {
     return res.status(500).send("Server Error");
   }
 };
-
-
 
 var getBestSellingProducts = async (req, res) => {
   try {

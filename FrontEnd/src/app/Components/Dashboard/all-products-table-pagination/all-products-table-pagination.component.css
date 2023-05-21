@@ -236,6 +236,9 @@ button{
 }
 
 /* Modal Form */
+input[type="text"], input[type="number"], textarea, select{
+  font-size: small;
+}
 input {
   width: auto;
   border-radius: 7px;
@@ -249,7 +252,7 @@ input:focus{
   outline: none;
 }
 .selectpicker{
-  height: 8vh;
+  height: 7vh;
 }
 
 /* Deleted Modal Style */

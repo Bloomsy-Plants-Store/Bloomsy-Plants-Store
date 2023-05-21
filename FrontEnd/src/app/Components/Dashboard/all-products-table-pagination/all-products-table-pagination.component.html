@@ -76,29 +76,59 @@
         </div>
       </div>
       <div class="modal-body">
-        <form method="post">
+        <form [formGroup]="editProductForm" (ngSubmit)="updateProduct()" method="post" enctype="multipart/form-data">
           <div class="col-12 d-flex justify-content-between flex-wrap">
             <div class="form-group my-2 col-12">
-              <input type="text" class="form-control w-100" name="productName" placeholder="Product Name"
-                formControlName="productName" autocomplete="off" />
+              <input
+                type="text"
+                class="form-control w-100"
+                name="productName"
+                placeholder="Product Name"
+                formControlName="productName"
+                autocomplete="off"
+              />
             </div>
             <div class="form-group my-2 col-12">
-              <label>Product Description</label>
-              <textarea type="text" class="form-control" name="productDesc" placeholder="Product Description"
-                formControlName="productDesc" rows="3" autocomplete="off">
+              <textarea
+                type="text"
+                class="form-control"
+                name="productDesc"
+                placeholder="Product Description"
+                formControlName="productDesc"
+                rows="3"
+                autocomplete="off"
+              >
               </textarea>
             </div>
-            <div class="form-group my-2 col-2">
-              <input type="number" class="form-control w-100" name="productPrice" placeholder="Price"
-                formControlName="productPrice" autocomplete="off" />
+            <div class="form-group my-2 col-3">
+              <input
+                type="number"
+                class="form-control w-100"
+                name="productPrice"
+                placeholder="Price"
+                formControlName="productPrice"
+                autocomplete="off"
+              />
             </div>
             <div class="form-group my-2 col-3">
-              <input type="number" class="form-control w-100" name="productDiscount" placeholder="Discount"
-                formControlName="productDiscount" autocomplete="off" />
+              <input
+                type="number"
+                class="form-control w-100"
+                name="productDiscount"
+                placeholder="Discount"
+                formControlName="productDiscount"
+                autocomplete="off"
+              />
             </div>
-            <div class="form-group my-2 col-6">
-              <input type="number" class="form-control w-100" name="productItemsInStock"
-                placeholder="No. of Items in Stock" formControlName="productItemsInStock" autocomplete="off" />
+            <div class="form-group my-2 col-5">
+              <input
+                type="number"
+                class="form-control w-100"
+                name="productItemsInStock"
+                placeholder="No. of Items in Stock"
+                formControlName="productItemsInStock"
+                autocomplete="off"
+              />
             </div>
             <div class="form-group my-2 col-12">
               <label>Category
@@ -106,7 +136,7 @@
                   (Hint: You can Choose Multiple Ones)
                 </i></label>
               <div>
-                <select multiple class="selectpicker form-control">
+                <select multiple class="selectpicker form-control" formControlName="productCategory">
                   <option value="Indoor Plants">Indoor Plants</option>
                   <option value="Ceramic Pots">Ceramic Pots</option>
                   <option value="Low Maintenance">Low Maintenance</option>
@@ -119,9 +149,16 @@
               <label>Images
                 <i class="fw-light text-secondary">
                   (Hint: You can Choose Multiple Ones)
-                </i></label>
-              <input type="file" class="form-control w-100" name="productImages" formControlName="productImages"
-                multiple />
+                </i></label
+              >
+              <input
+                  type="file"
+                  class="form-control w-100"
+                  name="imageUrl"
+                  formControlName="imageUrl"
+                  (change)="onFileInputChange($event)"
+                  multiple
+                />
             </div>
           </div>
 

@@ -16,7 +16,7 @@ export class AllProductDataComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.myService.GetAllProdducts().subscribe({
+    this.myService.GetAllProducts().subscribe({
       next: (response: any) => {
         this.Products = response.data;
         this.totalItems= this.Products.length;
