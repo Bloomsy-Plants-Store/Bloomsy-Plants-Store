@@ -28,5 +28,8 @@ export class ProductsService {
     return this.myClient.put(this.Base_URL + "update/" + productId, data);
   };
 
+  DeleteProductById(id:any){
+    return this.myClient.delete(this.Base_URL+id);
+  }
 }
 

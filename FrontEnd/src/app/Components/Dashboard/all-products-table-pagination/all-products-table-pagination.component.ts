@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ViewChild,ElementRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductsService } from '../../../Services/products.service';
@@ -10,7 +10,10 @@ import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@ang
   templateUrl: 'all-products-table-pagination.component.html',
 })
 export class AllProductsTablePaginationComponent implements AfterViewInit {
-  displayedColumns: string[] = ['name','price', 'category','discount','itemsinStock','action'];
+  selectedID:any;
+  errorMessage:any;
+  successMessage:any;
+   displayedColumns: string[] = ['name','price', 'category','discount','itemsinStock','action'];
   dataSource = new MatTableDataSource<PeriodicElement>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -20,7 +23,7 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
   oldCategory:any = [];
   oldImages:any = [];
 
-  constructor(private productsService: ProductsService,private changeDetectorRef: ChangeDetectorRef, private fb: FormBuilder,) {
+  constructor(private productsService: ProductsService,private changeDetectorRef: ChangeDetectorRef, private fb: FormBuilder) {
     this.editProductForm = this.fb.group({
       productName: new FormControl('',[Validators.required]),
       productDesc: new FormControl('',[Validators.required]),
@@ -70,19 +73,6 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
     } catch (error) {
       console.log('Error fetching products:', error);
     }
-  }
-
-  async fetchProductByID(id:any) {
-    try {
-      const product: any = await this.productsService.GetProductByID(id).toPromise();
-      return product.data;;
-    } catch (error) {
-      console.log('Error Fetching Product Details:', error);
-    }
-  }
-
-  deleteElement(element: PeriodicElement) {
-    // Implement the logic to delete the element
   }
 
   editElement(element: PeriodicElement) {
@@ -138,6 +128,31 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
     for (let i = 0; i < fileArray.length; i++) {
       this.oldImages.push(new FormControl(fileArray[i]));
     }
+  }
+
+  setSelectedId(id:number)
+  {
+    this.selectedID=id;
+  }
+
+  deletedSelectedProduct() {
+    this.productsService.DeleteProductById(this.selectedID).subscribe({
+      next: (response: any) => {
+        console.log(response);
+        this.fetchAllProducts();
+        this.successMessage='This product deleted Successfully.';
+        setTimeout(() => {
+          this.successMessage = "";
+        }, 3000);
+      },
+      error: (err) => {
+        console.log(err);
+        this.errorMessage = 'Deleting this product failed. Please try again.';
+        setTimeout(() => {
+          this.errorMessage = "";
+        }, 3000);
+      }
+    });
   }
 }
 
