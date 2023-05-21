@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ProductsService {
 
   constructor(private readonly myClient : HttpClient) { }
 
-  GetAllProdducts(){
+  GetAllProducts(){
     return this.myClient.get(this.Base_URL);
   }
   GetTopRating(){
@@ -19,6 +20,14 @@ export class ProductsService {
   GetBestSelling(){
     return this.myClient.get(this.Base_URL+"bestSelling?limit=4");
   }
+  GetProductByID(productId: number) {
+    return this.myClient.get(this.Base_URL+productId);
+  }
+  UpdateProduct(productId: number, data: any): Observable<any> {
+    console.log(data)
+    return this.myClient.put(this.Base_URL + "update/" + productId, data);
+  };
+
   DeleteProductById(id:any){
     return this.myClient.delete(this.Base_URL+id);
   }

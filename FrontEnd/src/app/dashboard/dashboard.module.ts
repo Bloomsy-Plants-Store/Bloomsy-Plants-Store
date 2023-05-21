@@ -10,7 +10,7 @@ import { DashboardAllProductsComponent } from '../Components/Dashboard/dashboard
 import { DashboardSidebarComponent } from '../Components/Dashboard/dashboard-sidebar/dashboard-sidebar.component';
 import { DashboardRevenueComponent } from '../Components/Dashboard/dashboard-revenue/dashboard-revenue.component';
 import { AllProductsTablePaginationComponent } from '../Components/Dashboard/all-products-table-pagination/all-products-table-pagination.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,6 +33,7 @@ import { AllProductsTablePaginationComponent } from '../Components/Dashboard/all
     MatFormFieldModule,
     MatPaginatorModule,
     MatTableModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       { path: '', component: DashboardPageComponent }
     ])
