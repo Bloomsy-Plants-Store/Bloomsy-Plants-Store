@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductsService } from '../../../Services/products.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-all-products-table-pagination',
@@ -16,19 +16,24 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   editProductForm: FormGroup;
+  editProductID: any = '';
+  oldCategory:any = [];
+  oldImages:any = [];
 
   constructor(private productsService: ProductsService,private changeDetectorRef: ChangeDetectorRef, private fb: FormBuilder,) {
     this.editProductForm = this.fb.group({
-      productName: ['',[Validators.required]],
-      productDesc: ['',[Validators.required]],
-      productDiscount: ['',[Validators.required]],
-      productPrice: ['',[Validators.required]],
-      productItemsInStock: ['',[Validators.required]],
-      productCategory: [[],[Validators.required]],
-      productImages: [[],[Validators.required]]
+      productName: new FormControl('',[Validators.required]),
+      productDesc: new FormControl('',[Validators.required]),
+      productDiscount: new FormControl('',[Validators.required]),
+      productPrice: new FormControl('',[Validators.required]),
+      productItemsInStock: new FormControl('',[Validators.required]),
+      productCategory: new FormControl(),
+      productImages: this.fb.array([])
     });
   }
-
+  get productId(){
+    return this.editProductForm.get('productId');
+  }
   get productName(){
     return this.editProductForm.get('productName');
   }
@@ -48,7 +53,7 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
     return this.editProductForm.get('productCategory');
   }
   get productImages(){
-    return this.editProductForm.get('productImage');
+    return this.editProductForm.get('productImages');
   }
 
   ngAfterViewInit() {
@@ -84,21 +89,55 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
     const productId = element._id;
     this.productsService.GetProductByID(productId).subscribe({
       next: (product: any) => {
-      this.editProductForm.setValue({
-        productName: product.data.name,
-        productDesc: product.data.description,
-        productDiscount: product.data.discount,
-        productPrice: product.data.price,
-        productItemsInStock: product.data.itemsinStock,
-        productCategory: product.data.category,
-        productImages: product.data.imageUrl,
-      });
 
+        this.editProductForm.setValue({
+          productName: product.data.name,
+          productDesc: product.data.description,
+          productDiscount: Number(product.data.discount),
+          productPrice: Number(product.data.price),
+          productItemsInStock: Number(product.data.itemsinStock),
+          productCategory: product.data.category,
+          productImages: []
+        });
+        this.editProductID = productId;
+        this.oldCategory = [];
       },
       error: (err:any) => {
         console.log(err)
       },
     });
+  }
+
+  updateProduct(){
+    if (this.editProductForm.valid) {
+
+      this.oldCategory.push(...this.productCategory?.value);
+
+      for (let i = 0; i < this.oldImages.length; i++) {
+        this.editProductForm.value.productImages.push(this.oldImages[i]);
+      }
+      
+      this.productsService.UpdateProduct(this.editProductID, this.editProductForm.value).subscribe({
+        next:(response) => {
+          console.log(response);
+        },
+        error:(err) => {
+          console.error(err);
+        }
+      })
+
+    }else {
+      console.log('Invalid Data Format,Please Try Again');
+    }
+  }
+
+  onFileInputChange(event: any) {
+    const files = event.target.files;
+    const fileArray = Array.from(files);
+
+    for (let i = 0; i < fileArray.length; i++) {
+      this.oldImages.push(new FormControl(fileArray[i]));
+    }
   }
 }
 

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,10 @@ export class ProductsService {
   GetProductByID(productId: number) {
     return this.myClient.get(this.Base_URL+productId);
   }
+  UpdateProduct(productId: number, data: any): Observable<any> {
+    console.log(data)
+    return this.myClient.put(this.Base_URL + "update/" + productId, data);
+  };
+
 }
 

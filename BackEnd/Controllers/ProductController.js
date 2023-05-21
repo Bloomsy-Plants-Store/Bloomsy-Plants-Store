@@ -24,24 +24,25 @@ var updateProduct = async (req, res) => {
         console.log(err)
         return res.status(500).send("Error uploading file");
       } else {
-
+          
         let product = await productModel.findById(req.params.id);
         if (!product) {
           return res.status(400).send("There is No Product With this ID !");
         }
 
-        let updatedProduct = req.body
-
+        let updatedProduct = req.body;
+        console.log(req.files)
+        
         if(req.files){
-          let images = req.files
+          let images = req.files;
           images.forEach(img => {
+            console.log(img)
             product["imageUrl"].push(config.CLOUD_PATH + img.filename)
           });
         }
         
         Object.keys(updatedProduct).forEach(key => {
           if (key in product) {
-            console.log(key)
             if(key == "category"){
               product[key].push(updatedProduct[key])
             }else{
@@ -58,8 +59,6 @@ var updateProduct = async (req, res) => {
     return res.status(500).send("Server Error, Failed to update the product !");
   }
 }
-
-
 
 var storeProducts = async function (req, res) {
   try {
@@ -93,8 +92,6 @@ var storeProducts = async function (req, res) {
     return res.status(500).send("Server Error");
   }
 };
-
-
 
 var getBestSellingProducts = async (req, res) => {
   try {
