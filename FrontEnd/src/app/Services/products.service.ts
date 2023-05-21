@@ -12,8 +12,8 @@ export class ProductsService {
   http: any;
 
   constructor(private readonly myClient : HttpClient) { }
- 
-  GetAllProdducts(){
+
+  GetAllProducts(){
     return this.myClient.get(this.Base_URL);
   }
   GetTopRating(){
@@ -26,5 +26,16 @@ export class ProductsService {
     return this.myClient.post(this.Base_URL + "store", data);
   }
 
+  GetProductByID(productId: number) {
+    return this.myClient.get(this.Base_URL+productId);
+  }
+  UpdateProduct(productId: number, data: any): Observable<any> {
+    console.log(data)
+    return this.myClient.put(this.Base_URL + "update/" + productId, data);
+  };
+
+  DeleteProductById(id:any){
+    return this.myClient.delete(this.Base_URL+id);
+  }
 }
 

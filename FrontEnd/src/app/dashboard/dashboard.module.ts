@@ -12,6 +12,7 @@ import { DashboardRevenueComponent } from '../Components/Dashboard/dashboard-rev
 import { AllProductsTablePaginationComponent } from '../Components/Dashboard/all-products-table-pagination/all-products-table-pagination.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     DashboardPageComponent,
@@ -35,6 +36,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatPaginatorModule,
     MatTableModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       { path: '', component: DashboardPageComponent }
     ])
