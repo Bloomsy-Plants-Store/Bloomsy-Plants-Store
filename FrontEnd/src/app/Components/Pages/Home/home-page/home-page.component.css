@@ -16,27 +16,5 @@ app-banners {
   }
 }
 
-.spinner {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-}
 
-.spinner > div {
-  width: 18px;
-  height: 18px;
-  margin-left: -9px;
-  border-radius: 100%;
-  background-color: #333;
-  animation: blink 1.4s infinite ease-in-out both;
-}
-
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
 

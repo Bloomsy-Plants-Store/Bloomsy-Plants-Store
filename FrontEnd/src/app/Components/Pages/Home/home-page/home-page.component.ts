@@ -5,7 +5,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css'],
-  template: '<ngx-spinner></ngx-spinner>',
 })
 export class HomePageComponent implements OnInit{
   constructor(private spinner: NgxSpinnerService) {}
@@ -13,7 +12,7 @@ export class HomePageComponent implements OnInit{
     this.spinner.show();
 
     setTimeout(() => {
-      this.spinner.show();
+      this.spinner.hide();
     }, 5000);
   }
 }
