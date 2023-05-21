@@ -9,7 +9,7 @@
         <div class="row gap-2 h-100">
           <div class="col-lg-2 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-xs-12 order-lg-1 order-md-2 order-xs-2 order-xxs-2 banner-button">
             <div class="img-select row gap-1 justify-content-center">
-              <div class="img-item col-2 col-lg-12" *ngFor="let image of Product.imageUrl; let i = index">
+              <div class="img-item col-2 col-lg-12" *ngFor="let image of Product?.imageUrl; let i = index">
                 <button class="d-block btn btn-link" data-bs-target="#carouselExampleFade" [attr.data-bs-slide-to]="i">
                   <img src="{{image}}" alt="shoe image" class="img-select-image w-100">
                 </button>
@@ -21,7 +21,7 @@
             <div class="img-display d-flex justify-content-center">
               <div id="carouselExampleFade" class="carousel slide carousel-fade">
                 <div class="carousel-inner">
-                  <ng-container *ngFor="let image of Product.imageUrl; let i = index">
+                  <ng-container *ngFor="let image of Product?.imageUrl; let i = index">
                     <div class="carousel-item" [class.active]="i === 0">
                       <img class="d-block w-100" src="{{image}}" alt="Slide">
                     </div>
@@ -60,12 +60,12 @@
 
         <div class = "purchase-info d-flex align-baseline justify-content-center flex-wrap">
           <div class="quantity">
-            <button type="button" class="minus" (click)="decreaseQuantity()">&minus;</button>
-            <input type="number" class="input-text qty text" step="1" min="1" name="quantity" [value]="quantity">
-            <button type="button" class="plus" (click)="increaseQuantity()">&plus;</button>
+            <button type="button" class="minus" (click)="decreaseQuantity();">&minus;</button>
+            <input type="number" class="input-text qty text" step="1" min="1" name="quantity" [(ngModel)]="quantity">
+            <button type="button" class="plus" (click)="increaseQuantity();">&plus;</button>
           </div>
 
-          <button type = "button" class = "btn round-black-btn">
+          <button type = "button" class = "btn round-black-btn" (click)="addProductToCart(Product?._id,quantity)">
             Add to  Cart &nbsp;<i class = "fas fa-shopping-cart"></i>
           </button>
 
@@ -79,7 +79,7 @@
               <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path>
             </svg>
           </button>
-          <button type = "button" class = "w-100 btn buy-now round-black-btn" routerLink="/cart">
+          <button type = "button" class = "w-100 btn buy-now round-black-btn" (click)="addProductToCart(Product?._id,quantity)" routerLink="/checkout">
             Buy Now
           </button>
         </div>

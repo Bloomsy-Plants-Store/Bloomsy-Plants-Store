@@ -11,8 +11,8 @@ private Base_URL = "http://localhost:7400/users/"
 
   // add product to cart
   // /:id/cart/add
-  addProductToCart(id: Number, product_id: Number) {
-    return this.myClient.post(this.Base_URL + id + "/cart/add", { product_id });
+  addProductToCart(id: Number, product_id: Number,quantity:number=1) {
+    return this.myClient.post(this.Base_URL + id + "/cart/add", { product_id,quantity});
   }
 
   // get all products in cart

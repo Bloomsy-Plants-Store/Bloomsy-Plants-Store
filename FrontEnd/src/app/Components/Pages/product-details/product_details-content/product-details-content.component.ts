@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CarouselComponent } from 'ngx-owl-carousel-o';
 import { ProductsService } from 'src/app/Services/products.service';
+import { CartService } from 'src/app/Services/cart.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -13,8 +14,10 @@ export class ProductDetailsComponent {
   isFavorited: boolean = false;
   Product: any;
 
+
   constructor(private elementRef: ElementRef,
-    public myService: ProductsService,
+    public productService: ProductsService,
+    public cartService:CartService,
     private route: ActivatedRoute) { }
 
   @ViewChild('carousel') carousel?: CarouselComponent;
@@ -24,7 +27,7 @@ export class ProductDetailsComponent {
     this.route.params.subscribe((params) => {
       const productId = params['id'];
 
-      this.myService.GetProductByID(productId).subscribe({
+      this.productService.GetProductByID(productId).subscribe({
         next: (response: any) => {
           this.Product = response.data;
           console.log(this.Product);
@@ -35,6 +38,18 @@ export class ProductDetailsComponent {
       });
     });
   }
+
+  addProductToCart(id: any,itemQuantity:number) {
+    console.log(itemQuantity);
+    let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
+    this.cartService.addProductToCart(userId, id,itemQuantity).subscribe({
+      next: (response: any) => { },
+      error: (err: any) => {
+        console.log(err);
+      }
+    });
+  }
+
 
   decreaseQuantity(): void {
     if (this.quantity > 1) {
