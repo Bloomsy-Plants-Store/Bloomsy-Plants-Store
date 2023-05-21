@@ -179,13 +179,34 @@ const clearUserCart = async (req, res) => {
     return res.status(500).json({ error: 'Server Error, Failed to delete this item' });
   }
 };
+
+const getCartItems = async(req, res) => {
+  const user_id = req.params.id;
+  console.log(user_id);
+  if (!user_id) {
+    return res.status(400).send("Bad Request: You must enter a user id");
+  }
+
+  try {
+    const cart = await User.findById(user_id)
+      .select("cart")
+      .populate("cart.product_id")
+      .exec();
+
+    return res.status(200).json(cart);
+  } catch (err) {
+    return res.status(400).json({ error: "Failed to get cart items" });
+  }
+};
+
 module.exports = {
   addToCart,
   updateCart,
   updateCartItemById,
   updateCartItems,
   deleteCartItemById,
-  clearUserCart
+  clearUserCart,
+  getCartItems
 };
 
 

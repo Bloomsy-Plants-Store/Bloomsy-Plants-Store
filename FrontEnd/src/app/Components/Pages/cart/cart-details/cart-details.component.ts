@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component , OnInit} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-
+import { CartService } from 'src/app/Services/cart.service';
 
 
 export interface Product {
@@ -15,12 +15,13 @@ export interface Product {
   templateUrl: './cart-details.component.html',
   styleUrls: ['./cart-details.component.css']
 })
-export class CartDetailsComponent {
+export class CartDetailsComponent implements OnInit{
 
-  displayedColumns: string[] = ['image', 'name', 'price', 'quantity', 'total'];
-  dataSource: Product[] = [
-    { name: 'Product 1', price: 10, quantity: 2, total: 20 },
-  ];
+  constructor( public myService: CartService) { }
+
+  displayedColumns: string[] = ['image', 'name', 'price', 'quantity', 'total', 'delete'];
+
+  dataSource: Product[] = [];
   decreaseQuantity(element:any) {
     if (element.quantity > 1) {
       element.quantity--;
@@ -30,4 +31,18 @@ export class CartDetailsComponent {
   increaseQuantity(element:any) {
     element.quantity++;
   }
+  removeCartItem(element: any) { }
+
+  ngOnInit(): void {
+    this.myService.GetAllProductsInCart().subscribe({
+      next: (response: any) => {
+        this.dataSource = response.cart;
+       console.log(response);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+   })
+  }
+
 }

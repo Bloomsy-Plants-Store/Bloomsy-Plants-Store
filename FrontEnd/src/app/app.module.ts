@@ -47,7 +47,7 @@ import { CartHomeComponent } from './Components/Pages/cart/cart-home/cart-home.c
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -101,7 +101,8 @@ import { MatSortModule } from '@angular/material/sort';
     NgxPaginationModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
