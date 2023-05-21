@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductsService } from '../../../Services/products.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-all-products-table-pagination',
@@ -12,10 +13,43 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
   displayedColumns: string[] = ['name','price', 'category','discount','itemsinStock','action'];
   dataSource = new MatTableDataSource<PeriodicElement>();
 
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private productsService: ProductsService,private changeDetectorRef: ChangeDetectorRef) {}
+  editProductForm: FormGroup;
+
+  constructor(private productsService: ProductsService,private changeDetectorRef: ChangeDetectorRef, private fb: FormBuilder,) {
+    this.editProductForm = this.fb.group({
+      productName: ['',[Validators.required]],
+      productDesc: ['',[Validators.required]],
+      productDiscount: ['',[Validators.required]],
+      productPrice: ['',[Validators.required]],
+      productItemsInStock: ['',[Validators.required]],
+      productCategory: [[],[Validators.required]],
+      productImages: [[],[Validators.required]]
+    });
+  }
+
+  get productName(){
+    return this.editProductForm.get('productName');
+  }
+  get productDesc(){
+    return this.editProductForm.get('productDisc');
+  }
+  get productDiscount(){
+    return this.editProductForm.get('productDiscount');
+  }
+  get productPrice(){
+    return this.editProductForm.get('productPrice');
+  }
+  get productItemsInStock(){
+    return this.editProductForm.get('productItemsInStock');
+  }
+  get productCategory(){
+    return this.editProductForm.get('productCategory');
+  }
+  get productImages(){
+    return this.editProductForm.get('productImage');
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -24,7 +58,7 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
 
   async fetchAllProducts() {
     try {
-      const data: any = await this.productsService.GetAllProdducts().toPromise();
+      const data: any = await this.productsService.GetAllProducts().toPromise();
       this.dataSource.data = data.data;
       console.log('After assignment:', this.dataSource.data );
       this.changeDetectorRef.detectChanges();
@@ -33,15 +67,38 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
     }
   }
 
-
-
+  async fetchProductByID(id:any) {
+    try {
+      const product: any = await this.productsService.GetProductByID(id).toPromise();
+      return product.data;;
+    } catch (error) {
+      console.log('Error Fetching Product Details:', error);
+    }
+  }
 
   deleteElement(element: PeriodicElement) {
     // Implement the logic to delete the element
   }
 
   editElement(element: PeriodicElement) {
-    // Implement the logic to edit the element
+    const productId = element._id;
+    this.productsService.GetProductByID(productId).subscribe({
+      next: (product: any) => {
+      this.editProductForm.setValue({
+        productName: product.data.name,
+        productDesc: product.data.description,
+        productDiscount: product.data.discount,
+        productPrice: product.data.price,
+        productItemsInStock: product.data.itemsinStock,
+        productCategory: product.data.category,
+        productImages: product.data.imageUrl,
+      });
+
+      },
+      error: (err:any) => {
+        console.log(err)
+      },
+    });
   }
 }
 
