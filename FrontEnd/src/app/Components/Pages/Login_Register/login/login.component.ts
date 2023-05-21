@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators,  FormControl  } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Router } from '@angular/router';
@@ -21,7 +22,7 @@ export class LoginComponent {
   rememberMe!: FormControl;
 
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private http: HttpClient, private router: Router ,  private tokenService: TokenService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private http: HttpClient, private router: Router ,  private tokenService: TokenService, private spinner: NgxSpinnerService) {
     this.validationForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['',[ Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d$!%*#?&@]{8,}$/)]],
@@ -45,6 +46,7 @@ export class LoginComponent {
   }
 
   Login(): void {
+    this.spinner.show();
     if (this.validationForm.valid) {
       const email = this.email!.value;
       const password = this.password!.value;
@@ -56,6 +58,7 @@ export class LoginComponent {
           const decodedToken: any = jwt_decode(token);
           localStorage.setItem('access_token', JSON.stringify(decodedToken));
           this.router.navigate(['/']);
+          this.spinner.hide();
         },
         error: (err: any) => {
           if(err.status == 400){
@@ -63,6 +66,7 @@ export class LoginComponent {
           }else{
             this.errorMessage = 'Login Failed,Please Try Again';
           }
+          this.spinner.hide();
         }
       });
     } else {
@@ -75,37 +79,45 @@ export class LoginComponent {
   }
 
   LoginWithGoogle(): void {
+    this.spinner.show();
     console.log('Login With Google');
     this.authService.loginWithGoogle().subscribe({
       next: (response: any) => {
         const token = response.headers.get('x-auth-token');
+        this.spinner.hide();
       },
       error: (err: any) => {
+        this.spinner.hide();
       }
     });
   }
 
   LoginWithFacebook(): void {
+    this.spinner.show();
     console.log('Login With Facebook');
     this.authService.loginWithFacebook().subscribe({
       next: (response: any) => {
         console.log(response);
         const token = response.headers.get('x-auth-token');
         console.log('Token:', token);
+        this.spinner.hide();
       },
       error: (err: any) => {
-        // console.log(err);
+        console.log(err);
+        this.spinner.hide();
       }
     });
   }
 
   sentEmail(){
+    this.spinner.show();
     if (this.validationEmail.valid) {
       const resetEmail = this.resetEmail!.value;
       this.authService.forgotPassword(resetEmail).subscribe({
         next: (response: any) => {
           localStorage.setItem('reset-token', response.body.token);
           this.sendEmailMessage = 'An Email is sent Successfully,Please Check your Inbox'
+          this.spinner.hide();
         },
         error: (err: any) => {
           if(err.status == 404){
@@ -113,6 +125,7 @@ export class LoginComponent {
           }else{
             this.resetErrorMessage = 'Failed,Please Try Again';
           }
+          this.spinner.hide();
         }
       });
     } else {

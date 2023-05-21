@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -42,6 +43,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { ProductDetailsHeaderComponent } from './Components/Pages/product-details/product-details-header/product-details-header.component';
 import { ProductDetailsPageComponent } from './Components/Pages/product-details/product-details-page/product-details-page.component';
 import { MatIconModule } from '@angular/material/icon';
+
+interface NgxSpinnerConfig {
+  type?: string;
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,7 +95,9 @@ import { MatIconModule } from '@angular/material/icon';
     BsDropdownModule.forRoot(),
     NgxPaginationModule,
     MatIconModule,
+    NgxSpinnerModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })
