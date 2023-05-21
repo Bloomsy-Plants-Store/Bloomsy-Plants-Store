@@ -10,6 +10,9 @@ export class ProductsService {
 
   constructor(private readonly myClient : HttpClient) { }
 
+  GetProduct(id:any){
+    return this.myClient.get(this.Base_URL+id);
+  }
   GetAllProdducts(){
     return this.myClient.get(this.Base_URL);
   }

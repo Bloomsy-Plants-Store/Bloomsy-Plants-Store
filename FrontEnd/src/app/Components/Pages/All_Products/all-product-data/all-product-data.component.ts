@@ -18,6 +18,7 @@ export class AllProductDataComponent implements OnInit {
     this.myService.GetAllProdducts().subscribe({
       next: (response: any) => {
         this.Products = response.data;
+        console.log(this.Products);
         this.totalItems= this.Products.length;
       },
       error: (err) => {

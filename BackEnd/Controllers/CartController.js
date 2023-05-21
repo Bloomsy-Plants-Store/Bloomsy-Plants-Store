@@ -61,14 +61,17 @@ var updateCartItemById = async (req, res) => {
     if (!user_id) {
       return res.status(400).send("Bad Request: You must enter a user id");
     }
-    const user = await User.findById(user_id);
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
+
     const cartItem_id = req.params.cartItemId;
     if (!cartItem_id) {
       return res.status(400).send("Bad Request: You must enter a cart item id");
     }
+
+    const user = await User.findById(user_id);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
     const cartItemIndex = user.cart.findIndex(
       (item) => item.product_id.toString() === cartItem_id
     );
@@ -78,16 +81,12 @@ var updateCartItemById = async (req, res) => {
 
     if (req.body.quantity) {
       user.cart[cartItemIndex].quantity = req.body.quantity;
+      await user.save();
     }
-    await user.save();
-    return res
-      .status(200)
-      .json({ message: "Cart item quantity updated successfully" });
+    return res.status(200).json({ message: "Cart item quantity updated successfully" });
   } catch (error) {
     console.log(error);
-    return res
-      .status(500)
-      .json({ error: "Server Error, Failed to update the cart" });
+    return res.status(500).json({ error: "Server Error, Failed to update the cart" });
   }
 };
 

@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'products', component: ALlProductsComponent},
   {path: 'checkout', component: CheckoutComponent},
   { path: 'reset-password', component: ResetPasswordComponent},
-  {path: 'product-details', component:ProductDetailsPageComponent},
+  {path: 'product/:id', component:ProductDetailsPageComponent},
   { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)}
 ]
 @NgModule({
