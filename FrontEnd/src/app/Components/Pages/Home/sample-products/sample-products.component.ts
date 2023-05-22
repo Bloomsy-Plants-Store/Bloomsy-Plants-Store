@@ -53,13 +53,13 @@ export class SampleProductsComponent implements OnInit {
     this.spinner.show();
     this.activeFilter = filter;
     this.Products = this.bestSellingProducts;
-    // this.spinner.hide();
+    this.spinner.hide();
   }
   filterProductsByTopRating(filter: string) {
     this.spinner.show();
     this.activeFilter = filter;
     this.Products = this.topRatingProducts;
-    // this.spinner.hide();
-    
+    this.spinner.hide();
+
   }
 }

@@ -33,6 +33,14 @@ export class LoginComponent {
     })
   }
 
+  ngOnInit() {
+    this.spinner.show();
+
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 800);
+  }
+
   get email() {
     return this.validationForm.get('email');
   }
@@ -71,6 +79,7 @@ export class LoginComponent {
       });
     } else {
       this.errorMessage = 'Invalid Data';
+      this.spinner.hide();
     }
 
     setInterval(() => {
@@ -130,6 +139,7 @@ export class LoginComponent {
       });
     } else {
       this.resetErrorMessage = 'Invalid Email Format';
+      this.spinner.hide();
     }
   }
 

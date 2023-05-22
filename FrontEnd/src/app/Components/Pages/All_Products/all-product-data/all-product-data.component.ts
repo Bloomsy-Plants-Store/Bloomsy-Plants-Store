@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ProductsService } from 'src/app/Services/products.service';
 
 @Component({
@@ -11,17 +12,19 @@ export class AllProductDataComponent implements OnInit {
   currentPage = 1; // Current page number
   itemsPerPage = 12; // Number of items to display per page
   totalItems=0;
-  constructor(private elementRef: ElementRef, public myService: ProductsService) { }
+  constructor(private elementRef: ElementRef, public myService: ProductsService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
-
+    this.spinner.show();
     this.myService.GetAllProducts().subscribe({
       next: (response: any) => {
         this.Products = response.data;
         this.totalItems= this.Products.length;
+        this.spinner.hide();
       },
       error: (err) => {
         console.log(err);
+        this.spinner.hide();
       }
     })
   }

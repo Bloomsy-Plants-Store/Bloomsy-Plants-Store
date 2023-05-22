@@ -15,10 +15,7 @@ export class AppComponent {
   isDashboardPage!: boolean;
   isCheckoutPage!: boolean
 
-  typeSelected!: string;
-
-  constructor(private router: Router, private spinnerService: NgxSpinnerService) {
-    this.typeSelected = 'ball-fussion';
+  constructor(private router: Router) {
     this.router.events.subscribe((val) => {
       this.isLoginPage = (this.router.url === '/login');
       this.isSignUpPage = (this.router.url === '/register');
@@ -28,11 +25,4 @@ export class AppComponent {
     });
   }
 
-  public showSpinner(): void {
-    this.spinnerService.show();
-
-    setTimeout(() => {
-      this.spinnerService.show();
-    }, 5000); 
-  }
 }
