@@ -10,7 +10,7 @@ var addToCart = async (req, res) => {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    let { product_id, quantity } = req.body;
+    let { product_id, quantity, price } = req.body;
 
     const product = await Product.findById(product_id);
     if (!product) {
@@ -25,6 +25,7 @@ var addToCart = async (req, res) => {
     const cartItem = {
       product_id: product_id,
       quantity: quantity,
+      price:price
     }
     user.cart.push(cartItem);
     await user.save();
