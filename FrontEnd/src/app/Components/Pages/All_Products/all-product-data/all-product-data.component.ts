@@ -37,11 +37,15 @@ export class AllProductDataComponent implements OnInit {
 
   // add product to cart
   addProductToCart(id:any) {
+    this.spinner.show();
     let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
     this.myCartService.addProductToCart(userId, id).subscribe({
-      next: (response: any) => { },
+      next: (response: any) => {
+        this.spinner.hide();
+      },
       error: (err:any) => {
         console.log(err);
+        this.spinner.hide();
       }
     });
 
