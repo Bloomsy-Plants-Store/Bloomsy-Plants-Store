@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Router } from '@angular/router';
 import * as bootstrap from 'bootstrap';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ export class RegisterComponent {
   errorMessage = '';
   successMessage ='';
 
-  constructor(private fb: FormBuilder, private authService: AuthService,private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService,private router: Router, private spinner: NgxSpinnerService) {
     this.validationForm = this.fb.group({
       name: [
         '',
@@ -34,6 +35,14 @@ export class RegisterComponent {
         [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/)],
       ],
     });
+  }
+
+  ngOnInit() {
+    this.spinner.show();
+
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 800);
   }
 
   get name() {
@@ -58,6 +67,7 @@ export class RegisterComponent {
   }
 
   register(name: any, email: any, phone: any, password: any): void {
+    this.spinner.show();
     if (this.validationForm.valid) {
       this.authService
         .register(name.value, email.value, phone.value, password.value)
@@ -65,6 +75,7 @@ export class RegisterComponent {
           next: (response:any) => {
             this.errorMessage = '';
             this.showModal();
+            this.spinner.hide();
           },
           error: (err:any) => {
             if(err.status == 400){
@@ -72,10 +83,12 @@ export class RegisterComponent {
             }else{
               this.errorMessage = 'Registration Failed,Please Try Again';
             }
+            this.spinner.hide();
           },
         });
     }else {
       this.errorMessage = 'Invalid Data,Please Try Again';
+      this.spinner.hide();
     }
     setInterval(() => {
       this.errorMessage = '';
@@ -83,7 +96,9 @@ export class RegisterComponent {
   }
 
   redirectToLogin() {
+    this.spinner.show();
     this.router.navigate(['/login']);
+    this.spinner.hide();
   }
 
 }
