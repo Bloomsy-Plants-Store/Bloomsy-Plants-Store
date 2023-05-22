@@ -49,7 +49,7 @@
             class="overlay col-12 d-flex justify-content-center align-items-end gap-3"
             [style.backgroundImage]="'url(' + product.imageUrl[1] + ')'"
           >
-            <button data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Cart" (click)="addProductToCart(product._id)">
+            <button data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Cart" (click)="addProductToCart(product._id, product.price);">
               <i
                 class="fi fi-rs-shopping-bag d-flex justify-content-center align-items-center"
               ></i>

@@ -58,14 +58,15 @@ export class SampleProductsComponent implements OnInit {
 
 
    // add product to cart
-  addProductToCart(id: any) {
+   addProductToCart(id:any, price:any) {
     let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
-    this.myCartService.addProductToCart(userId, id).subscribe({
+    this.myCartService.addProductToCart(userId, id,price).subscribe({
       next: (response: any) => { },
-      error: (err: any) => {
+      error: (err:any) => {
         console.log(err);
       }
     });
+
   }
 
 }
