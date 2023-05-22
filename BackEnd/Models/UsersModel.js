@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const cartSchema = require("./CartModel"); 
+const orderSchema = require("./OrderModel"); 
 const config=require("../config.json")
 var DB_URL =config.MONGODBURL;
 var validator = require("validator");
@@ -56,6 +57,10 @@ let UsersSchema = new mongoose.Schema({
     },
     cart:  {
         type: [cartSchema],
+        default: []
+    },
+    orders:  {
+        type: [orderSchema],
         default: []
     },
     status: {

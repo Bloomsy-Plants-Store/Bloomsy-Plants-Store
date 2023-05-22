@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
 body {
   margin: 0;
   padding: 0;
-  font-family: "Poppins", Sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.7;
@@ -78,3 +79,4 @@ body {
     transform: rotate(360deg);
   }
 }
+

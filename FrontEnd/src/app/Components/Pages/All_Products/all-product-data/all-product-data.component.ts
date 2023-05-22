@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ProductsService } from 'src/app/Services/products.service';
+import { CartService } from 'src/app/Services/cart.service';
 
 @Component({
   selector: 'app-all-product-data',
@@ -12,13 +13,14 @@ export class AllProductDataComponent implements OnInit {
   currentPage = 1; // Current page number
   itemsPerPage = 12; // Number of items to display per page
   totalItems=0;
-  constructor(private elementRef: ElementRef, public myService: ProductsService, private spinner: NgxSpinnerService) { }
+  constructor(private elementRef: ElementRef, public myService: ProductsService, public myCartService:CartService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.spinner.show();
     this.myService.GetAllProducts().subscribe({
       next: (response: any) => {
         this.Products = response.data;
+        console.log(this.Products);
         this.totalItems= this.Products.length;
         this.spinner.hide();
       },
@@ -31,5 +33,17 @@ export class AllProductDataComponent implements OnInit {
   getUpperBound(): number {
     const upperBound = (this.currentPage - 1) * this.itemsPerPage + this.itemsPerPage;
     return Math.min(upperBound, this.totalItems);
+  }
+
+  // add product to cart
+  addProductToCart(id:any) {
+    let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
+    this.myCartService.addProductToCart(userId, id).subscribe({
+      next: (response: any) => { },
+      error: (err:any) => {
+        console.log(err);
+      }
+    });
+
   }
 }

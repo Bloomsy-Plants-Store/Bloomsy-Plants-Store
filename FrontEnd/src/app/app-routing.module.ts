@@ -10,7 +10,7 @@ import { CheckoutComponent } from './Components/Pages/checkout/checkout.componen
 import { ProductDetailsPageComponent } from './Components/Pages/product-details/product-details-page/product-details-page.component';
 import { DashboardPageComponent } from './Components/Dashboard/dashboard-page/dashboard-page.component';
 import { AboutUsPageComponent } from './Components/Pages/about-us/about-us-page/about-us-page.component';
-
+import {CartHomeComponent} from './Components/Pages/cart/cart-home/cart-home.component'
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -21,8 +21,9 @@ const routes: Routes = [
   { path: 'products', component: ALlProductsComponent},
   {path: 'checkout', component: CheckoutComponent},
   { path: 'reset-password', component: ResetPasswordComponent},
-  {path: 'product-details', component:ProductDetailsPageComponent},
-  { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)}
+  {path: 'product/:id', component:ProductDetailsPageComponent},
+  { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
+  { path: 'cart' , component: CartHomeComponent}
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

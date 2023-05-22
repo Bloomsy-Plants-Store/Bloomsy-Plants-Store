@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ProductsService } from 'src/app/Services/products.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { CartService } from 'src/app/Services/cart.service';
 import * as bootstrap from 'bootstrap';
 
 
@@ -15,7 +16,7 @@ export class SampleProductsComponent implements OnInit {
   bestSellingProducts: any;
   activeFilter: any = null;
 
-  constructor(private elementRef: ElementRef, public myService: ProductsService,private spinner: NgxSpinnerService) { }
+  constructor(private elementRef: ElementRef, public myService: ProductsService,private spinner: NgxSpinnerService, public myCartService :CartService) { }
 
   ngOnInit(): void {
     this.spinner.show();
@@ -34,9 +35,11 @@ export class SampleProductsComponent implements OnInit {
     this.myService.GetBestSelling().subscribe({
       next: (response: any) => {
         this.bestSellingProducts = response.data;
+        this.spinner.hide();
       },
       error: (err) => {
         console.log(err);
+        this.spinner.hide();
       }
     })
 
@@ -62,4 +65,21 @@ export class SampleProductsComponent implements OnInit {
     this.spinner.hide();
 
   }
+
+
+   // add product to cart
+  addProductToCart(id: any) {
+    this.spinner.show();
+    let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
+    this.myCartService.addProductToCart(userId, id).subscribe({
+      next: (response: any) => {
+        this.spinner.hide();
+      },
+      error: (err: any) => {
+        console.log(err);
+        this.spinner.hide();
+      }
+    });
+  }
+
 }
