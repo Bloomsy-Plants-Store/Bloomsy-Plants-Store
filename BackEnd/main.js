@@ -85,6 +85,9 @@ app.use('/api/products', productsRoutes);
 const cartRoutes = require('./Routes/CartRoutes');
 app.use('/users', cartRoutes);
 
+// Order Route
+const orderRouted = require('./Routes/OrderRoutes');
+app.use('/user/order', orderRouted);
 
 
 
