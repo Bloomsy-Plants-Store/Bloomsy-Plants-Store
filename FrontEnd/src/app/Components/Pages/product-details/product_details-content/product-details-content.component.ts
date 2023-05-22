@@ -3,6 +3,7 @@ import { CarouselComponent } from 'ngx-owl-carousel-o';
 import { ProductsService } from 'src/app/Services/products.service';
 import { CartService } from 'src/app/Services/cart.service';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-product-details-content',
@@ -18,12 +19,13 @@ export class ProductDetailsComponent {
   constructor(private elementRef: ElementRef,
     public productService: ProductsService,
     public cartService:CartService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private spinner: NgxSpinnerService) { }
 
   @ViewChild('carousel') carousel?: CarouselComponent;
 
-
   ngOnInit(): void {
+    this.spinner.show();
     this.route.params.subscribe((params) => {
       const productId = params['id'];
 
@@ -31,21 +33,27 @@ export class ProductDetailsComponent {
         next: (response: any) => {
           this.Product = response.data;
           console.log(this.Product);
+          this.spinner.hide();
         },
         error: (err:any) => {
           console.log(err);
+          this.spinner.hide();
         }
       });
     });
   }
 
   addProductToCart(id: any,itemQuantity:number) {
+    this.spinner.show();
     console.log(itemQuantity);
     let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
     this.cartService.addProductToCart(userId, id,itemQuantity).subscribe({
-      next: (response: any) => { },
+      next: (response: any) => {
+        this.spinner.hide();
+      },
       error: (err: any) => {
         console.log(err);
+        this.spinner.hide();
       }
     });
   }

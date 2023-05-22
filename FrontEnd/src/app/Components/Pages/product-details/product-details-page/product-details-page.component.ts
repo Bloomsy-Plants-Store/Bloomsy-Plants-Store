@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-product-details-page',
@@ -6,5 +7,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-details-page.component.css']
 })
 export class ProductDetailsPageComponent {
-
 }
