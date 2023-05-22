@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductsService } from '../../../Services/products.service';
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-all-products-table-pagination',
@@ -23,7 +24,7 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
   oldCategory:any = [];
   oldImages:any = [];
 
-  constructor(private productsService: ProductsService,private changeDetectorRef: ChangeDetectorRef, private fb: FormBuilder) {
+  constructor(private productsService: ProductsService,private changeDetectorRef: ChangeDetectorRef, private fb: FormBuilder, private spinner: NgxSpinnerService) {
     this.editProductForm = this.fb.group({
       productName: new FormControl('',[Validators.required]),
       productDesc: new FormControl('',[Validators.required]),
@@ -59,6 +60,14 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
     return this.editProductForm.get('productImages');
   }
 
+  ngOnInit() {
+    this.spinner.show();
+
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 800);
+  }
+  
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.fetchAllProducts();
@@ -66,16 +75,20 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
 
   async fetchAllProducts() {
     try {
+      this.spinner.show();
       const data: any = await this.productsService.GetAllProducts().toPromise();
       this.dataSource.data = data.data;
       console.log('After assignment:', this.dataSource.data );
       this.changeDetectorRef.detectChanges();
+      this.spinner.hide();
     } catch (error) {
       console.log('Error fetching products:', error);
+      this.spinner.hide();
     }
   }
 
   editElement(element: PeriodicElement) {
+    this.spinner.show();
     const productId = element._id;
     this.productsService.GetProductByID(productId).subscribe({
       next: (product: any) => {
@@ -91,14 +104,17 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
         });
         this.editProductID = productId;
         this.oldCategory = [];
+        this.spinner.hide();
       },
       error: (err:any) => {
-        console.log(err)
+        console.log(err);
+        this.spinner.hide();
       },
     });
   }
 
   updateProduct(){
+    this.spinner.show();
     if (this.editProductForm.valid) {
 
       this.oldCategory.push(...this.productCategory?.value);
@@ -106,18 +122,21 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
       for (let i = 0; i < this.oldImages.length; i++) {
         this.editProductForm.value.productImages.push(this.oldImages[i]);
       }
-      
+
       this.productsService.UpdateProduct(this.editProductID, this.editProductForm.value).subscribe({
         next:(response) => {
           console.log(response);
+          this.spinner.hide();
         },
         error:(err) => {
           console.error(err);
+          this.spinner.hide();
         }
       })
 
     }else {
       console.log('Invalid Data Format,Please Try Again');
+      this.spinner.hide();
     }
   }
 
