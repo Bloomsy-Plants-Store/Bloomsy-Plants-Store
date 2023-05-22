@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductsService } from '../../../Services/products.service';
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
+import { connectable } from 'rxjs';
 
 @Component({
   selector: 'app-all-products-table-pagination',
@@ -98,16 +99,32 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
     });
   }
 
-  updateProduct(){
+  async updateProduct(){
     if (this.editProductForm.valid) {
+      const formData = new FormData();
+      const files = this.editProductForm.get('productImages')?.value;
 
-      this.oldCategory.push(...this.productCategory?.value);
-
-      for (let i = 0; i < this.oldImages.length; i++) {
-        this.editProductForm.value.productImages.push(this.oldImages[i]);
+      for (let i = 0; i < files.length; i++) {
+        formData.append('imageUrl', files[i]);
       }
-      
-      this.productsService.UpdateProduct(this.editProductID, this.editProductForm.value).subscribe({
+
+      formData.append('name', this.editProductForm.get('productName')?.value);
+      formData.append('description', this.editProductForm.get('productDesc')?.value);
+      formData.append('price', this.editProductForm.get('productPrice')?.value);
+
+      let category = this.editProductForm.get('productCategory')?.value;
+      for (let i = 0; i < category.length; i++) {
+        formData.append('category', category[i]);
+      }
+
+      formData.append('itemsinStock', this.editProductForm.get('productItemsInStock')?.value);
+      formData.append('discount', this.editProductForm.get('productDiscount')?.value);
+
+
+      // this.oldCategory.push(...this.productCategory?.value);
+
+
+      this.productsService.UpdateProduct(this.editProductID, formData).subscribe({
         next:(response) => {
           console.log(response);
         },
@@ -125,8 +142,9 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
     const files = event.target.files;
     const fileArray = Array.from(files);
 
+    let productImagesControl = this.editProductForm.get('productImages') as FormArray;
     for (let i = 0; i < fileArray.length; i++) {
-      this.oldImages.push(new FormControl(fileArray[i]));
+      productImagesControl.push(new FormControl(fileArray[i]));
     }
   }
 
