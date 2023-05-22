@@ -65,7 +65,7 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
 
     setTimeout(() => {
       this.spinner.hide();
-    }, 800);
+    }, 1000);
   }
   
   ngAfterViewInit() {
