@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ProductsService } from 'src/app/Services/products.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class DashboardAllProductsComponent {
   successMessage = '';
   formErrorMessage = ''
 
-  constructor(private formBuilder: FormBuilder, private productService: ProductsService) {
+  constructor(private formBuilder: FormBuilder, private productService: ProductsService, private spinner: NgxSpinnerService) {
     this.productForm = this.formBuilder.group({
       name: [
         '',
@@ -24,10 +25,10 @@ export class DashboardAllProductsComponent {
         [Validators.required],
       ],
       price:[
-        '', 
+        '',
         [Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]
       ],
-      discount: ['', 
+      discount: ['',
       [Validators.required, Validators.pattern(/^[0-9]+$/)]
       ],
       itemsinStock:['', [Validators.required, Validators.pattern(/^[1-9][0-9]*$/)]],
@@ -35,7 +36,6 @@ export class DashboardAllProductsComponent {
       imageUrl: this.formBuilder.array([],Validators.required),
     });
   }
-
 
   get name() {
     return this.productForm.get('name');
@@ -64,9 +64,9 @@ export class DashboardAllProductsComponent {
   get imageUrl() {
     return this.productForm.get('imageUrl');
   }
-  
 
   onSubmit() {
+    this.spinner.show();
     if (this.productForm.valid) {
       const formData = new FormData();
       const files = this.productForm.get('imageUrl')?.value;
@@ -97,16 +97,19 @@ export class DashboardAllProductsComponent {
         }, 7000);
         console.log(response);
           console.log(this.successMessage);
+          this.spinner.hide();
         },
         (error) => {
           if(error.status == 500){
             this.formErrorMessage = ''
             this.errorMessage = 'Error in uploading product';
           }
+          this.spinner.hide();
         }
       );
     }else {
       this.formErrorMessage = 'Invalid Data, Please Enter all fields';
+      this.spinner.hide();
     }
   }
 
