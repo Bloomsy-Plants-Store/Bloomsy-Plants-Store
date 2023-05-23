@@ -117,8 +117,22 @@ var reduceStockNoOfItems = async (products, session) => {
 };
 
 
+var getOrderByID = async(req,res)=>{
+  try {
+    let id = req.params.id;
+    let user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+   }
+    return res.status(200).json({ orders: user.orders });
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({ error: 'Server Error' });
+  }
+}
+
 module.exports = {
   addOrder,
-
+  getOrderByID
 };
 

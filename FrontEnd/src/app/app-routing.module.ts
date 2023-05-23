@@ -11,6 +11,7 @@ import { ProductDetailsPageComponent } from './Components/Pages/product-details/
 import { DashboardPageComponent } from './Components/Dashboard/dashboard-page/dashboard-page.component';
 import { AboutUsPageComponent } from './Components/Pages/about-us/about-us-page/about-us-page.component';
 import {CartHomeComponent} from './Components/Pages/cart/cart-home/cart-home.component'
+import { ProfileComponent } from './Components/Pages/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'reset-password', component: ResetPasswordComponent},
   {path: 'product/:id', component:ProductDetailsPageComponent},
   { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
-  { path: 'cart' , component: CartHomeComponent}
+  { path: 'cart' , component: CartHomeComponent},
+  { path: 'profile' , component: ProfileComponent}
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
