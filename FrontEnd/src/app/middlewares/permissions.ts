@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 
 export class AdminGuard implements CanActivateChild {
-
+  errorMessage:any;
   constructor(private router: Router) {}
 
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot):
@@ -15,10 +15,10 @@ export class AdminGuard implements CanActivateChild {
     const isAdmin = JSON.parse(localStorage.getItem('access_token')!).adminRole;
 
     if (!isAdmin) {
-      console.log('Access denied: User is not an admin');
       this.router.navigate(['/']);
       return false;
     }
+
     return true;
   }
 
