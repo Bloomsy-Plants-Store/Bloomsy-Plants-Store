@@ -1,0 +1,240 @@
+<!-- Page content -->
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col-xl-4 order-xl-1 mb-5 mb-xl-0">
+            <div class="card card-profile shadow-lg rounded-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-3 order-lg-2">
+                        <div class="card-profile-image">
+                            <a href="#">
+                                <img src="https://img.freepik.com/premium-vector/happy-people-hold-pots-with-plants-vector-illustration_131454-319.jpg?w=740"
+                                    class="rounded-circle">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="text-center" style="margin-top: 155px;">
+                        <h3>
+                            Omnia Goher
+                        </h3>
+                        <hr class="mt-5">
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card-profile-stats d-flex justify-content-center">
+                                <div>
+                                    <span class="heading">22</span>
+                                    <span class="description">Orders</span>
+                                </div>
+                                <div>
+                                    <span class="heading">10</span>
+                                    <span class="description">Favorite</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8 order-xl-2">
+            <div class="card shadow-lg rounded-5">
+                <div class="card-body p-3 " style="min-height: 600px;">
+                    <div class="card-text">
+                        <ul class="nav nav-tabs mb-3" id="ex-with-icons" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="ex-with-icons-tab-1" data-mdb-toggle="tab"
+                                    href="#ex-with-icons-tabs-1" role="tab" aria-controls="ex-with-icons-tabs-1"
+                                    aria-selected="true"><i class="fas fa-chart-pie fa-fw me-2"></i>Orders</a>
+                            </li>
+                            <li class="nav-item" role="presentation" (click)="handleFavorite()">
+                                <a class="nav-link" id="ex-with-icons-tab-2" data-mdb-toggle="tab"
+                                    href="#ex-with-icons-tabs-2" role="tab" aria-controls="ex-with-icons-tabs-2"
+                                    aria-selected="false"><i class="fas fa-star fa-fw me-2"></i>Favorite</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="ex-with-icons-content">
+                            <div class="tab-pane fade show active my-5 px-4" id="ex-with-icons-tabs-1" role="tabpanel"
+                                aria-labelledby="ex-with-icons-tab-1">
+                                <div class="sample-products d-flex justify-content-center my-1">
+                                    <div class="row col-12 d-flex justify-content-evenly">
+                                        <div class="col-10 col-md-3 col-lg-3 border-white mb-3"
+                                            *ngFor="let product of Products | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
+                                            (click)="changeTabContent(product)">
+                                            <!--Image Section-->
+
+                                            <div class="image-container">
+                                                <div class="container col-12 row row-cols-2">
+                                                    <img class="col p-0" src="{{ product.imageUrl[0] }}"
+                                                        alt="{{ product.name }}.jpg" />
+                                                    <img class="col p-0" src="{{ product.imageUrl[1] }}"
+                                                        alt="{{ product.name }}.jpg" />
+                                                    <img class="col p-0" src="{{ product.imageUrl[0] }}"
+                                                        alt="{{ product.name }}.jpg" />
+                                                    <img class="col p-0" src="{{ product.imageUrl[1] }}"
+                                                        alt="{{ product.name }}.jpg" />
+                                                </div>
+
+                                                <div class="voucher w-100 px-3">
+                                                    <div class="discount bg-success text-white w-auto px-2">
+                                                        Items: 5
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!--Title and Price Section-->
+                                            <div class="title-price-section d-flex justify-content-between my-2">
+                                                <span class="title-section">
+                                                    <span>ORDER 1</span>
+                                                </span>
+                                                <span class="price-section">
+                                                    <span class="me-2">Total : $ 100</span>
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4 text-center mx-auto">
+                                    <pagination-controls (pageChange)="currentPage= $event"></pagination-controls>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade show active mt-4 mb-5 px-4-" id="ex-with-icons-tabs-4"
+                                role="tabpanel" aria-labelledby="ex-with-icons-tab-4">
+                                <div *ngIf="selectedProduct" class="selected-product-details">
+                                    <a class="link mt-4" (click)="returnTabContent()">
+                                        <span class="link__arrow">
+                                            <span></span>
+                                            <span></span>
+                                        </span>
+                                        <span class="link__line"></span>
+                                        <span class="link__text">Back</span>
+                                    </a>
+                                    <div class="container receipt pb-0">
+
+                                        <!-- Details -->
+                                        <div class="details">
+                                            <h2 class="text-center mb-5">ORDER DETAILS</h2>
+                                            <div class="row product d-flex mb-4">
+                                                <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/12-8.jpg"
+                                                    alt="" class="mr-3 col-6 rounded-5" style="max-height: 150px;">
+                                                <div class="info col-6">
+                                                    <h4>name</h4>
+                                                    <p>Category: Mercine</p>
+                                                    <p>Qty: 1</p>
+                                                    <p class="">128 $</p>
+                                                </div>
+                                            </div>
+                                            <div class="row product d-flex mb-4">
+                                                <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/12-8.jpg"
+                                                    alt="" class="mr-3 col-6 rounded-5" style="max-height: 150px;">
+                                                <div class="info col-6">
+                                                    <h4>name</h4>
+                                                    <p>Category: Mercine</p>
+                                                    <p>Qty: 1</p>
+                                                    <p class="">128 $</p>
+                                                </div>
+                                            </div>
+                                            <div class="row product d-flex mb-4">
+                                                <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/12-8.jpg"
+                                                    alt="" class="mr-3 col-6 rounded-5" style="max-height: 150px;">
+                                                <div class="info col-6">
+                                                    <h4>name</h4>
+                                                    <p>Category: Mercine</p>
+                                                    <p>Qty: 1</p>
+                                                    <p class="">128 $</p>
+                                                </div>
+                                            </div>
+                                            <div class="row product d-flex mb-4">
+                                                <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/12-8.jpg"
+                                                    alt="" class="mr-3 col-6 rounded-5" style="max-height: 150px;">
+                                                <div class="info col-6">
+                                                    <h4>name</h4>
+                                                    <p>Category: Mercine</p>
+                                                    <p>Qty: 1</p>
+                                                    <p class="">128 $</p>
+                                                </div>
+                                            </div>
+                                            <div class="row product d-flex mb-4">
+                                                <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/12-8.jpg"
+                                                    alt="" class="mr-3 col-6 rounded-5" style="max-height: 150px;">
+                                                <div class="info col-6">
+                                                    <h4>name</h4>
+                                                    <p>Category: Mercine</p>
+                                                    <p>Qty: 1</p>
+                                                    <p class="">128 $</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex flex-column align-items-end totalprice mt-5">
+                                                <p class=" sub">Subtotal 120 $</p>
+                                                <p class=" del">Delivery 10 $</p>
+                                                <hr>
+                                                <p class=" tot">Total 138 $</p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade mt-5 mb-5 px-4" id="ex-with-icons-tabs-2" role="tabpanel"
+                                aria-labelledby="ex-with-icons-tab-2">
+                                <div class="sample-products d-flex justify-content-center my-1">
+                                    <div class="row col-12 d-flex justify-content-evenly">
+                                        <div class="col-10 col-md-3 col-lg-4 border-white mb-3"
+                                            *ngFor="let product of Products | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
+                                            (click)="changeTabContent(product)">
+                                            <!--Image Section-->
+
+                                            <div class="image-container">
+                                                <img class="col-12 rounded-4" src="{{ product.imageUrl[0] }}"
+                                                    alt="{{ product.name }}.jpg" />
+                                                <div class="overlay col-12 d-flex justify-content-center align-items-end gap-3"
+                                                    [style.backgroundImage]="'url(' + product.imageUrl[1] + ')'">
+                                                    <button data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Add to Cart" (click)="addProductToCart(product._id);">
+                                                        <i
+                                                            class="fi fi-rs-shopping-bag d-flex justify-content-center align-items-center"></i>
+                                                    </button>
+                                                    <button data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Wishlist">
+                                                        <i
+                                                            class="fi fi-rs-heart d-flex justify-content-center align-items-center"></i>
+                                                    </button>
+                                                    <button routerLink="/product/{{ product._id }}"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Quick Search">
+                                                        <i
+                                                            class="fi fi-rs-search d-flex justify-content-center align-items-center"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!--Title and Price Section-->
+                                            <div class="title-price-section d-flex justify-content-between my-2">
+                                                <span class="title-section">
+                                                    <span>{{product.name}}</span>
+                                                </span>
+                                                <span class="price-section">
+                                                    <span class="me-2">$ {{product.price}}</span>
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4 text-center mx-auto">
+                                    <pagination-controls (pageChange)="currentPage= $event"></pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
