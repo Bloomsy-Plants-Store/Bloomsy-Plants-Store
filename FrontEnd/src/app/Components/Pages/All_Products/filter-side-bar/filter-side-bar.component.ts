@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { LabelType, Options } from '@angular-slider/ngx-slider';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-filter-side-bar',
   templateUrl: './filter-side-bar.component.html',
@@ -12,6 +13,8 @@ export class FilterSideBarComponent {
   maxValue: number = 750;
   selectedOption: string | undefined;
   sortOptions: string[] = ['Default sorting','Sort by average rating', 'Sort by price: low to high', 'Sort by price: high to low'];
+
+  constructor(private spinner: NgxSpinnerService) {}
 
   options: Options = {
     floor: 100,  //the minimum value of the slider
@@ -31,18 +34,23 @@ export class FilterSideBarComponent {
   sidenav!: MatSidenav;
 
   openSidenav() {
+    this.spinner.show();
     this.sidenav.open();
+    this.spinner.hide();
   }
 
   closeSidenav() {
+    this.spinner.show();
     this.sidenav.close();
+    this.spinner.hide();
   }
 
 
   onOptionSelected(option: string) {
-    this.selectedOption = option;
+    this.spinner.show();
     // Perform sorting logic or other actions based on the selected option
     console.log('Selected Option:', this.selectedOption);
+    this.spinner.hide();
   }
   categories = [
     {

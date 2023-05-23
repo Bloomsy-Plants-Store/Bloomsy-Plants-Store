@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -52,6 +53,9 @@ import { ProfileComponent } from './Components/Pages/profile/profile.component';
 import { ProfileHeaderComponent } from './Components/Pages/profile/profile-header/profile-header.component';
 import { ProfileContentComponent } from './Components/Pages/profile/profile-content/profile-content.component';
 
+interface NgxSpinnerConfig {
+  type?: string;
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -109,7 +113,9 @@ import { ProfileContentComponent } from './Components/Pages/profile/profile-cont
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
+    NgxSpinnerModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })

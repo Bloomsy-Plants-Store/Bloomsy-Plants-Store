@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-contact-us-page',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./contact-us-page.component.css']
 })
 export class ContactUsPageComponent {
+  constructor(private spinner: NgxSpinnerService) {}
+  ngOnInit() {
+    this.spinner.show();
 
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 3000);
+  }
 }
