@@ -89,6 +89,10 @@ app.use('/users', cartRoutes);
 const orderRouted = require('./Routes/OrderRoutes');
 app.use('/user/order', orderRouted);
 
+// Favourites Route
+const favouritesRoutes = require('./Routes/FavouritesRoutes');
+app.use('/users', favouritesRoutes);
+
 
 
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})

@@ -49,6 +49,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
+import { ProfileComponent } from './Components/Pages/profile/profile.component';
+import { ProfileHeaderComponent } from './Components/Pages/profile/profile-header/profile-header.component';
+import { ProfileContentComponent } from './Components/Pages/profile/profile-content/profile-content.component';
 
 interface NgxSpinnerConfig {
   type?: string;
@@ -89,6 +92,9 @@ interface NgxSpinnerConfig {
     CartHeaderComponent,
     CartDetailsComponent,
     CartHomeComponent,
+    ProfileComponent,
+    ProfileHeaderComponent,
+    ProfileContentComponent,
   ],
   imports: [
     BrowserModule,
