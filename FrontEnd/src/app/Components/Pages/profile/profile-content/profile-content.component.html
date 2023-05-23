@@ -24,7 +24,7 @@
                         <div class="col">
                             <div class="card-profile-stats d-flex justify-content-center">
                                 <div>
-                                    <span class="heading">22</span>
+                                    <span class="heading">{{ordersNumber}}</span>
                                     <span class="description">Orders</span>
                                 </div>
                                 <div>
@@ -60,40 +60,28 @@
                                 <div class="sample-products d-flex justify-content-center my-1">
                                     <div class="row col-12 d-flex justify-content-evenly">
                                         <div class="col-10 col-md-3 col-lg-3 border-white mb-3"
-                                            *ngFor="let product of Products | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
-                                            (click)="changeTabContent(product)">
-                                            <!--Image Section-->
-
+                                            *ngFor="let order of customOrders | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage };let i = index"
+                                            (click)="changeTabContent(order)">
                                             <div class="image-container">
-                                                <div class="container col-12 row row-cols-2">
-                                                    <img class="col p-0" src="{{ product.imageUrl[0] }}"
-                                                        alt="{{ product.name }}.jpg" />
-                                                    <img class="col p-0" src="{{ product.imageUrl[1] }}"
-                                                        alt="{{ product.name }}.jpg" />
-                                                    <img class="col p-0" src="{{ product.imageUrl[0] }}"
-                                                        alt="{{ product.name }}.jpg" />
-                                                    <img class="col p-0" src="{{ product.imageUrl[1] }}"
-                                                        alt="{{ product.name }}.jpg" />
+                                                <div class="container col-12 row row-cols-2" style="height: 180px;">
+                                                    <img class="col p-0"
+                                                        *ngFor="let image of order.imageUrl.slice(0, 2)" src="{{image}}"
+                                                        alt=".jpg" />
                                                 </div>
-
                                                 <div class="voucher w-100 px-3">
                                                     <div class="discount bg-success text-white w-auto px-2">
-                                                        Items: 5
+                                                        Items: {{order.items}}
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <!--Title and Price Section-->
                                             <div class="title-price-section d-flex justify-content-between my-2">
                                                 <span class="title-section">
-                                                    <span>ORDER 1</span>
+                                                    <span>ORDER {{i+1}}</span>
                                                 </span>
                                                 <span class="price-section">
-                                                    <span class="me-2">Total : $ 100</span>
+                                                    <span class="me-2">Total : $ {{order?.total_price}}</span>
                                                 </span>
-
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -103,7 +91,7 @@
                             </div>
                             <div class="tab-pane fade show active mt-4 mb-5 px-4-" id="ex-with-icons-tabs-4"
                                 role="tabpanel" aria-labelledby="ex-with-icons-tab-4">
-                                <div *ngIf="selectedProduct" class="selected-product-details">
+                                <div *ngIf="selectedOrder" class="selected-product-details">
                                     <a class="link mt-4" (click)="returnTabContent()">
                                         <span class="link__arrow">
                                             <span></span>
@@ -113,65 +101,25 @@
                                         <span class="link__text">Back</span>
                                     </a>
                                     <div class="container receipt pb-0">
-
-                                        <!-- Details -->
                                         <div class="details">
                                             <h2 class="text-center mb-5">ORDER DETAILS</h2>
-                                            <div class="row product d-flex mb-4">
-                                                <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/12-8.jpg"
-                                                    alt="" class="mr-3 col-6 rounded-5" style="max-height: 150px;">
+                                            <div class="row product d-flex mb-4"
+                                                *ngFor="let product of clickedOrderProducts">
+                                                <img src="{{product.imageUrl[0]}}" alt="" class="mr-3 col-6 col-sm-12 rounded-5"
+                                                    style="max-height: 150px; background-repeat: no-repeat;">
                                                 <div class="info col-6">
-                                                    <h4>name</h4>
-                                                    <p>Category: Mercine</p>
-                                                    <p>Qty: 1</p>
-                                                    <p class="">128 $</p>
-                                                </div>
-                                            </div>
-                                            <div class="row product d-flex mb-4">
-                                                <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/12-8.jpg"
-                                                    alt="" class="mr-3 col-6 rounded-5" style="max-height: 150px;">
-                                                <div class="info col-6">
-                                                    <h4>name</h4>
-                                                    <p>Category: Mercine</p>
-                                                    <p>Qty: 1</p>
-                                                    <p class="">128 $</p>
-                                                </div>
-                                            </div>
-                                            <div class="row product d-flex mb-4">
-                                                <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/12-8.jpg"
-                                                    alt="" class="mr-3 col-6 rounded-5" style="max-height: 150px;">
-                                                <div class="info col-6">
-                                                    <h4>name</h4>
-                                                    <p>Category: Mercine</p>
-                                                    <p>Qty: 1</p>
-                                                    <p class="">128 $</p>
-                                                </div>
-                                            </div>
-                                            <div class="row product d-flex mb-4">
-                                                <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/12-8.jpg"
-                                                    alt="" class="mr-3 col-6 rounded-5" style="max-height: 150px;">
-                                                <div class="info col-6">
-                                                    <h4>name</h4>
-                                                    <p>Category: Mercine</p>
-                                                    <p>Qty: 1</p>
-                                                    <p class="">128 $</p>
-                                                </div>
-                                            </div>
-                                            <div class="row product d-flex mb-4">
-                                                <img src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2020/12/12-8.jpg"
-                                                    alt="" class="mr-3 col-6 rounded-5" style="max-height: 150px;">
-                                                <div class="info col-6">
-                                                    <h4>name</h4>
-                                                    <p>Category: Mercine</p>
-                                                    <p>Qty: 1</p>
-                                                    <p class="">128 $</p>
+                                                    <h4>{{product.name}}</h4>
+                                                    <p>Category: <span *ngFor="let category of product.category">
+                                                            {{category}}</span></p>
+                                                    <p>Qty: {{product.quantity}}</p>
+                                                    <p class="">{{product.price}} $</p>
                                                 </div>
                                             </div>
                                             <div class="d-flex flex-column align-items-end totalprice mt-5">
                                                 <p class=" sub">Subtotal 120 $</p>
                                                 <p class=" del">Delivery 10 $</p>
                                                 <hr>
-                                                <p class=" tot">Total 138 $</p>
+                                                <p class=" tot">Total {{clickedOrder['total_price']}} $</p>
                                             </div>
 
                                         </div>
@@ -183,10 +131,10 @@
                                 aria-labelledby="ex-with-icons-tab-2">
                                 <div class="sample-products d-flex justify-content-center my-1">
                                     <div class="row col-12 d-flex justify-content-evenly">
-                                        <div class="col-10 col-md-3 col-lg-4 border-white mb-3"
+                                        <!-- <div class="col-10 col-md-3 col-lg-4 border-white mb-3"
                                             *ngFor="let product of Products | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
                                             (click)="changeTabContent(product)">
-                                            <!--Image Section-->
+                                           
 
                                             <div class="image-container">
                                                 <img class="col-12 rounded-4" src="{{ product.imageUrl[0] }}"
@@ -194,7 +142,7 @@
                                                 <div class="overlay col-12 d-flex justify-content-center align-items-end gap-3"
                                                     [style.backgroundImage]="'url(' + product.imageUrl[1] + ')'">
                                                     <button data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Add to Cart" (click)="addProductToCart(product._id);">
+                                                        title="Add to Cart">
                                                         <i
                                                             class="fi fi-rs-shopping-bag d-flex justify-content-center align-items-center"></i>
                                                     </button>
@@ -212,7 +160,7 @@
                                                 </div>
                                             </div>
 
-                                            <!--Title and Price Section-->
+                                           
                                             <div class="title-price-section d-flex justify-content-between my-2">
                                                 <span class="title-section">
                                                     <span>{{product.name}}</span>
@@ -223,7 +171,7 @@
 
                                             </div>
 
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                                 <div class="mt-4 text-center mx-auto">

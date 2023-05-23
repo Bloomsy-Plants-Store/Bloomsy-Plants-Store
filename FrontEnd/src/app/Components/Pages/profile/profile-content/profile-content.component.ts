@@ -1,5 +1,6 @@
 
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { OrderService } from 'src/app/Services/order.service';
 import { ProductsService } from 'src/app/Services/products.service';
 import { CartService } from 'src/app/Services/cart.service';
 @Component({
@@ -8,20 +9,49 @@ import { CartService } from 'src/app/Services/cart.service';
   styleUrls: ['./profile-content.component.css']
 })
 export class ProfileContentComponent {
-  Products: any;
+  Orders: any;
+  ordersNumber: any
+  ordersProducts: any
+  customOrders: any[] = []
+  clickedOrderProducts: any[] = []
+  clickedOrder: { [key: string]: any } = {}
   currentPage = 1; // Current page number
   itemsPerPage = 12; // Number of items to display per page
-  totalItems=0;
-  selectedProduct: any;
-  constructor(private elementRef: ElementRef, public myService: ProductsService, public myCartService:CartService ) { }
+  totalItems = 0;
+  selectedOrder: any;
+  constructor(private elementRef: ElementRef, public orderService: OrderService,public productService: ProductsService, public myCartService: CartService) { }
 
   ngOnInit(): void {
-
-    this.myService.GetAllProducts().subscribe({
+    let accessToken = localStorage.getItem('access_token');
+    let userId: any | null = null;
+    let custom: { [key: string]: any } = {};
+    if (accessToken) {
+      userId = "6468d60f2ca3ca5964e4a8f7";
+    }
+    this.orderService.GetOrdersByUserID(userId).subscribe({
       next: (response: any) => {
-        this.Products = response.data;
-        console.log(this.Products);
-        this.totalItems= this.Products.length;
+        this.Orders = response.orders;
+        this.ordersNumber = this.Orders.length
+        this.totalItems = this.Orders.length;
+        this.Orders.forEach((element: Order) => {
+          let products = element.products
+          products.forEach(product=>{
+            this.productService.GetProductByID(product.product_id).subscribe({
+              next: (response: any) => {
+                custom['total_price'] = element.total_price
+                custom['_id'] = element._id
+                custom['items'] = element.products.length
+                custom['imageUrl'] = response.data.imageUrl
+                this.customOrders.push(custom)
+                console.log(this.customOrders);
+                custom = {}
+              },
+              error: (err) => {
+                console.log(err);
+              }
+            })
+          })
+        });
       },
       error: (err) => {
         console.log(err);
@@ -33,20 +63,31 @@ export class ProfileContentComponent {
     return Math.min(upperBound, this.totalItems);
   }
 
-  // add product to cart
-  addProductToCart(id:any) {
-    let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
-    this.myCartService.addProductToCart(userId, id).subscribe({
-      next: (response: any) => { },
-      error: (err:any) => {
-        console.log(err);
-      }
-    });
+  
 
-  }
 
-  changeTabContent(product: any) {
-    this.selectedProduct = product;
+  changeTabContent(order: any) {
+    this.clickedOrderProducts = []
+   this.clickedOrder =  (this.Orders).find((orderr: Order) =>{return orderr._id == order._id });
+   console.log(this.clickedOrder);
+   
+   let custom: { [key: string]: any } = {};
+   (this.clickedOrder['products']).forEach((product: any) => {
+    this.productService.GetProductByID(product.product_id).subscribe({
+        next: (response: any) => {
+          custom = response.data
+          custom['quantity'] = product.quantity
+          console.log(custom)
+          this.clickedOrderProducts.push(custom)
+          custom = {}
+        },
+        error: (err) => {
+          console.log(err);
+        }
+    })
+   
+  })
+    this.selectedOrder = order;
     const ordersTab = document.getElementById('ex-with-icons-tabs-1');
     const tab = document.getElementById('ex-with-icons-tabs-4');
     if (ordersTab) {
@@ -59,11 +100,18 @@ export class ProfileContentComponent {
     const tab = document.getElementById('ex-with-icons-tabs-4');
     if (ordersTab) {
       ordersTab.classList.add('show', 'active');
-      tab?.classList.remove("show","active")
+      tab?.classList.remove("show", "active")
     }
   }
-  handleFavorite(){
+  handleFavorite() {
     const tab = document.getElementById('ex-with-icons-tabs-4');
-    tab?.classList.remove("show","active")
+    tab?.classList.remove("show", "active")
   }
+}
+
+interface Order {
+  products: any[];
+  total_price: number;
+  _id: any;
+  // Other properties of the product
 }

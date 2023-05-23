@@ -312,7 +312,7 @@
 
   
 .receipt {
-    min-height: 720px;
+    
     background-color: white;
     padding: 20px;
 }
@@ -462,11 +462,11 @@ hr {
     text-transform: uppercase;
   }
   .link:hover .link__line:after {
-    animation: animation-line 0.5s forwards;
+    animation: animation-line 0.2s forwards;
   }
   .link:hover .link__arrow span:after {
-    animation: animation-arrow 0.5s forwards;
-    animation-delay: 0.5s;
+    animation: animation-arrow 0.2s forwards;
+    animation-delay: 0.3s;
   }
   
   @keyframes animation-line {
