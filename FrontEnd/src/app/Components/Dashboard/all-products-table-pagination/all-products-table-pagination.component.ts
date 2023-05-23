@@ -184,14 +184,14 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
       next: (response: any) => {
         console.log(response);
         this.fetchAllProducts();
-        this.successMessage='This product deleted Successfully.';
+        this.successMessage='This Product has been Deleted Successfully';
         setTimeout(() => {
           this.successMessage = "";
         }, 3000);
       },
       error: (err) => {
         console.log(err);
-        this.errorMessage = 'Deleting this product failed. Please try again.';
+        this.errorMessage = 'Deleting this product Failed. Please Try Again';
         setTimeout(() => {
           this.errorMessage = "";
         }, 3000);
