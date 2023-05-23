@@ -90,19 +90,17 @@ export class DashboardAllProductsComponent {
         (response) => {
           this.errorMessage = '';
           this.formErrorMessage = '';
-          this.successMessage='This product addedd Successfully.';
+          this.successMessage='This product has been Added Successfully';
           setTimeout(() => {
           this.successMessage = "";
           window.location.reload();
         }, 7000);
-        console.log(response);
-          console.log(this.successMessage);
           this.spinner.hide();
         },
         (error) => {
           if(error.status == 500){
             this.formErrorMessage = ''
-            this.errorMessage = 'Error in uploading product';
+            this.errorMessage = 'Error in Uploading Product Images';
           }
           this.spinner.hide();
         }
