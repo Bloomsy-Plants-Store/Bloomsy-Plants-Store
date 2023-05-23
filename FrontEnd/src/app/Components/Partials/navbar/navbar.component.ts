@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   nav!: HTMLElement;
   userName:any;
-  errorMessage:any;
+  errorMessage: any;
+  isAdmin:any ;
   constructor(private authService: AuthService, private router: Router ) { }
 
   ngOnInit() {
@@ -35,6 +36,19 @@ export class NavbarComponent {
       this.userName = null;
     }
     return this.userName;
+  }
+
+  getUserRole(): any {
+    const userRole = JSON.parse(localStorage.getItem('access_token')!).adminRole;
+    console.log('userRole:', userRole);
+
+    if (userRole === false) {
+      this.isAdmin = false;
+    } else {
+      this.isAdmin = true;
+    }
+    return this.isAdmin;
+
   }
 
   logout(): void {
