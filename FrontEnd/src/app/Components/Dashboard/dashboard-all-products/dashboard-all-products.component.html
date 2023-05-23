@@ -101,12 +101,12 @@
 <!--Add New Product Modal-->
 <div class="modal fade" id="addNewModal">
   <div
-    class="modal-dialog modal-confirm modal-dialog-centered modal-lg my-auto"
+    class="modal-dialog modal-confirm modal-dialog-centered modal-md my-auto"
   >
-    <div class="modal-content">
+    <div class="modal-content bg-white" [style.background]="'url(./assets/images/modal-bg.png) no-repeat top left'">
       <div class="modal-header">
-        <div class="d-flex flex-column justify-content-center w-100">
-          <h4 class="modal-title m-0">Add New Product</h4>
+        <div class="w-100">
+          <h2 class="modal-title text-center">Add New Product</h2>
         </div>
       </div>
       <div class="modal-body">
@@ -117,8 +117,7 @@
           enctype="multipart/form-data"
         >
           <div class="col-12 d-flex justify-content-between flex-wrap">
-            <div class="form-group my-2 col-12">
-              <label class="mb-2">Product Name</label>
+            <div class="form-group my-1 col-12">
               <input
                 type="text"
                 class="form-control w-100"
@@ -131,22 +130,22 @@
                   'is-valid': !name?.invalid && (name?.dirty || name?.touched)
                 }"
               />
-            </div>
-            <div
-              class="alert alert-danger text-danger p-0 text-start px-3"
+              <div
+              class="alert alert-danger text-danger p-0 text-start px-3 w-100"
               *ngIf="name?.invalid && (name?.dirty || name?.touched)"
-            >
-              <p style="font-size: small; margin: 0">
-                <small *ngIf="name?.errors?.['required']"
-                  >Name is required.</small
-                >
-                <small *ngIf="name?.errors?.['pattern']"
-                  >Name must be greater than 3.</small
-                >
-              </p>
+              >
+                <p style="font-size: small; margin: 0">
+                  <small *ngIf="name?.errors?.['required']"
+                    >Name is required.</small
+                  >
+                  <small *ngIf="name?.errors?.['pattern']"
+                    >Name must be greater than 3.</small
+                  >
+                </p>
+              </div>
             </div>
-            <div class="form-group my-2 col-12">
-              <label class="mb-2">Product Description</label>
+
+            <div class="form-group my-1 col-12">
               <textarea
                 type="text"
                 class="form-control"
@@ -179,8 +178,8 @@
                 </p>
               </div>
             </div>
-            <div class="form-group my-2 col-2">
-              <label class="mb-2">Product Price</label>
+
+            <div class="form-group my-1 col-2">
               <input
                 type="number"
                 class="form-control w-100"
@@ -209,8 +208,8 @@
                 </p>
               </div>
             </div>
-            <div class="form-group my-2 col-3">
-              <label class="mb-2">Product Discount</label>
+
+            <div class="form-group my-1 col-3">
               <input
                 type="number"
                 class="form-control w-100"
@@ -241,8 +240,8 @@
                 </p>
               </div>
             </div>
-            <div class="form-group my-2 col-6">
-              <label class="mb-2">Product in Stock</label>
+
+            <div class="form-group my-1 col-6">
               <input
                 type="number"
                 class="form-control w-100"
@@ -276,7 +275,8 @@
                 </p>
               </div>
             </div>
-            <div class="form-group my-2 col-12">
+
+            <div class="form-group my-1 col-12">
               <label class="mb-2"
                 >Category
                 <i class="fw-light text-secondary">
@@ -296,7 +296,6 @@
                       !category?.invalid &&
                       (category?.dirty || category?.touched)
                   }"
-                  style="height: 120px"
                 >
                   <option value="Indoor Plants">Indoor Plants</option>
                   <option value="Ceramic Pots">Ceramic Pots</option>
@@ -318,7 +317,8 @@
                 </div>
               </div>
             </div>
-            <div class="form-group my-2 col-12">
+
+            <div class="form-group my-1 col-12">
               <label class="mb-2"
                 >Images
                 <i class="fw-light text-secondary">

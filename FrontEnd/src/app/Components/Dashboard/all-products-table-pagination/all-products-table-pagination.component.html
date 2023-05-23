@@ -7,6 +7,7 @@
   <div>{{ uploadSuccessMessage }}</div>
 </div>
 
+<!-- All Products Table -->
 <div class="container-fluid p-0">
   <div class="w-100 alert-danger my-3 text-center" *ngIf="errorMessage">
     <p>{{ errorMessage }}</p>
@@ -90,13 +91,10 @@
   <div
     class="modal-dialog modal-confirm modal-dialog-centered modal-md my-auto"
   >
-    <div class="modal-content">
+    <div class="modal-content bg-white" [style.background]="'url(./assets/images/modal-bg.png) no-repeat top left'">
       <div class="modal-header">
-        <div class="d-flex flex-column justify-content-center w-100">
-          <div class="icon-box text-center">
-            <img src="./assets/images/icons/usericon.gif" />
-          </div>
-          <h4 class="modal-title">Update Product</h4>
+        <div class="w-100">
+          <h2 class="modal-title text-center">Update Product</h2>
         </div>
       </div>
       <div class="modal-body">
