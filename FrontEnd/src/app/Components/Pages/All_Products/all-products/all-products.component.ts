@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./all-products.component.css']
 })
 export class ALlProductsComponent {
-
+  categoryName:string="";
+  getCatgoryName(data:any)
+  {
+      this.categoryName = data;
+      console.log( this.categoryName)
+  }
 }

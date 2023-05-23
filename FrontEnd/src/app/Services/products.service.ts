@@ -38,5 +38,9 @@ export class ProductsService {
   DeleteProductById(id:any){
     return this.myClient.delete(this.Base_URL+id);
   }
+
+  getProductsByCategory(category: string): Observable<any> {
+    return this.myClient.get(this.Base_URL +"product-category/"+ category);
+  }
 }
 

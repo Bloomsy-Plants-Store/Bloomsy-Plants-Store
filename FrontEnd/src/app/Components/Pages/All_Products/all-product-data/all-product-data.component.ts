@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit,Input, SimpleChanges } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ProductsService } from 'src/app/Services/products.service';
 import { CartService } from 'src/app/Services/cart.service';
@@ -13,8 +13,28 @@ export class AllProductDataComponent implements OnInit {
   currentPage = 1; // Current page number
   itemsPerPage = 12; // Number of items to display per page
   totalItems=0;
+
+  @Input() FiltercategoryName:any;
   constructor(private elementRef: ElementRef, public myService: ProductsService, public myCartService:CartService, private spinner: NgxSpinnerService) { }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if(this.FiltercategoryName){
+      this.spinner.show();
+      this.myService.getProductsByCategory(this.FiltercategoryName).subscribe({
+        next: (response: any) => {
+          this.Products = response.data;
+          this.totalItems= this.Products.length;
+          this.spinner.hide();
+        },
+        error: (err) => {
+          console.log(err);
+          this.spinner.hide();
+        }
+      })
+
+    }
+
+  }
   ngOnInit(): void {
     this.spinner.show();
     this.myService.GetAllProducts().subscribe({
@@ -50,4 +70,5 @@ export class AllProductDataComponent implements OnInit {
     });
 
   }
+
 }
