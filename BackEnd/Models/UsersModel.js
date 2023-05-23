@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const cartSchema = require("./CartModel"); 
-const orderSchema = require("./OrderModel"); 
-const config=require("../config.json")
-var DB_URL =config.MONGODBURL;
+const cartSchema = require("./CartModel");
+const orderSchema = require("./OrderModel");
+const config = require("../config.json")
+var DB_URL = config.MONGODBURL;
 var validator = require("validator");
 mongoose.connect(DB_URL, { useNewUrlParser: true });
 
@@ -31,7 +31,7 @@ let UsersSchema = new mongoose.Schema({
             message: (props) => `${props.value} is not a valid Email !`,
         },
     },
-    
+
     rememberMeToken: {
         type: String,
         default: null,
@@ -55,42 +55,47 @@ let UsersSchema = new mongoose.Schema({
             message: (props) => `${props.value} is not a valid phone number!`,
         },
     },
-    cart:  {
+    cart: {
         type: [cartSchema],
         default: []
     },
-    orders:  {
+    orders: {
         type: [orderSchema],
         default: []
     },
     status: {
-        type: String, 
+        type: String,
         enum: ['Pending', 'Active'],
         default: 'Pending'
-      },
-      confirmationCode: { 
-        type: String, 
-        unique: true },
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
+    },
+    confirmationCode: {
+        type: String,
+        unique: true
+    },
     resetToken: String,
     resetTokenExpiration: Date,
 
 });
 
-UsersSchema.pre('save', function(next) {
+UsersSchema.pre('save', function (next) {
     if (this.isNew || this.isModified('password')) {
-      bcrypt.hash(this.password, 10)
-        .then(hash => {
-          this.password = hash;
-          next();
-        })
-        .catch(error => {
-          next(error);
-        });
+        bcrypt.hash(this.password, 10)
+            .then(hash => {
+                this.password = hash;
+                next();
+            })
+            .catch(error => {
+                next(error);
+            });
     } else {
-      next();
+        next();
     }
 });
-  
-  
+
+
 const User = mongoose.model('User', UsersSchema);
 module.exports = User;
