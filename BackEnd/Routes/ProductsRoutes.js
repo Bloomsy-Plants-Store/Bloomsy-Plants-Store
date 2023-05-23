@@ -13,11 +13,11 @@ router.get('/topRating', ProductController.getTopRatingProducts);
 router.get("/:id",ProductController.getProductByID);
 
 // update product
-router.put("/update/:id", userPermissions,ProductController.updateProduct);
+router.put("/update/:id",ProductController.updateProduct);
 
 // Delete Product 
-router.delete("/:id",  userPermissions,ProductController.deleteProduct);
-router.post('/store', userPermissions,ProductController.storeProducts);
+router.delete("/:id",userPermissions,ProductController.deleteProduct);
+router.post('/store',userPermissions,ProductController.storeProducts);
 router.get('/:category', ProductController.getProductsByCategory);
 
 

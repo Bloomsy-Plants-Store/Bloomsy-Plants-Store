@@ -23,8 +23,8 @@ export class ProductsService {
   GetBestSelling(){
     return this.myClient.get(this.Base_URL+"bestSelling?limit=4");
   }
-  StoreProduct(data: FormData): Observable<any> {
-    return this.myClient.post(this.Base_URL + "store", data);
+  StoreProduct(data: FormData, token:any): Observable<any> {
+    return this.myClient.post(this.Base_URL + "store", data, {headers: new HttpHeaders().set('x-auth-token', token)});
   }
 
   GetProductByID(productId: number) {
@@ -35,8 +35,8 @@ export class ProductsService {
     return this.myClient.put(this.Base_URL + "update/" + productId, data);
   };
 
-  DeleteProductById(id:any){
-    return this.myClient.delete(this.Base_URL+id);
+  DeleteProductById(id:any, token:any){
+    return this.myClient.delete(this.Base_URL+id, {headers: new HttpHeaders().set('x-auth-token', token)});
   }
 }
 

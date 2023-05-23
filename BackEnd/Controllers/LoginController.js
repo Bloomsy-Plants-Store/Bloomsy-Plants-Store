@@ -28,8 +28,7 @@ var Login = async (req, res) => {
         }
       }
       //Login
-      var Token = jwt.sign({ UserId: user._id, UserName: user.name, adminRole: user.isAdmin }, config.SECRETKEY)
-      console.log(Token);
+      var Token = jwt.sign({ UserId: user._id, UserName: user.name, adminRole: user.isAdmin }, config.SECRETKEY);
       res.header({ "x-auth-token": Token });
     res.status(200).json({ message: "Logged In Successfully!" });
     });
