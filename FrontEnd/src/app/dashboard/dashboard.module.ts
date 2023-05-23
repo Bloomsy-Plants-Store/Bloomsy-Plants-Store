@@ -1,4 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -10,7 +12,9 @@ import { DashboardAllProductsComponent } from '../Components/Dashboard/dashboard
 import { DashboardSidebarComponent } from '../Components/Dashboard/dashboard-sidebar/dashboard-sidebar.component';
 import { DashboardRevenueComponent } from '../Components/Dashboard/dashboard-revenue/dashboard-revenue.component';
 import { AllProductsTablePaginationComponent } from '../Components/Dashboard/all-products-table-pagination/all-products-table-pagination.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppComponent } from '../app.component';
+
 
 @NgModule({
   declarations: [
@@ -28,15 +32,21 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardRevenueComponent
   ],
   imports: [
+    ReactiveFormsModule,
+    FormsModule,
     CommonModule,
     DashboardRoutingModule,
     MatFormFieldModule,
     MatPaginatorModule,
     MatTableModule,
     ReactiveFormsModule,
+    NgxSpinnerModule,
     RouterModule.forChild([
       { path: '', component: DashboardPageComponent }
     ])
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class DashboardModule { }

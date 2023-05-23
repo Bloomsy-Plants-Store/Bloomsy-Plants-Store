@@ -2,6 +2,7 @@ import { Component, ElementRef  , ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup , Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as bootstrap from 'bootstrap';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-checkout',
@@ -17,7 +18,7 @@ export class CheckoutComponent{
   formattedInputValue!: string;
   formattedMonth: string = '';
   sectionVisible = false;
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private spinner: NgxSpinnerService) {
     this.validationCheckoutForm = this.fb.group({
       name: [
       '',
@@ -59,11 +60,16 @@ export class CheckoutComponent{
       ]
     })
   }
+  ngOnInit() {
+    this.spinner.show();
 
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 800);
+  }
   get inputName() {
     return this.validationCheckoutForm.get('name');
   }
-
  get inputCreditNumber() {
     return this.validationCheckoutForm.get('creditNumber');
   }
@@ -76,6 +82,7 @@ export class CheckoutComponent{
   get inputCreditCVC() {
     return this.validationCheckoutForm.get('creditCVC');
   }
+
   formatCreditNumber() {
     const creditNumber = this.validationCheckoutForm.get('creditNumber')?.value;
     this.formattedInputValue =  creditNumber.toString().replace(/\d{4}(?=.)/g, '$& ') ;

@@ -1,12 +1,12 @@
-<div class="container-fluid">
+<div class="container-fluid p-0">
   <div class="w-100 alert-danger  my-3 text-center" *ngIf="errorMessage">
     <p>{{ errorMessage }}</p>
   </div>
   <div class="w-100 alert-success  my-3 text-center" *ngIf="successMessage">
     <p>{{ successMessage }}</p>
   </div>
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
+  <div class="mat-elevation-z8 w-100">
+    <table mat-table [dataSource]="dataSource" class="w-100">
       <!-- Position Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>name</th>

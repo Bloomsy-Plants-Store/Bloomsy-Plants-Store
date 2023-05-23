@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -41,7 +42,17 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ProductDetailsHeaderComponent } from './Components/Pages/product-details/product-details-header/product-details-header.component';
 import { ProductDetailsPageComponent } from './Components/Pages/product-details/product-details-page/product-details-page.component';
+import { CartHeaderComponent } from './Components/Pages/cart/cart-header/cart-header.component';
+import { CartDetailsComponent } from './Components/Pages/cart/cart-details/cart-details.component';
+import { CartHomeComponent } from './Components/Pages/cart/cart-home/cart-home.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
+
+interface NgxSpinnerConfig {
+  type?: string;
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +86,9 @@ import { MatIconModule } from '@angular/material/icon';
     ProductDetailsHeaderComponent,
     ProductDetailsPageComponent,
     CheckoutComponent,
+    CartHeaderComponent,
+    CartDetailsComponent,
+    CartHomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,8 +103,13 @@ import { MatIconModule } from '@angular/material/icon';
     NgxSliderModule,
     BsDropdownModule.forRoot(),
     NgxPaginationModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     MatIconModule,
+    NgxSpinnerModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })

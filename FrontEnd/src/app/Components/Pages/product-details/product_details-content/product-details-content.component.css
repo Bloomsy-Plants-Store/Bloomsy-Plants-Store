@@ -21,7 +21,7 @@ button {
 .carousel-item {
   position: absolute;
   opacity: 0;
-  transition: opacity 1s ease-in-out linear;
+  transition: opacity 0.01s ease-in-out linear;
 }
 
 .carousel-item.active {
@@ -33,7 +33,7 @@ button {
 .carousel-item-right {
   position: absolute;
   opacity: 0;
-  transition: opacity 1s ease-in-out linear;
+  transition: opacity 0.01s ease-in-out linear;
 }
 
 .img-item {
@@ -72,12 +72,20 @@ button {
   text-decoration: none;
   color: #888;
   letter-spacing: 0ch;
+  font-size: small;
 }
 
 .product-price {
   margin: 1rem 0;
   font-size: 1.2rem;
   font-weight: 700;
+}
+
+.rate{
+  color: #315c3a;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: inline-block;
 }
 
 .last-price {
@@ -195,6 +203,10 @@ hr {
 
 #fav:hover .empty {
   animation: beatingHeart 1.2s infinite;
+}
+
+i{
+  font-size:large;
 }
 
 @keyframes beatingHeart {
