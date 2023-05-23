@@ -31,7 +31,6 @@ var updateProduct = async (req, res) => {
         }
 
         let updatedProduct = req.body;
-        console.log(req.files)
         
         if(req.files){
           let images = req.files;

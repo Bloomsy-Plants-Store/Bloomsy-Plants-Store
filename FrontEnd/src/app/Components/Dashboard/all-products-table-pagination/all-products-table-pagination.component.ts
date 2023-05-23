@@ -15,7 +15,10 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
   selectedID:any;
   errorMessage:any;
   successMessage:any;
-   displayedColumns: string[] = ['name','price', 'category','discount','itemsinStock','action'];
+  uploadErrorMessage:any;
+  uploadSuccessMessage:any;
+  formErrorMessage:any;
+  displayedColumns: string[] = ['name','price', 'category','discount','itemsinStock','action'];
   dataSource = new MatTableDataSource<PeriodicElement>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -27,12 +30,12 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
 
   constructor(private productsService: ProductsService,private changeDetectorRef: ChangeDetectorRef, private fb: FormBuilder, private spinner: NgxSpinnerService) {
     this.editProductForm = this.fb.group({
-      productName: new FormControl('',[Validators.required]),
+      productName: new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-Z\s]{3,30}$/)]),
       productDesc: new FormControl('',[Validators.required]),
-      productDiscount: new FormControl('',[Validators.required]),
-      productPrice: new FormControl('',[Validators.required]),
-      productItemsInStock: new FormControl('',[Validators.required]),
-      productCategory: new FormControl(),
+      productDiscount: new FormControl('',[Validators.required, Validators.pattern(/^[0-9]+$/)]),
+      productPrice: new FormControl('',[Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]),
+      productItemsInStock: new FormControl('',[Validators.required, Validators.pattern(/^[1-9][0-9]*$/)]),
+      productCategory: new FormControl('',[Validators.required]),
       productImages: this.fb.array([])
     });
   }
@@ -79,7 +82,6 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
       this.spinner.show();
       const data: any = await this.productsService.GetAllProducts().toPromise();
       this.dataSource.data = data.data;
-      console.log('After assignment:', this.dataSource.data );
       this.changeDetectorRef.detectChanges();
       this.spinner.hide();
     } catch (error) {
@@ -136,23 +138,28 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
       formData.append('itemsinStock', this.editProductForm.get('productItemsInStock')?.value);
       formData.append('discount', this.editProductForm.get('productDiscount')?.value);
 
-
-      // this.oldCategory.push(...this.productCategory?.value);
-
-
       this.productsService.UpdateProduct(this.editProductID, formData).subscribe({
         next:(response) => {
-          console.log(response);
+          this.uploadErrorMessage = '';
+          this.formErrorMessage = '';
+          this.uploadSuccessMessage='This product has been Updated Successfully';
+          this.fetchAllProducts();
+          setTimeout(() => {
+          this.uploadSuccessMessage = "";
+        }, 7000);
           this.spinner.hide();
         },
         error:(err) => {
-          console.error(err);
+          if(err.status == 500){
+            this.formErrorMessage = '';
+            this.uploadErrorMessage = 'Error in Uploading Product Images';
+          }
           this.spinner.hide();
         }
       })
 
     }else {
-      console.log('Invalid Data Format,Please Try Again');
+      this.formErrorMessage = 'Invalid Data Format,Please Try Again';
       this.spinner.hide();
     }
   }
