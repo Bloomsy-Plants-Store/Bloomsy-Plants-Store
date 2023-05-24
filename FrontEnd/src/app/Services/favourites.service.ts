@@ -26,4 +26,8 @@ export class FavouritesService {
     return this.myClient.delete(this.Base_URL + id+"/favourites/"+favouritesItemId);
   }
 
+  isProductFavorited(id: number, product_id: number) {
+    return this.myClient.get(this.Base_URL + id + "/favourites/check/" + product_id);
+  }
+
 }

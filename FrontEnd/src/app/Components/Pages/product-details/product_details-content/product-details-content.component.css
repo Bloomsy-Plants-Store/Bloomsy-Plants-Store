@@ -342,8 +342,8 @@ i{
     order: 3;
   }
   .buy-now{
-    padding: 7%;
-    order: 4;
+    padding: 5%;
+    order: 3;
   }
 }
 
@@ -375,7 +375,7 @@ i{
     width: 57%;
   }
   .buy-now{
-    padding: 7%;
+    padding: 3%;
   }
 
 }

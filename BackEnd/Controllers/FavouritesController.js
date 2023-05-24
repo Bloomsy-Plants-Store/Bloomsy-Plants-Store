@@ -112,11 +112,42 @@ const getFavouritesItems = async(req, res) => {
   } catch (err) {
     return res.status(400).json({ error: "Failed to get Favourites items" });
   }
-};
+}
+
+  const checkProductInFavourites = async (req, res) => {
+    try {
+      const user_id = req.params.id;
+      if (!user_id) {
+        return res.status(400).send("Bad Request: You must enter a user id");
+      }
+  
+      const product_id = req.params.product_id;
+      if (!product_id) {
+        return res.status(400).send("Bad Request: You must enter a product id");
+      }
+  
+      const user = await User.findById(user_id);
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+  
+      const foundProduct = user.favourites.find(item => item.product_id.toString() === product_id);
+      if (foundProduct) {
+        return res.status(200).json({ exists: true });
+      } else {
+        return res.status(200).json({ exists: false });
+      }
+    } catch (error) {
+      return res.status(500).json({ error: "Server Error, Failed to check product in favorites" });
+    }
+  };
+  
+
 
 module.exports = {
   addToFavourites,
   deleteFavouritesItemById,
   clearUserFavourites,
   getFavouritesItems,
+  checkProductInFavourites
 };

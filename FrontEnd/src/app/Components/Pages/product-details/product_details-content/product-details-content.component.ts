@@ -4,6 +4,8 @@ import { ProductsService } from 'src/app/Services/products.service';
 import { CartService } from 'src/app/Services/cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { FavouritesService } from 'src/app/Services/favourites.service';
+
 
 @Component({
   selector: 'app-product-details-content',
@@ -14,13 +16,15 @@ export class ProductDetailsComponent {
   quantity: number = 1;
   isFavorited: boolean = false;
   Product: any;
-
+  favourite?:boolean;
 
   constructor(private elementRef: ElementRef,
     public productService: ProductsService,
     public cartService:CartService,
+    public favouritesService: FavouritesService,
     private route: ActivatedRoute,
-    private spinner: NgxSpinnerService) { }
+    private spinner: NgxSpinnerService,
+    ) { }
 
   @ViewChild('carousel') carousel?: CarouselComponent;
 
@@ -32,10 +36,21 @@ export class ProductDetailsComponent {
       this.productService.GetProductByID(productId).subscribe({
         next: (response: any) => {
           this.Product = response.data;
-          console.log(this.Product);
           this.spinner.hide();
+
+          // Check if the product is favorited
+          let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
+          this.favouritesService.isProductFavorited(userId, productId).subscribe({
+            next: (response: any) => {
+              console.log(response);
+              this.isFavorited = response.exists;
+            },
+            error: (err: any) => {
+              console.log(err);
+            }
+          });
         },
-        error: (err:any) => {
+        error: (err: any) => {
           console.log(err);
           this.spinner.hide();
         }
@@ -58,6 +73,31 @@ export class ProductDetailsComponent {
     });
   }
 
+  addOrRemoveFavourite(productId: any) {
+    console.log(this.isFavorited);
+    let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
+    if (this.isFavorited) {
+      console.log("delete");
+      this.favouritesService.deleteProductFromFavourites(userId, productId).subscribe({
+        next: (response: any) => {
+          this.isFavorited = false;
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      });
+    } else {
+      console.log("add");
+      this.favouritesService.addProductToFavourites(userId, productId).subscribe({
+        next: (response: any) => {
+          this.isFavorited = true;
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      });
+    }
+  }
 
   decreaseQuantity(): void {
     if (this.quantity > 1) {
@@ -69,9 +109,9 @@ export class ProductDetailsComponent {
     this.quantity++;
   }
 
-  toggleFavorite(): void {
-    this.isFavorited = !this.isFavorited;
-  }
+  // toggleFavorite(): void {
+  //   this.isFavorited = !this.isFavorited;
+  // }
 
   getStarsArray(rate: number): any[] {
     const starsCount = Math.floor(rate);
@@ -85,5 +125,6 @@ export class ProductDetailsComponent {
 
     return starsArray;
   }
+
 
 }
