@@ -151,22 +151,13 @@
 .bubble-text {
   position: absolute;
   transform: translate(500px, 200px);
-  height: 50px;
-  width: 160px;
   background-color: #fff;
+  padding: 0.5rem 2rem;
   border-radius: 20px;
   text-align: center;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  font-size: 15px;
-}
-.bubble-text:after {
-  transform: translate(20px, -4px);
-  content: "";
-  background-color: #fff;
-  display: block;
-  height: 13px;
-  width: 10px;
-  border-radius: 0 0 100% 0;
+  font-family: "Dancing Script",  sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
 }
 
 .monster_body-container {
