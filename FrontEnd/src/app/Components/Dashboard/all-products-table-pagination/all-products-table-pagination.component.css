@@ -14,9 +14,10 @@ td{
   font-size: 12px;
 }
 
-table{
-  border: solid thin var(--primary-color);
+.table-container{
+  border: solid thin var(--primary-color) !important;
 }
+
 
 
 .copy {

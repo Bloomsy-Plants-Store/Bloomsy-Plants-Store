@@ -24,12 +24,12 @@
 </div>
 
 <!-- All Products Table -->
-<div class="container-fluid p-0">
-  <div class="mat-elevation-z8 w-100">
+<div class="container-fluid p-0 table-container">
+  <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" class="w-100">
       <!-- Position Column -->
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>name</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
         <td mat-cell *matCellDef="let element">{{ element.name }}</td>
       </ng-container>
 
@@ -46,7 +46,7 @@
       </ng-container>
 
       <!-- Symbol Column -->
-      <ng-container matColumnDef="rate">
+      <ng-container matColumnDef="rate" class="tr">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Rate</th>
         <td mat-cell *matCellDef="let element">{{ element.rate }}</td>
       </ng-container>
@@ -57,12 +57,13 @@
       </ng-container>
 
       <ng-container matColumnDef="itemsinStock">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>itemsinStock</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Items in Stock</th>
         <td mat-cell *matCellDef="let element">{{ element.itemsinStock }}</td>
       </ng-container>
-      <!-- Action Column -->
+
+      <!-- Actions Column -->
       <ng-container matColumnDef="action" class="action-container">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
         <td mat-cell *matCellDef="let element">
           <button
             class="copy"
@@ -96,7 +97,7 @@
     </table>
 
     <mat-paginator
-      [pageSizeOptions]="[7, 25, 50, 100]"
+      [pageSizeOptions]="[7, 10, 15, 20]"
       [pageSize]="7"
       [showFirstLastButtons]="true"
       [length]="dataSource.data.length"
@@ -387,7 +388,7 @@
 
 <!-- Show Product Modal -->
 <div class="modal fade" id="showModal">
-  <div class="modal-dialog modal-confirm modal-dialog-centered modal-lg my-auto">
+  <div class="modal-dialog modal-confirm modal-lg modal-dialog-centered my-auto h-100">
     <div class="modal-content">
       <div class="modal-body container-fluid">
         <div class = "product-wrapper container-fluid mt-3">
