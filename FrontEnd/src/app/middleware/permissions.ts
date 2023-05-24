@@ -12,7 +12,7 @@ export class AdminGuard implements CanActivateChild {
 
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot):
       boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    const isAdmin = JSON.parse(localStorage.getItem('access_token')!).adminRole;
+    const isAdmin = JSON.parse(localStorage.getItem('access_token')!).adminRole || false;
 
     if (!isAdmin) {
       this.router.navigate(['/']);

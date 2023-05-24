@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
       res.status(403).json({ message: "Forbidden Access..." });
     }
   } catch (err) {
-    res.status(400).json({ message: "Invalid Token..." });
+    res.status(400).json({ message:"Invalid Token..."});
   }
 };
 

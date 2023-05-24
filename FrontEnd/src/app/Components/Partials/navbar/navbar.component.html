@@ -22,7 +22,7 @@
             <a class="nav-link" routerLinkActive="active">SHOP</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="/products">PRODUCTS</a>
+            <a class="nav-link" routerLinkActive="active" routerLink="/products" >PRODUCTS</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" routerLink="/about-us">ABOUT</a>
@@ -63,7 +63,9 @@
       </li>
       <li class="nav-item me-lg-0">
         <a class="nav-link" routerLink="/cart">
-          <i class="fas fa-shopping-cart"></i>
+          <i class="fas fa-shopping-cart">
+            <span class="cart-badge">{{getTotalItems()}}</span>
+          </i>
         </a>
       </li>
       <li class="nav-item me-lg-0" *ngIf="getUserRole()">

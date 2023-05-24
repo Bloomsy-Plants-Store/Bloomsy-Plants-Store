@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ProductController = require('../Controllers/ProductController');
-const userPermissions = require('../MiddleWares/UserMWPermissions')
+const userPermissions = require('../MiddleWares/UserMWPermissions');
 
 
 // Get All Products

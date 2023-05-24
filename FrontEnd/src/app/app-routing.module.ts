@@ -11,7 +11,7 @@ import { ProductDetailsPageComponent } from './Components/Pages/product-details/
 import { DashboardPageComponent } from './Components/Dashboard/dashboard-page/dashboard-page.component';
 import { AboutUsPageComponent } from './Components/Pages/about-us/about-us-page/about-us-page.component';
 import { CartHomeComponent } from './Components/Pages/cart/cart-home/cart-home.component'
-import{AdminGuard} from './middlewares/permissions'
+import{AdminGuard} from './middleware/permissions'
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
