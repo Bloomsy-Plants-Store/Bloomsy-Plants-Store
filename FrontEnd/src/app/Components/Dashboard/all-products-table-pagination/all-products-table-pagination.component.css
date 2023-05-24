@@ -149,6 +149,8 @@ button{
 
 .modal-title{
   font-family: 'Dancing Script', cursive;
+  font-weight: 500;
+  color:#4f6b51;
 }
 
 .modal-confirm {
@@ -163,13 +165,6 @@ button{
 
 .modal-confirm{
   border-bottom: none;
-  position: relative;
-}
-
-.modal-confirm h4 {
-  text-align: center;
-  font-size: 26px;
-  margin: 30px 0 -15px;
 }
 
 .modal-confirm .form-control,
@@ -191,6 +186,10 @@ button{
   font-size: 13px;
 }
 
+.modal-confirm.modal-dialog {
+  margin-top: 80px;
+}
+
 .modal-confirm .icon-box {
   color: #fff;
   position: absolute;
@@ -208,17 +207,16 @@ button{
   justify-content: center;
   align-items: center;
 }
-
+.modal-confirm h4 {
+  text-align: center;
+  font-size: 26px;
+  margin: 30px 0 -15px;
+}
 .modal-confirm .icon-box img {
   font-size: 58px;
   max-width: 100%;
   max-height: 100%;
 }
-
-.modal-confirm.modal-dialog {
-  margin-top: 80px;
-}
-
 .modal-confirm .submit-btn {
   color: #fff;
   border-radius: 4px;

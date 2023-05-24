@@ -20,7 +20,7 @@ var getAllProducts = async (req, res) => {
 
 var updateProduct = async (req, res) => {
   try {
-    await MutlerUpload.uploadProduct(req, res, async function (err) {
+     MutlerUpload.uploadProduct(req, res, async function (err) {
       if (err) {
         console.log(err)
         return res.status(500).send("Error uploading file");
@@ -32,12 +32,10 @@ var updateProduct = async (req, res) => {
         }
 
         let updatedProduct = req.body;
-        console.log(req.files)
         
         if(req.files){
           let images = req.files;
           images.forEach(img => {
-            console.log(img)
             product["imageUrl"].push(config.CLOUD_PATH + img.filename)
           });
         }
@@ -45,7 +43,7 @@ var updateProduct = async (req, res) => {
         Object.keys(updatedProduct).forEach(key => {
           if (key in product) {
             if(key == "category"){
-              product[key].push(updatedProduct[key])
+               product[key] =updatedProduct[key];
             }else{
               product[key] = updatedProduct[key];
             }

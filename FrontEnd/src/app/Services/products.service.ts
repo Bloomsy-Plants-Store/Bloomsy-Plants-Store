@@ -38,5 +38,9 @@ export class ProductsService {
   DeleteProductById(id:any, token:any){
     return this.myClient.delete(this.Base_URL+id, {headers: new HttpHeaders().set('x-auth-token', token)});
   }
+
+  getProductsByCategory(category: string): Observable<any> {
+    return this.myClient.get(this.Base_URL +"product-category/"+ category);
+  }
 }
 

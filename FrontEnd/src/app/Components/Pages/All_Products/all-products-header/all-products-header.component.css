@@ -51,11 +51,13 @@ h1 {
   height: 115px;
   display: inline-block;
   position: relative;
+  cursor: pointer;
 }
 .img-containe::before {
   box-sizing: border-box;
 }
-.img-container:hover::before {
+.img-container:hover::before
+{
   position: absolute;
   content: "";
   width: calc(100% + 11px);
@@ -71,7 +73,22 @@ h1 {
   -o-border-radius: 50%;
   border: 1px solid #224229;
 }
-
+.img-active{
+  position: absolute;
+  content: "";
+  width: calc(100% + 11px);
+  height: calc(100% + 11px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border: 1px solid #224229;
+}
 .category-title {
   margin: 7px 0 6px;
   font-family: Libre Baskerville, serif;
@@ -83,8 +100,9 @@ h1 {
   position: relative;
   text-decoration: none;
   color: #313232;
+  cursor: pointer;
 }
-.category-title a::before {
+.category-title a::before{
   content: "";
   position: absolute;
   bottom: -4px;

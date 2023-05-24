@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const cartSchema = require("./CartModel");
-const orderSchema = require("./OrderModel");
-const config = require("../config.json")
-var DB_URL = config.MONGODBURL;
+const cartSchema = require("./CartModel"); 
+const favouritesSchema = require("./FavouritsModel"); 
+const orderSchema = require("./OrderModel"); 
+const config = require("../config.json");
+var DB_URL =config.MONGODBURL;
 var validator = require("validator");
+
 mongoose.connect(DB_URL, { useNewUrlParser: true });
 
 let UsersSchema = new mongoose.Schema({
@@ -61,6 +63,10 @@ let UsersSchema = new mongoose.Schema({
     },
     orders: {
         type: [orderSchema],
+        default: []
+    },
+    favourites:{
+        type: [favouritesSchema],
         default: []
     },
     status: {
