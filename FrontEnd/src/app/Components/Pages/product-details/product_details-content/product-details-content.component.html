@@ -68,14 +68,13 @@
               [ngClass]="{ 'half-star': star === 0.5 }"
             ></i>
           </ng-container>
-          <!-- <p class = "rate">{{Product?.rate}}</p> -->
           <span id="review">({{ Product?.reviews_num }} custom reviews)</span>
         </div>
 
         <div
           class="product-price d-flex justify-content-start justify-content-sm-center justify-content-lg-start"
         >
-          <p class="last-price">${{ Product?.price }}</p>
+          <p class="last-price" *ngIf="Product?.discount">${{ Product?.price }}</p>
           <p class="new-price">
             ${{ Product?.price - Product?.discount / 100 }}
           </p>
