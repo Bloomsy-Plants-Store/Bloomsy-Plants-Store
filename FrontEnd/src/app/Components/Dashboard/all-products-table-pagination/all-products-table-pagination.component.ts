@@ -27,6 +27,7 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
   editProductID: any = '';
   oldCategory:any = [];
   oldImages:any = [];
+  productDetails:any = {};
 
   constructor(private productsService: ProductsService,private changeDetectorRef: ChangeDetectorRef, private fb: FormBuilder, private spinner: NgxSpinnerService) {
     this.editProductForm = this.fb.group({
@@ -199,7 +200,26 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
       }
     });
   }
+
+  showElement(element: PeriodicElement) {
+    this.spinner.show();
+    this.productDetails = {
+      productId : element._id,
+      productName : element.name,
+      productPrice : element.price,
+      productDiscount : element.discount,
+      productDesc : element.description,
+      productRate : element.rate,
+      productReviewsNum : element.reviews_num,
+      productItemsinStock : element.itemsinStock,
+      productCategory : element.category,
+      productImages: element.imageUrl,
+    }
+    this.spinner.hide();
+  }
+
 }
+
 
 interface PeriodicElement {
   _id:any,
