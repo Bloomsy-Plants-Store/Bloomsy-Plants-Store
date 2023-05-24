@@ -27,6 +27,7 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
   editProductID: any = '';
   oldCategory:any = [];
   oldImages:any = [];
+  productDetails:any = {};
 
   constructor(private productsService: ProductsService,private changeDetectorRef: ChangeDetectorRef, private fb: FormBuilder, private spinner: NgxSpinnerService) {
     this.editProductForm = this.fb.group({
@@ -199,7 +200,39 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
       }
     });
   }
+
+  showElement(element: PeriodicElement) {
+    this.spinner.show();
+    this.productDetails = {
+      productId : element._id,
+      productName : element.name,
+      productPrice : element.price,
+      productDiscount : element.discount,
+      productDesc : element.description,
+      productRate : element.rate,
+      productReviewsNum : element.reviews_num,
+      productItemsinStock : element.itemsinStock,
+      productCategory : element.category,
+      productImages: element.imageUrl,
+    }
+    this.spinner.hide();
+  }
+
+  getStarsArray(rate: number): any[] {
+    const starsCount = Math.floor(rate);
+    const isHalfStar = rate % 1 !== 0;
+
+    const starsArray = Array(starsCount).fill(0);
+
+    if (isHalfStar) {
+      starsArray.push(0.5);
+    }
+
+    return starsArray;
+  }
+
 }
+
 
 interface PeriodicElement {
   _id:any,
