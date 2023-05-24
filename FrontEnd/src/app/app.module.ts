@@ -52,6 +52,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ProfileComponent } from './Components/Pages/profile/profile.component';
 import { ProfileHeaderComponent } from './Components/Pages/profile/profile-header/profile-header.component';
 import { ProfileContentComponent } from './Components/Pages/profile/profile-content/profile-content.component';
+import { Error404Component } from './Components/Pages/error/error404/error404.component';
 
 interface NgxSpinnerConfig {
   type?: string;
@@ -95,6 +96,7 @@ interface NgxSpinnerConfig {
     ProfileComponent,
     ProfileHeaderComponent,
     ProfileContentComponent,
+    Error404Component,
   ],
   imports: [
     BrowserModule,
