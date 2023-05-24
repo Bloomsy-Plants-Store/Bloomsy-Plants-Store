@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   nav!: HTMLElement;
   userName:any;
-  errorMessage:any;
+  errorMessage: any;
+  isAdmin:boolean = false ;
   constructor(private authService: AuthService, private router: Router ) { }
 
   ngOnInit() {
@@ -37,11 +38,29 @@ export class NavbarComponent {
     return this.userName;
   }
 
+  getUserRole(): any {
+    const userRole = JSON.parse(localStorage.getItem('access_token')!)?.adminRole || false;
+    if (userRole === false) {
+      this.isAdmin = false;
+    } else {
+      this.isAdmin = true;
+    }
+    return this.isAdmin;
+  }
+
+  getTotalItems(): any {
+    const totalItems = JSON.parse(localStorage.getItem('totalItems')!);
+    return totalItems;
+  }
+
   logout(): void {
    const id = JSON.parse(localStorage.getItem('access_token')!).UserId;
        this.authService.logout(id).subscribe({
         next: async() => {
-          await localStorage.removeItem("access_token");
+           await localStorage.removeItem("access_token");
+           await localStorage.removeItem("x-auth-token");
+           await localStorage.removeItem("remember_me_token");
+          await localStorage.removeItem("totalItems");
           window.location.reload();
           console.log('Logout Successfully');
         },

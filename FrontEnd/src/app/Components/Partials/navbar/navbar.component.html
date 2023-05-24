@@ -16,13 +16,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0 d-flex gap-3">
           <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="" >HOME</a>
+            <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/" >HOME</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active">SHOP</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="/products">PRODUCTS</a>
+            <a class="nav-link" routerLinkActive="active" routerLink="/products" >PRODUCTS</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" routerLink="/about-us">ABOUT</a>
@@ -63,10 +60,12 @@
       </li>
       <li class="nav-item me-lg-0">
         <a class="nav-link" routerLink="/cart">
-          <i class="fas fa-shopping-cart"></i>
+          <i class="fas fa-shopping-cart">
+            <span class="cart-badge">{{getTotalItems()}}</span>
+          </i>
         </a>
       </li>
-      <li class="nav-item me-lg-0">
+      <li class="nav-item me-lg-0" *ngIf="getUserRole()">
         <a class="nav-link" routerLink="/dashboard">
           <i class="fa fa-gear fa-spin" style="font-size:20px"></i>
         </a>

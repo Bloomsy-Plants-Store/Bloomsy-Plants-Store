@@ -19,7 +19,11 @@ var addToCart = async (req, res) => {
 
     const cartItemIndex = user.cart.findIndex(item => item.product_id == product_id);
     if (cartItemIndex !== -1) {
-      return res.status(404).json({ error: 'Product already exists in the cart' });
+      if (req.body.quantity) {
+        const newQuantity = parseInt(req.body.quantity);
+        user.cart[cartItemIndex].quantity += newQuantity;
+        await user.save();
+      }      
     }
 
     const cartItem = {

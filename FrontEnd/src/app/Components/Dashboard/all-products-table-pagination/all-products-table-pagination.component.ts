@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductsService } from '../../../Services/products.service';
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
+import { connectable } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -14,7 +15,10 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
   selectedID:any;
   errorMessage:any;
   successMessage:any;
-   displayedColumns: string[] = ['name','price', 'category','discount','itemsinStock','action'];
+  uploadErrorMessage:any;
+  uploadSuccessMessage:any;
+  formErrorMessage:any;
+  displayedColumns: string[] = ['name','price', 'category','discount','itemsinStock','action'];
   dataSource = new MatTableDataSource<PeriodicElement>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -26,12 +30,12 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
 
   constructor(private productsService: ProductsService,private changeDetectorRef: ChangeDetectorRef, private fb: FormBuilder, private spinner: NgxSpinnerService) {
     this.editProductForm = this.fb.group({
-      productName: new FormControl('',[Validators.required]),
+      productName: new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-Z\s]{3,30}$/)]),
       productDesc: new FormControl('',[Validators.required]),
-      productDiscount: new FormControl('',[Validators.required]),
-      productPrice: new FormControl('',[Validators.required]),
-      productItemsInStock: new FormControl('',[Validators.required]),
-      productCategory: new FormControl(),
+      productDiscount: new FormControl('',[Validators.required, Validators.pattern(/^[0-9]+$/)]),
+      productPrice: new FormControl('',[Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]),
+      productItemsInStock: new FormControl('',[Validators.required, Validators.pattern(/^[1-9][0-9]*$/)]),
+      productCategory: new FormControl('',[Validators.required]),
       productImages: this.fb.array([])
     });
   }
@@ -67,7 +71,7 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
       this.spinner.hide();
     }, 1000);
   }
-  
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.fetchAllProducts();
@@ -78,7 +82,6 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
       this.spinner.show();
       const data: any = await this.productsService.GetAllProducts().toPromise();
       this.dataSource.data = data.data;
-      console.log('After assignment:', this.dataSource.data );
       this.changeDetectorRef.detectChanges();
       this.spinner.hide();
     } catch (error) {
@@ -116,26 +119,47 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
   updateProduct(){
     this.spinner.show();
     if (this.editProductForm.valid) {
+      const formData = new FormData();
+      const files = this.editProductForm.get('productImages')?.value;
 
-      this.oldCategory.push(...this.productCategory?.value);
-
-      for (let i = 0; i < this.oldImages.length; i++) {
-        this.editProductForm.value.productImages.push(this.oldImages[i]);
+      for (let i = 0; i < files.length; i++) {
+        formData.append('imageUrl', files[i]);
       }
 
-      this.productsService.UpdateProduct(this.editProductID, this.editProductForm.value).subscribe({
+      formData.append('name', this.editProductForm.get('productName')?.value);
+      formData.append('description', this.editProductForm.get('productDesc')?.value);
+      formData.append('price', this.editProductForm.get('productPrice')?.value);
+
+      let category = this.editProductForm.get('productCategory')?.value;
+      for (let i = 0; i < category.length; i++) {
+        formData.append('category', category[i]);
+      }
+
+      formData.append('itemsinStock', this.editProductForm.get('productItemsInStock')?.value);
+      formData.append('discount', this.editProductForm.get('productDiscount')?.value);
+
+      this.productsService.UpdateProduct(this.editProductID, formData).subscribe({
         next:(response) => {
-          console.log(response);
+          this.uploadErrorMessage = '';
+          this.formErrorMessage = '';
+          this.uploadSuccessMessage='This product has been Updated Successfully';
+          this.fetchAllProducts();
+          setTimeout(() => {
+          this.uploadSuccessMessage = "";
+        }, 7000);
           this.spinner.hide();
         },
         error:(err) => {
-          console.error(err);
+          if(err.status == 500){
+            this.formErrorMessage = '';
+            this.uploadErrorMessage = 'Error in Uploading Product Images';
+          }
           this.spinner.hide();
         }
       })
 
     }else {
-      console.log('Invalid Data Format,Please Try Again');
+      this.formErrorMessage = 'Invalid Data Format,Please Try Again';
       this.spinner.hide();
     }
   }
@@ -144,8 +168,9 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
     const files = event.target.files;
     const fileArray = Array.from(files);
 
+    let productImagesControl = this.editProductForm.get('productImages') as FormArray;
     for (let i = 0; i < fileArray.length; i++) {
-      this.oldImages.push(new FormControl(fileArray[i]));
+      productImagesControl.push(new FormControl(fileArray[i]));
     }
   }
 
@@ -155,18 +180,19 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
   }
 
   deletedSelectedProduct() {
-    this.productsService.DeleteProductById(this.selectedID).subscribe({
+    const token = localStorage.getItem('x-auth-token');
+    this.productsService.DeleteProductById(this.selectedID,token).subscribe({
       next: (response: any) => {
-        console.log(response);
+        console.log(token);
         this.fetchAllProducts();
-        this.successMessage='This product deleted Successfully.';
+        this.successMessage='This Product has been Deleted Successfully';
         setTimeout(() => {
           this.successMessage = "";
         }, 3000);
       },
       error: (err) => {
         console.log(err);
-        this.errorMessage = 'Deleting this product failed. Please try again.';
+        this.errorMessage = 'Deleting this product Failed. Please Try Again';
         setTimeout(() => {
           this.errorMessage = "";
         }, 3000);

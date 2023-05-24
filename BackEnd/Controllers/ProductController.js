@@ -2,6 +2,7 @@
 const productModel = require('../Models/ProductsModel');
 const MutlerUpload = require('../MiddleWares/MutlerUpload');
 const config = require('../config.json');
+const userModel = require('../Models/UsersModel');
 
 var getAllProducts = async (req, res) => {
   try {
@@ -19,7 +20,7 @@ var getAllProducts = async (req, res) => {
 
 var updateProduct = async (req, res) => {
   try {
-    await MutlerUpload.uploadProduct(req, res, async function (err) {
+     MutlerUpload.uploadProduct(req, res, async function (err) {
       if (err) {
         console.log(err)
         return res.status(500).send("Error uploading file");
@@ -31,12 +32,10 @@ var updateProduct = async (req, res) => {
         }
 
         let updatedProduct = req.body;
-        console.log(req.files)
         
         if(req.files){
           let images = req.files;
           images.forEach(img => {
-            console.log(img)
             product["imageUrl"].push(config.CLOUD_PATH + img.filename)
           });
         }
@@ -44,7 +43,7 @@ var updateProduct = async (req, res) => {
         Object.keys(updatedProduct).forEach(key => {
           if (key in product) {
             if(key == "category"){
-              product[key].push(updatedProduct[key])
+               product[key] =updatedProduct[key];
             }else{
               product[key] = updatedProduct[key];
             }
@@ -66,9 +65,7 @@ var storeProducts = async function (req, res) {
       if (err) {
         return res.status(500).send("Error uploading file");
       } else {
-
         let filenames = await req.files.map(file => config.CLOUD_PATH + file.filename)
-        
         // Save product details to database
         let product = new productModel({
           name: req.body.name,
@@ -82,7 +79,6 @@ var storeProducts = async function (req, res) {
           itemsinStock: req.body.itemsinStock,
           imageUrl: filenames
         });
-  
         await product.save();
         return res.status(200).json({ message: "Product Upload Successfully " });
       }

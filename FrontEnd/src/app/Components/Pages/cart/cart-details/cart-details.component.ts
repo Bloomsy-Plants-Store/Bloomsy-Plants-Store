@@ -44,12 +44,23 @@ export class CartDetailsComponent implements OnInit{
     return totalPrice;
   }
 
+  getCartTotalItems(): any {
+    let total = 0;
+    this.dataSource.forEach((element: any) => {
+      total += element.quantity;
+      localStorage.setItem('totalItems', JSON.stringify(total));
+    });
+    return total;
+  }
+
+
 
   getAllProductsOnCart() {
     let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
     this.myService.GetAllProductsInCart(userId).subscribe({
       next: (response: any) => {
         this.dataSource = response.cart;
+        this.getCartTotalItems();
       },
       error: (err) => {
         console.log(err);
@@ -59,10 +70,12 @@ export class CartDetailsComponent implements OnInit{
 
   removeCartItem(element: any): void  {
     let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
+    let userToken = localStorage.getItem('x-auth-token');
     let productId = element.product_id._id;
     console.log(productId);
-    this.myService.deleteProductFromCart(userId, productId).subscribe({
+    this.myService.deleteProductFromCart(userId, productId,userToken).subscribe({
       next: (response: any) => {
+        this.getCartTotalItems()? this.getCartTotalItems() : 0;
         this.getAllProductsOnCart();
       },
       error: (err) => {
@@ -73,10 +86,12 @@ export class CartDetailsComponent implements OnInit{
 
   updateQuantity(element: any): void {
     let user = JSON.parse(localStorage.getItem('access_token')!).UserId;
+    let userToken = localStorage.getItem('x-auth-token');
     let productId = element.product_id._id;
     let quantity = element.quantity;
-    this.myService.updateSpecificProduct(user, productId, quantity).subscribe({
+    this.myService.updateSpecificProduct(user, productId, quantity, userToken).subscribe({
       next: (response: any) => {
+        this.getCartTotalItems();
       },
       error: (err) => {
       console.log(err);
@@ -89,5 +104,4 @@ export class CartDetailsComponent implements OnInit{
   }
 
    }
-
 

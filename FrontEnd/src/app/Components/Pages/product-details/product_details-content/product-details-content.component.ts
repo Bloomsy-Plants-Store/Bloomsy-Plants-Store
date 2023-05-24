@@ -62,7 +62,8 @@ export class ProductDetailsComponent {
     this.spinner.show();
     console.log(itemQuantity);
     let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
-    this.cartService.addProductToCart(userId, id,itemQuantity).subscribe({
+    let userToken = JSON.parse(localStorage.getItem('x-auth-token')!);
+    this.cartService.addProductToCart(userId, id,userToken,itemQuantity).subscribe({
       next: (response: any) => {
         this.spinner.hide();
       },
