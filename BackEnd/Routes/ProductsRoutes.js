@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ProductController = require('../Controllers/ProductController');
+const userPermissions = require('../MiddleWares/UserMWPermissions');
 
 
 // Get All Products
@@ -15,8 +16,8 @@ router.get("/:id",ProductController.getProductByID);
 router.put("/update/:id",ProductController.updateProduct);
 
 // Delete Product 
-router.delete("/:id", ProductController.deleteProduct);
-router.post('/store', ProductController.storeProducts);
+router.delete("/:id",userPermissions,ProductController.deleteProduct);
+router.post('/store',userPermissions,ProductController.storeProducts);
 router.get('/product-category/:category', ProductController.getProductsByCategory);
 
 

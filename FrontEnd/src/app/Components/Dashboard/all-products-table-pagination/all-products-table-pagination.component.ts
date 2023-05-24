@@ -180,9 +180,10 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
   }
 
   deletedSelectedProduct() {
-    this.productsService.DeleteProductById(this.selectedID).subscribe({
+    const token = localStorage.getItem('x-auth-token');
+    this.productsService.DeleteProductById(this.selectedID,token).subscribe({
       next: (response: any) => {
-        console.log(response);
+        console.log(token);
         this.fetchAllProducts();
         this.successMessage='This Product has been Deleted Successfully';
         setTimeout(() => {

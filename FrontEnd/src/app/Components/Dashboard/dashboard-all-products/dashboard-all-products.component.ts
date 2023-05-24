@@ -69,6 +69,7 @@ export class DashboardAllProductsComponent {
     this.spinner.show();
     if (this.productForm.valid) {
       const formData = new FormData();
+      const token = localStorage.getItem('x-auth-token');
       const files = this.productForm.get('imageUrl')?.value;
 
       for (let i = 0; i < files.length; i++) {
@@ -86,7 +87,7 @@ export class DashboardAllProductsComponent {
 
       formData.append('itemsinStock', this.productForm.get('itemsinStock')?.value);
       formData.append('discount', this.productForm.get('discount')?.value);
-      this.productService.StoreProduct(formData).subscribe(
+      this.productService.StoreProduct(formData,token).subscribe(
         (response) => {
           this.errorMessage = '';
           this.formErrorMessage = '';

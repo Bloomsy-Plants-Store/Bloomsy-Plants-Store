@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ private Base_URL = "http://localhost:7400/users/"
 
   // add product to cart
   // /:id/cart/add
-  addProductToCart(id: Number, product_id: Number,quantity:number=1) {
-    return this.myClient.post(this.Base_URL + id + "/cart/add", { product_id,quantity});
+  addProductToCart(id: Number, product_id: Number, price: Number, userToken: any, quantity: number = 1): Observable<any> {
+    return this.myClient.post(this.Base_URL + id + "/cart/add", {product_id,price,quantity},{headers: new HttpHeaders().set('x-auth-token', userToken)});
   }
 
   // get all products in cart
@@ -21,14 +22,14 @@ private Base_URL = "http://localhost:7400/users/"
   }
 
   //delete specific product from cart
-  deleteProductFromCart(id:Number , cartItemId:Number) {
-    return this.myClient.delete(this.Base_URL + id+"/cart/"+cartItemId);
+  deleteProductFromCart(id:Number , cartItemId:Number, userToken:any) {
+    return this.myClient.delete(this.Base_URL + id+"/cart/"+cartItemId,{headers: new HttpHeaders().set('x-auth-token', userToken)});
   }
 
   // update specific product from cart
   // /:id/cart/:cartItemId
-  updateSpecificProduct(id: Number, cartItemId: Number, quantity: Number) {
-    return this.myClient.put(this.Base_URL + id + "/cart/" + cartItemId, { quantity });
+  updateSpecificProduct(id: Number, cartItemId: Number, quantity: Number, userToken:any) {
+    return this.myClient.put(this.Base_URL + id + "/cart/" + cartItemId,{quantity} ,{headers: new HttpHeaders().set('x-auth-token', userToken)});
   }
 
 }

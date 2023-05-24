@@ -2,6 +2,8 @@ import { Component, ElementRef, OnInit,Input, SimpleChanges } from '@angular/cor
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ProductsService } from 'src/app/Services/products.service';
 import { CartService } from 'src/app/Services/cart.service';
+import { Router } from '@angular/router';
+import {CartDetailsComponent} from "../../../Pages/cart/cart-details/cart-details.component"
 
 @Component({
   selector: 'app-all-product-data',
@@ -15,7 +17,7 @@ export class AllProductDataComponent implements OnInit {
   totalItems=0;
 
   @Input() FiltercategoryName:any;
-  constructor(private elementRef: ElementRef, public myService: ProductsService, public myCartService:CartService, private spinner: NgxSpinnerService) { }
+  constructor(private elementRef: ElementRef, public myService: ProductsService, public myCartService:CartService, private spinner: NgxSpinnerService,private router: Router) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if(this.FiltercategoryName){
@@ -56,19 +58,34 @@ export class AllProductDataComponent implements OnInit {
   }
 
   // add product to cart
-  addProductToCart(id:any) {
+  addProductToCart(id:any, price:any) {
     this.spinner.show();
-    let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
-    this.myCartService.addProductToCart(userId, id).subscribe({
-      next: (response: any) => {
-        this.spinner.hide();
-      },
-      error: (err:any) => {
-        console.log(err);
-        this.spinner.hide();
-      }
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      // Redirect to login page
+      this.router.navigate(['/login']);
+      return;
+    }
+    const userId = JSON.parse(accessToken).UserId;
+    if (!userId) {
+      // Invalid access token, redirect to login page
+      this.router.navigate(['/login']);
+      return;
+    }
+    let userToken = localStorage.getItem('x-auth-token');
+    this.myCartService.addProductToCart(userId, id, price, userToken)
+      .subscribe({
+        next: (response: any) => {
+          // this.cartDetailsComponent.getCartTotalItems();
+          this.spinner.hide();
+        },
+        error: (err:any) => {
+          console.log(err);
+          this.spinner.hide();
+        }
     });
-
   }
+
+
 
 }

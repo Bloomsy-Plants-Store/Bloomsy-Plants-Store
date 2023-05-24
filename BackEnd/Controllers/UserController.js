@@ -17,7 +17,8 @@ var Register = async(req,res)=>{
             email:req.body.email,
             password: req.body.password,
             confirmationCode: confirmationToken,
-            status:"Pending",
+            status: "Pending",
+            isAdmin: false
         })
 
         let valid = userValid(user);

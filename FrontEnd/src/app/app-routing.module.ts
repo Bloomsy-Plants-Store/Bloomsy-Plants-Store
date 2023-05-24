@@ -10,7 +10,8 @@ import { CheckoutComponent } from './Components/Pages/checkout/checkout.componen
 import { ProductDetailsPageComponent } from './Components/Pages/product-details/product-details-page/product-details-page.component';
 import { DashboardPageComponent } from './Components/Dashboard/dashboard-page/dashboard-page.component';
 import { AboutUsPageComponent } from './Components/Pages/about-us/about-us-page/about-us-page.component';
-import {CartHomeComponent} from './Components/Pages/cart/cart-home/cart-home.component'
+import { CartHomeComponent } from './Components/Pages/cart/cart-home/cart-home.component'
+import{ AdminGuard } from './middleware/permissions'
 import { ProfileComponent } from './Components/Pages/profile/profile.component';
 
 const routes: Routes = [
@@ -23,7 +24,11 @@ const routes: Routes = [
   {path: 'checkout', component: CheckoutComponent},
   { path: 'reset-password', component: ResetPasswordComponent},
   {path: 'product/:id', component:ProductDetailsPageComponent},
-  { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
+    canActivateChild: [AdminGuard]
+  },
   { path: 'cart' , component: CartHomeComponent},
   { path: 'profile' , component: ProfileComponent}
 ]

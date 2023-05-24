@@ -65,6 +65,7 @@ export class LoginComponent {
           this.tokenService.setToken(token);
           const decodedToken: any = jwt_decode(token);
           localStorage.setItem('access_token', JSON.stringify(decodedToken));
+          localStorage.setItem('x-auth-token', token);
           this.router.navigate(['/']);
           this.spinner.hide();
         },
