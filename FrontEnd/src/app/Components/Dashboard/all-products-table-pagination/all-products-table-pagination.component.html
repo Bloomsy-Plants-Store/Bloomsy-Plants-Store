@@ -435,12 +435,20 @@
                   <p class = "last-price" *ngIf="productDetails.productDiscount">${{productDetails.productPrice}}</p>
                   <p class = "new-price">${{(productDetails.productPrice)-((productDetails.productDiscount)/100)}}</p>
                 </div>
-                <hr class="mt-4 mb-4"/>
+                <div class = "product-rating">
+                  <span *ngIf="productDetails.productRate">
+                    <ng-container *ngFor="let star of getStarsArray(productDetails.productRate)">
+                      <i class="fas fa-star" [ngClass]="{'half-star': star === 0.5}"></i>
+                    </ng-container>
+                  </span>
+                  <span id="review">({{productDetails.productReviewNum}} custom reviews)</span>
+                </div>
+                <hr class="my-2"/>
 
                 <div class = "product-detail">
                   <p>{{productDetails.productDesc}}</p>
                 </div>
-                <hr class="mt-4 mb-4"/>
+                <hr class="my-2"/>
 
                 <div class = "product-detail text-start">
                   <ul>

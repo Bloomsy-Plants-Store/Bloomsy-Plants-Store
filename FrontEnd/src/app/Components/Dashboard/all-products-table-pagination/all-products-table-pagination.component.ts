@@ -218,6 +218,19 @@ export class AllProductsTablePaginationComponent implements AfterViewInit {
     this.spinner.hide();
   }
 
+  getStarsArray(rate: number): any[] {
+    const starsCount = Math.floor(rate);
+    const isHalfStar = rate % 1 !== 0;
+
+    const starsArray = Array(starsCount).fill(0);
+
+    if (isHalfStar) {
+      starsArray.push(0.5);
+    }
+
+    return starsArray;
+  }
+
 }
 
 
