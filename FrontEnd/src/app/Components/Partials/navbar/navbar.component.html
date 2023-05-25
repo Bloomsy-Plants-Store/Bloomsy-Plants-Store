@@ -35,11 +35,6 @@
     </div>
     <a class="navbar-brand mx-auto ms-auto title" routerLink="/">Bloomsy</a>
     <ul class="navbar-nav d-flex flex-row gap-3 ms-auto align-items-center">
-      <li class="nav-item me-lg-0">
-        <a class="nav-link" routerLink="#!">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </a>
-      </li>
       <li class="nav-item me-lg-0" *ngIf="!getUserNameFromLocalStorage()">
         <a class="nav-link" routerLinkActive="active" routerLink="/login">
           <i class="fa-solid fa-user"></i>
@@ -51,14 +46,9 @@
         data-bs-toggle="modal"
         data-bs-target="#ProfileModal"
       >
-        <a class="text-white text-decoration-none" routerLink="/">
+        <a class="text-white text-decoration-none text-capitalize" style="cursor: pointer;">
           <i class="fa-solid fa-user mx-2"></i>
           {{ getUserNameFromLocalStorage() }}
-        </a>
-      </li>
-      <li class="nav-item me-lg-0">
-        <a class="nav-link" routerLink="#!">
-          <i class="fa-solid fa-heart"></i>
         </a>
       </li>
       <li class="nav-item me-lg-0">
@@ -93,9 +83,12 @@
       </div>
       <div class="modal-footer">
         <form class="w-100" (ngSubmit)="logout()">
-          <button type="submit" class="btn btn-info w-100">
+          <button type="submit" class="btn btn-info me-4" routerLink="/" >
             LogOut
           </button>
+          <a routerLink="/profile" class="btn btn-info" data-bs-dismiss="modal">
+            Profile
+          </a>
         </form>
         <div
           class="w-100 text-danger my-3 text-center"
