@@ -39,8 +39,9 @@ export class AllProductDataComponent implements OnInit {
       this.myService.getProductsByCategory(this.FiltercategoryName).subscribe({
         next: (response: any) => {
           this.Products = response.data;
-          this.totalItems = this.Products.length;
+          this.isFavorited=false;
           this.checkProductInFavourites();
+          this.totalItems = this.Products.length;
           this.spinner.hide();
         },
         error: (err) => {
@@ -50,6 +51,7 @@ export class AllProductDataComponent implements OnInit {
       });
     }
   }
+
   ngOnInit(): void {
     this.spinner.show();
     this.myService.GetAllProducts().subscribe({
