@@ -17,21 +17,26 @@ var addToFavourites = async (req, res) => {
       return res.status(404).json({ error: 'Product not found' });
     }
 
+
+
     const FavouritesItemIndex = user.favourites.findIndex(item => item.product_id == product_id);
     if (FavouritesItemIndex !== -1) {
       return res.status(404).json({ error: 'Product already exists in the Favourites' });
     }
+
 
     const favouritesItem = {
       product_id: product_id,
     }
 
     user.favourites.push(favouritesItem);
-    await user.save();
 
+    await user.save();
+    console.log("*****************************");
+    console.log(user);
     return res.status(200).json({ message: 'Product added to Favourites successfully' });
   } catch (error) {
-    return res.status(500).json({ error: 'Server Error, Failed to add product to Favourites' });
+    return res.status(500).json({ error});
   }
 };
 

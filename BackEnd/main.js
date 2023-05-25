@@ -94,5 +94,10 @@ const favouritesRoutes = require('./Routes/FavouritesRoutes');
 app.use('/users', favouritesRoutes);
 
 
+// Stripe Route
+// const stripeRoutes = require('./Routes/StripeRoutes');
+// app.use('/charge', stripeRoutes);
+
+
 
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})

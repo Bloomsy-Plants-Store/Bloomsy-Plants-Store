@@ -32,7 +32,8 @@ const routes: Routes = [
   },
   { path: 'cart' , component: CartHomeComponent},
   { path: 'profile' , component: ProfileComponent},
-  { path: '*' , component: Error404Component},
+  { path: 'error' , component: Error404Component},
+  { path: '**' , redirectTo: '/error', pathMatch: 'full'},
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
