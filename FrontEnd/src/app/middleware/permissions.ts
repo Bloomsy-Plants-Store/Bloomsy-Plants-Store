@@ -15,7 +15,7 @@ export class AdminGuard implements CanActivateChild {
     const isAdmin = JSON.parse(localStorage.getItem('access_token')!).adminRole || false;
 
     if (!isAdmin) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/error']);
       return false;
     }
 
