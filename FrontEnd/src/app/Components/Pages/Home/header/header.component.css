@@ -41,8 +41,22 @@
 }
 
 .carousel-caption a:hover {
-    background-color: #224229;
+    background-color: #2d3f31;
     color: white;
+}
+
+.header-btn {
+  background-color: #fff;
+  padding: 1rem 2rem;
+  margin: 0 1%;
+  border-radius: 0%;
+  color: #3c5742;
+  font-weight: 500;
+}
+
+.header-btn:hover {
+  background-color: #3c5742;
+  color: white;
 }
 
 .header-title {

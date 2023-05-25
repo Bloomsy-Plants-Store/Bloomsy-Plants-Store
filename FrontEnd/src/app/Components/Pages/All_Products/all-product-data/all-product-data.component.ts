@@ -24,6 +24,8 @@ export class AllProductDataComponent implements OnInit {
   isFavorited: boolean = false;
 
   @Input() FiltercategoryName: any;
+  @Input() FilterPriceRange: any;
+
   constructor(
     private elementRef: ElementRef,
     public myService: ProductsService,
@@ -49,7 +51,44 @@ export class AllProductDataComponent implements OnInit {
           this.spinner.hide();
         },
       });
+      this.FilterByCategory();
     }
+
+    if (  changes['FilterPriceRange'] &&
+      !changes['FilterPriceRange'].firstChange) {
+      this.FilterByPrice();
+    }
+  }
+
+  FilterByCategory()
+  {
+    this.spinner.show();
+    this.myService.getProductsByCategory(this.FiltercategoryName).subscribe({
+      next: (response: any) => {
+        this.Products = response.data;
+        this.totalItems = this.Products.length;
+        this.checkProductInFavourites();
+        this.spinner.hide();
+      },
+      error: (err) => {
+        console.log(err);
+        this.spinner.hide();
+      },
+    });
+  }
+  FilterByPrice(){
+    this.myService.getProductsByPrice(this.FilterPriceRange).subscribe({
+      next: (response: any) => {
+        this.Products = response.data;
+        this.totalItems = this.Products.length;
+        this.checkProductInFavourites();
+        this.spinner.hide();
+      },
+      error: (err) => {
+        console.log(err);
+        this.spinner.hide();
+      },
+    });
   }
 
   ngOnInit(): void {

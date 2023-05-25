@@ -13,6 +13,7 @@ import { AboutUsPageComponent } from './Components/Pages/about-us/about-us-page/
 import { CartHomeComponent } from './Components/Pages/cart/cart-home/cart-home.component'
 import{ AdminGuard } from './middleware/permissions'
 import { ProfileComponent } from './Components/Pages/profile/profile.component';
+import { Error404Component } from './Components/Pages/error/error404/error404.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -21,16 +22,18 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsPageComponent},
   { path: 'contact-us', component: ContactUsPageComponent},
   { path: 'products', component: ALlProductsComponent},
-  {path: 'checkout', component: CheckoutComponent},
+  { path: 'checkout', component: CheckoutComponent},
   { path: 'reset-password', component: ResetPasswordComponent},
-  {path: 'product/:id', component:ProductDetailsPageComponent},
+  { path: 'product/:id', component:ProductDetailsPageComponent},
   {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
     canActivateChild: [AdminGuard]
   },
   { path: 'cart' , component: CartHomeComponent},
-  { path: 'profile' , component: ProfileComponent}
+  { path: 'profile' , component: ProfileComponent},
+  { path: 'error' , component: Error404Component},
+  { path: '**' , redirectTo: '/error', pathMatch: 'full'},
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

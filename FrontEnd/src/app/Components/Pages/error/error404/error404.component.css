@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  content: "";
+  position: absolute;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background: #dbf4d4;
+}
+
+.plants {
+  height: 80vh;
+  width: 80em;
+  max-width: 80%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: row;
+}
+@media only screen and (max-width: 48em) {
+  .plants {
+    flex-wrap: wrap;
+    height: 100%;
+  }
+}
+
+.plant {
+  position: relative;
+  width: 25%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.plant:before {
+  width: 6.25em;
+  height: 3.75em;
+  top: calc(52vh - 3.75em);
+  background: #b86112;
+  border-radius: 0 0 40px 40px;
+  background-image: linear-gradient(to bottom, transparent 1em, #a6580d 1em, #a6580d 1.5em, transparent 1.5em);
+  box-shadow: 0.8em 0 #c4dbbe, 0 -0.1em #c06b46;
+  z-index: 100;
+}
+.plant:after {
+  width: 100%;
+  height: 0.75em;
+  top: 52vh;
+  background: #bf6a45;
+  box-shadow: #c06b46 0 0.75em 0px -0.4em, #c4dbbe 0 0.5em 0 0, #c4dbbe 0 1.25em 0 0;
+}
+@media only screen and (max-width: 48em) {
+  .plant {
+    width: 50%;
+  }
+  .plant:after {
+    bottom: 4em;
+  }
+}
+
+.leaves {
+  position: absolute;
+  background: #568515;
+  box-shadow: 0.8em 0 #c4dbbe;
+}
+.leaves.plant-1 {
+  width: 2.4em;
+  height: 8.8em;
+  top: calc(52vh - 3.75em - 8.8em);
+  border-radius: 4em 4em 0 0;
+  background-image: repeating-linear-gradient(to right, #4e7816, #4e7816 0.3em, transparent 0.3em, transparent 0.6em);
+}
+.leaves.plant-1:before {
+  width: 2em;
+  height: 5.6em;
+  top: 1.6em;
+  left: -2.8em;
+  background: inherit;
+  border-radius: 4em 4em 0 4em;
+  z-index: -1;
+  background-image: inherit;
+  box-shadow: inherit;
+}
+.leaves.plant-1:after {
+  width: 1em;
+  height: 2em;
+  top: 5.2em;
+  left: -1em;
+  background: inherit;
+  z-index: -1;
+}
+.leaves.plant-2 {
+  width: 5.6em;
+  height: 5.6em;
+  top: calc(52vh - 3.75em - 4.8em);
+  border-radius: 50%;
+  background-size: 1.2em 1.2em, 1.2em 1.2em, 5.6em 5.6em;
+  background-image: radial-gradient(1em 4.8em at center, #ebf9d6 3%, transparent 3%), radial-gradient(4.8em 1em at center, #ebf9d6 3%, transparent 3%), radial-gradient(5.6em 15em at center, transparent 18%, #4e7816 18%, #4e7816 40%, transparent 40%);
+}
+

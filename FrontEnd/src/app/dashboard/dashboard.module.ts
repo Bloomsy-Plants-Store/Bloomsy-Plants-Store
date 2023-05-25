@@ -14,6 +14,7 @@ import { DashboardRevenueComponent } from '../Components/Dashboard/dashboard-rev
 import { AllProductsTablePaginationComponent } from '../Components/Dashboard/all-products-table-pagination/all-products-table-pagination.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from '../app.component';
+import { DashboardHomeComponent } from '../Components/Dashboard/dashboard-home/dashboard-home.component';
 
 
 @NgModule({
@@ -22,14 +23,15 @@ import { AppComponent } from '../app.component';
     DashboardSidebarComponent,
     DashboardAllProductsComponent,
     AllProductsTablePaginationComponent,
-    DashboardRevenueComponent
+    DashboardRevenueComponent,
+    DashboardHomeComponent
   ],
   exports: [
     DashboardPageComponent,
     DashboardSidebarComponent,
     DashboardAllProductsComponent,
     AllProductsTablePaginationComponent,
-    DashboardRevenueComponent
+    DashboardRevenueComponent,
   ],
   imports: [
     ReactiveFormsModule,

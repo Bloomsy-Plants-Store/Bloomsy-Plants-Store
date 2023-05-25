@@ -16,10 +16,11 @@ router.get("/:id",ProductController.getProductByID);
 router.put("/update/:id",ProductController.updateProduct);
 
 // Delete Product 
+router.get('/filter/product-price', ProductController.getProductsByPrice);
 router.delete("/:id",userPermissions,ProductController.deleteProduct);
 router.post('/store',userPermissions,ProductController.storeProducts);
 router.get('/product-category/:category', ProductController.getProductsByCategory);
-
+router.get('/All/Categories/Count', ProductController.getEachCategory);
 
 module.exports = router;
 

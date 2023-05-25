@@ -1,26 +1,35 @@
 <!-- Alert Messages -->
-<div class="w-100 alert alert-danger my-3 text-start pl-2" *ngIf="uploadErrorMessage">
+<div
+  class="w-100 alert alert-danger my-3 text-start pl-2"
+  *ngIf="uploadErrorMessage"
+>
   <div>{{ uploadErrorMessage }}</div>
 </div>
 
-<div class="w-100 alert alert-success my-3 text-start pl-2" *ngIf="uploadSuccessMessage">
+<div
+  class="w-100 alert alert-success my-3 text-start pl-2"
+  *ngIf="uploadSuccessMessage"
+>
   <div>{{ uploadSuccessMessage }}</div>
 </div>
 
 <div class="w-100 alert alert-danger my-3 text-start pl-2" *ngIf="errorMessage">
   <div>{{ errorMessage }}</div>
 </div>
-<div class="w-100 alert alert-success my-3 text-start pl-2" *ngIf="successMessage">
+<div
+  class="w-100 alert alert-success my-3 text-start pl-2"
+  *ngIf="successMessage"
+>
   <div>{{ successMessage }}</div>
 </div>
 
 <!-- All Products Table -->
-<div class="container-fluid p-0">
-  <div class="mat-elevation-z8 w-100">
+<div class="container-fluid p-0 table-container">
+  <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" class="w-100">
       <!-- Position Column -->
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>name</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
         <td mat-cell *matCellDef="let element">{{ element.name }}</td>
       </ng-container>
 
@@ -37,7 +46,7 @@
       </ng-container>
 
       <!-- Symbol Column -->
-      <ng-container matColumnDef="rate">
+      <ng-container matColumnDef="rate" class="tr">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Rate</th>
         <td mat-cell *matCellDef="let element">{{ element.rate }}</td>
       </ng-container>
@@ -48,12 +57,13 @@
       </ng-container>
 
       <ng-container matColumnDef="itemsinStock">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>itemsinStock</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Items in Stock</th>
         <td mat-cell *matCellDef="let element">{{ element.itemsinStock }}</td>
       </ng-container>
-      <!-- Action Column -->
+
+      <!-- Actions Column -->
       <ng-container matColumnDef="action" class="action-container">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
         <td mat-cell *matCellDef="let element">
           <button
             class="copy"
@@ -71,6 +81,14 @@
           >
             <i class="bi bi-pen"></i>
           </button>
+          <button
+            class="copy"
+            data-bs-toggle="modal"
+            data-bs-target="#showModal"
+            (click)="showElement(element)"
+          >
+            <i class="bi bi-eye"></i>
+          </button>
         </td>
       </ng-container>
 
@@ -79,7 +97,7 @@
     </table>
 
     <mat-paginator
-      [pageSizeOptions]="[7, 25, 50, 100]"
+      [pageSizeOptions]="[7, 10, 15, 20]"
       [pageSize]="7"
       [showFirstLastButtons]="true"
       [length]="dataSource.data.length"
@@ -92,7 +110,12 @@
   <div
     class="modal-dialog modal-confirm modal-dialog-centered modal-md my-auto"
   >
-    <div class="modal-content bg-white" [style.background]="'url(./assets/images/modal-bg.png) no-repeat top left'">
+    <div
+      class="modal-content bg-white"
+      [style.background]="
+        'url(./assets/images/modal-bg.png) no-repeat top left'
+      "
+    >
       <div class="modal-header">
         <div class="w-100">
           <h2 class="modal-title text-center">Update Product</h2>
@@ -114,10 +137,8 @@
                 formControlName="productName"
                 autocomplete="off"
                 [ngClass]="{
-                  'is-invalid':
-                    productName?.invalid,
-                  'is-valid':
-                    !productName?.invalid
+                  'is-invalid': productName?.invalid,
+                  'is-valid': !productName?.invalid
                 }"
               />
               <div
@@ -148,10 +169,8 @@
                 rows="3"
                 autocomplete="off"
                 [ngClass]="{
-                  'is-invalid':
-                    productDesc?.invalid,
-                  'is-valid':
-                    !productDesc?.invalid
+                  'is-invalid': productDesc?.invalid,
+                  'is-valid': !productDesc?.invalid
                 }"
               >
                 <div
@@ -179,15 +198,13 @@
                 formControlName="productPrice"
                 autocomplete="off"
                 [ngClass]="{
-                  'is-invalid':
-                    productPrice?.invalid,
-                  'is-valid':
-                    !productPrice?.invalid
+                  'is-invalid': productPrice?.invalid,
+                  'is-valid': !productPrice?.invalid
                 }"
               />
               <div
                 class="alert alert-danger text-danger p-0 mt-2 text-start px-3"
-                *ngIf="productPrice?.invalid && (productPrice?.dirty)"
+                *ngIf="productPrice?.invalid && productPrice?.dirty"
               >
                 <p style="font-size: small; margin: 0">
                   <small *ngIf="productPrice?.errors?.['required']"
@@ -207,18 +224,15 @@
                 name="productDiscount"
                 placeholder="Discount"
                 formControlName="productDiscount"
-                autocomplete="off"[ngClass]="{
-                  'is-invalid':
-                    productDiscount?.invalid,
-                  'is-valid':
-                    !productDiscount?.invalid
+                autocomplete="off"
+                [ngClass]="{
+                  'is-invalid': productDiscount?.invalid,
+                  'is-valid': !productDiscount?.invalid
                 }"
               />
               <div
                 class="alert alert-danger text-danger p-0 mt-2 text-start px-3"
-                *ngIf="
-                  productDiscount?.invalid
-                "
+                *ngIf="productDiscount?.invalid"
               >
                 <p style="font-size: small; margin: 0">
                   <small *ngIf="productDiscount?.errors?.['required']"
@@ -238,18 +252,16 @@
                 name="productItemsInStock"
                 placeholder="No. of Items in Stock"
                 formControlName="productItemsInStock"
-                autocomplete="off"[ngClass]="{
-                  'is-invalid':
-                    productItemsInStock?.invalid,
-                  'is-valid':
-                    !productItemsInStock?.invalid
+                autocomplete="off"
+                [ngClass]="{
+                  'is-invalid': productItemsInStock?.invalid,
+                  'is-valid': !productItemsInStock?.invalid
                 }"
               />
               <div
                 class="alert alert-danger text-danger p-0 mt-2 text-start px-3"
                 *ngIf="
-                  productItemsInStock?.invalid &&
-                  (productItemsInStock?.dirty)
+                  productItemsInStock?.invalid && productItemsInStock?.dirty
                 "
               >
                 <p style="font-size: small; margin: 0">
@@ -276,10 +288,8 @@
                   class="selectpicker form-control"
                   formControlName="productCategory"
                   [ngClass]="{
-                    'is-invalid':
-                      productCategory?.invalid,
-                    'is-valid':
-                      !productCategory?.invalid
+                    'is-invalid': productCategory?.invalid,
+                    'is-valid': !productCategory?.invalid
                   }"
                 >
                   <option value="Indoor Plants">Indoor Plants</option>
@@ -290,9 +300,7 @@
                 </select>
                 <div
                   class="alert alert-danger text-danger p-0 text-start px-3"
-                  *ngIf="
-                    productCategory?.invalid && (productCategory?.dirty)
-                  "
+                  *ngIf="productCategory?.invalid && productCategory?.dirty"
                 >
                   <p style="font-size: small; margin: 0">
                     <small *ngIf="productCategory?.errors?.['required']"
@@ -332,8 +340,12 @@
             <button class="btn btn-light border" data-bs-dismiss="modal">
               Cancel
             </button>
-            <button class="btn btn-info submit-btn" type="submit" data-bs-dismiss="modal"
-            [disabled]="!editProductForm.valid">
+            <button
+              class="btn btn-info submit-btn"
+              type="submit"
+              data-bs-dismiss="modal"
+              [disabled]="!editProductForm.valid"
+            >
               Update
             </button>
           </div>
@@ -369,6 +381,93 @@
             Delete
           </button>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Show Product Modal -->
+<div class="modal fade" id="showModal">
+  <div class="modal-dialog modal-confirm modal-lg modal-dialog-centered my-auto h-100">
+    <div class="modal-content">
+      <div class="modal-body container-fluid">
+        <div class = "product-wrapper container-fluid mt-3">
+          <div class = "product-section container-fluid">
+
+            <!-- product left -->
+            <div class="row">
+
+              <!-- product left -->
+              <div class="product-imgs col-lg-7 col-xl-7 col-xxl-7 col-md-12 col-sm-12 col-xs-12  mt-4">
+                <div class="row">
+                  <div class="col-lg-3 col-xl-3 col-xxl-3 col-md-12 col-sm-12 col-xs-12 order-lg-1 order-md-2 order-xs-2 order-xxs-2 banner-button">
+                    <div class="img-select row gap-1 justify-content-center">
+                      <div class="img-item col-2 col-lg-12" *ngFor="let image of productDetails.productImages; let i = index">
+                        <button class="d-block btn btn-link" data-bs-target="#carouselExampleFade" [attr.data-bs-slide-to]="i">
+                          <img src="{{image}}" alt="show image" class="img-select-image w-100">
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-lg-8 col-xl-8 col-xxl-8 col-md-12 col-sm-12 col-xs-12 order-lg-2 order-md-1 order-sm-1 order-xs-1 order-xxs-1 banner">
+                    <div class="img-display d-flex justify-content-center">
+                      <div id="carouselExampleFade" class="carousel slide carousel-fade">
+                        <div class="carousel-inner">
+                          <ng-container *ngFor="let image of productDetails.productImages; let i = index">
+                            <div class="carousel-item" [class.active]="i === 0">
+                              <img class="d-block w-100" src="{{image}}" alt="Slide">
+                            </div>
+                          </ng-container>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- product right -->
+              <div class = "product-content col-xxl-5 col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12 text-lg-start text-sm-center text-md-center">
+                <h3 class="product-title">{{productDetails.productName}}</h3>
+
+                <div class="product-price d-flex justify-content-start justify-content-sm-center justify-content-lg-start mb-0">
+                  <p class = "last-price" *ngIf="productDetails.productDiscount">${{productDetails.productPrice}}</p>
+                  <p class = "new-price">${{(productDetails.productPrice)-((productDetails.productDiscount)/100)}}</p>
+                </div>
+                <div class = "product-rating">
+                  <span *ngIf="productDetails.productRate">
+                    <ng-container *ngFor="let star of getStarsArray(productDetails.productRate)">
+                      <i class="fas fa-star" [ngClass]="{'half-star': star === 0.5}"></i>
+                    </ng-container>
+                  </span>
+                  <span id="review">({{productDetails.productReviewNum}} custom reviews)</span>
+                </div>
+                <hr class="my-2"/>
+
+                <div class = "product-detail">
+                  <p>{{productDetails.productDesc}}</p>
+                </div>
+                <hr class="my-2"/>
+
+                <div class = "product-detail text-start">
+                  <ul>
+                    <i class="fas fa-check-circle" style="color: #444646;"></i> <li>Available: <span>{{productDetails.productItemsinStock}}&nbsp;in stock</span></li><br>
+                    <i class="fas fa-check-circle" style="color: #444646;"></i><li>Category: <span>{{productDetails.productCategory}}</span></li><br>
+                    <i class="fas fa-check-circle" style="color: #444646;"></i><li>Shipping Area: <span>All over Alexandria</span></li><br>
+                  </ul>
+                </div>
+
+              </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer py-3">
+        <button type="button" class="btn btn-info  submit-btn" data-bs-dismiss="modal">
+          Close
+        </button>
       </div>
     </div>
   </div>
