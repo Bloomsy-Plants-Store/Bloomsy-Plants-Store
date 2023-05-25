@@ -12,6 +12,7 @@ import {FavouritesService} from 'src/app/Services/favourites.service';
 export class ProfileContentComponent {
   Orders: any;
   ordersNumber: any
+  FavouriteNumber: any
   ordersProducts: any
   favourites: any[] = []
   customOrders: any[] = []
@@ -21,17 +22,19 @@ export class ProfileContentComponent {
   itemsPerPage = 12; // Number of items to display per page
   totalItems = 0;
   selectedOrder: any;
+  userId: any | null = null;
+  userName: any;
   constructor(private elementRef: ElementRef, public favouritesService: FavouritesService ,public orderService: OrderService,public productService: ProductsService, public myCartService: CartService) { }
 
   ngOnInit(): void {
     let accessToken = localStorage.getItem('access_token');
-    let userId: any | null = null;
     let custom: { [key: string]: any } = {};
     let customFavourite: { [key: string]: any } = {};
     if (accessToken) {
-      userId = JSON.parse(accessToken).UserId;
+      this.userId = JSON.parse(accessToken).UserId;
+      this.userName = JSON.parse(accessToken).UserName
     }
-    this.orderService.GetOrdersByUserID(userId).subscribe({
+    this.orderService.GetOrdersByUserID(this.userId).subscribe({
       next: (response: any) => {
         this.Orders = response.orders;
         this.ordersNumber = this.Orders.length
@@ -61,28 +64,37 @@ export class ProfileContentComponent {
       }
     })
     // favourites
-    this.favouritesService.GetAllProductsInFavourites(userId).subscribe({
+    this.getAllProductsInFavourites()
+  }
+
+  getAllProductsInFavourites(){
+    this.favouritesService.GetAllProductsInFavourites(this.userId).subscribe({
       next: (response: any) => {
-        console.log(response.favourites);
         this.favourites = response.favourites
-        console.log(this.favourites.length);
-        
-       
-        
-        
+        this.FavouriteNumber = this.favourites.length
       },
       error: (err) => {
         console.log(err);
       }
     })
   }
+
   getUpperBound(): number {
     const upperBound = (this.currentPage - 1) * this.itemsPerPage + this.itemsPerPage;
     return Math.min(upperBound, this.totalItems);
   }
 
-  
-
+  deleteFromFavourite(product: any){
+    this.favouritesService.deleteProductFromFavourites(this.userId,product._id).subscribe({
+      next: (response: any) => {
+        this.getAllProductsInFavourites()
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+    
+  }
 
   changeTabContent(order: any) {
     this.clickedOrderProducts = []
