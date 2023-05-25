@@ -134,13 +134,8 @@
         opacity: 0;
     }
 }
-.general-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
+/* Animation Monster */
 .container-sky {
   width: 800px;
   height: 500px;
@@ -399,6 +394,7 @@
   background-color: white;
   border-radius: 50%;
 }
+
 
 @keyframes eye-blink {
   0%, 98% {
@@ -971,3 +967,31 @@
 .input-not-hidden {
   display: inline;
 }
+@media (min-width:1100px){
+
+  .general-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (min-width:900px) and (max-width:1099px){
+
+  .general-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  }
+  @media (max-width:899px){
+
+    .general-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+    }
