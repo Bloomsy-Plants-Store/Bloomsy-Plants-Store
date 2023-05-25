@@ -142,6 +142,12 @@
               </div>
             </button>
           </form>
+          <div
+          class="text-danger text-danger p-0 text-start px-3 my-3 text-center"
+          *ngIf="errorMessage"
+        >
+          <p>{{ errorMessage }}</p>
+          </div>
           </div>
         </div>
       </div>
@@ -149,3 +155,38 @@
   </div>
 </div>
 
+<!--Success Modal-->
+<div
+    class="modal fade custom-modal"
+    id="successModal"
+    #successModal
+   >
+    <div class="modal-dialog modal-confirm modal-dialog-centered my-auto">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="d-flex flex-column justify-content-center w-100">
+            <div class="icon-box text-center">
+              <img
+                src="./assets/images/icons/Plant Stickers.gif"
+                width="500"
+                height="500"
+              />
+            </div>
+            <h4 class="modal-title">Awesome!</h4>
+          </div>
+        </div>
+        <div class="modal-body text-center">
+          <p>Your Message has been Sent successfully :)</p>
+        </div>
+        <div class="modal-footer w-100 d-flex justify-content-center align-items-center">
+            <button
+            type="button"
+            class="btn btn-info mt-0 mb-3"
+            data-bs-dismiss="modal"
+            >
+              CLOSE
+            </button>
+        </div>
+      </div>
+    </div>
+</div>

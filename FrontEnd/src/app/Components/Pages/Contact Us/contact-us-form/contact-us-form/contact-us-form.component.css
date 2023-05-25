@@ -108,8 +108,6 @@ button:active {
   left: -100%;
   height: 100%;
   width: 200%;
-  background: linear-gradient(-225deg, #3c5742, #749d77);
-  color: #fff;
   transform: translateX(0);
   transition: transform 0.6s ease;
 }
@@ -196,8 +194,6 @@ a{
 
   .panel-left {
     top: 0;
-    background: url("http://garderia.wgl-demo.net/wp-content/uploads/2020/01/contact-us.png") no-repeat bottom right;
-    background-color: #224229;
     transform: translateY(-20%);
   }
 
@@ -360,4 +356,115 @@ a{
   }
 }
 
+/* Success Modal */
+.custom-modal {
+  animation: bounceIn 0.5s;
+}
+
+.modal-confirm {
+  color: #636363;
+  width: 325px;
+  font-size: 14px;
+}
+
+.modal-title{
+  font-family: 'Dancing Script', cursive;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.modal-confirm .modal-content {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.modal-confirm{
+  border-bottom: none;
+  position: relative;
+}
+
+.modal-confirm h4 {
+  text-align: center;
+  font-size: 26px;
+  margin: 30px 0 -15px;
+}
+
+.modal-confirm .form-control,
+.modal-confirm .btn {
+  min-height: 40px;
+  border-radius: 3px;
+}
+
+.modal-confirm .close {
+  position: absolute;
+  top: -10px;
+  right: -5px;
+}
+
+.modal-confirm .modal-footer{
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 0;
+}
+
+.modal-confirm .icon-box {
+  color: #fff;
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: -60px;
+  bottom: 0;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  z-index: 9;
+  background: #99ce9d;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-confirm .icon-box img {
+  font-size: 58px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.modal-confirm.modal-dialog {
+  margin-top: 80px;
+}
+
+.modal-confirm .btn {
+  color: #fff;
+  border-radius: 4px;
+  background: #557758;
+  text-decoration: none;
+  transition: all 0.4s;
+  line-height: normal;
+  border: none;
+}
+
+.modal-confirm .btn:hover,
+.modal-confirm .btn:focus {
+  background: #618264;
+  outline: none;
+}
+
+.trigger-btn {
+  display: inline-block;
+}
+
+@media (max-width: 576px) {
+  .modal-confirm {
+      margin: 0 auto;
+      width: 90%;
+  }
+}
 
