@@ -131,8 +131,8 @@
                                 aria-labelledby="ex-with-icons-tab-2">
                                 <div class="sample-products d-flex justify-content-center my-1">
                                     <div class="row col-12 d-flex justify-content-evenly">
-                                        <!-- <div class="col-10 col-md-3 col-lg-4 border-white mb-3"
-                                            *ngFor="let product of Products | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
+                                        <div class="col-10 col-md-3 col-lg-4 border-white mb-3"
+                                            *ngFor="let product of favourites | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
                                             (click)="changeTabContent(product)">
                                            
 
@@ -171,7 +171,7 @@
 
                                             </div>
 
-                                        </div> -->
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="mt-4 text-center mx-auto">

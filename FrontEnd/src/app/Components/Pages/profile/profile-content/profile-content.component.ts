@@ -3,6 +3,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { OrderService } from 'src/app/Services/order.service';
 import { ProductsService } from 'src/app/Services/products.service';
 import { CartService } from 'src/app/Services/cart.service';
+import {FavouritesService} from 'src/app/Services/favourites.service';
 @Component({
   selector: 'app-profile-content',
   templateUrl: './profile-content.component.html',
@@ -12,6 +13,7 @@ export class ProfileContentComponent {
   Orders: any;
   ordersNumber: any
   ordersProducts: any
+  favourites: any[] = []
   customOrders: any[] = []
   clickedOrderProducts: any[] = []
   clickedOrder: { [key: string]: any } = {}
@@ -19,14 +21,15 @@ export class ProfileContentComponent {
   itemsPerPage = 12; // Number of items to display per page
   totalItems = 0;
   selectedOrder: any;
-  constructor(private elementRef: ElementRef, public orderService: OrderService,public productService: ProductsService, public myCartService: CartService) { }
+  constructor(private elementRef: ElementRef, public favouritesService: FavouritesService ,public orderService: OrderService,public productService: ProductsService, public myCartService: CartService) { }
 
   ngOnInit(): void {
     let accessToken = localStorage.getItem('access_token');
     let userId: any | null = null;
     let custom: { [key: string]: any } = {};
+    let customFavourite: { [key: string]: any } = {};
     if (accessToken) {
-      userId = "6468d60f2ca3ca5964e4a8f7";
+      userId = JSON.parse(accessToken).UserId;
     }
     this.orderService.GetOrdersByUserID(userId).subscribe({
       next: (response: any) => {
@@ -52,6 +55,21 @@ export class ProfileContentComponent {
             })
           })
         });
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+    // favourites
+    this.favouritesService.GetAllProductsInFavourites(userId).subscribe({
+      next: (response: any) => {
+        console.log(response.favourites);
+        this.favourites = response.favourites
+        console.log(this.favourites.length);
+        
+       
+        
+        
       },
       error: (err) => {
         console.log(err);
@@ -110,6 +128,13 @@ export class ProfileContentComponent {
 }
 
 interface Order {
+  products: any[];
+  total_price: number;
+  _id: any;
+  // Other properties of the product
+}
+
+interface Favourites {
   products: any[];
   total_price: number;
   _id: any;
