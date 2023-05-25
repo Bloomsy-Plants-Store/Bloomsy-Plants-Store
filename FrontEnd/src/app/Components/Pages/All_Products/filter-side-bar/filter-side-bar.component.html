@@ -51,7 +51,7 @@
               <div class="category-filter px-4">
                 <h3 class="sidebar-h3">Categories</h3>
                 <div id="pa_category" class="filter_category_product" >
-                  <div data-id_category="431" class="item-category " *ngFor="let category of categories">
+                  <div data-id_category="431" class="item-category" id="{{category._id}}" *ngFor="let category of categories" (click)="handleContainerClick($event,category._id)">
                     <label class="name">{{category._id}}</label>
                     <div class="count">{{category.count}}</div>
                   </div>

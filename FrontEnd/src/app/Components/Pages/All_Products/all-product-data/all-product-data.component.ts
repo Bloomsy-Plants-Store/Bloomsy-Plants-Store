@@ -36,16 +36,16 @@ export class AllProductDataComponent implements OnInit {
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-
     if (this.FiltercategoryName) {
-      this.FilterByCategory()
+      this.FilterByCategory();
     }
 
-    if(!changes["FilterPriceRange"].firstChange)
-    {
-      this.FilterByPrice()
+    if (  changes['FilterPriceRange'] &&
+      !changes['FilterPriceRange'].firstChange) {
+      this.FilterByPrice();
     }
   }
+
   FilterByCategory()
   {
     this.spinner.show();

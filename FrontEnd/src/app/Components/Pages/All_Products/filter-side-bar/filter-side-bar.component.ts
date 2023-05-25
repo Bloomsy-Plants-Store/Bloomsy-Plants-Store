@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { LabelType, Options } from '@angular-slider/ngx-slider';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -14,9 +14,12 @@ export class FilterSideBarComponent implements OnInit {
   minValue: number = 50;
   maxValue: number = 1500;
   selectedOption: string | undefined;
+  activeItem: any = null;
   sortOptions: string[] = ['Default sorting','Sort by average rating', 'Sort by price: low to high', 'Sort by price: high to low'];
-  @Output() myEvent = new EventEmitter();
-  constructor(private spinner: NgxSpinnerService, public myService: ProductsService) {}
+  @Output() myPriceEvent = new EventEmitter();
+  @Output() myCatgoryEvent = new EventEmitter();
+
+  constructor(private spinner: NgxSpinnerService, public myService: ProductsService,private renderer: Renderer2) {}
   ngOnInit(): void {
     this.spinner.show();
     this.myService.getEachCatgory().subscribe({
@@ -67,7 +70,7 @@ export class FilterSideBarComponent implements OnInit {
       min:this.minValue,
       max:this.maxValue
     }
-    this.myEvent.emit(price_range);
+    this.myPriceEvent.emit(price_range);
   }
 
   onOptionSelected(option: string) {
@@ -76,6 +79,20 @@ export class FilterSideBarComponent implements OnInit {
     console.log('Selected Option:', this.selectedOption);
     this.spinner.hide();
   }
+
+  HandleCatgoryEvent(categoryName: string) {
+    this.myCatgoryEvent.emit(categoryName);
+  }
+  handleContainerClick(event: MouseEvent, categoryName: string) {
+    this.HandleCatgoryEvent(categoryName);
+    if (this.activeItem) {
+      this.renderer.removeClass(this.activeItem, 'active');
+    }
+    this.activeItem = event.target;
+    this.renderer.addClass(this.activeItem, 'active');
+  }
+
+
   // categories = [
   //   {
   //     id:"0",

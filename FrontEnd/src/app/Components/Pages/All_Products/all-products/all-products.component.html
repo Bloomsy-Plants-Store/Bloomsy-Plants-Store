@@ -1,5 +1,5 @@
 <app-all-products-header (myEvent)="getCatgoryName($event)"></app-all-products-header>
-<app-filter-side-bar (myEvent)="getPriceRange($event)"></app-filter-side-bar>
+<app-filter-side-bar (myPriceEvent)="getPriceRange($event)" (myCatgoryEvent)="getCatgoryName($event)"></app-filter-side-bar>
 <app-all-product-data [FiltercategoryName]="categoryName"  [FilterPriceRange]="priceRange"></app-all-product-data>
 
 <!-- Spinner -->
