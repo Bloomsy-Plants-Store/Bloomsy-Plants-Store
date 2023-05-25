@@ -1,5 +1,7 @@
-import { Component, EventEmitter,Output, ElementRef, Renderer2} from '@angular/core';
+import { Component, EventEmitter,Output, ElementRef, Renderer2, SimpleChanges, Input} from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ProductsService } from 'src/app/Services/products.service';
 @Component({
   selector: 'app-all-products-header',
   templateUrl: './all-products-header.component.html',
@@ -11,26 +13,37 @@ export class AllProductsHeaderComponent {
   previousImgElementId: string | null | undefined = null;
   previousTitleElementId: string | null | undefined = null;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) { }
+  constructor(private elementRef: ElementRef, private renderer: Renderer2,public myService: ProductsService,
+    private spinner: NgxSpinnerService) { }
 
   @Output() myEvent = new EventEmitter();
+  @Input() FiltercategoryName: any;
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.FiltercategoryName) {
+      this.HeaderName=this.FiltercategoryName
+      this.handleImgContainerClick(this.removeSpaces(this.FiltercategoryName))
+      this.handleTitleContainerClick(this.removeSpaces(this.FiltercategoryName))
+    }
+  }
   HandleEvent(categoryName: string) {
     this.HeaderName = categoryName;
     this.myEvent.emit(categoryName);
   }
-  handleContainerClick(event: MouseEvent, categoryName: string, elementId: string) {
+  handleContainerClick(event: MouseEvent, categoryName: string) {
     const clickedElement = event.target as HTMLElement;
     const isImgContainer = clickedElement.classList.contains('category-img');
     const isTitleElement = clickedElement.tagName === 'A' && clickedElement.parentElement?.classList.contains('category-title');
 
     if (isImgContainer || isTitleElement) {
       this.HandleEvent(categoryName);
-      this.handleImgContainerClick(elementId)
-      this.handleTitleContainerClick(elementId)
+      this.handleImgContainerClick(this.removeSpaces(categoryName))
+      this.handleTitleContainerClick(this.removeSpaces(categoryName))
     }
   }
-
+  removeSpaces(name: string): string {
+    return name.replace(/\s/g, '');
+  }
 
   handleImgContainerClick(catgory_id: string){
     const elementId = `img-active-${catgory_id}`;

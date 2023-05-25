@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild,SimpleChanges } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { LabelType, Options } from '@angular-slider/ngx-slider';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -20,6 +20,13 @@ export class FilterSideBarComponent implements OnInit {
   @Output() myCatgoryEvent = new EventEmitter();
 
   constructor(private spinner: NgxSpinnerService, public myService: ProductsService,private renderer: Renderer2) {}
+  @Input() FiltercategoryName: any;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.FiltercategoryName) {
+      this.activeCategory(this.FiltercategoryName);
+    }
+  }
   ngOnInit(): void {
     this.spinner.show();
     this.myService.getEachCatgory().subscribe({
@@ -83,13 +90,31 @@ export class FilterSideBarComponent implements OnInit {
   HandleCatgoryEvent(categoryName: string) {
     this.myCatgoryEvent.emit(categoryName);
   }
-  handleContainerClick(event: MouseEvent, categoryName: string) {
+  handleContainerClick(categoryName: string) {
     this.HandleCatgoryEvent(categoryName);
-    if (this.activeItem) {
-      this.renderer.removeClass(this.activeItem, 'active');
+    // if (this.activeItem) {
+    //   this.renderer.removeClass(this.activeItem, 'active');
+    // }
+    // this.activeItem = event.target;
+    // this.renderer.addClass(this.activeItem, 'active');
+
+    this.activeCategory(categoryName);
+  }
+  activeCategory(categoryName:string)
+  {
+    const myDiv = document.querySelector(`#${this.removeSpaces(categoryName)}`);
+
+    if (myDiv instanceof HTMLElement) {
+      console.log(myDiv)
+      if (this.activeItem) {
+        this.activeItem.classList.remove('active');
+      }
+      this.activeItem = myDiv;
+      this.activeItem.classList.add('active');
     }
-    this.activeItem = event.target;
-    this.renderer.addClass(this.activeItem, 'active');
+  }
+  removeSpaces(name: string): string {
+    return name.replace(/\s/g, '');
   }
 
 
