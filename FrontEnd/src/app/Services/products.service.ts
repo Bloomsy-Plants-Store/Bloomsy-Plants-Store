@@ -42,5 +42,12 @@ export class ProductsService {
   getProductsByCategory(category: string): Observable<any> {
     return this.myClient.get(this.Base_URL +"product-category/"+ category);
   }
+  getProductsByPrice(priceObject: string): Observable<any> {
+    console.log("service")
+    return this.myClient.get(this.Base_URL +`filter/product-price?object=${encodeURIComponent(JSON.stringify(priceObject))}`);
+  }
+  getEachCatgory(): Observable<any> {
+    return this.myClient.get(this.Base_URL +`/All/Categories/Count`);
+  }
 }
 

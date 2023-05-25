@@ -1,9 +1,9 @@
 <app-all-products-header (myEvent)="getCatgoryName($event)"></app-all-products-header>
-<app-filter-side-bar></app-filter-side-bar>
-<app-all-product-data [FiltercategoryName]="categoryName"></app-all-product-data>
+<app-filter-side-bar (myEvent)="getPriceRange($event)"></app-filter-side-bar>
+<app-all-product-data [FiltercategoryName]="categoryName"  [FilterPriceRange]="priceRange"></app-all-product-data>
 
 <!-- Spinner -->
-<!-- <ngx-spinner>
+<ngx-spinner>
   <div class="loader-container">
     <div class="loader">
       <div class="orbe" style="--index: 0"></div>
@@ -13,4 +13,4 @@
       <div class="orbe" style="--index: 4"></div>
     </div>
   </div>
-</ngx-spinner> -->
+</ngx-spinner>

@@ -50,21 +50,10 @@
             <form id="filter-form">
               <div class="category-filter px-4">
                 <h3 class="sidebar-h3">Categories</h3>
-                <div id="pa_category" class="filter_category_product">
-                  <div data-id_category="431" class="item-category "><label class="name">Air Purifying</label>
-                    <div class="count">8</div>
-                  </div>
-                  <div data-id_category="151" class="item-category "><label class="name">Ceramic Pots</label>
-                    <div class="count">4</div>
-                  </div>
-                  <div data-id_category="401" class="item-category "><label class="name">Indoor Plants</label>
-                    <div class="count">5</div>
-                  </div>
-                  <div data-id_category="381" class="item-category "><label class="name">Low Maintenance</label>
-                    <div class="count">5</div>
-                  </div>
-                  <div data-id_category="407" class="item-category "><label class="name">Plant Bundle</label>
-                    <div class="count">5</div>
+                <div id="pa_category" class="filter_category_product" >
+                  <div data-id_category="431" class="item-category " *ngFor="let category of categories">
+                    <label class="name">{{category._id}}</label>
+                    <div class="count">{{category.count}}</div>
                   </div>
                 </div>
               </div>
@@ -79,7 +68,7 @@
                       class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span>
                   </div>
                   <div class="price-input">
-                    <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
+                    <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (userChange)="HandleEvent()"></ngx-slider>
                   </div>
                 </div>
               </div>
@@ -88,9 +77,6 @@
         </aside>
       </div>
     </mat-sidenav>
-    <mat-sidenav-content>
-      <!-- <div>HI</div> -->
-    </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
 
