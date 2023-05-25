@@ -120,8 +120,9 @@
   color: #828787;
   text-align: left;
 }
-.item-category:hover {
-  color: #313232;
+.item-category:hover,
+.active {
+  color: #313232 !important;
 }
 .item-category label {
   font-weight: 500;
@@ -129,6 +130,7 @@
   cursor: pointer;
 }
 .item-category .count {
+  color: inherit;
   width: 25px;
   height: 25px;
   border-radius: 50%;

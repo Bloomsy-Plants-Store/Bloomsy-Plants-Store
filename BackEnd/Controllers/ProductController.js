@@ -177,6 +177,50 @@ var getProductsByCategory = async (req, res) => {
     return res.status(500).send("Server Error");
   }
 };
+var getProductsByPrice=async (req, res) => {
+  try {
+    const objectQueryParam = req.query.object;
+    // Parse the query parameter value back into an object
+    const priceObject = JSON.parse(objectQueryParam);
+    console.log(priceObject)
+    if (!objectQueryParam) {
+      return res.status(400).send("Bad Request: You must enter a price ");
+    }
+
+    let Products = await productModel.find({
+      price: { $gte: priceObject.min, $lte: priceObject.max }
+    }).lean();
+
+    if (!Products) {
+      return res.status(404).send("No Data Found");
+    }
+    return res.status(200).json({ data: Products });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send("Server Error");
+  }
+};
+
+const getEachCategory = async (req, res) => {
+  try {
+    const result = await productModel.aggregate([
+      {
+        $unwind: "$category" //$unwind stage is used to create a separate document for each element within the category arra
+      },
+      {
+        $group: {
+          _id: "$category",
+          count: { $sum: 1 }
+        }
+      }
+    ]).exec();
+
+    return res.status(200).json({ data: result });
+  } catch (err) {
+    console.error('Error retrieving category information:', err);
+    res.status(500).send('An error occurred while retrieving category information');
+  }
+};
 
 module.exports = {
   getAllProducts,
@@ -186,7 +230,9 @@ module.exports = {
   deleteProduct,
   storeProducts,
   getProductsByCategory,
-  updateProduct
+  updateProduct,
+  getProductsByPrice,
+  getEachCategory
 };
 
 
