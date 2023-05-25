@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as bootstrap from 'bootstrap';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-contact-us-form',
@@ -10,22 +13,75 @@ export class ContactUsFormComponent {
   private formBtn!: HTMLButtonElement;
   private contactContainer!: HTMLElement;
   private mapContainer!: HTMLElement;
+  contactValidationForm!: FormGroup;
+  errorMessage = '';
+  @ViewChild('successModal') successModal!: ElementRef;
 
-  constructor() {
-    document.addEventListener('DOMContentLoaded', () => {
-      this.mapBtn = document.getElementById("map-btn") as HTMLButtonElement;
-      this.formBtn = document.getElementById("form-container-icon") as HTMLButtonElement;
-      this.contactContainer = document.getElementById("contact-container") as HTMLElement;
-      this.mapContainer = document.getElementById("map") as HTMLElement;
-
-      this.formBtn.addEventListener('click', () => {
-        this.contactContainer.classList.add("right-panel-active");
-      });
-
-      this.mapBtn.addEventListener('click', () => {
-        this.mapContainer.classList.remove("left-panel-active");
-      });
+  constructor(private fb: FormBuilder, private spinner: NgxSpinnerService) {
+    this.contactValidationForm = this.fb.group({
+      name: [
+        '',
+        [Validators.required, Validators.pattern(/^[a-zA-Z\s]{3,30}$/)],
+      ],
+      email: ['', [Validators.required, Validators.email]],
+      phone: [
+        '',
+        [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/)],
+      ],
+      message: [
+        '',
+        [
+          Validators.required,Validators.pattern(/^[a-zA-Z\s]{3,30}$/)
+        ],
+      ],
     });
+    // document.addEventListener('DOMContentLoaded', () => {
+    //   this.mapBtn = document.getElementById("map-btn") as HTMLButtonElement;
+    //   this.formBtn = document.getElementById("form-container-icon") as HTMLButtonElement;
+    //   this.contactContainer = document.getElementById("contact-container") as HTMLElement;
+    //   this.mapContainer = document.getElementById("map") as HTMLElement;
+
+    //   this.formBtn.addEventListener('click', () => {
+    //     this.contactContainer.classList.add("right-panel-active");
+    //   });
+
+    //   this.formBtn.addEventListener('click', () => {
+    //     this.mapContainer.classList.remove("right-panel-active");
+    //   });
+    // });
   }
+
+  get name() {
+    return this.contactValidationForm.get('name');
+  }
+
+  get email() {
+    return this.contactValidationForm.get('email');
+  }
+
+  get phone() {
+    return this.contactValidationForm.get('phone');
+  }
+
+  get message() {
+    return this.contactValidationForm.get('message');
+  }
+  showModal(){
+    const modal = new bootstrap.Modal(this.successModal.nativeElement);
+    modal.show();
+  }
+
+  sendMessage(name: any, email: any, phone: any, message: any): void{
+    this.spinner.show();
+    if (this.contactValidationForm.valid) {
+      this.showModal();
+      this.spinner.hide();
+    }else {
+      this.errorMessage = 'Invalid Data,Please Try Again';
+      this.spinner.hide();
+    }
+
+  }
+
 }
 
