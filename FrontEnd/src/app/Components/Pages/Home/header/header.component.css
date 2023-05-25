@@ -45,6 +45,14 @@
     color: white;
 }
 
+.header-btn {
+  background-color: #224229;
+  padding: 1rem 2rem;
+  margin: 0 1%;
+  border-radius: 0%;
+  color: white;
+}
+
 .header-title {
     font-size: 50px;
     font-family: Libre Baskerville, serif;
