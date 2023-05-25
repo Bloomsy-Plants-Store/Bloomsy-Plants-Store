@@ -151,6 +151,7 @@
         opacity: 0;
     }
 }
+
 .error-container{
   background: #dbf4d4;
   height: 100vh;
@@ -265,3 +266,5 @@
     transform: scaleX(0.9);
   }
   }
+
+  
