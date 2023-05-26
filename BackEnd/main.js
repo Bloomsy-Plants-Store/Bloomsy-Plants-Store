@@ -95,8 +95,8 @@ app.use('/users', favouritesRoutes);
 
 
 // Stripe Route
-// const stripeRoutes = require('./Routes/StripeRoutes');
-// app.use('/charge', stripeRoutes);
+const stripeRoutes = require('./Routes/StripeRoutes');
+app.use('/charge', stripeRoutes);
 
 
 
