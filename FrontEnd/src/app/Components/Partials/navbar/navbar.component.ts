@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener ,   } from '@angular/core';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/Services/cart.service';
@@ -13,12 +13,17 @@ export class NavbarComponent {
   userName:any;
   errorMessage: any;
   isAdmin: boolean = false;
-   total : any;
-  constructor(private authService: AuthService, private router: Router, private cartService : CartService ) { }
+  total: any;
+
+  constructor(private authService: AuthService,
+    private router: Router,
+    private cartService: CartService) { }
 
   ngOnInit() {
   this.nav = document.querySelector("nav")!;
-  this.getTotalItemsInCart();
+  setInterval(() => {
+    this.getTotalItemsInCart();
+  }, 1000);
   }
 
   @HostListener("window:scroll", [])
@@ -55,7 +60,6 @@ export class NavbarComponent {
     this.cartService.GetAllProductsInCart(userId).subscribe({
       next: (data: any) => {
         this.total =data.cart.length ? data.cart.length : 0;
-
       },error(err) {
         console.log(err);
       },
