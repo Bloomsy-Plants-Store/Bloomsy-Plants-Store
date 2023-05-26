@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class FavouritesService {
 
-  private Base_URL = "http://localhost:7400/users/"
+  private Base_URL = "https://bloomsy.onrender.com/users/"
   constructor(private readonly myClient: HttpClient) { }
 
 
