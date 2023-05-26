@@ -17,6 +17,7 @@ export class SampleProductsComponent implements OnInit {
   bestSellingProducts: any;
   activeFilter: any = null;
   isFavorited: boolean = false;
+  favoritesMap: Map<string, boolean> = new Map<string, boolean>();
 
   constructor(
     private elementRef: ElementRef,
@@ -116,11 +117,13 @@ export class SampleProductsComponent implements OnInit {
   addOrRemoveFavourite(productId: any) {
     console.log(this.isFavorited);
     let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
-    if (this.isFavorited) {
+    const isFavorited = this.favoritesMap.get(productId) || false;
+
+    if (isFavorited) {
       console.log("delete");
       this.favouritesService.deleteProductFromFavourites(userId, productId).subscribe({
         next: (response: any) => {
-          this.isFavorited = false;
+          this.favoritesMap.set(productId, false);
         },
         error: (err: any) => {
           console.log(err);
@@ -130,7 +133,7 @@ export class SampleProductsComponent implements OnInit {
       console.log("add");
       this.favouritesService.addProductToFavourites(userId, productId).subscribe({
         next: (response: any) => {
-          this.isFavorited = true;
+          this.favoritesMap.set(productId, true);
         },
         error: (err: any) => {
           console.log(err);
@@ -138,18 +141,19 @@ export class SampleProductsComponent implements OnInit {
       });
     }
   }
-  checkProductInFavourites(){
+
+  checkProductInFavourites() {
     let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
-      this.Products.forEach((element: any) => {
-        this.favouritesService.isProductFavorited(userId, element._id).subscribe({
-          next: (response: any) => {
-            this.isFavorited = response.exists;
-          },
-          error: (err: any) => {
-            console.log(err);
-          },
-        });
+    this.Products.forEach((element: any) => {
+      this.favouritesService.isProductFavorited(userId, element._id).subscribe({
+        next: (response: any) => {
+          this.favoritesMap.set(element._id, response.exists);
+        },
+        error: (err: any) => {
+          console.log(err);
+        },
       });
+    });
   }
 
 }

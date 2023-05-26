@@ -22,6 +22,7 @@ export class AllProductDataComponent implements OnInit {
   itemsPerPage = 12; // Number of items to display per page
   totalItems = 0;
   isFavorited: boolean = false;
+  favoritesMap: Map<string, boolean> = new Map<string, boolean>();
 
   @Input() FiltercategoryName: any;
   @Input() FilterPriceRange: any;
@@ -146,38 +147,37 @@ export class AllProductDataComponent implements OnInit {
   addOrRemoveFavourite(productId: any) {
     console.log(this.isFavorited);
     let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
-    if (this.isFavorited) {
-      console.log('delete');
-      this.favouritesService
-        .deleteProductFromFavourites(userId, productId)
-        .subscribe({
-          next: (response: any) => {
-            this.isFavorited = false;
-          },
-          error: (err: any) => {
-            console.log(err);
-          },
-        });
+    const isFavorited = this.favoritesMap.get(productId) || false;
+
+    if (isFavorited) {
+      console.log("delete");
+      this.favouritesService.deleteProductFromFavourites(userId, productId).subscribe({
+        next: (response: any) => {
+          this.favoritesMap.set(productId, false);
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      });
     } else {
-      console.log('add');
-      this.favouritesService
-        .addProductToFavourites(userId, productId)
-        .subscribe({
-          next: (response: any) => {
-            this.isFavorited = true;
-          },
-          error: (err: any) => {
-            console.log(err);
-          },
-        });
+      console.log("add");
+      this.favouritesService.addProductToFavourites(userId, productId).subscribe({
+        next: (response: any) => {
+          this.favoritesMap.set(productId, true);
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      });
     }
   }
+
   checkProductInFavourites() {
     let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
     this.Products.forEach((element: any) => {
       this.favouritesService.isProductFavorited(userId, element._id).subscribe({
         next: (response: any) => {
-          this.isFavorited = response.exists;
+          this.favoritesMap.set(element._id, response.exists);
         },
         error: (err: any) => {
           console.log(err);

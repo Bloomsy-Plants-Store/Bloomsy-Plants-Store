@@ -21,9 +21,9 @@
             <button data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Cart" (click)="addProductToCart(product._id, product.price);">
               <i class="fi fi-rs-shopping-bag d-flex justify-content-center align-items-center"></i>
             </button>
-            <button data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist" (click)="addOrRemoveFavourite(product?._id);">
-              <i class="fi fi-rs-heart d-flex justify-content-center align-items-center" *ngIf="!isFavorited"></i>
-              <i class="fi fi-ss-heart d-flex justify-content-center align-items-center" *ngIf="isFavorited"></i>
+            <button data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist" class="Wishlist" (click)="addOrRemoveFavourite(product?._id);">
+              <i class="bi bi-heart" *ngIf="!favoritesMap.get(product?._id)"></i>
+              <i class="bi bi-heart-fill filled-fav" *ngIf="favoritesMap.get(product?._id)"></i>
             </button>
             <button routerLink="/product/{{ product._id }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Quick Search">
               <i class="fi fi-rs-search d-flex justify-content-center align-items-center"></i>
