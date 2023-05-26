@@ -3,13 +3,13 @@ const stripe = require("stripe")(config.STRIPE_SECRET_KEY);
 
 const charge = async (req, res) => {
   try {
-
+console.log(req.body);
     const token = await stripe.tokens.create({
         card: {
-          number:req.body.creditNumber,
-          exp_month:req.body.creditMonth,
-          exp_year: req.body.creditYear,
-          cvc:req.body.creditCVC
+          number:req.body.cardN,
+          exp_month:req.body.cardM,
+          exp_year: req.body.cardY,
+          cvc:req.body.cardCVC
         }
     });
 

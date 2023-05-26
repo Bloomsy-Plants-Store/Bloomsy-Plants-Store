@@ -18,7 +18,7 @@ export class NavbarComponent {
 
   ngOnInit() {
   this.nav = document.querySelector("nav")!;
-    this.getTotalItemsInCart();
+  this.getTotalItemsInCart();
   }
 
   @HostListener("window:scroll", [])
@@ -55,7 +55,7 @@ export class NavbarComponent {
     this.cartService.GetAllProductsInCart(userId).subscribe({
       next: (data: any) => {
         this.total =data.cart.length ? data.cart.length : 0;
-        console.log(this.total);
+
       },error(err) {
         console.log(err);
       },

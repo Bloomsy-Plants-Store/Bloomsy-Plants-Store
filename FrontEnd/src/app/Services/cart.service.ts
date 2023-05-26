@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
-private Base_URL = "https://bloomsy.onrender.com/users/"
+private Base_URL = "http://localhost:7400/users/"
   constructor(private readonly myClient: HttpClient) { }
 
 
@@ -30,6 +30,11 @@ private Base_URL = "https://bloomsy.onrender.com/users/"
   // /:id/cart/:cartItemId
   updateSpecificProduct(id: Number, cartItemId: Number, quantity: Number, userToken:any) {
     return this.myClient.put(this.Base_URL + id + "/cart/" + cartItemId,{quantity} ,{headers: new HttpHeaders().set('x-auth-token', userToken)});
+  }
+
+  // delete all products from cart
+  deleteAllProductsFromCart(userId: Number, ) {
+    return this.myClient.delete(this.Base_URL + userId + "/cart/all",);
   }
 
 }

@@ -1,6 +1,8 @@
 import { Component , OnInit} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { CartService } from 'src/app/Services/cart.service';
+import { CheckoutService } from 'src/app/Services/checkout.service';
+import { Router } from '@angular/router';
 
 
 export interface Product {
@@ -17,7 +19,7 @@ export interface Product {
 })
 export class CartDetailsComponent implements OnInit{
 
-  constructor( public myService: CartService) { }
+  constructor( public myService: CartService, private checkoutService :CheckoutService, private router:Router) { }
 
 
   displayedColumns: string[] = ['image', 'name', 'price', 'quantity', 'total', 'delete'];
@@ -74,6 +76,11 @@ export class CartDetailsComponent implements OnInit{
     })
   }
 
+  checkout() {
+    this.checkoutService.setCartObject(+this.totalPriceForAllProduct(), this.dataSource);
+
+  }
+
   updateQuantity(element: any): void {
     let user = JSON.parse(localStorage.getItem('access_token')!).UserId;
     let userToken = localStorage.getItem('x-auth-token');
@@ -87,6 +94,8 @@ export class CartDetailsComponent implements OnInit{
       }
     })
   }
+
+
 
   ngOnInit(): void {
     this.getAllProductsOnCart();
