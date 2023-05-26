@@ -23,18 +23,19 @@ var addToCart = async (req, res) => {
         const newQuantity = parseInt(req.body.quantity);
         user.cart[cartItemIndex].quantity += newQuantity;
         await user.save();
-      }      
+         return res.status(200).json({ message: 'Product added to cart successfully' });
+      }
     }
-
-    const cartItem = {
-      product_id: product_id,
-      quantity: quantity,
-      price:price
+    else {
+      const cartItem = {
+        product_id: product_id,
+        quantity: quantity,
+        price:price
+      }
+      user.cart.push(cartItem);
+      await user.save();
+      return res.status(200).json({ message: 'Product added to cart successfully' });
     }
-    user.cart.push(cartItem);
-    await user.save();
-
-    return res.status(200).json({ message: 'Product added to cart successfully' });
   } catch (error) {
     return res.status(500).json({ error: 'Server Error, Failed to add product to cart' });
   }

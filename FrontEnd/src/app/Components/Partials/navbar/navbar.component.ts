@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/Services/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,12 +12,13 @@ export class NavbarComponent {
   nav!: HTMLElement;
   userName:any;
   errorMessage: any;
-  isAdmin:boolean = false ;
-  constructor(private authService: AuthService, private router: Router ) { }
+  isAdmin: boolean = false;
+   total : any;
+  constructor(private authService: AuthService, private router: Router, private cartService : CartService ) { }
 
   ngOnInit() {
   this.nav = document.querySelector("nav")!;
-
+    this.getTotalItemsInCart();
   }
 
   @HostListener("window:scroll", [])
@@ -48,10 +50,20 @@ export class NavbarComponent {
     return this.isAdmin;
   }
 
-  getTotalItems(): any {
-    const totalItems = JSON.parse(localStorage.getItem('totalItems')!);
-    return totalItems;
+  getTotalItemsInCart(): any {
+    let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
+    this.cartService.GetAllProductsInCart(userId).subscribe({
+      next: (data: any) => {
+        this.total =data.cart.length ? data.cart.length : 0;
+        console.log(this.total);
+      },error(err) {
+        console.log(err);
+      },
+
+    });
   }
+
+
 
   logout(): void {
    const id = JSON.parse(localStorage.getItem('access_token')!).UserId;
@@ -60,7 +72,6 @@ export class NavbarComponent {
            await localStorage.removeItem("access_token");
            await localStorage.removeItem("x-auth-token");
            await localStorage.removeItem("remember_me_token");
-          await localStorage.removeItem("totalItems");
           window.location.reload();
           console.log('Logout Successfully');
         },
