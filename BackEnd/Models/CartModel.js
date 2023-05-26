@@ -9,16 +9,16 @@ const cartItemSchema = new mongoose.Schema({
 
 
 // check product exists in the products collection first
-cartItemSchema.pre('save', async function (next) {
-  try {
-    const product = await Product.findById(this.product_id);
-    if (!product) {
-      throw new Error('Product not found');
-    }
-    next();
-  } catch (error) {
-    next(error);
-  }
-});
+// cartItemSchema.pre('save', async function (next) {
+//   try {
+//     const product = await Product.findById(this.product_id);
+//     if (!product) {
+//       throw new Error('Product not found');
+//     }
+//     next();
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 module.exports = cartItemSchema; 

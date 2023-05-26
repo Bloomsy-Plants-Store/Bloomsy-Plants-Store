@@ -28,12 +28,8 @@ var addToFavourites = async (req, res) => {
     const favouritesItem = {
       product_id: product_id,
     }
-
     user.favourites.push(favouritesItem);
-
     await user.save();
-    console.log("*****************************");
-    console.log(user);
     return res.status(200).json({ message: 'Product added to Favourites successfully' });
   } catch (error) {
     return res.status(500).json({ error});
