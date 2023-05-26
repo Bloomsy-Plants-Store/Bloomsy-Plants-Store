@@ -24,7 +24,6 @@ export class FilterSideBarComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.FiltercategoryName) {
-
       this.activeCategory(this.FiltercategoryName);
     }
   }
@@ -41,6 +40,7 @@ export class FilterSideBarComponent implements OnInit {
       },
     });
   }
+
   options: Options = {
     floor: this.minValue,  //the minimum value of the slider
     ceil: this.maxValue, //the maximum value of the slider
@@ -55,9 +55,9 @@ export class FilterSideBarComponent implements OnInit {
         default:
           return "$" + value;
       }
-
     }
   };
+
   @ViewChild('sidenav', { static: true })
   sidenav!: MatSidenav;
 
@@ -78,30 +78,34 @@ export class FilterSideBarComponent implements OnInit {
       min:this.minValue,
       max:this.maxValue
     }
+    this.handleContainerClick("ALL Products");
     this.myPriceEvent.emit(price_range);
   }
 
-  onOptionSelected(option: string) {
-    this.spinner.show();
-    // Perform sorting logic or other actions based on the selected option
-    console.log('Selected Option:', this.selectedOption);
-    this.spinner.hide();
-  }
+  // onOptionSelected(option: string) {
+  //   this.spinner.show();
+  //   // Perform sorting logic or other actions based on the selected option
+  //   console.log('Selected Option:', this.selectedOption);
+  //   this.spinner.hide();
+  // }
 
   HandleCatgoryEvent(categoryName: string) {
     this.myCatgoryEvent.emit(categoryName);
   }
+
   handleContainerClick(categoryName: string) {
+
     this.HandleCatgoryEvent(categoryName);
     this.activeCategory(categoryName);
   }
+
   activeCategory(categoryName:string)
   {
+    this.resetSliderValues();
     if(categoryName=="ALL Products" && this.activeItem)
     { this.activeItem.classList.remove('active');}
     else{
       const myDiv = document.querySelector(`#${this.removeSpaces(categoryName)}`);
-
       if (myDiv instanceof HTMLElement) {
         console.log(myDiv)
         if (this.activeItem) {
@@ -114,5 +118,9 @@ export class FilterSideBarComponent implements OnInit {
   }
   removeSpaces(name: string): string {
     return name.replace(/\s/g, '');
+  }
+  resetSliderValues() {
+    this.minValue = 50;
+    this.maxValue = 1500;
   }
 }
