@@ -1,6 +1,8 @@
 import { Component , OnInit} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { CartService } from 'src/app/Services/cart.service';
+import { CheckoutService } from 'src/app/Services/checkout.service';
+import { Router } from '@angular/router';
 
 
 export interface Product {
@@ -17,7 +19,7 @@ export interface Product {
 })
 export class CartDetailsComponent implements OnInit{
 
-  constructor( public myService: CartService) { }
+  constructor( public myService: CartService, private checkoutService :CheckoutService, private router:Router) { }
 
 
   displayedColumns: string[] = ['image', 'name', 'price', 'quantity', 'total', 'delete'];
@@ -44,14 +46,6 @@ export class CartDetailsComponent implements OnInit{
     return totalPrice;
   }
 
-  getCartTotalItems(): any {
-    let total = 0;
-    this.dataSource.forEach((element: any) => {
-      total += element.quantity;
-      localStorage.setItem('totalItems', JSON.stringify(total));
-    });
-    return total;
-  }
 
 
 
@@ -60,7 +54,6 @@ export class CartDetailsComponent implements OnInit{
     this.myService.GetAllProductsInCart(userId).subscribe({
       next: (response: any) => {
         this.dataSource = response.cart;
-        this.getCartTotalItems();
       },
       error: (err) => {
         console.log(err);
@@ -75,13 +68,17 @@ export class CartDetailsComponent implements OnInit{
     console.log(productId);
     this.myService.deleteProductFromCart(userId, productId,userToken).subscribe({
       next: (response: any) => {
-        this.getCartTotalItems()? this.getCartTotalItems() : 0;
         this.getAllProductsOnCart();
       },
       error: (err) => {
         console.log(err);
       }
     })
+  }
+
+  checkout() {
+    this.checkoutService.setCartObject(+this.totalPriceForAllProduct(), this.dataSource);
+
   }
 
   updateQuantity(element: any): void {
@@ -91,13 +88,14 @@ export class CartDetailsComponent implements OnInit{
     let quantity = element.quantity;
     this.myService.updateSpecificProduct(user, productId, quantity, userToken).subscribe({
       next: (response: any) => {
-        this.getCartTotalItems();
       },
       error: (err) => {
       console.log(err);
       }
     })
   }
+
+
 
   ngOnInit(): void {
     this.getAllProductsOnCart();

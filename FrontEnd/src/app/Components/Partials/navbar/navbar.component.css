@@ -27,6 +27,10 @@ nav .fa-bars {
   top: 20px;
   width: 20px;
 }
+.cart-shift .cart-badge {
+  right: 10px;
+}
+
 
 
 @media (max-width: 991px) {

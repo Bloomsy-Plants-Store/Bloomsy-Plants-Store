@@ -18,9 +18,9 @@
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/" >HOME</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" routerLink="/products" >SHOP</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" routerLink="/products">PRODUCTS</a>
           </li>
@@ -51,10 +51,10 @@
           {{ getUserNameFromLocalStorage() }}
         </a>
       </li>
-      <li class="nav-item me-lg-0">
+      <li class="nav-item me-lg-0" [ngClass]="{'cart-shift': !getUserRole()}">
         <a class="nav-link" routerLink="/cart">
           <i class="fas fa-shopping-cart">
-            <span class="cart-badge">{{getTotalItems()}}</span>
+            <span class="cart-badge">{{ total }}</span>
           </i>
         </a>
       </li>

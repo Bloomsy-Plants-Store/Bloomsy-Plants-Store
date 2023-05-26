@@ -32,4 +32,9 @@ private Base_URL = "https://bloomsy.onrender.com/users/"
     return this.myClient.put(this.Base_URL + id + "/cart/" + cartItemId,{quantity} ,{headers: new HttpHeaders().set('x-auth-token', userToken)});
   }
 
+  // delete all products from cart
+  deleteAllProductsFromCart(userId: Number, ) {
+    return this.myClient.delete(this.Base_URL + userId + "/cart/all",);
+  }
+
 }

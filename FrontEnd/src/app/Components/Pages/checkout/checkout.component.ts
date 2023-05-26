@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup , Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as bootstrap from 'bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { CheckoutService } from "src/app/Services/checkout.service"
+import { OrderService } from "src/app/Services/order.service";
+import { CartService } from "src/app/Services/cart.service";
 
 @Component({
   selector: 'app-checkout',
@@ -12,13 +15,22 @@ import { NgxSpinnerService } from 'ngx-spinner';
 
 
 export class CheckoutComponent{
+
   validationCheckoutForm!: FormGroup;
   @ViewChild('successModal') successModal!: ElementRef;
   errorMessage: any;
   formattedInputValue!: string;
   formattedMonth: string = '';
   sectionVisible = false;
-  constructor(private fb: FormBuilder, private router: Router, private spinner: NgxSpinnerService) {
+  total: number = 0;
+  Items: any = [];
+  constructor(private fb: FormBuilder,
+    private router: Router,
+    private spinner: NgxSpinnerService,
+    private checkoutService: CheckoutService,
+    private orderService: OrderService,
+    private cartService: CartService,
+  ) {
     this.validationCheckoutForm = this.fb.group({
       name: [
       '',
@@ -66,6 +78,10 @@ export class CheckoutComponent{
     setTimeout(() => {
       this.spinner.hide();
     }, 800);
+
+    this.total = this.checkoutService.total;
+    this.Items = this.checkoutService.cartItems
+    console.log(this.total, this.Items);
   }
   get inputName() {
     return this.validationCheckoutForm.get('name');
@@ -96,6 +112,44 @@ export class CheckoutComponent{
       this.formattedMonth = creditMonth;
     }
   }
+  clearAllCart() {
+    let userId = JSON.parse(localStorage.getItem('access_token')!).UserId
+    this.cartService.deleteAllProductsFromCart(userId).subscribe({
+      next: (data: any) => {
+       this.showModal();
+      }, error(err) {
+        console.log(err);
+      }
+    })
+  }
+  order() {
+    let user = JSON.parse(localStorage.getItem('access_token')!).UserId;
+    this.orderService.makeOrder(user, this.total, this.Items)
+      .subscribe({
+        next: (data: any) => {
+          console.log(data);
+          this.clearAllCart();
+        }, error(err) {
+          console.log(err);
+        }
+    })
+  }
+
+  submitCheckout(): void{
+    if (this.validationCheckoutForm.valid) {
+      const creditNumber = this.validationCheckoutForm.get('creditNumber')?.value;
+      const creditMonth = this.validationCheckoutForm.get('creditMonth')?.value;
+      const creditYear = this.validationCheckoutForm.get('creditYear')?.value;
+      const creditCVC = this.validationCheckoutForm.get('creditCVC')?.value;
+      this.checkoutService.sendDataToStripe(creditNumber, creditMonth, creditYear, creditCVC).subscribe({
+        next: (data: any) => {
+          this.order();
+        }, error(err) {
+          console.log(err);
+        },
+      })
+    }
+  }
   showModal(){
     const modal = new bootstrap.Modal(this.successModal.nativeElement);
     modal.show();
@@ -103,9 +157,7 @@ export class CheckoutComponent{
   redirectToHome() {
     this.router.navigate(['/']);
   }
-  checkout(): void{
-    if (this.validationCheckoutForm.valid) {
-      this.showModal();
-    }
-  }
+
+
+
 }

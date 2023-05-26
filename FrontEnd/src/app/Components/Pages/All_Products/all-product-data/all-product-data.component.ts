@@ -33,7 +33,7 @@ export class AllProductDataComponent implements OnInit {
     public myCartService: CartService,
     private spinner: NgxSpinnerService,
     private router: Router,
-    public favouritesService: FavouritesService
+    public favouritesService: FavouritesService,
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -128,7 +128,6 @@ export class AllProductDataComponent implements OnInit {
       .addProductToCart(userId, id, price, userToken)
       .subscribe({
         next: (response: any) => {
-          // this.cartDetailsComponent.getCartTotalItems();
           this.spinner.hide();
         },
         error: (err: any) => {
