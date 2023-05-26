@@ -3,6 +3,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { OrderService } from 'src/app/Services/order.service';
 import { ProductsService } from 'src/app/Services/products.service';
 import { CartService } from 'src/app/Services/cart.service';
+import {FavouritesService} from 'src/app/Services/favourites.service';
 @Component({
   selector: 'app-profile-content',
   templateUrl: './profile-content.component.html',
@@ -11,7 +12,9 @@ import { CartService } from 'src/app/Services/cart.service';
 export class ProfileContentComponent {
   Orders: any;
   ordersNumber: any
+  FavouriteNumber: any
   ordersProducts: any
+  favourites: any[] = []
   customOrders: any[] = []
   clickedOrderProducts: any[] = []
   clickedOrder: { [key: string]: any } = {}
@@ -19,16 +22,19 @@ export class ProfileContentComponent {
   itemsPerPage = 12; // Number of items to display per page
   totalItems = 0;
   selectedOrder: any;
-  constructor(private elementRef: ElementRef, public orderService: OrderService,public productService: ProductsService, public myCartService: CartService) { }
+  userId: any | null = null;
+  userName: any;
+  constructor(private elementRef: ElementRef, public favouritesService: FavouritesService ,public orderService: OrderService,public productService: ProductsService, public myCartService: CartService) { }
 
   ngOnInit(): void {
     let accessToken = localStorage.getItem('access_token');
-    let userId: any | null = null;
     let custom: { [key: string]: any } = {};
+    let customFavourite: { [key: string]: any } = {};
     if (accessToken) {
-      userId = "6468d60f2ca3ca5964e4a8f7";
+      this.userId = JSON.parse(accessToken).UserId;
+      this.userName = JSON.parse(accessToken).UserName
     }
-    this.orderService.GetOrdersByUserID(userId).subscribe({
+    this.orderService.GetOrdersByUserID(this.userId).subscribe({
       next: (response: any) => {
         this.Orders = response.orders;
         this.ordersNumber = this.Orders.length
@@ -57,14 +63,38 @@ export class ProfileContentComponent {
         console.log(err);
       }
     })
+    // favourites
+    this.getAllProductsInFavourites()
   }
+
+  getAllProductsInFavourites(){
+    this.favouritesService.GetAllProductsInFavourites(this.userId).subscribe({
+      next: (response: any) => {
+        this.favourites = response.favourites
+        this.FavouriteNumber = this.favourites.length
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
   getUpperBound(): number {
     const upperBound = (this.currentPage - 1) * this.itemsPerPage + this.itemsPerPage;
     return Math.min(upperBound, this.totalItems);
   }
 
-  
-
+  deleteFromFavourite(product: any){
+    this.favouritesService.deleteProductFromFavourites(this.userId,product._id).subscribe({
+      next: (response: any) => {
+        this.getAllProductsInFavourites()
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+    
+  }
 
   changeTabContent(order: any) {
     this.clickedOrderProducts = []
@@ -110,6 +140,13 @@ export class ProfileContentComponent {
 }
 
 interface Order {
+  products: any[];
+  total_price: number;
+  _id: any;
+  // Other properties of the product
+}
+
+interface Favourites {
   products: any[];
   total_price: number;
   _id: any;

@@ -35,20 +35,6 @@ export class ContactUsFormComponent {
         ],
       ],
     });
-    // document.addEventListener('DOMContentLoaded', () => {
-    //   this.mapBtn = document.getElementById("map-btn") as HTMLButtonElement;
-    //   this.formBtn = document.getElementById("form-container-icon") as HTMLButtonElement;
-    //   this.contactContainer = document.getElementById("contact-container") as HTMLElement;
-    //   this.mapContainer = document.getElementById("map") as HTMLElement;
-
-    //   this.formBtn.addEventListener('click', () => {
-    //     this.contactContainer.classList.add("right-panel-active");
-    //   });
-
-    //   this.formBtn.addEventListener('click', () => {
-    //     this.mapContainer.classList.remove("right-panel-active");
-    //   });
-    // });
   }
 
   get name() {
