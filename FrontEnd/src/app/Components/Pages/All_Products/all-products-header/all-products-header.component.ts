@@ -9,7 +9,7 @@ import { ProductsService } from 'src/app/Services/products.service';
 })
 export class AllProductsHeaderComponent {
   isActive = false;
-  HeaderName = "Shop";
+  HeaderName = "ALL Products";
   previousImgElementId: string | null | undefined = null;
   previousTitleElementId: string | null | undefined = null;
 
@@ -25,6 +25,12 @@ export class AllProductsHeaderComponent {
       this.handleImgContainerClick(this.removeSpaces(this.FiltercategoryName))
       this.handleTitleContainerClick(this.removeSpaces(this.FiltercategoryName))
     }
+  }
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.handleImgContainerClick(this.removeSpaces(this.HeaderName))
+    this.handleTitleContainerClick(this.removeSpaces(this.HeaderName))
   }
   HandleEvent(categoryName: string) {
     this.HeaderName = categoryName;
@@ -161,26 +167,31 @@ export class AllProductsHeaderComponent {
   categories = [
     {
       id:"0",
+      name: "ALL Products",
+      img_src: "https://www.simpleimageresizer.com/_uploads/photos/2df9e946/262fed41c1aa8acdad037b1608fcdbb3_178x178.jpg"
+    },
+    {
+      id:"1",
       name: "Low Maintenance",
       img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-11.jpg"
     },
     {
-      id:"1",
+      id:"2",
       name: "Indoor Plants",
       img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-10.jpg"
     },
     {
-      id:"2",
+      id:"3",
       name: "Ceramic Pots",
       img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-8.jpg"
     },
     {
-      id:"3",
+      id:"4",
       name: "Air Purifying",
       img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-7.jpg"
     },
     {
-      id:"4",
+      id:"5",
       name: "Plant Bundle",
       img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-12.jpg"
     }

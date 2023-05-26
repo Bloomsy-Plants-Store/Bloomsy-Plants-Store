@@ -37,20 +37,10 @@ export class AllProductDataComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.FiltercategoryName) {
-      this.spinner.show();
-      this.myService.getProductsByCategory(this.FiltercategoryName).subscribe({
-        next: (response: any) => {
-          this.Products = response.data;
-          this.isFavorited=false;
-          this.checkProductInFavourites();
-          this.totalItems = this.Products.length;
-          this.spinner.hide();
-        },
-        error: (err) => {
-          console.log(err);
-          this.spinner.hide();
-        },
-      });
+      if(this.FiltercategoryName==="ALL Products")
+      {
+        this.DefaultAllProducts();
+      }
       this.FilterByCategory();
     }
 
@@ -91,7 +81,8 @@ export class AllProductDataComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  DefaultAllProducts()
+  {
     this.spinner.show();
     this.myService.GetAllProducts().subscribe({
       next: (response: any) => {
@@ -106,6 +97,9 @@ export class AllProductDataComponent implements OnInit {
         this.spinner.hide();
       },
     });
+  }
+  ngOnInit(): void {
+   this.DefaultAllProducts()
   }
   getUpperBound(): number {
     const upperBound =
