@@ -13,14 +13,14 @@
                 <ng-template carouselSlide [id]="category.id">
                   <div class="inner-container">
                     <li data-id_category="381" class="product-category py-3" style="width: 250px;" tabindex="-1"
-                      data-slick-index="-2"  aria-hidden="true" (click)="handleContainerClick($event,category.name,category.id)">
-                        <a tabindex="-1" id="img-active-{{category.id}}" class="img-container">
+                      data-slick-index="-2"  aria-hidden="true" (click)="handleContainerClick($event,category.name)">
+                        <a tabindex="-1" [id]="'img-active-' + removeSpaces(category.name)" class="img-container">
                           <img src="{{ category.img_src }}" alt="{{ category.name }}" data-ll-status="loaded"
                             class="category-img" width="178" height="178">
                         </a>
                         <div class="category">
-                          <h2 class="category-title"id="title-active-{{ category.id }}" >
-                            <a tabindex="-1" id="title-active-{{ category.id }}">{{ category.name }}</a>
+                          <h2 class="category-title" >
+                            <a tabindex="-1" [id]="'title-active-' + removeSpaces(category.name)">{{ category.name }}</a>
                           </h2>
                       </div>
                     </li>

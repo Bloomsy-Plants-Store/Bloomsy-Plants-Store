@@ -23,7 +23,6 @@ var addToFavourites = async (req, res) => {
       product_id: product_id,
     }
     user.favourites.push(favouritesItem);
-
     await user.save();
     return res.status(200).json({ message: 'Product added to Favourites successfully' });
   } catch (error) {

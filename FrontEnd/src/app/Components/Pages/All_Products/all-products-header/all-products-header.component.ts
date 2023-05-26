@@ -1,5 +1,7 @@
-import { Component, EventEmitter,Output, ElementRef, Renderer2} from '@angular/core';
+import { Component, EventEmitter,Output, ElementRef, Renderer2, SimpleChanges, Input} from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ProductsService } from 'src/app/Services/products.service';
 @Component({
   selector: 'app-all-products-header',
   templateUrl: './all-products-header.component.html',
@@ -7,30 +9,47 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class AllProductsHeaderComponent {
   isActive = false;
-  HeaderName = "Shop";
+  HeaderName = "ALL Products";
   previousImgElementId: string | null | undefined = null;
   previousTitleElementId: string | null | undefined = null;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) { }
+  constructor(private elementRef: ElementRef, private renderer: Renderer2,public myService: ProductsService,
+    private spinner: NgxSpinnerService) { }
 
   @Output() myEvent = new EventEmitter();
+  @Input() FiltercategoryName: any;
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.FiltercategoryName) {
+      this.HeaderName=this.FiltercategoryName
+      this.handleImgContainerClick(this.removeSpaces(this.FiltercategoryName))
+      this.handleTitleContainerClick(this.removeSpaces(this.FiltercategoryName))
+    }
+  }
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.handleImgContainerClick(this.removeSpaces(this.HeaderName))
+    this.handleTitleContainerClick(this.removeSpaces(this.HeaderName))
+  }
   HandleEvent(categoryName: string) {
     this.HeaderName = categoryName;
     this.myEvent.emit(categoryName);
   }
-  handleContainerClick(event: MouseEvent, categoryName: string, elementId: string) {
+  handleContainerClick(event: MouseEvent, categoryName: string) {
     const clickedElement = event.target as HTMLElement;
     const isImgContainer = clickedElement.classList.contains('category-img');
     const isTitleElement = clickedElement.tagName === 'A' && clickedElement.parentElement?.classList.contains('category-title');
 
     if (isImgContainer || isTitleElement) {
       this.HandleEvent(categoryName);
-      this.handleImgContainerClick(elementId)
-      this.handleTitleContainerClick(elementId)
+      this.handleImgContainerClick(this.removeSpaces(categoryName))
+      this.handleTitleContainerClick(this.removeSpaces(categoryName))
     }
   }
-
+  removeSpaces(name: string): string {
+    return name.replace(/\s/g, '');
+  }
 
   handleImgContainerClick(catgory_id: string){
     const elementId = `img-active-${catgory_id}`;
@@ -148,26 +167,31 @@ export class AllProductsHeaderComponent {
   categories = [
     {
       id:"0",
+      name: "ALL Products",
+      img_src: "https://www.simpleimageresizer.com/_uploads/photos/2df9e946/262fed41c1aa8acdad037b1608fcdbb3_178x178.jpg"
+    },
+    {
+      id:"1",
       name: "Low Maintenance",
       img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-11.jpg"
     },
     {
-      id:"1",
+      id:"2",
       name: "Indoor Plants",
       img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-10.jpg"
     },
     {
-      id:"2",
+      id:"3",
       name: "Ceramic Pots",
       img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-8.jpg"
     },
     {
-      id:"3",
+      id:"4",
       name: "Air Purifying",
       img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-7.jpg"
     },
     {
-      id:"4",
+      id:"5",
       name: "Plant Bundle",
       img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-12.jpg"
     }

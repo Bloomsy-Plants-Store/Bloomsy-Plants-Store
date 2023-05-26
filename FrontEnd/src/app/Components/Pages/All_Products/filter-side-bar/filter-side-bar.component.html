@@ -12,20 +12,7 @@
           </svg> </button>
       </div>
     </div>
-    <div class="col-4 d-flex justify-content-end">
-        <div class="dropdown">
-          <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-            {{ selectedOption ? selectedOption : 'Default sorting' }}
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li *ngFor="let option of sortOptions" class="dropdown-li">
-              <a class="dropdown-item"  (click)="onOptionSelected(option)">{{ option }}</a>
-            </li>
-          </ul>
-        </div>
 
-
-    </div>
   </div>
   <mat-sidenav-container class="sidebar-container">
     <mat-sidenav #sidenav mode="side">
@@ -40,7 +27,7 @@
               <div class="category-filter px-4">
                 <h3 class="sidebar-h3">Categories</h3>
                 <div id="pa_category" class="filter_category_product" >
-                  <div data-id_category="431" class="item-category" id="{{category._id}}" *ngFor="let category of categories" (click)="handleContainerClick($event,category._id)">
+                  <div data-id_category="431" class="item-category" [id]="removeSpaces(category._id)"id="{{category._id}}" *ngFor="let category of categories" (click)="handleContainerClick(category._id)">
                     <label class="name">{{category._id}}</label>
                     <div class="count">{{category.count}}</div>
                   </div>
