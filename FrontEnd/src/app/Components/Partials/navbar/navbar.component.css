@@ -31,9 +31,7 @@ nav .fa-bars {
   right: 10px;
 }
 
-.cart-shift .fa-shopping-cart {
-  margin-right: -20px;
-}
+
 
 @media (max-width: 991px) {
   .navbar-scroll {

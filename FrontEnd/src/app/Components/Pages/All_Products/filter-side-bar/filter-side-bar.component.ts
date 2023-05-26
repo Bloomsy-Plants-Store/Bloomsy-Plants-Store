@@ -92,37 +92,4 @@ export class FilterSideBarComponent implements OnInit {
     this.renderer.addClass(this.activeItem, 'active');
   }
 
-
-  // categories = [
-  //   {
-  //     id:"0",
-  //     name: "Low Maintenance",
-  //     img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-11.jpg",
-  //     count:3
-  //   },
-  //   {
-  //     id:"1",
-  //     name: "Indoor Plants",
-  //     img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-10.jpg",
-  //     count:3
-  //   },
-  //   {
-  //     id:"2",
-  //     name: "Ceramic Pots",
-  //     img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-8.jpg",
-  //     count:3
-  //   },
-  //   {
-  //     id:"3",
-  //     name: "Air Purifying",
-  //     img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-7.jpg",
-  //     count:3
-  //   },
-  //   {
-  //     id:"4",
-  //     name: "Plant Bundle",
-  //     img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-12.jpg",
-  //     count:3
-  //   }
-  // ]
 }

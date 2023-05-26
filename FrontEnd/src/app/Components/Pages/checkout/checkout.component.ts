@@ -116,6 +116,7 @@ export class CheckoutComponent{
     let userId = JSON.parse(localStorage.getItem('access_token')!).UserId
     this.cartService.deleteAllProductsFromCart(userId).subscribe({
       next: (data: any) => {
+       this.showModal();
       }, error(err) {
         console.log(err);
       }
@@ -128,7 +129,6 @@ export class CheckoutComponent{
         next: (data: any) => {
           console.log(data);
           this.clearAllCart();
-          this.router.navigate(['/']);
         }, error(err) {
           console.log(err);
         }
@@ -143,7 +143,6 @@ export class CheckoutComponent{
       const creditCVC = this.validationCheckoutForm.get('creditCVC')?.value;
       this.checkoutService.sendDataToStripe(creditNumber, creditMonth, creditYear, creditCVC).subscribe({
         next: (data: any) => {
-          console.log(data);
           this.order();
         }, error(err) {
           console.log(err);
@@ -151,18 +150,14 @@ export class CheckoutComponent{
       })
     }
   }
-  // showModal(){
-  //   const modal = new bootstrap.Modal(this.successModal.nativeElement);
-  //   modal.show();
-  // }
-  // redirectToHome() {
-  //   this.router.navigate(['/']);
-  // }
-  // checkout(): void{
-  //   if (this.validationCheckoutForm.valid) {
-  //     this.showModal();
-  //   }
-  // }
+  showModal(){
+    const modal = new bootstrap.Modal(this.successModal.nativeElement);
+    modal.show();
+  }
+  redirectToHome() {
+    this.router.navigate(['/']);
+  }
+
 
 
 }

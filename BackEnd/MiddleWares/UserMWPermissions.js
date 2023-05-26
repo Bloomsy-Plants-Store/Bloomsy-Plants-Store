@@ -3,7 +3,6 @@ const config = require("../config.json");
 
 module.exports = (req, res, next) => {
   var Token = req.header("x-auth-token");
-  console.log(Token);
   if (!Token) return res.status(403).json({ message: "Access Denied..." });
   try {
     if ( hasAdminRole(Token)) {
@@ -18,7 +17,6 @@ module.exports = (req, res, next) => {
 
  function hasAdminRole (userToken) {
   var decodePayload =  jwt.verify(userToken, config.SECRETKEY);
-  console.log(decodePayload.adminRole)
   if (decodePayload.adminRole) {
     return true;
   } else {

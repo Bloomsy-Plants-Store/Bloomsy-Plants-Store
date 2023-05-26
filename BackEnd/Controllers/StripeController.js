@@ -3,7 +3,6 @@ const stripe = require("stripe")(config.STRIPE_SECRET_KEY);
 
 const charge = async (req, res) => {
   try {
-console.log(req.body);
     const token = await stripe.tokens.create({
         card: {
           number:req.body.cardN,

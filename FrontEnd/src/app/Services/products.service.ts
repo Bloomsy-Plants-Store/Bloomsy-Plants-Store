@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export class ProductsService {
 
-  private Base_URL = "http://localhost:7400/api/products/";
+  private Base_URL = "https://bloomsy.onrender.com/api/products/";
   http: any;
 
   constructor(private readonly myClient : HttpClient) { }

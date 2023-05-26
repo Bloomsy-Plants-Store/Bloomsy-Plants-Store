@@ -73,7 +73,6 @@ var updateCartItemById = async (req, res) => {
     }
     return res.status(200).json({ message: "Cart item quantity updated successfully" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ error: "Server Error, Failed to update the cart" });
   }
 };
@@ -95,11 +94,10 @@ const deleteCartItemById = async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
-    console.log(user.cart);
+   
     const cartItemIndex = user.cart.findIndex(
       (item) => item.product_id.toString() === cartItem_id
     );
-    console.log(cartItemIndex);
     if (cartItemIndex === -1) {
       return res.status(404).json({ error: "Cart item not found in user cart" });
     }
