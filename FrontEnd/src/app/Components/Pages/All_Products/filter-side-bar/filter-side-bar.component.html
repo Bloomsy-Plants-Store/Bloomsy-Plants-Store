@@ -12,19 +12,8 @@
           </svg> </button>
       </div>
     </div>
-    <div class="col-4 d-flex justify-content-end">
-      <!-- <div class="woocommerce-ordering pwb-dropdown dropdown">
-          <span class="pwb-dropdown-toggle dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Sort by average rating</span>
-          <ul class="pwb-dropdown-menu dropdown-menu" style="">
-              <li data-value="menu_order" class=""><a href="?orderby=menu_order">Default sorting</a></li>
-              <li data-value="popularity"><a href="?orderby=popularity">Sort by popularity</a></li>
-              <li data-value="rating" class="active"><a href="?orderby=rating">Sort by average rating</a></li>
-              <li data-value="date"><a href="?orderby=date">Sort by latest</a></li>
-              <li data-value="price"><a href="?orderby=price">Sort by price: low to high</a></li>
-              <li data-value="price-desc"><a href="?orderby=price-desc">Sort by price: high to low</a></li>
-            </ul>
-        </div> -->
-        <div class="dropdown">
+    <!-- <div class="col-4 d-flex justify-content-end">
+         <div class="dropdown">
           <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
             {{ selectedOption ? selectedOption : 'Default sorting' }}
           </button>
@@ -34,9 +23,8 @@
             </li>
           </ul>
         </div>
-
-
     </div>
+   -->
   </div>
   <mat-sidenav-container class="sidebar-container">
     <mat-sidenav #sidenav mode="side">
@@ -51,7 +39,7 @@
               <div class="category-filter px-4">
                 <h3 class="sidebar-h3">Categories</h3>
                 <div id="pa_category" class="filter_category_product" >
-                  <div data-id_category="431" class="item-category" id="{{category._id}}" *ngFor="let category of categories" (click)="handleContainerClick($event,category._id)">
+                  <div data-id_category="431" class="item-category" [id]="removeSpaces(category._id)"id="{{category._id}}" *ngFor="let category of categories" (click)="handleContainerClick(category._id)">
                     <label class="name">{{category._id}}</label>
                     <div class="count">{{category.count}}</div>
                   </div>
