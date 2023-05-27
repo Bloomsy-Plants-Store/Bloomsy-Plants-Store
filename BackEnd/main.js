@@ -98,6 +98,9 @@ app.use('/users', favouritesRoutes);
 const stripeRoutes = require('./Routes/StripeRoutes');
 app.use('/charge', stripeRoutes);
 
+// Revenue Route
+const RevenueRoutes = require('./Routes/RevenueRoutes');
+app.use('/', RevenueRoutes);
 
 
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})
