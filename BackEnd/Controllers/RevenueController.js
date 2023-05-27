@@ -50,9 +50,8 @@ const countTotalRevenue = async (req, res) => {
 
   const getTotalUserCount = async (req, res) => {
     try {
-      const totalUserCount = await userModel.countDocuments();
-  
-      res.status(200).json({ totalUserCount });
+      const totalUserCount = await User.countDocuments();
+      res.status(200).json({ users: totalUserCount });
     } catch (error) {
       console.error('Error:', error);
       res.status(500).json({ error: 'Internal server error' });
