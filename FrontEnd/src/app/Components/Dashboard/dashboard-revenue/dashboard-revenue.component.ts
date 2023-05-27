@@ -31,7 +31,7 @@ export class DashboardRevenueComponent {
     this.revenueService.GettotalUsers().subscribe({
       next: (response: any) => {
         console.log(response)
-        this.users = response;
+        this.users = response.users;
         this.spinner.hide();
       },
       error: (err: any) => {
