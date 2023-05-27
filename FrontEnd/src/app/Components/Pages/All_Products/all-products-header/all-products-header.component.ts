@@ -168,7 +168,7 @@ export class AllProductsHeaderComponent {
     {
       id:"0",
       name: "ALL Products",
-      img_src: "https://www.simpleimageresizer.com/_uploads/photos/2df9e946/262fed41c1aa8acdad037b1608fcdbb3_178x178.jpg"
+      img_src: "../assets/images/All-Products.jpg"
     },
     {
       id:"1",
