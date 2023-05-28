@@ -16,6 +16,13 @@
   color:black !important;
 }
 
+.filled-fav{
+  color: black;
+}
+.Wishlist:hover .filled-fav{
+  color: white;
+}
+
 /* --- Sample Products ---- */
 .image-container{
   position: relative;

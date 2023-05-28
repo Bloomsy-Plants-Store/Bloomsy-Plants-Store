@@ -1,5 +1,7 @@
-// const express = require("express");
-// const router = new express.Router();
-// const StripeController = require("../Controllers/StripeController")
+const express = require("express");
+const router = new express.Router();
+const StripeController = require("../Controllers/StripeController")
 
-// router.post('/charge',StripeController);
+router.post('/', StripeController.charge);
+
+module.exports = router;

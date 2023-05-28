@@ -17,5 +17,9 @@ export class OrderService {
     return this.myClient.get(this.Base_URL+"get-orders/"+userID);
   }
 
+  makeOrder(userID: number, total_price: number, products: any) {
+    return this.myClient.post(this.Base_URL + userID, { total_price, products });
+  }
+
 }
 

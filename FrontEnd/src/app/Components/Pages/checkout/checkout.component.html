@@ -20,7 +20,8 @@
     </div>
     <div class="input-section">
       <!-- -->
-      <form [formGroup]="validationCheckoutForm" (ngSubmit)="checkout()" method="post" >
+      <!-- (ngSubmit)="checkout()" -->
+      <form [formGroup]="validationCheckoutForm"  method="post" (ngSubmit)="submitCheckout()">
         <div class="input-field">
           <label for="name">Cardholder Name</label>
           <input type="text" placeholder="e.g. Rowan Tamer" id="name" name="name" maxlength="25"

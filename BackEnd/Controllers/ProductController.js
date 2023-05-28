@@ -6,15 +6,13 @@ const userModel = require('../Models/UsersModel');
 
 var getAllProducts = async (req, res) => {
   try {
-    //lean() is a method that is used to retrieve documents from MongoDB as plain JavaScript objects instead of Mongoose model instances.
-    //Faster to create than model instances, and they consume less memory.
     let AllProducts = await productModel.find().lean();
     if (!AllProducts) {
       return res.status(400).send("No Data Found");
     }
     return res.status(200).json({ data: AllProducts });
   } catch (err) {
-    console.log(err);
+    return res.status(500).send("Server Error, Failed to get products !");
   }
 };
 
@@ -22,7 +20,6 @@ var updateProduct = async (req, res) => {
   try {
      MutlerUpload.uploadProduct(req, res, async function (err) {
       if (err) {
-        console.log(err)
         return res.status(500).send("Error uploading file");
       } else {
           
@@ -54,7 +51,6 @@ var updateProduct = async (req, res) => {
       }
     })
   } catch (err) {
-    console.log(err);
     return res.status(500).send("Server Error, Failed to update the product !");
   }
 }
@@ -84,7 +80,6 @@ var storeProducts = async function (req, res) {
       }
     });
   } catch (err) {
-    console.log(err);
     return res.status(500).send("Server Error");
   }
 };
@@ -105,7 +100,6 @@ var getBestSellingProducts = async (req, res) => {
     }
     return res.status(200).json({ data: BestSellingProducts });
   } catch (err) {
-    console.log(err);
     return res.status(500).send("Server Error");
   }
 };
@@ -126,7 +120,6 @@ var getTopRatingProducts = async (req, res) => {
     }
     return res.status(200).json({ data: TopRatingProducts });
   } catch (err) {
-    console.log(err);
     return res.status(500).send("Server Error");
   }
 };
@@ -139,7 +132,6 @@ var getProductByID = async (req, res) => {
     }
     return res.status(200).json({ data: product });
   } catch (err) {
-    console.log(err);
     return res.status(500).send("Server Error, Failed to get the product !");
   }
 };
@@ -154,7 +146,6 @@ var deleteProduct = async (req, res) => {
       return res.status(200).json({ message: "Deleted Successfully..." });
     }
   } catch (err) {
-    console.log(err);
     return res.status(500).send("Server Error, Failed to delete the product!");
   }
 };
@@ -173,7 +164,6 @@ var getProductsByCategory = async (req, res) => {
     }
     return res.status(200).json({ data: Products });
   } catch (err) {
-    console.log(err);
     return res.status(500).send("Server Error");
   }
 };
@@ -182,7 +172,6 @@ var getProductsByPrice=async (req, res) => {
     const objectQueryParam = req.query.object;
     // Parse the query parameter value back into an object
     const priceObject = JSON.parse(objectQueryParam);
-    console.log(priceObject)
     if (!objectQueryParam) {
       return res.status(400).send("Bad Request: You must enter a price ");
     }
@@ -196,7 +185,6 @@ var getProductsByPrice=async (req, res) => {
     }
     return res.status(200).json({ data: Products });
   } catch (err) {
-    console.log(err);
     return res.status(500).send("Server Error");
   }
 };
@@ -217,7 +205,6 @@ const getEachCategory = async (req, res) => {
 
     return res.status(200).json({ data: result });
   } catch (err) {
-    console.error('Error retrieving category information:', err);
     res.status(500).send('An error occurred while retrieving category information');
   }
 };

@@ -31,7 +31,7 @@ var Register = async(req,res)=>{
             res.status(400).json({message:"Not Compatible.."})
         } 
     }catch(err){
-        console.log(err);
+        res.status(500).json({message:"Internal Server Error"});
     }
 };
 

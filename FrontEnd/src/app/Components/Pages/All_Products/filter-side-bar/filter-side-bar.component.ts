@@ -82,12 +82,7 @@ export class FilterSideBarComponent implements OnInit {
     this.myPriceEvent.emit(price_range);
   }
 
-  // onOptionSelected(option: string) {
-  //   this.spinner.show();
-  //   // Perform sorting logic or other actions based on the selected option
-  //   console.log('Selected Option:', this.selectedOption);
-  //   this.spinner.hide();
-  // }
+
 
   HandleCatgoryEvent(categoryName: string) {
     this.myCatgoryEvent.emit(categoryName);
