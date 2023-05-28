@@ -56,15 +56,22 @@ export class NavbarComponent {
   }
 
   getTotalItemsInCart(): any {
-    let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
-    this.cartService.GetAllProductsInCart(userId).subscribe({
-      next: (data: any) => {
-        this.total =data.cart.length ? data.cart.length : 0;
-      },error(err) {
-        console.log(err);
-      },
+    if (localStorage.getItem('access_token') != null) {
+      let userId = JSON.parse(localStorage.getItem('access_token')!).UserId ;
+      this.cartService.GetAllProductsInCart(userId).subscribe({
+        next: (data: any) => {
+          this.total =data.cart.length ? data.cart.length : 0;
+        },error(err) {
+          console.log(err);
+        },
 
-    });
+      });
+
+    }
+    else {
+     this.total = 0;
+    }
+
   }
 
 
