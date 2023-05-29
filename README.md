@@ -10,7 +10,7 @@
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=18&duration=1&pause=1000&color=749D77&width=75&lines=Bloomsy)](https://bloomsy-168d4.web.app/) is a Stunning Plants Store, an E-Commerce Platform that offers a wide variety of Indoor and Outdoor Plants. It is dedicated to providing Plant enthusiasts with a Seamless Shopping Experience Through its User-Friendly app. Customers can explore a carefully curated selection of Plants, including Vibrant Flowers and Elegant Houseplants, to enhance their Surroundings with Nature's Beauty.
 
-Explore Our Curated Selection of indoor and outdoor plants, including vibrant flowers and elegant houseplants From [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&width=75&lines=www.Bloomsy.com)](https://bloomsy-168d4.web.app/) to Embark on a green Journey and enhance Your Surroundings with Nature's Beauty.
+Explore Our Curated Selection of indoor and outdoor plants, including vibrant flowers and elegant houseplants From [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&lines=www.Bloomsy.com)](https://bloomsy-168d4.web.app/) to Embark on a green Journey and enhance Your Surroundings with Nature's Beauty.
 
 ## **FEATURES**
 
