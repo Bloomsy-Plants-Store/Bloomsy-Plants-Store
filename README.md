@@ -127,5 +127,5 @@ to this Repository as it can make a Significant Difference.
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Radwa+Hassan)](https://github.com/RadwaHassan99)  </br>
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Rowan+Tamer)](https://github.com/rowantamer)  </br>
 
-
+![Cover](https://github.com/RadwaHassan99/Plants-Shop/assets/78274961/9cee7bbe-fe9f-494a-9c17-fc2b557e9707)
 
