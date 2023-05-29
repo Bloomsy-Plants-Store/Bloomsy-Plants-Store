@@ -8,9 +8,9 @@
 
 ## **INTRODUCTION**
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&width=75&vCenter=true&lines=Bloomsy)](https://bloomsy-168d4.web.app/) is a Stunning Plants Store, an E-Commerce Platform that offers a wide variety of Indoor and Outdoor Plants. It is dedicated to providing Plant enthusiasts with a Seamless Shopping Experience Through its User-Friendly app. Customers can explore a carefully curated selection of Plants, including Vibrant Flowers and Elegant Houseplants, to enhance their Surroundings with Nature's Beauty.
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&height=25&duration=1&pause=1000&color=749D77&width=75&vCenter=true&lines=Bloomsy)](https://bloomsy-168d4.web.app/) is a Stunning Plants Store, an E-Commerce Platform that offers a wide variety of Indoor and Outdoor Plants. It is dedicated to providing Plant enthusiasts with a Seamless Shopping Experience Through its User-Friendly app. Customers can explore a carefully curated selection of Plants, including Vibrant Flowers and Elegant Houseplants, to enhance their Surroundings with Nature's Beauty.
 
-Explore Our Curated Selection of indoor and outdoor plants, including vibrant flowers and elegant houseplants From [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&width=250&vCenter=true&lines=www.Bloomsy.com)](https://bloomsy-168d4.web.app/) to Embark on a green Journey and enhance Your Surroundings with Nature's Beauty.
+Explore Our Curated Selection of indoor and outdoor plants, including vibrant flowers and elegant houseplants From [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&height=25&duration=1&pause=1000&color=749D77&width=230&vCenter=true&lines=www.Bloomsy.com)](https://bloomsy-168d4.web.app/) to Embark on a green Journey and enhance Your Surroundings with Nature's Beauty.
 
 ## **FEATURES**
 
@@ -118,11 +118,11 @@ to this Repository as it can make a Significant Difference.
 
 ## **AUTHORS**
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=15&duration=1&pause=1000&color=749D77&vCenter=true&lines=Mariam+Reda+Mokhtar)](https://github.com/Mariam-Mokhtar) </br>
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=15&duration=1&pause=1000&color=749D77&vCenter=true&lines=Omnia+Goher)](https://github.com/Omnia-Goher) </br>
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=15&duration=1&pause=1000&color=749D77&vCenter=true&lines=Hager+Abd+El+Galil)](https://github.com/Hager-Abd-El-Galil)  </br>
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=15&duration=1&pause=1000&color=749D77&vCenter=true&lines=Radwa+Hassan)](https://github.com/RadwaHassan99)  </br>
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=15&duration=1&pause=1000&color=749D77&vCenter=true&lines=Rowan+Tamer)](https://github.com/rowantamer)  </br>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Mariam+Reda+Mokhtar)](https://github.com/Mariam-Mokhtar) </br>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Omnia+Goher)](https://github.com/Omnia-Goher) </br>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Hager+Abd+El+Galil)](https://github.com/Hager-Abd-El-Galil)  </br>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Radwa+Hassan)](https://github.com/RadwaHassan99)  </br>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Rowan+Tamer)](https://github.com/rowantamer)  </br>
 
 
 
