@@ -35,9 +35,6 @@ Explore Our Curated Selection of indoor and outdoor plants, including vibrant fl
 - **High-Quality Images**<br>
   The website features high-resolution images of each plant, showcasing their beauty and unique features. Images are Stored in Cloudinary.
 
-- **Customer Reviews and Ratings**<br>
-  Customers can leave reviews and ratings for the plants they have purchased.
-
 - **Shopping Cart and Wishlist**<br>
   The website includes a shopping cart functionality where users can add plants they wish to purchase. Additionally, users can create a wishlist to save plants for future reference or sharing with others.
 
