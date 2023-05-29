@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 </style>
@@ -134,3 +136,4 @@ If You appreciate Our Efforts, Please Consider Showing Your Support By Giving a
 
   </div>
 </div>
+</html>
