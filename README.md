@@ -4,6 +4,7 @@
     <img src="https://readme-typing-svg.demolab.com?font=Dancing+Script&weight=700&size=30&pause=1000&color=749D77&center=true&vCenter=true&width=435&lines=Bloomsy+;A+Stunning+Plants+Store" alt="Typing SVG">
   </a>
 </div>
+
 ## **INTRODUCTION**
 
 `Bloomsy` is a Stunning Plants Store, an E-Commerce Platform that offers a wide variety of Indoor and Outdoor Plants. It is dedicated to providing Plant enthusiasts with a Seamless Shopping Experience Through its User-Friendly app. Customers can explore a carefully curated selection of Plants, including Vibrant Flowers and Elegant Houseplants, to enhance their Surroundings with Nature's Beauty.
