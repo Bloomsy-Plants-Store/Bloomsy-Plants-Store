@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-</style>
  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 <div>
   <div style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap: 10px;margin-bottom:10px">
     <img src="./FrontEnd/src/assets/images/animate.gif" width="100px" />
