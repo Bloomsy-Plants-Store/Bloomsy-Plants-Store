@@ -1,6 +1,5 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-   /* style="background: url('./FrontEnd/src/assets/images/overlay-bg.png') no-repeat top left;height:100vh;" */
 </style>
 <div>
   <div style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap: 10px;margin-bottom:10px">
