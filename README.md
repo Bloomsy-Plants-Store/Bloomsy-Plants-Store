@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
- <link rel="preconnect" href="https://fonts.googleapis.com">
+ <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-<div>
+ </head>
+ <body>
   <div style="display:'flex';align-items:'center';justify-content:'center';flex-direction:'column';gap:'10px';margin-bottom:'10px'">
     <img src="./FrontEnd/src/assets/images/animate.gif" width="100px" />
     <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Dancing+Script&weight=700&size=30&pause=1000&color=749D77&center=true&vCenter=true&width=435&lines=Bloomsy+;A+Stunning+Plants+Store" alt="Typing SVG" /></a>
@@ -135,5 +137,5 @@ If You appreciate Our Efforts, Please Consider Showing Your Support By Giving a
 - [Rowan Tamer](https://github.com/rowantamer)
 
   </div>
-</div>
+</body>
 </html>
