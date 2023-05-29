@@ -14,10 +14,10 @@
 
 ## <b> INTRODUCTION </b>
 
-<span style="font-family: 'Dancing Script', cursive; font-weight: bolder; font-size: 18px">Bloomsy</span>
+<span style="font-family: 'Dancing Script', cursive; font-weight: 700; font-size: 18px;">Bloomsy</span>
 is a Stunning Plants Store, an E-Commerce Platform that offers a wide variety of Indoor and Outdoor Plants. It is dedicated to providing Plant enthusiasts with a Seamless Shopping Experience Through its User-Friendly app. Customers can explore a carefully curated selection of Plants, including Vibrant Flowers and Elegant Houseplants, to enhance their Surroundings with Nature's Beauty. </br></br>
 Explore Our Curated Selection of indoor and outdoor plants, including vibrant flowers and elegant houseplants
-From <a href="https://bloomsy-168d4.web.app/" style="text-decoration: none; color: #749d77; font-family: 'Dancing Script'; font-size: 16px">www.Bloomsy.com</a>
+From <a href="https://bloomsy-168d4.web.app/" style="text-decoration: none; color: #749d77; font-family: 'Dancing Script', cursive; font-size: 16px;">www.Bloomsy.com</a>
  to Embark on a green Journey and enhance Your Surroundings with Nature's Beauty.
 
 ## <b> FEATURES </b>
