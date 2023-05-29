@@ -119,7 +119,7 @@ to this Repository as it can make a Significant Difference.
 ## **AUTHORS**
 
 - [Mariam Reda Mokhtar](https://github.com/Mariam-Mokhtar)
-- [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&width=75&vCenter=true&lines=Mariam+Reda+Mokhtar)](https://github.com/Mariam-Mokhtar)
+- [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=- Mariam+Reda+Mokhtar)](https://github.com/Mariam-Mokhtar)
 - [Omnia Goher](https://github.com/Omnia-Goher)
 - [Hager Abd El Galil](https://github.com/Hager-Abd-El-Galil)
 - [Radwa Hassan](https://github.com/RadwaHassan99)
