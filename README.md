@@ -113,16 +113,16 @@ Explore Our Curated Selection of indoor and outdoor plants, including vibrant fl
 
 ## **SUPPORT**
 
-If You appreciate Our Efforts, Please Consider Showing Your Support By Giving a ⭐
+If You appreciate Our Efforts, Please Consider Showing Your Support By Giving a ⭐ </br>
 to this Repository as it can make a Significant Difference.
 
 ## **AUTHORS**
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Mariam+Reda+Mokhtar)](https://github.com/Mariam-Mokhtar)
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Mariam+Reda+Mokhtar)](https://github.com/Omnia-Goher)
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Hager+Abd+El+Galil)](https://github.com/Hager-Abd-El-Galil)
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Radwa+Hassan)](https://github.com/RadwaHassan99)
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Rowan+Tamer)](https://github.com/rowantamer)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Mariam+Reda+Mokhtar)](https://github.com/Mariam-Mokhtar) </br>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Omnia+Goher)](https://github.com/Omnia-Goher) </br>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Hager+Abd+El+Galil)](https://github.com/Hager-Abd-El-Galil)  </br>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Radwa+Hassan)](https://github.com/RadwaHassan99)  </br>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Rowan+Tamer)](https://github.com/rowantamer)  </br>
 
 - [Omnia Goher](https://github.com/Omnia-Goher)
 - [Hager Abd El Galil](https://github.com/Hager-Abd-El-Galil)
