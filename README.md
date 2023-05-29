@@ -2,7 +2,7 @@
 <div align="center">
   <img src="./FrontEnd/src/assets/images/animate.gif" alt="Logo" width="150px"><br>
   <a href="https://bloomsy-168d4.web.app/">
-    <img src="https://readme-typing-svg.demolab.com?font=Dancing+Script&weight=700&size=30&duration=1&pause=1000&color=749D77&center=true&vCenter=true&width=435&lines=www.Bloomsy.com" alt="Typing SVG">
+    <img src="https://readme-typing-svg.demolab.com?font=Dancing+Script&weight=700&size=30&pause=1000&color=749D77&center=true&vCenter=true&width=435&lines=Bloomsy+;A+Stunning+Plants+Store" alt="Typing SVG">
   </a>
 </div>
 
@@ -15,7 +15,7 @@ Explore Our Curated Selection of indoor and outdoor plants, including vibrant fl
 
 <div align="center">
   <a href="https://bloomsy-168d4.web.app/">
-    <img src="https://readme-typing-svg.demolab.com?font=Dancing+Script&weight=700&size=25&height=30&duration=1&pause=1000&color=749D77&center=true&vCenter=true&width=435&lines=Bloomsy+;A+Stunning+Plants+Store" alt="Typing SVG">
+    <img src="https://readme-typing-svg.demolab.com?font=Dancing+Script&weight=700&size=23&height=30&duration=1&pause=1000&color=749D77&center=true&vCenter=true&width=435&lines=www.Bloomsy.com" alt="Typing SVG">
   </a>
 </div>
 
