@@ -113,16 +113,13 @@ Explore Our Curated Selection of indoor and outdoor plants, including vibrant fl
 
 ## **SUPPORT**
 
-If You appreciate Our Efforts, Please Consider Showing Your Support By Giving a
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20px" height="20px" style="align-items:center">
-<path fill="yellow" d="M12 2.6l2.116 6.485h6.837l-5.522 4.013 2.597 6.313L12 17.199l-6.028 3.198 2.597-6.313L3.047 9.085h6.837L12 2.6z">
-<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/>
-</path>
-</svg> to this Repository as it can make a Significant Difference.
+If You appreciate Our Efforts, Please Consider Showing Your Support By Giving a ⭐
+to this Repository as it can make a Significant Difference.
 
 ## **AUTHORS**
 
 - [Mariam Reda Mokhtar](https://github.com/Mariam-Mokhtar)
+- [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&width=75&vCenter=true&lines=Mariam+Reda+Mokhtar)](https://github.com/Mariam-Mokhtar)
 - [Omnia Goher](https://github.com/Omnia-Goher)
 - [Hager Abd El Galil](https://github.com/Hager-Abd-El-Galil)
 - [Radwa Hassan](https://github.com/RadwaHassan99)
