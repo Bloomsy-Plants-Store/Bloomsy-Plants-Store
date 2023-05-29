@@ -118,8 +118,12 @@ to this Repository as it can make a Significant Difference.
 
 ## **AUTHORS**
 
-- [Mariam Reda Mokhtar](https://github.com/Mariam-Mokhtar)
-- [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=- Mariam+Reda+Mokhtar)](https://github.com/Mariam-Mokhtar)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Mariam+Reda+Mokhtar)](https://github.com/Mariam-Mokhtar)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Mariam+Reda+Mokhtar)](https://github.com/Omnia-Goher)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Hager+Abd+El+Galil)](https://github.com/Hager-Abd-El-Galil)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Radwa+Hassan)](https://github.com/RadwaHassan99)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Rowan+Tamer)](https://github.com/rowantamer)
+
 - [Omnia Goher](https://github.com/Omnia-Goher)
 - [Hager Abd El Galil](https://github.com/Hager-Abd-El-Galil)
 - [Radwa Hassan](https://github.com/RadwaHassan99)
