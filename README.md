@@ -55,7 +55,7 @@ We Hope That You are enjoying Watching Our Demo Video [🎥](https://www.youtube
 
 - **CLONE THE REPOSITORY**
   <pre>
-    git clone ``
+    git clone https://github.com/Bloomsy-Plants-Store/Bloomsy-Plants-Store
   </pre>
 
 - **BACK-END INSTALLATION**
