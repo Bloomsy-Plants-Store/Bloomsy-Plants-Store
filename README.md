@@ -48,7 +48,7 @@ Explore Our Curated Selection of indoor and outdoor plants, including vibrant fl
 
 ## **DEMO**
 
-🎬 We Hope That You are enjoying Watching Our Demo Video [🎥]()
+🎬 We Hope That You are enjoying Watching Our Demo Video [🎥](https://www.youtube.com/watch?v=-8E6sfRQGCw)
 
 ## **INSTALLATION**
 
