@@ -1,3 +1,4 @@
+
 <div align="center" margin-top="5px">
   <img src="./FrontEnd/src/assets/images/animate.gif" alt="Logo" width="150px"><br>
   <a href="https://bloomsy-168d4.web.app/">
@@ -48,7 +49,7 @@ Explore Our Curated Selection of indoor and outdoor plants, including vibrant fl
 
 ## **DEMO**
 
-🎬 We Hope That You are enjoying Watching Our Demo Video [🎥](https://www.youtube.com/watch?v=-8E6sfRQGCw)
+We Hope That You are enjoying Watching Our Demo Video [🎥](https://www.youtube.com/watch?v=-8E6sfRQGCw)
 
 ## **INSTALLATION**
 
@@ -126,5 +127,6 @@ to this Repository as it can make a Significant Difference.
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Radwa+Hassan)](https://github.com/RadwaHassan99)  </br>
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Rowan+Tamer)](https://github.com/rowantamer)  </br>
 
-![Cover](https://github.com/RadwaHassan99/Plants-Shop/assets/78274961/9cee7bbe-fe9f-494a-9c17-fc2b557e9707)
+![IMG-20230527-WA0002](https://github.com/Bloomsy-Plants-Store/Plants-Shop/assets/81237428/902df7f1-333a-452a-ac8f-0d2027073ff0)
+
 
