@@ -108,8 +108,9 @@ We Hope That You are enjoying Watching Our Demo Video [🎥](https://www.youtube
 ## **TECHNOLOGIES**
 
 - Angular Framework v15.0
-- MongoDB
+- Express JS
 - Node JS
+- MongoDB
 - TypeScript
 - Bootstrap
 
