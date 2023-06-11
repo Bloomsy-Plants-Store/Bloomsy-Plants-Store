@@ -8,6 +8,11 @@ import { FavouritesService } from 'src/app/Services/favourites.service';
 import { Router } from '@angular/router';
 import { CheckoutService } from 'src/app/Services/checkout.service';
 
+export interface MyCartItem {
+  product_id: string;
+  quantity: number;
+  price: number;
+}
 
 @Component({
   selector: 'app-product-details-content',
@@ -19,7 +24,8 @@ export class ProductDetailsComponent {
   isFavorited: boolean = false;
   Product: any;
   favourite?:boolean;
-  flag : any;
+  flag: any;
+  cartItems: MyCartItem[] = [];
   constructor(private elementRef: ElementRef,
     public productService: ProductsService,
     public cartService:CartService,
@@ -28,7 +34,6 @@ export class ProductDetailsComponent {
     private spinner: NgxSpinnerService,
     private router: Router,
     private checkoutService: CheckoutService,
-
     ) { }
 
   @ViewChild('carousel') carousel?: CarouselComponent;
@@ -37,12 +42,10 @@ export class ProductDetailsComponent {
     this.spinner.show();
     this.route.params.subscribe((params) => {
       const productId = params['id'];
-
       this.productService.GetProductByID(productId).subscribe({
         next: (response: any) => {
           this.Product = response.data;
           this.spinner.hide();
-
           // Check if the product is favorited
           if (localStorage.getItem('access_token') != null) {
             let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
@@ -56,7 +59,6 @@ export class ProductDetailsComponent {
               }
             });
           }
-
         },
         error: (err: any) => {
           console.log(err);
@@ -137,39 +139,34 @@ export class ProductDetailsComponent {
 
   totalPriceForAllProduct() {
     let totalPrice = 0;
-
       totalPrice +=  this.Product.price * this.quantity;
-
     return totalPrice;
   }
 
+  GitProductToCheck(data: any) {
+      const cartItem: MyCartItem = {
+        product_id: data._id,
+        quantity: this.quantity,
+        price: data.price
+      };
+      this.cartItems.push(cartItem);
+  }
 
-  // total price , array of elements
   checkout() {
-
       const accessToken = localStorage.getItem('access_token');
       if (!accessToken) {
         this.router.navigate(['/login']);
       }
       else {
-        let product_arr = [];
+
     if (JSON.parse(localStorage.getItem('access_token')!)) {
       let id = JSON.parse(localStorage.getItem('access_token')!).UserId;
-      let product = {
-        product_id:this.Product,
-        quantity: this.quantity,
-        price: this.Product.price,
-        _id:id
-      }
-      product_arr.push(product);
+      this.GitProductToCheck(this.Product);
       this.checkoutService.setCartObject(+this.totalPriceForAllProduct(),
-        product_arr, this.flag = "buyNow");
+      this.cartItems, this.flag = "buyNow");
     }
         this.router.navigate(['/checkout']);
       }
-
-
-
 
   }
 
@@ -182,7 +179,6 @@ export class ProductDetailsComponent {
     if (isHalfStar) {
       starsArray.push(0.5);
     }
-
     return starsArray;
   }
 
