@@ -5,7 +5,14 @@ import { CartService } from 'src/app/Services/cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { FavouritesService } from 'src/app/Services/favourites.service';
+import { Router } from '@angular/router';
+import { CheckoutService } from 'src/app/Services/checkout.service';
 
+export interface MyCartItem {
+  product_id: string;
+  quantity: number;
+  price: number;
+}
 
 @Component({
   selector: 'app-product-details-content',
@@ -17,13 +24,16 @@ export class ProductDetailsComponent {
   isFavorited: boolean = false;
   Product: any;
   favourite?:boolean;
-
+  flag: any;
+  cartItems: MyCartItem[] = [];
   constructor(private elementRef: ElementRef,
     public productService: ProductsService,
     public cartService:CartService,
     public favouritesService: FavouritesService,
     private route: ActivatedRoute,
     private spinner: NgxSpinnerService,
+    private router: Router,
+    private checkoutService: CheckoutService,
     ) { }
 
   @ViewChild('carousel') carousel?: CarouselComponent;
@@ -32,23 +42,23 @@ export class ProductDetailsComponent {
     this.spinner.show();
     this.route.params.subscribe((params) => {
       const productId = params['id'];
-
       this.productService.GetProductByID(productId).subscribe({
         next: (response: any) => {
           this.Product = response.data;
           this.spinner.hide();
-
           // Check if the product is favorited
-          let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
-          this.favouritesService.isProductFavorited(userId, productId).subscribe({
-            next: (response: any) => {
-              console.log(response);
-              this.isFavorited = response.exists;
-            },
-            error: (err: any) => {
-              console.log(err);
-            }
-          });
+          if (localStorage.getItem('access_token') != null) {
+            let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
+            this.favouritesService.isProductFavorited(userId, productId).subscribe({
+              next: (response: any) => {
+                console.log(response);
+                this.isFavorited = response.exists;
+              },
+              error: (err: any) => {
+                console.log(err);
+              }
+            });
+          }
         },
         error: (err: any) => {
           console.log(err);
@@ -58,46 +68,63 @@ export class ProductDetailsComponent {
     });
   }
 
-  addProductToCart(id: any,itemQuantity:number) {
+  // add product to cart
+  addProductToCart(id: any, price: any) {
     this.spinner.show();
-    console.log(itemQuantity);
-    let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
-    let userToken = JSON.parse(localStorage.getItem('x-auth-token')!);
-    this.cartService.addProductToCart(userId, id,userToken,itemQuantity).subscribe({
-      next: (response: any) => {
-        this.spinner.hide();
-      },
-      error: (err: any) => {
-        console.log(err);
-        this.spinner.hide();
-      }
-    });
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      // Redirect to login page
+      this.router.navigate(['/login']);
+      return;
+    }
+    const userId = JSON.parse(accessToken).UserId;
+    if (!userId) {
+      // Invalid access token, redirect to login page
+      this.router.navigate(['/login']);
+      return;
+    }
+    let userToken = localStorage.getItem('x-auth-token');
+    this.cartService
+      .addProductToCart(userId, id, price, userToken, this.quantity)
+      .subscribe({
+        next: (response: any) => {
+          this.cartService.cartUpdatedSubject.next();
+          this.spinner.hide();
+        },
+        error: (err: any) => {
+          console.log(err);
+          this.spinner.hide();
+        },
+      });
   }
 
   addOrRemoveFavourite(productId: any) {
-    console.log(this.isFavorited);
-    let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
-    if (this.isFavorited) {
-      console.log("delete");
-      this.favouritesService.deleteProductFromFavourites(userId, productId).subscribe({
-        next: (response: any) => {
-          this.isFavorited = false;
-        },
-        error: (err: any) => {
-          console.log(err);
-        }
-      });
+    if (localStorage.getItem('access_token')) {
+      let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
+      if (this.isFavorited) {
+        this.favouritesService.deleteProductFromFavourites(userId, productId).subscribe({
+          next: (response: any) => {
+            this.isFavorited = false;
+          },
+          error: (err: any) => {
+            console.log(err);
+          }
+        });
+      } else {
+        console.log("add");
+        this.favouritesService.addProductToFavourites(userId, productId).subscribe({
+          next: (response: any) => {
+            this.isFavorited = true;
+          },
+          error: (err: any) => {
+            console.log(err);
+          }
+        });
+      }
     } else {
-      console.log("add");
-      this.favouritesService.addProductToFavourites(userId, productId).subscribe({
-        next: (response: any) => {
-          this.isFavorited = true;
-        },
-        error: (err: any) => {
-          console.log(err);
-        }
-      });
+      this.router.navigate(['/login']);
     }
+
   }
 
   decreaseQuantity(): void {
@@ -110,9 +137,38 @@ export class ProductDetailsComponent {
     this.quantity++;
   }
 
-  // toggleFavorite(): void {
-  //   this.isFavorited = !this.isFavorited;
-  // }
+  totalPriceForAllProduct() {
+    let totalPrice = 0;
+      totalPrice +=  this.Product.price * this.quantity;
+    return totalPrice;
+  }
+
+  GitProductToCheck(data: any) {
+      const cartItem: MyCartItem = {
+        product_id: data._id,
+        quantity: this.quantity,
+        price: data.price
+      };
+      this.cartItems.push(cartItem);
+  }
+
+  checkout() {
+      const accessToken = localStorage.getItem('access_token');
+      if (!accessToken) {
+        this.router.navigate(['/login']);
+      }
+      else {
+
+    if (JSON.parse(localStorage.getItem('access_token')!)) {
+      let id = JSON.parse(localStorage.getItem('access_token')!).UserId;
+      this.GitProductToCheck(this.Product);
+      this.checkoutService.setCartObject(+this.totalPriceForAllProduct(),
+      this.cartItems, this.flag = "buyNow");
+    }
+        this.router.navigate(['/checkout']);
+      }
+
+  }
 
   getStarsArray(rate: number): any[] {
     const starsCount = Math.floor(rate);
@@ -123,7 +179,6 @@ export class ProductDetailsComponent {
     if (isHalfStar) {
       starsArray.push(0.5);
     }
-
     return starsArray;
   }
 
