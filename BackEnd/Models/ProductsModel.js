@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
-const config = require("../config.json")
-var DB_URL = config.MONGODBURL;
-var validator = require("validator");
-mongoose.connect(DB_URL, { useNewUrlParser: true });
+
+const connectToDatabase = require("../Utils/databaseConfig");
 
 let productSchema = new mongoose.Schema({
     name: {
@@ -13,7 +11,7 @@ let productSchema = new mongoose.Schema({
     },
     imageUrl:
     {
-        type: [String], 
+        type: [String],
         default: [],
     },
     category: {
@@ -46,5 +44,5 @@ let productSchema = new mongoose.Schema({
 });
 
 
-const Product = mongoose.model('Product', productSchema);
+const Product = connectToDatabase().model('Product', productSchema);
 module.exports = Product;
