@@ -5,10 +5,8 @@ const passport = require("./Utils/passportConfig");
 const config = require('./config.json');
 const app = express();
 const multer = require('multer');
-
-// const cookieParser = require('cookie-parser');
-
-// app.use(cookieParser());
+const socketIO = require('socket.io');
+const http = require('http');
 
 const PORT = process.env.PORT||7400
 
@@ -102,5 +100,15 @@ app.use('/charge', stripeRoutes);
 const RevenueRoutes = require('./Routes/RevenueRoutes');
 app.use('/', RevenueRoutes);
 
+// const NotificationsRoutes= require('./Routes/NotificationsRoutes');
+// app.use('/notifications',NotificationsRoutes)
 
-app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})
+const server = http.createServer(app)
+const io = socketIO(server, {
+  path: '/notification/'
+})
+require('./Routes/NotificationsRoutes')(io)
+
+
+
+server.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})

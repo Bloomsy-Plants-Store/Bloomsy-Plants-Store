@@ -31,6 +31,7 @@
     "passport-remember-me": "^0.0.1",
     "passport-twitter": "^0.1.5",
     "path": "^0.12.7",
+    "socket.io": "^4.6.2",
     "stripe": "^12.7.0",
     "validator": "^13.9.0"
   }
