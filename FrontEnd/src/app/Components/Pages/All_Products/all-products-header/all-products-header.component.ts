@@ -1,4 +1,4 @@
-import { Component, EventEmitter,Output, ElementRef, Renderer2, SimpleChanges, Input} from '@angular/core';
+import { Component, EventEmitter, Output, ElementRef, Renderer2, SimpleChanges, Input } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ProductsService } from 'src/app/Services/products.service';
@@ -12,30 +12,31 @@ export class AllProductsHeaderComponent {
   HeaderName = "ALL Products";
   previousImgElementId: string | null | undefined = null;
   previousTitleElementId: string | null | undefined = null;
+  initialCallCompleted = false;
+  FiltercategoryName: any;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2,public myService: ProductsService,
+  constructor(private elementRef: ElementRef, private renderer: Renderer2, public myService: ProductsService,
     private spinner: NgxSpinnerService) { }
 
-  @Output() myEvent = new EventEmitter();
-  @Input() FiltercategoryName: any;
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.FiltercategoryName) {
-      this.HeaderName=this.FiltercategoryName
+  ngOnInit(): void {
+    if (!this.initialCallCompleted) {
+      this.handleImgContainerClick(this.removeSpaces(this.HeaderName))
+      this.handleTitleContainerClick(this.removeSpaces(this.HeaderName))
+      this.initialCallCompleted = true
+    }
+    this.myService.categoryObserver$.subscribe((value: any) => {
+      this.FiltercategoryName = this.HeaderName = value;
       this.handleImgContainerClick(this.removeSpaces(this.FiltercategoryName))
       this.handleTitleContainerClick(this.removeSpaces(this.FiltercategoryName))
-    }
+    });
   }
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    this.handleImgContainerClick(this.removeSpaces(this.HeaderName))
-    this.handleTitleContainerClick(this.removeSpaces(this.HeaderName))
-  }
+
   HandleEvent(categoryName: string) {
+    this.myService.updateCategory(categoryName);
     this.HeaderName = categoryName;
-    this.myEvent.emit(categoryName);
   }
+
   handleContainerClick(event: MouseEvent, categoryName: string) {
     const clickedElement = event.target as HTMLElement;
     const isImgContainer = clickedElement.classList.contains('category-img');
@@ -47,11 +48,12 @@ export class AllProductsHeaderComponent {
       this.handleTitleContainerClick(this.removeSpaces(categoryName))
     }
   }
+
   removeSpaces(name: string): string {
     return name.replace(/\s/g, '');
   }
 
-  handleImgContainerClick(catgory_id: string){
+  handleImgContainerClick(catgory_id: string) {
     const elementId = `img-active-${catgory_id}`;
     // Remove style from previously clicked element
     if (this.previousImgElementId) {
@@ -64,7 +66,7 @@ export class AllProductsHeaderComponent {
     }
   }
 
-  handleTitleContainerClick(catgory_id: string){
+  handleTitleContainerClick(catgory_id: string) {
     const elementId = `title-active-${catgory_id}`;
 
     // Remove style from previously clicked element
@@ -114,7 +116,7 @@ export class AllProductsHeaderComponent {
     const style = this.renderer.createElement('style');
     const styleId = `custom-title-style-${elementId}`; // Generate a unique style id
     style.setAttribute('id', styleId);
-    console.log("fn"+elementId)
+    console.log("fn" + elementId)
     const css = `#${elementId}::before {
       content: "";
       position: absolute;
@@ -166,37 +168,35 @@ export class AllProductsHeaderComponent {
   }
   categories = [
     {
-      id:"0",
+      id: "0",
       name: "ALL Products",
       img_src: "../assets/images/All-Products.jpg"
     },
     {
-      id:"1",
+      id: "1",
       name: "Low Maintenance",
       img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-11.jpg"
     },
     {
-      id:"2",
+      id: "2",
       name: "Indoor Plants",
       img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-10.jpg"
     },
     {
-      id:"3",
+      id: "3",
       name: "Ceramic Pots",
       img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-8.jpg"
     },
     {
-      id:"4",
+      id: "4",
       name: "Air Purifying",
       img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-7.jpg"
     },
     {
-      id:"5",
+      id: "5",
       name: "Plant Bundle",
       img_src: "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/categories-12.jpg"
     }
   ]
-  ngOnDestroy() {
-    this.myEvent.unsubscribe();
-  }
+
 }

@@ -15,30 +15,29 @@ export class FilterSideBarComponent implements OnInit {
   maxValue: number = 1500;
   selectedOption: string | undefined;
   activeItem: any = null;
+  FiltercategoryName: any;
   // sortOptions: string[] = ['Default sorting','Sort by average rating', 'Sort by price: low to high', 'Sort by price: high to low'];
   @Output() myPriceEvent = new EventEmitter();
-  @Output() myCatgoryEvent = new EventEmitter();
 
   constructor(private spinner: NgxSpinnerService, public myService: ProductsService,private renderer: Renderer2) {}
-  @Input() FiltercategoryName: any;
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.FiltercategoryName) {
-      this.activeCategory(this.FiltercategoryName);
-    }
-  }
   ngOnInit(): void {
     this.spinner.show();
     this.myService.getEachCatgory().subscribe({
       next: (response: any) => {
         this.categories = response.data;
         this.spinner.hide();
+        this.myService.categoryObserver$.subscribe((value: any) => {
+          this.FiltercategoryName = value;
+          this.activeCategory(this.FiltercategoryName);
+        });
       },
       error: (err) => {
         console.log(err);
         this.spinner.hide();
       },
     });
+
   }
 
   options: Options = {
@@ -85,11 +84,10 @@ export class FilterSideBarComponent implements OnInit {
 
 
   HandleCatgoryEvent(categoryName: string) {
-    this.myCatgoryEvent.emit(categoryName);
+    this.myService.updateCategory(categoryName);
   }
 
   handleContainerClick(categoryName: string) {
-
     this.HandleCatgoryEvent(categoryName);
     this.activeCategory(categoryName);
   }

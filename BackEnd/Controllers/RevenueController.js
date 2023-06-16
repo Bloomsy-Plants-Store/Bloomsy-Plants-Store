@@ -58,7 +58,7 @@ const getTotalUserCount = async (req, res) => {
   
   }   
       
-}
+
   
 module.exports = {
     countTotalOrders,

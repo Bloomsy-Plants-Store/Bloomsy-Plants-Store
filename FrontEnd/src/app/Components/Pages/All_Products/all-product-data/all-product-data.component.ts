@@ -23,8 +23,8 @@ export class AllProductDataComponent implements OnInit {
   totalItems = 0;
   isFavorited: boolean = false;
   favoritesMap: Map<string, boolean> = new Map<string, boolean>();
+  FiltercategoryName: any;
 
-  @Input() FiltercategoryName: any;
   @Input() FilterPriceRange: any;
 
   constructor(
@@ -37,15 +37,8 @@ export class AllProductDataComponent implements OnInit {
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.FiltercategoryName) {
-      if(this.FiltercategoryName==="ALL Products")
-      {
-        this.DefaultAllProducts();
-      }
-      this.FilterByCategory();
-    }
 
-    if (  changes['FilterPriceRange'] &&
+    if (changes['FilterPriceRange'] &&
       !changes['FilterPriceRange'].firstChange) {
       this.FilterByPrice();
     }
@@ -67,6 +60,7 @@ export class AllProductDataComponent implements OnInit {
       },
     });
   }
+  
   FilterByPrice(){
     this.myService.getProductsByPrice(this.FilterPriceRange).subscribe({
       next: (response: any) => {
@@ -101,6 +95,15 @@ export class AllProductDataComponent implements OnInit {
   }
   ngOnInit(): void {
    this.DefaultAllProducts()
+   this.myService.categoryObserver$.subscribe((value: any) => {
+    this.FiltercategoryName = value;
+    if(this.FiltercategoryName==="ALL Products")
+    {
+      this.DefaultAllProducts();
+    }else{
+      this.FilterByCategory();
+    }
+  });
   }
   getUpperBound(): number {
     const upperBound =
