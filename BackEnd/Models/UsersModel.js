@@ -1,13 +1,11 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const cartSchema = require("./CartModel"); 
-const favouritesSchema = require("./FavouritsModel"); 
-const orderSchema = require("./OrderModel"); 
-const config = require("../config.json");
-var DB_URL =config.MONGODBURL;
+const cartSchema = require("./CartModel");
+const favouritesSchema = require("./FavouritsModel");
+const orderSchema = require("./OrderModel");
 var validator = require("validator");
 
-mongoose.connect(DB_URL, { useNewUrlParser: true });
+const connectToDatabase = require("../Utils/databaseConfig");
 
 let UsersSchema = new mongoose.Schema({
     name: {
@@ -45,7 +43,6 @@ let UsersSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
-        // required: true,
         validate: {
             validator: (val) => {
                 if (!val || val.trim() === "") {
@@ -103,5 +100,6 @@ UsersSchema.pre('save', function (next) {
 });
 
 
-const User = mongoose.model('User', UsersSchema);
+const User = connectToDatabase().model("User", UsersSchema);
+
 module.exports = User;
