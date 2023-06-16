@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { config } from '../config';
 @Injectable({
   providedIn: 'root'
 })
 
 export class CheckoutService {
-  private Base_URL = "https://bloomsy.onrender.com/charge/"
+  private Base_URL = `${config.backendUrl}/charge/`
   constructor(private readonly myClient: HttpClient) { }
 
   total: number = 0;

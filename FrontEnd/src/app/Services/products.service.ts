@@ -1,14 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { config } from '../config';
 @Injectable({
   providedIn: 'root'
 })
 
 export class ProductsService {
 
-  private Base_URL = "https://bloomsy.onrender.com/api/products/";
+  private Base_URL = `${config.backendUrl}/api/products/`;
   http: any;
 
   constructor(private readonly myClient : HttpClient) { }
