@@ -4,13 +4,10 @@ const session = require('express-session');
 const passport = require("./Utils/passportConfig");
 const config = require('./config.json');
 const app = express();
-const multer = require('multer');
-
-// const cookieParser = require('cookie-parser');
-
-// app.use(cookieParser());
 
 const PORT = process.env.PORT||7400
+
+require('dotenv').config();
 
 const bodyparser = require("body-parser");
 
@@ -26,10 +23,10 @@ app.use("/",logging);
 const corsOptions = {
   origin: '*', //allowed origin
   optionsSuccessStatus: 200,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
-  exposedHeaders: ['x-auth-token', 'remember_me'], 
-  preflightContinue: true, 
+  exposedHeaders: ['x-auth-token', 'remember_me'],
+  preflightContinue: true,
   preflight: function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -37,7 +34,7 @@ const corsOptions = {
     res.setHeader('Access-Control-Expose-Headers', 'x-auth-token');
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
-  }, 
+  },
   credentials: true,
 };
 
@@ -45,7 +42,7 @@ app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 app.use(express.json());
 
-//Facebook , Google and Twitter Middlewares 
+//Facebook , Google and Twitter Middlewares
 app.use(session({
   secret: config.SECRETKEY,
   resave: false,
@@ -102,5 +99,8 @@ app.use('/charge', stripeRoutes);
 const RevenueRoutes = require('./Routes/RevenueRoutes');
 app.use('/', RevenueRoutes);
 
+// Chatbot Route
+const ChatbotRoutes = require('./Routes/ChatbotRoutes');
+app.use('/', ChatbotRoutes);
 
 app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)})
