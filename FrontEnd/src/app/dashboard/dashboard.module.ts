@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CommonModule } from '@angular/common';
@@ -24,7 +24,7 @@ import { DashboardHomeComponent } from '../Components/Dashboard/dashboard-home/d
     DashboardAllProductsComponent,
     AllProductsTablePaginationComponent,
     DashboardRevenueComponent,
-    DashboardHomeComponent
+    DashboardHomeComponent,
   ],
   exports: [
     DashboardPageComponent,
@@ -47,7 +47,7 @@ import { DashboardHomeComponent } from '../Components/Dashboard/dashboard-home/d
       { path: '', component: DashboardPageComponent }
     ])
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
   providers: [],
   bootstrap: [AppComponent]
 })

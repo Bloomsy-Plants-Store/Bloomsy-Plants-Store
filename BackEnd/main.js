@@ -24,18 +24,18 @@ app.use("/",logging);
 const corsOptions = {
   origin: '*', //allowed origin
   optionsSuccessStatus: 200,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
-  exposedHeaders: ['x-auth-token', 'remember_me'], 
-  preflightContinue: true, 
+  exposedHeaders: ['x-auth-token', 'remember_me'],
+  preflightContinue: true,
   preflight: function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-auth-token');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-auth-token', 'Origin');
     res.setHeader('Access-Control-Expose-Headers', 'x-auth-token');
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
-  }, 
+  },
   credentials: true,
 };
 
@@ -43,7 +43,7 @@ app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 app.use(express.json());
 
-//Facebook , Google and Twitter Middlewares 
+//Facebook , Google and Twitter Middlewares
 app.use(session({
   secret: config.SECRETKEY,
   resave: false,
