@@ -6,24 +6,23 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-var sendMessage = async (req, res) => {
-    try{
-        const response = await openai.createCompletion({
-            model: 'text-davinci-003',
-            prompt: req.body.prompt,
-            temperature: 0,
-            top_p: 1,
-            frequency_penalty: 0,
-            presence_penalty: 0,
-            max_tokens: 3000
-        });
+var sendMessage = (req, res) => {
+    const response = openai.createCompletion({
+        model: 'text-davinci-003',
+        prompt: req.body.prompt,
+        temperature: 0,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
+        max_tokens: 256
+    });
 
-        response.then((data) => {
-            res.send({message: data.data.choices[0].text})
-        })
-    }catch(err){
+    response.then((data) => {
+        res.send({message: data.data.choices[0].text})
+    }).catch((err) => {
         res.send({message: err})
-    }
-};
+    })
+
+}
 
 module.exports = { sendMessage };
