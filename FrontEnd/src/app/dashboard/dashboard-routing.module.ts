@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { DashboardRevenueComponent } from '../Components/Dashboard/dashboard-revenue/dashboard-revenue.component';
 import { DashboardHomeComponent } from '../Components/Dashboard/dashboard-home/dashboard-home.component';
+import { DashboardTrackOrderComponent } from '../Components/Dashboard/dashboard-track-order/dashboard-track-order.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
     children: [
       { path: '', component: DashboardHomeComponent },
       { path: 'all-products', component: DashboardAllProductsComponent },
-      { path: 'revenue', component: DashboardRevenueComponent},
+      { path: 'revenue', component: DashboardRevenueComponent },
+      {path: 'trackOrder', component: DashboardTrackOrderComponent},
     ]
   }
 ];

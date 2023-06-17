@@ -1,0 +1,37 @@
+
+<div class="drag-container">
+  <div class="container" >
+    <h4>Pending</h4>
+    <div class="list"
+    
+    cdkDropList (cdkDropListDropped)="drop($event)"
+    [cdkDropListData]="pending"
+         [cdkDropListConnectedTo]="[deliversList, confirmedList]" #pendingList="cdkDropList">
+      <div class="list-item" *ngFor="let item of pending" cdkDrag>{{ item }}</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h4>confirming</h4>
+    <div class="list"
+     cdkDropList (cdkDropListDropped)="drop($event)"
+     [cdkDropListData]="confirmed"
+     [cdkDropListConnectedTo]="[pendingList, deliversList]"
+      #confirmedList="cdkDropList">
+      <div class="list-item" *ngFor="let item of confirmed" cdkDrag>{{ item }}</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h4>delivering</h4>
+    <div class="list" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="delivers"
+         [cdkDropListConnectedTo]="[pendingList, confirmedList]" #deliversList="cdkDropList">
+      <div class="list-item" *ngFor="let item of delivers" cdkDrag>{{ item }}</div>
+    </div>
+  </div>
+
+
+
+
+
+</div>
