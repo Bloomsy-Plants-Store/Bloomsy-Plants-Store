@@ -170,15 +170,19 @@ var getProductsByCategory = async (req, res) => {
 var getProductsByPrice=async (req, res) => {
   try {
     const objectQueryParam = req.query.object;
+    console.log(objectQueryParam)
     // Parse the query parameter value back into an object
     const priceObject = JSON.parse(objectQueryParam);
     if (!objectQueryParam) {
       return res.status(400).send("Bad Request: You must enter a price ");
     }
+    console.log(priceObject.min)
+    console.log(priceObject.max)
 
     let Products = await productModel.find({
-      price: { $gte: priceObject.min, $lte: priceObject.max }
+      price: { $gte: priceObject.min, $lte:priceObject.max}
     }).lean();
+    //console.log(Products)
 
     if (!Products) {
       return res.status(404).send("No Data Found");

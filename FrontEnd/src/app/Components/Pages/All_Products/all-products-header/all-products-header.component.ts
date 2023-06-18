@@ -25,6 +25,7 @@ export class AllProductsHeaderComponent {
       this.handleTitleContainerClick(this.removeSpaces(this.HeaderName))
       this.initialCallCompleted = true
     }
+
     this.myService.categoryObserver$.subscribe((value: any) => {
       this.FiltercategoryName = this.HeaderName = value;
       this.handleImgContainerClick(this.removeSpaces(this.FiltercategoryName))

@@ -24,8 +24,9 @@ export class AllProductDataComponent implements OnInit {
   isFavorited: boolean = false;
   favoritesMap: Map<string, boolean> = new Map<string, boolean>();
   FiltercategoryName: any;
+  PriceFlag=false;
 
-  @Input() FilterPriceRange: any;
+FilterPriceRange: any;
 
   constructor(
     private elementRef: ElementRef,
@@ -34,15 +35,16 @@ export class AllProductDataComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private router: Router,
     public favouritesService: FavouritesService,
-  ) {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-
-    if (changes['FilterPriceRange'] &&
-      !changes['FilterPriceRange'].firstChange) {
-      this.FilterByPrice();
-    }
+  ) {   this.DefaultAllProducts()
   }
+
+  // ngOnChanges(changes: SimpleChanges): void {
+
+  //   if (changes['FilterPriceRange'] &&
+  //     !changes['FilterPriceRange'].firstChange) {
+  //     this.FilterByPrice();
+  //   }
+  // }
 
   FilterByCategory()
   {
@@ -60,12 +62,14 @@ export class AllProductDataComponent implements OnInit {
       },
     });
   }
-  
+
   FilterByPrice(){
     this.myService.getProductsByPrice(this.FilterPriceRange).subscribe({
       next: (response: any) => {
         this.Products = response.data;
+        console.log(this.Products)
         this.totalItems = this.Products.length;
+        console.log(this.totalItems)
         this.checkProductInFavourites();
         this.spinner.hide();
       },
@@ -94,7 +98,7 @@ export class AllProductDataComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-   this.DefaultAllProducts()
+
    this.myService.categoryObserver$.subscribe((value: any) => {
     this.FiltercategoryName = value;
     if(this.FiltercategoryName==="ALL Products")
@@ -104,7 +108,39 @@ export class AllProductDataComponent implements OnInit {
       this.FilterByCategory();
     }
   });
+
+  // this.myService.priceObserver$.subscribe((value: any) => {
+  //   this.FilterPriceRange = value;
+  //   this.FilterByPrice()
+  // });
+
   }
+  // ngOnInit(): void {
+  //   let prevCategoryValue:any;
+  //   let prevPriceValue: any;
+
+  //   this.myService.categoryObserver$.subscribe((value: any) => {
+  //     console.log("prevCategoryValue",prevCategoryValue)
+  //     if (value !== prevCategoryValue) {
+  //       this.FiltercategoryName = value;
+  //       if (this.FiltercategoryName === "ALL Products") {
+  //         this.DefaultAllProducts();
+  //       } else {
+  //           this.FilterByCategory();
+  //       }
+  //     }
+  //     prevCategoryValue = value;
+  //   });
+
+  //   this.myService.priceObserver$.subscribe((value: any) => {
+  //     if (value !== prevPriceValue) {
+  //       this.FilterPriceRange = value;
+  //       this.FilterByPrice();
+  //     }
+  //     prevPriceValue = value;
+  //   });
+  // }
+
   getUpperBound(): number {
     const upperBound =
       (this.currentPage - 1) * this.itemsPerPage + this.itemsPerPage;

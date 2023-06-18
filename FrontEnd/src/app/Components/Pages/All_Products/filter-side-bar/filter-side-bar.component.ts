@@ -13,6 +13,8 @@ export class FilterSideBarComponent implements OnInit {
   categories:any
   minValue: number = 50;
   maxValue: number = 1500;
+  finalMinValue: number | undefined;
+  finalMaxValue: number | undefined;
   selectedOption: string | undefined;
   activeItem: any = null;
   FiltercategoryName: any;
@@ -41,15 +43,15 @@ export class FilterSideBarComponent implements OnInit {
   }
 
   options: Options = {
-    floor: this.minValue,  //the minimum value of the slider
-    ceil: this.maxValue, //the maximum value of the slider
+    floor: this.minValue,
+    ceil: this.maxValue,
     translate: (value: number, label: LabelType): string => {
       switch (label) {
         case LabelType.Low:
-          this.minValue=value;
+          this.minValue = value;
           return "<b>Min price:</b> $" + value;
         case LabelType.High:
-          this.maxValue=value;
+          this.maxValue = value;
           return "<b>Max price:</b> $" + value;
         default:
           return "$" + value;
@@ -73,12 +75,19 @@ export class FilterSideBarComponent implements OnInit {
   }
 
   HandleEvent() {
+    // this.finalMinValue = this.minValue;
+    // this.finalMaxValue = this.maxValue;
+    // console.log('Final Values:', this.finalMinValue, this.finalMaxValue);
     const price_range={
       min:this.minValue,
       max:this.maxValue
     }
+    console.log(price_range);
+
     this.handleContainerClick("ALL Products");
-    this.myPriceEvent.emit(price_range);
+    //this.myPriceEvent.emit(price_range);
+    this.myService.updatePrice(price_range);
+
   }
 
 
