@@ -97,49 +97,49 @@ FilterPriceRange: any;
       },
     });
   }
-  ngOnInit(): void {
+  // ngOnInit(): void {
 
-   this.myService.categoryObserver$.subscribe((value: any) => {
-    this.FiltercategoryName = value;
-    if(this.FiltercategoryName==="ALL Products")
-    {
-      this.DefaultAllProducts();
-    }else{
-      this.FilterByCategory();
-    }
-  });
-
-  // this.myService.priceObserver$.subscribe((value: any) => {
-  //   this.FilterPriceRange = value;
-  //   this.FilterByPrice()
+  //  this.myService.categoryObserver$.subscribe((value: any) => {
+  //   this.FiltercategoryName = value;
+  //   if(this.FiltercategoryName==="ALL Products")
+  //   {
+  //     this.DefaultAllProducts();
+  //   }else{
+  //     this.FilterByCategory();
+  //   }
   // });
 
-  }
-  // ngOnInit(): void {
-  //   let prevCategoryValue:any;
-  //   let prevPriceValue: any;
+  // // this.myService.priceObserver$.subscribe((value: any) => {
+  // //   this.FilterPriceRange = value;
+  // //   this.FilterByPrice()
+  // // });
 
-  //   this.myService.categoryObserver$.subscribe((value: any) => {
-  //     console.log("prevCategoryValue",prevCategoryValue)
-  //     if (value !== prevCategoryValue) {
-  //       this.FiltercategoryName = value;
-  //       if (this.FiltercategoryName === "ALL Products") {
-  //         this.DefaultAllProducts();
-  //       } else {
-  //           this.FilterByCategory();
-  //       }
-  //     }
-  //     prevCategoryValue = value;
-  //   });
-
-  //   this.myService.priceObserver$.subscribe((value: any) => {
-  //     if (value !== prevPriceValue) {
-  //       this.FilterPriceRange = value;
-  //       this.FilterByPrice();
-  //     }
-  //     prevPriceValue = value;
-  //   });
   // }
+  ngOnInit(): void {
+    let prevCategoryValue:any;
+    let prevPriceValue: any;
+
+    this.myService.categoryObserver$.subscribe((value: any) => {
+      console.log("prevCategoryValue",prevCategoryValue)
+      if (value !== prevCategoryValue) {
+        this.FiltercategoryName = value;
+        if (this.FiltercategoryName === "ALL Products") {
+          this.DefaultAllProducts();
+        } else {
+            this.FilterByCategory();
+        }
+      }
+      prevCategoryValue = value;
+    });
+
+    this.myService.priceObserver$.subscribe((value: any) => {
+      if (value !== prevPriceValue) {
+        this.FilterPriceRange = value;
+        this.FilterByPrice();
+      }
+      prevPriceValue = value;
+    });
+  }
 
   getUpperBound(): number {
     const upperBound =

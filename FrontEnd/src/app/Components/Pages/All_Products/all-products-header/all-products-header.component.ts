@@ -27,9 +27,11 @@ export class AllProductsHeaderComponent {
     }
 
     this.myService.categoryObserver$.subscribe((value: any) => {
+
       this.FiltercategoryName = this.HeaderName = value;
       this.handleImgContainerClick(this.removeSpaces(this.FiltercategoryName))
       this.handleTitleContainerClick(this.removeSpaces(this.FiltercategoryName))
+      //this.HandleEvent(this.FiltercategoryName);
     });
   }
 
@@ -43,10 +45,12 @@ export class AllProductsHeaderComponent {
     const isImgContainer = clickedElement.classList.contains('category-img');
     const isTitleElement = clickedElement.tagName === 'A' && clickedElement.parentElement?.classList.contains('category-title');
 
-    if (isImgContainer || isTitleElement) {
-      this.HandleEvent(categoryName);
-      this.handleImgContainerClick(this.removeSpaces(categoryName))
-      this.handleTitleContainerClick(this.removeSpaces(categoryName))
+    if (categoryName !== this.HeaderName) {
+      if (isImgContainer || isTitleElement) {
+        this.handleImgContainerClick(this.removeSpaces(categoryName))
+        this.handleTitleContainerClick(this.removeSpaces(categoryName))
+        this.HandleEvent(categoryName);
+      }
     }
   }
 
@@ -64,6 +68,7 @@ export class AllProductsHeaderComponent {
     if (elementId) {
       this.addStyleToImgElement(elementId);
       this.previousImgElementId = elementId;
+
     }
   }
 

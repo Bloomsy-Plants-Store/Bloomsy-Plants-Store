@@ -75,9 +75,6 @@ export class FilterSideBarComponent implements OnInit {
   }
 
   HandleEvent() {
-    // this.finalMinValue = this.minValue;
-    // this.finalMaxValue = this.maxValue;
-    // console.log('Final Values:', this.finalMinValue, this.finalMaxValue);
     const price_range={
       min:this.minValue,
       max:this.maxValue
@@ -85,7 +82,6 @@ export class FilterSideBarComponent implements OnInit {
     console.log(price_range);
 
     this.handleContainerClick("ALL Products");
-    //this.myPriceEvent.emit(price_range);
     this.myService.updatePrice(price_range);
 
   }
