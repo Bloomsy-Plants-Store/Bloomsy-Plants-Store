@@ -31,12 +31,14 @@ export class DashboardTrackOrderComponent implements OnInit {
   getOrders() {
     this.orderService.getOrders().subscribe(
       (orders: any[]) => {
+        let counter = 1;
         orders.forEach(order => {
           const mappedOrder = {
             orderId: order._id,
             userName: order.userName,
             total: order.total,
-            userId: order.userId
+            userId: order.userId,
+            counter: counter++
           };
           if (order.status === 'pending') {
             this.pending.push(mappedOrder);

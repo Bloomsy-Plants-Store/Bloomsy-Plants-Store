@@ -8,9 +8,9 @@
     [cdkDropListData]="pending"
          [cdkDropListConnectedTo]="[deliversList, confirmedList]" #pendingList="cdkDropList">
          <div class="list-item" *ngFor="let item of pending" cdkDrag>
-          <p>User Name: {{ item.userName }}</p>
-          <p>Order ID: {{ item.orderId }}</p>
-          <p>Total: {{ item.total }}</p>
+          <p>Order {{ item.counter }}</p>
+          <p> {{ item.userName }}</p>
+          <p> {{ item.total }}</p>
         </div>
 
     </div>
@@ -24,9 +24,9 @@
      [cdkDropListConnectedTo]="[pendingList, deliversList]"
       #confirmedList="cdkDropList">
       <div class="list-item" *ngFor="let item of confirmed" cdkDrag>
-        <p>User Name: {{ item.userName }}</p>
-          <p>Order ID: {{ item.orderId }}</p>
-          <p>Total: {{ item.total }}</p>
+        <p>Order {{ item.counter }}</p>
+        <p> {{ item.userName }}</p>
+        <p> {{ item.total }}</p>
       </div>
     </div>
   </div>
@@ -36,9 +36,9 @@
     <div class="list" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="delivers"
          [cdkDropListConnectedTo]="[pendingList, confirmedList]" #deliversList="cdkDropList">
       <div class="list-item" *ngFor="let item of delivers" cdkDrag>
-        <p>User Name: {{ item.userName }}</p>
-          <p>Order ID: {{ item.orderId }}</p>
-          <p>Total: {{ item.total }}</p>
+        <p>Order {{ item.counter }}</p>
+        <p> {{ item.userName }}</p>
+        <p> {{ item.total }}</p>
       </div>
     </div>
   </div>
