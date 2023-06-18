@@ -53,8 +53,9 @@ import { ProfileComponent } from './Components/Pages/profile/profile.component';
 import { ProfileHeaderComponent } from './Components/Pages/profile/profile-header/profile-header.component';
 import { ProfileContentComponent } from './Components/Pages/profile/profile-content/profile-content.component';
 import { Error404Component } from './Components/Pages/error/error404/error404.component';
-import { DashboardTrackOrderComponent } from './Components/Dashboard/dashboard-track-order/dashboard-track-order.component';
+import { ChatbotComponent } from './Components/chatbot/chatbot.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { DashboardTrackOrderComponent } from './Components/Dashboard/dashboard-track-order/dashboard-track-order.component';
 interface NgxSpinnerConfig {
   type?: string;
 }
@@ -98,7 +99,8 @@ interface NgxSpinnerConfig {
     ProfileHeaderComponent,
     ProfileContentComponent,
     Error404Component,
-    DashboardTrackOrderComponent,
+    ChatbotComponent,
+    DashboardTrackOrderComponent
   ],
   imports: [
     BrowserModule,
