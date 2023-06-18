@@ -23,7 +23,7 @@
 
       </button>
     </div>
-    <div id="helpdesk-popup-body">
+    <div id="helpdesk-popup-body" [style.background]="'url(./assets/images/modal-bg.png) no-repeat top left'">
       <div class="messages" #scrollMe>
         <div *ngFor="let message of messages" class="message">
           <div [class]="message.type">
