@@ -6,14 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./all-products.component.css']
 })
 export class ALlProductsComponent {
-  // categoryName: string = "";
-  priceRange: object = {}
-  // getCatgoryName(data: any) {
-  //   this.categoryName = data;
-  //   console.log(this.categoryName)
-  // }
-  getPriceRange(data: any) {
-    this.priceRange = data;
-    console.log(this.priceRange)
-  }
+
 }

@@ -107,7 +107,7 @@ export class AllProductDataComponent implements OnInit {
     });
 
     this.myService.priceObserver$.subscribe((value: any) => {
-      if (value !== prevPriceValue) {
+      if (value !== prevPriceValue &&this.FiltercategoryName === "ALL Products") {
         this.FilterPriceRange = value;
         this.FilterByPrice();
       }
