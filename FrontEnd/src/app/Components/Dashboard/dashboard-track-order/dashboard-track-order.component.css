@@ -8,6 +8,7 @@
 .container {
   flex: 1 1 300px;
   margin-right: 10px;
+  margin-bottom: 5%;
 }
 
 .list {
@@ -30,3 +31,17 @@
   border: 1px solid #ccc;
   cursor: move;
 }
+
+@media (max-width: 767px) {
+  .list-item {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  h4{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
