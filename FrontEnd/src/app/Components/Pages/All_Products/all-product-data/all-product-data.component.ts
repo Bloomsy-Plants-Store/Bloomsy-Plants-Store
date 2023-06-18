@@ -26,7 +26,7 @@ export class AllProductDataComponent implements OnInit {
   FiltercategoryName: any;
   PriceFlag=false;
 
-FilterPriceRange: any;
+  FilterPriceRange: any;
 
   constructor(
     private elementRef: ElementRef,
@@ -37,14 +37,6 @@ FilterPriceRange: any;
     public favouritesService: FavouritesService,
   ) {   this.DefaultAllProducts()
   }
-
-  // ngOnChanges(changes: SimpleChanges): void {
-
-  //   if (changes['FilterPriceRange'] &&
-  //     !changes['FilterPriceRange'].firstChange) {
-  //     this.FilterByPrice();
-  //   }
-  // }
 
   FilterByCategory()
   {
@@ -97,24 +89,6 @@ FilterPriceRange: any;
       },
     });
   }
-  // ngOnInit(): void {
-
-  //  this.myService.categoryObserver$.subscribe((value: any) => {
-  //   this.FiltercategoryName = value;
-  //   if(this.FiltercategoryName==="ALL Products")
-  //   {
-  //     this.DefaultAllProducts();
-  //   }else{
-  //     this.FilterByCategory();
-  //   }
-  // });
-
-  // // this.myService.priceObserver$.subscribe((value: any) => {
-  // //   this.FilterPriceRange = value;
-  // //   this.FilterByPrice()
-  // // });
-
-  // }
   ngOnInit(): void {
     let prevCategoryValue:any;
     let prevPriceValue: any;
