@@ -75,12 +75,6 @@ export class CheckoutComponent{
     })
   }
   ngOnInit() {
-    this.spinner.show();
-
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 800);
-
     this.total = this.checkoutService.total;
     this.Items = this.checkoutService.cartItems;
     this.flag = this.checkoutService.flag;
@@ -119,24 +113,25 @@ export class CheckoutComponent{
     let userId = JSON.parse(localStorage.getItem('access_token')!).UserId
     this.cartService.deleteAllProductsFromCart(userId).subscribe({
       next: (data: any) => {
+        this.spinner.hide();
        this.showModal();
       }, error(err) {
         console.log(err);
       }
     })
   }
+
   order() {
     console.log("Order")
     let user = JSON.parse(localStorage.getItem('access_token')!).UserId;
     this.orderService.makeOrder(user, this.total, this.Items)
       .subscribe({
         next: (data: any) => {
-          console.log("after order service ")
-          console.log(data);
           if (this.flag != "buyNow") {
             this.clearAllCart();
           } else {
             this.showModal();
+            this.spinner.hide();
           }
         }, error(err) {
           console.log(err);
@@ -152,16 +147,25 @@ export class CheckoutComponent{
       const creditMonth = this.validationCheckoutForm.get('creditMonth')?.value;
       const creditYear = this.validationCheckoutForm.get('creditYear')?.value;
       const creditCVC = this.validationCheckoutForm.get('creditCVC')?.value;
-      this.checkoutService.sendDataToStripe(creditNumber, creditMonth, creditYear, creditCVC).subscribe({
-        next: (data: any) => {
-          console.log("after stripe")
+      this.checkoutService.sendDataToStripe(creditNumber, creditMonth, creditYear, creditCVC).subscribe(
+        (data: any) => {
+          this.checkoutService.orderSubject.next();
+          this.spinner.show();
           this.order();
-        }, error(err) {
-          console.log(err);
         },
-      })
+        (error: any) => {
+          console.log(error);
+        }
+      );
+
     }
   }
+
+
+
+
+
+
 
 
   showModal(){

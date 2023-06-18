@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { config } from '../config';
+
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,17 +13,22 @@ export class CheckoutService {
   private Base_URL = `${config.backendUrl}/charge/`
   constructor(private readonly myClient: HttpClient) { }
 
+  public orderSubject: Subject<void> = new Subject<void>();
+  public orderUpdated: Observable<void> = this.orderSubject.asObservable();
+
   total: number = 0;
   cartItems = [];
   flag : any;
+
   setCartObject(total: number, cart: any, flag : any) {
     this.total = total;
     this.cartItems = cart;
     this.flag = flag;
   }
 
-  sendDataToStripe(cardN:any, cardM:any , cardY :any, cardCVC :any) {
+  sendDataToStripe(cardN:any, cardM:any , cardY :any, cardCVC :any): Observable<any> {
     return this.myClient.post(this.Base_URL, { cardN, cardM, cardY, cardCVC });
+
   }
 
 }

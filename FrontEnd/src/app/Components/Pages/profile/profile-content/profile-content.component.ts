@@ -3,7 +3,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { OrderService } from 'src/app/Services/order.service';
 import { ProductsService } from 'src/app/Services/products.service';
 import { CartService } from 'src/app/Services/cart.service';
-import {FavouritesService} from 'src/app/Services/favourites.service';
+import { FavouritesService } from 'src/app/Services/favourites.service';
 @Component({
   selector: 'app-profile-content',
   templateUrl: './profile-content.component.html',
@@ -16,6 +16,7 @@ export class ProfileContentComponent {
   ordersProducts: any
   favourites: any[] = []
   customOrders: any[] = []
+  customOrder: any[] = []
   clickedOrderProducts: any[] = []
   clickedOrder: { [key: string]: any } = {}
   currentPage = 1; // Current page number
@@ -24,7 +25,7 @@ export class ProfileContentComponent {
   selectedOrder: any;
   userId: any | null = null;
   userName: any;
-  constructor(private elementRef: ElementRef, public favouritesService: FavouritesService ,public orderService: OrderService,public productService: ProductsService, public myCartService: CartService) { }
+  constructor(private elementRef: ElementRef, public favouritesService: FavouritesService, public orderService: OrderService, public productService: ProductsService, public myCartService: CartService) { }
 
   ngOnInit(): void {
     let accessToken = localStorage.getItem('access_token');
@@ -41,14 +42,25 @@ export class ProfileContentComponent {
         this.totalItems = this.Orders.length;
         this.Orders.forEach((element: Order) => {
           let products = element.products
-          products.forEach(product=>{
+          console.log(products);
+          products.forEach(product => {
             this.productService.GetProductByID(product.product_id).subscribe({
               next: (response: any) => {
                 custom['total_price'] = element.total_price
                 custom['_id'] = element._id
                 custom['items'] = element.products.length
                 custom['imageUrl'] = response.data.imageUrl
-                this.customOrders.push(custom)
+                this.customOrder.push(custom)
+                let or = this.customOrder
+                const uniqueOrders: Order[] = [];
+                const idSet = new Set<string>();
+                or.forEach(order => {
+                  if (!idSet.has(order._id)) {
+                    idSet.add(order._id);
+                    uniqueOrders.push(order);
+                  }
+                });
+                this.customOrders = uniqueOrders
                 console.log(this.customOrders);
                 custom = {}
               },
@@ -67,7 +79,7 @@ export class ProfileContentComponent {
     this.getAllProductsInFavourites()
   }
 
-  getAllProductsInFavourites(){
+  getAllProductsInFavourites() {
     this.favouritesService.GetAllProductsInFavourites(this.userId).subscribe({
       next: (response: any) => {
         this.favourites = response.favourites
@@ -84,8 +96,8 @@ export class ProfileContentComponent {
     return Math.min(upperBound, this.totalItems);
   }
 
-  deleteFromFavourite(product: any){
-    this.favouritesService.deleteProductFromFavourites(this.userId,product._id).subscribe({
+  deleteFromFavourite(product: any) {
+    this.favouritesService.deleteProductFromFavourites(this.userId, product._id).subscribe({
       next: (response: any) => {
         this.getAllProductsInFavourites()
       },
@@ -93,17 +105,17 @@ export class ProfileContentComponent {
         console.log(err);
       }
     })
-    
+
   }
 
   changeTabContent(order: any) {
     this.clickedOrderProducts = []
-   this.clickedOrder =  (this.Orders).find((orderr: Order) =>{return orderr._id == order._id });
-   console.log(this.clickedOrder);
-   
-   let custom: { [key: string]: any } = {};
-   (this.clickedOrder['products']).forEach((product: any) => {
-    this.productService.GetProductByID(product.product_id).subscribe({
+    this.clickedOrder = (this.Orders).find((orderr: Order) => { return orderr._id == order._id });
+    console.log(this.clickedOrder);
+
+    let custom: { [key: string]: any } = {};
+    (this.clickedOrder['products']).forEach((product: any) => {
+      this.productService.GetProductByID(product.product_id).subscribe({
         next: (response: any) => {
           custom = response.data
           custom['quantity'] = product.quantity
@@ -114,9 +126,9 @@ export class ProfileContentComponent {
         error: (err) => {
           console.log(err);
         }
+      })
+
     })
-   
-  })
     this.selectedOrder = order;
     const ordersTab = document.getElementById('ex-with-icons-tabs-1');
     const tab = document.getElementById('ex-with-icons-tabs-4');
