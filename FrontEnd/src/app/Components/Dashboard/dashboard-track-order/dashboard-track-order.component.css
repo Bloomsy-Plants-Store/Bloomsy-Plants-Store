@@ -1,0 +1,32 @@
+.drag-container{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.list {
+  flex: 1;
+  padding: 10px  15px;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  margin-right: 10px;
+  min-height: 600px;
+  max-height: 600px;
+  overflow: auto;
+  background-image: url("../../../../assets/images/modal-bg.png") ;
+  background-repeat: no-repeat;
+  background-position: top left;
+
+}
+
+.list-item {
+  margin-bottom: 10px;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 0.3rem;
+  border: 1px solid #ccc;
+  cursor: move;
+}
+

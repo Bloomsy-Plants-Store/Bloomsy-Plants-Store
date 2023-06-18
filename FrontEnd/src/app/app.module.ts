@@ -54,7 +54,7 @@ import { ProfileHeaderComponent } from './Components/Pages/profile/profile-heade
 import { ProfileContentComponent } from './Components/Pages/profile/profile-content/profile-content.component';
 import { Error404Component } from './Components/Pages/error/error404/error404.component';
 import { ChatbotComponent } from './Components/chatbot/chatbot.component';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 interface NgxSpinnerConfig {
   type?: string;
 }
@@ -98,7 +98,7 @@ interface NgxSpinnerConfig {
     ProfileHeaderComponent,
     ProfileContentComponent,
     Error404Component,
-    ChatbotComponent,
+    ChatbotComponent
   ],
   imports: [
     BrowserModule,
@@ -117,7 +117,8 @@ interface NgxSpinnerConfig {
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    DragDropModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
