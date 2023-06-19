@@ -27,9 +27,10 @@ export class AllProductDataComponent implements OnInit {
   @ViewChild('addToFavouriteModal') addToFavouriteModal!: ElementRef;
   @ViewChild('removeFromFavouriteModal') removeFromFavouriteModal!: ElementRef;
   favoritesMap: Map<string, boolean> = new Map<string, boolean>();
+  FiltercategoryName: any;
+  PriceFlag=false;
 
-  @Input() FiltercategoryName: any;
-  @Input() FilterPriceRange: any;
+  FilterPriceRange: any;
 
   constructor(
     private elementRef: ElementRef,
@@ -38,21 +39,7 @@ export class AllProductDataComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private router: Router,
     public favouritesService: FavouritesService,
-  ) {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.FiltercategoryName) {
-      if(this.FiltercategoryName==="ALL Products")
-      {
-        this.DefaultAllProducts();
-      }
-      this.FilterByCategory();
-    }
-
-    if (  changes['FilterPriceRange'] &&
-      !changes['FilterPriceRange'].firstChange) {
-      this.FilterByPrice();
-    }
+  ) {   this.DefaultAllProducts()
   }
 
   showAddToFavouriteModal(){
@@ -86,7 +73,9 @@ export class AllProductDataComponent implements OnInit {
     this.myService.getProductsByPrice(this.FilterPriceRange).subscribe({
       next: (response: any) => {
         this.Products = response.data;
+        console.log(this.Products)
         this.totalItems = this.Products.length;
+        console.log(this.totalItems)
         this.checkProductInFavourites();
         this.spinner.hide();
       },
@@ -116,7 +105,29 @@ export class AllProductDataComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   this.DefaultAllProducts()
+    let prevCategoryValue:any;
+    let prevPriceValue: any;
+
+    this.myService.categoryObserver$.subscribe((value: any) => {
+      console.log("prevCategoryValue",prevCategoryValue)
+      if (value !== prevCategoryValue) {
+        this.FiltercategoryName = value;
+        if (this.FiltercategoryName === "ALL Products") {
+          this.DefaultAllProducts();
+        } else {
+            this.FilterByCategory();
+        }
+      }
+      prevCategoryValue = value;
+    });
+
+    this.myService.priceObserver$.subscribe((value: any) => {
+      if (value !== prevPriceValue &&this.FiltercategoryName === "ALL Products") {
+        this.FilterPriceRange = value;
+        this.FilterByPrice();
+      }
+      prevPriceValue = value;
+    });
   }
 
   getUpperBound(): number {

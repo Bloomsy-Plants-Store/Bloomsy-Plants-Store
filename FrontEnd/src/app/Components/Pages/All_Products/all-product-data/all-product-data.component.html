@@ -6,7 +6,7 @@
       <div class="col-10 col-md-4 col-lg-3 border-white mb-3"
         *ngFor="let product of Products | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
         <!--Image Section-->
-        <div class="image-container">
+        <div class="image-container w-100">
           <img class="col-12" src="{{ product.imageUrl[0] }}" alt="{{ product.name }}.jpg" height="400"/>
           <div class="voucher w-100 px-3">
             <div class="discount bg-danger text-white w-auto px-2" *ngIf="product.discount != 0">

@@ -1,28 +1,20 @@
-
 <div class="drag-container">
-  <div class="container" >
+  <div class="container">
     <h4>Pending</h4>
-    <div class="list"
-
-    cdkDropList (cdkDropListDropped)="drop($event)"
-    [cdkDropListData]="pending"
-         [cdkDropListConnectedTo]="[deliversList, confirmedList]" #pendingList="cdkDropList">
-         <div class="list-item" *ngFor="let item of pending" cdkDrag>
-          <p>Order {{ item.counter }}</p>
-          <p> {{ item.userName }}</p>
-          <p> {{ item.total }}</p>
-        </div>
-
+    <div class="list" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="pending"
+      [cdkDropListConnectedTo]="[deliversList, confirmedList]" #pendingList="cdkDropList">
+      <div class="list-item" *ngFor="let item of pending" cdkDrag>
+        <p>Order {{ item.counter }}</p>
+        <p> {{ item.userName }}</p>
+        <p> {{ item.total }}</p>
+      </div>
     </div>
   </div>
 
   <div class="container">
-    <h4>confirming</h4>
-    <div class="list"
-     cdkDropList (cdkDropListDropped)="drop($event)"
-     [cdkDropListData]="confirmed"
-     [cdkDropListConnectedTo]="[pendingList, deliversList]"
-      #confirmedList="cdkDropList">
+    <h4>Confirming</h4>
+    <div class="list" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="confirmed"
+      [cdkDropListConnectedTo]="[pendingList, deliversList]" #confirmedList="cdkDropList">
       <div class="list-item" *ngFor="let item of confirmed" cdkDrag>
         <p>Order {{ item.counter }}</p>
         <p> {{ item.userName }}</p>
@@ -32,9 +24,9 @@
   </div>
 
   <div class="container">
-    <h4>delivering</h4>
+    <h4>Delivering</h4>
     <div class="list" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="delivers"
-         [cdkDropListConnectedTo]="[pendingList, confirmedList]" #deliversList="cdkDropList">
+      [cdkDropListConnectedTo]="[pendingList, confirmedList]" #deliversList="cdkDropList">
       <div class="list-item" *ngFor="let item of delivers" cdkDrag>
         <p>Order {{ item.counter }}</p>
         <p> {{ item.userName }}</p>
@@ -42,9 +34,4 @@
       </div>
     </div>
   </div>
-
-
-
-
-
 </div>
