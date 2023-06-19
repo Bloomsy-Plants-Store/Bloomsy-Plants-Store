@@ -111,9 +111,8 @@ const CancelOrder = async (req, res) => {
 
 
 var ConfirmOrder = async (req, res) => {
-  const userId = req.params.id;
-  const { orderId } = req.body;
-
+  const userId = req.body.userID;
+  const orderId  = req.body.orderID;
   try {
     const user = await User.findById(userId);
 
@@ -140,8 +139,8 @@ var ConfirmOrder = async (req, res) => {
 
 
 var DeliverOrder = async (req, res) => {
-  const userId = req.params.id;
-  const { orderId } = req.body;
+  const userId = req.body.userID;
+  const orderId  = req.body.orderID;
 
   try {
     const user = await User.findById(userId);
@@ -164,15 +163,42 @@ var DeliverOrder = async (req, res) => {
     console.error(error);
     res.status(500).json({ error: "An error occurred" });
   }
-
 };
+
+var getOrderForAllUser = async (req, res) => {
+  try {
+    const users = await User.find();
+    const pendingOrders = [];
+
+    users.forEach(user => {
+      user.orders.forEach(order => {
+          const orderWithUserName = {
+            _id: order._id,
+            userName: user.name,
+            total: order.total_price,
+            userId : user._id,
+            status: order.status
+          };
+          pendingOrders.push(orderWithUserName);
+
+      });
+    });
+
+    res.status(200).json(pendingOrders);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+}
+
 
 
 module.exports = {
+  ConfirmOrder,
   addOrder,
   getOrderByID,
-  ConfirmOrder,
   CancelOrder,
-  DeliverOrder
+  DeliverOrder,
+  getOrderForAllUser
 };
 

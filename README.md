@@ -1,21 +1,21 @@
-<div align="center" margin-top="5px">
-  <img src="https://github.com/Bloomsy-Plants-Store/Bloomsy-Plants-Store/assets/81237428/44994456-2b29-44bc-876e-108f22e8e010" alt="animate" width="150"/><br>
-  <a href="https://bloomsy-168d4.web.app/">
-    <img src="https://readme-typing-svg.demolab.com?font=Dancing+Script&weight=700&size=30&pause=1000&color=749D77&center=true&vCenter=true&width=435&lines=Bloomsy+;A+Stunning+Plants+Store" alt="Typing SVG">
-  </a>
-</div>
+<!DOCTYPE html>
+<html>
+ <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+ </head>
+ <body>
+  <div style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;margin-bottom:10px">
+    <img src="./FrontEnd/src/assets/images/animate.gif" width="100px" />
+    <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Dancing+Script&weight=700&size=30&pause=1000&color=749D77&center=true&vCenter=true&width=435&lines=Bloomsy+;A+Stunning+Plants+Store" alt="Typing SVG" /></a>
+  </div>
 
-## **INTRODUCTION**
+## <b> INTRODUCTION </b>
 
-`Bloomsy` is a Stunning Plants Store, an E-Commerce Platform that offers a wide variety of Indoor and Outdoor Plants. It is dedicated to providing Plant enthusiasts with a Seamless Shopping Experience Through its User-Friendly app. Customers can explore a carefully curated selection of Plants, including Vibrant Flowers and Elegant Houseplants, to enhance their Surroundings with Nature's Beauty.
-
-Explore Our Curated Selection of indoor and outdoor plants, including vibrant flowers and elegant houseplants to Embark on a green Journey and enhance Your Surroundings with Nature's Beauty.
-
-<div align="center">
-  <a href="https://bloomsy-168d4.web.app/">
-    <img src="https://readme-typing-svg.demolab.com?font=Dancing+Script&weight=700&size=23&height=30&duration=1&pause=1000&color=749D77&center=true&vCenter=true&width=435&lines=www.Bloomsy.com" alt="Typing SVG">
-  </a>
-</div>
+<span style="font-family: 'Dancing Script', cursive;font-weight:'bolder';font-size:'18px'">Bloomsy</span> is a Stunning Plants Store, an E-Commerce Platform that offers a wide variety of Indoor and Outdoor Plants. It is dedicated to providing Plant enthusiasts with a Seamless Shopping Experience Through its User-Friendly app. Customers can explore a carefully curated selection of Plants, including Vibrant Flowers and Elegant Houseplants, to enhance their Surroundings with Nature's Beauty. </br></br>
+Explore Our Curated Selection of indoor and outdoor plants, including vibrant flowers and elegant houseplants
+From <a href="https://bloomsy-168d4.web.app/" style="text-decoration:none;color:#749d77;font-family:'Dancing Script';font-size:'16px'">www.Bloomsy.com</a> to Embark on a green Journey and enhance Your Surroundings with Nature's Beauty.
 
 ## **FEATURES**
 
@@ -127,6 +127,11 @@ to this Repository as it can make a Significant Difference.
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Radwa+Hassan)](https://github.com/RadwaHassan99)  </br>
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Rowan+Tamer)](https://github.com/rowantamer)  </br>
 
-![IMG-20230527-WA0002](https://github.com/Bloomsy-Plants-Store/Plants-Shop/assets/81237428/902df7f1-333a-452a-ac8f-0d2027073ff0)
+  <div style="font-family:'Dancing Script',cursive;font-size:18px;line-height:15px;margin-top:10px">
 
+- [Mariam Reda Mokhtar](https://github.com/Mariam-Mokhtar)
+- [Omnia Goher](https://github.com/Omnia-Goher)
+- [Hager Abd El Galil](https://github.com/Hager-Abd-El-Galil)
+- [Radwa Hassan](https://github.com/RadwaHassan99)
+- [Rowan Tamer](https://github.com/rowantamer)
 

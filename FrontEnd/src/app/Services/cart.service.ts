@@ -9,6 +9,7 @@ import { config } from '../config';
 export class CartService {
 private Base_URL = `${config.backendUrl}/users/`
   constructor(private readonly myClient: HttpClient) { }
+  
   public cartUpdatedSubject: Subject<void> = new Subject<any>();
   public cartUpdatedObservable: Observable<void> = this.cartUpdatedSubject.asObservable();
 
