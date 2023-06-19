@@ -93,6 +93,7 @@ We Hope That You are enjoying Watching Our Demo Video [🎥](https://www.youtube
       "STRIPE_SECRET_KEY":""
   }
   </pre>
+
   Run Back-End Server
   <pre>
     nodemon main.js
@@ -123,10 +124,8 @@ to this Repository as it can make a Significant Difference.
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Mariam+Reda+Mokhtar)](https://github.com/Mariam-Mokhtar) </br>
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Omnia+Goher)](https://github.com/Omnia-Goher) </br>
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Hager+Abd+El+Galil)](https://github.com/Hager-Abd-El-Galil)  </br>
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Radwa+Hassan)](https://github.com/RadwaHassan99)  </br>
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Rowan+Tamer)](https://github.com/rowantamer)  </br>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Hager+Abd+El+Galil)](https://github.com/Hager-Abd-El-Galil) </br>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Radwa+Hassan)](https://github.com/RadwaHassan99) </br>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Rowan+Tamer)](https://github.com/rowantamer) </br>
 
 ![IMG-20230527-WA0002](https://github.com/Bloomsy-Plants-Store/Plants-Shop/assets/81237428/902df7f1-333a-452a-ac8f-0d2027073ff0)
-
-

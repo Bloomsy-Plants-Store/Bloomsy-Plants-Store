@@ -4,11 +4,10 @@ const session = require('express-session');
 const passport = require("./Utils/passportConfig");
 const config = require('./config.json');
 const app = express();
-const multer = require('multer');
-const socketIO = require('socket.io');
-const http = require('http');
 
 const PORT = process.env.PORT||7400
+
+require('dotenv').config();
 
 const bodyparser = require("body-parser");
 
@@ -100,8 +99,9 @@ app.use('/charge', stripeRoutes);
 const RevenueRoutes = require('./Routes/RevenueRoutes');
 app.use('/', RevenueRoutes);
 
-// const NotificationsRoutes= require('./Routes/NotificationsRoutes');
-// app.use('/notifications',NotificationsRoutes)
+// Chatbot Route
+const ChatbotRoutes = require('./Routes/ChatbotRoutes');
+app.use('/', ChatbotRoutes);
 
 const server = http.createServer(app)
 const io = socketIO(server, {
