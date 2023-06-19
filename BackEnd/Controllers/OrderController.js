@@ -81,7 +81,7 @@ var getOrderByID = async(req,res)=>{
 
 
 const CancelOrder = async (req, res) => {
-  const userId = req.params.id; 
+  const userId = req.params.id;
   const { orderId } = req.body;
 
   try {
@@ -98,6 +98,7 @@ const CancelOrder = async (req, res) => {
     }
 
     order.status = "canceled";
+    order.total_price = 0
     await user.save();
 
     res.status(200).json({ message: "Order canceled successfully" });
@@ -110,7 +111,7 @@ const CancelOrder = async (req, res) => {
 
 
 var ConfirmOrder = async (req, res) => {
-  const userId = req.params.id; 
+  const userId = req.params.id;
   const { orderId } = req.body;
 
   try {
@@ -139,7 +140,7 @@ var ConfirmOrder = async (req, res) => {
 
 
 var DeliverOrder = async (req, res) => {
-  const userId = req.params.id; 
+  const userId = req.params.id;
   const { orderId } = req.body;
 
   try {

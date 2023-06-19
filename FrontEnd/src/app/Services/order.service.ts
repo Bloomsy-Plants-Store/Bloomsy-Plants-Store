@@ -21,5 +21,10 @@ export class OrderService {
     return this.myClient.post(this.Base_URL + userID, { total_price, products });
   }
 
+  cancelOrder(userID: number,orderID: any) {
+    return this.myClient.post(this.Base_URL + "cancel-order/" + userID, { orderId: orderID });
+  }
+
+
 }
 
