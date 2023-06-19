@@ -10,6 +10,7 @@ var addOrder = async (req, res) => {
   try {
     const id = req.params.id;
     const order = req.body;
+    order.status = 'pending';
     const user = await User.findById(id).session(session);
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
@@ -77,8 +78,127 @@ var getOrderByID = async(req,res)=>{
   }
 }
 
+
+
+const CancelOrder = async (req, res) => {
+  const userId = req.params.id;
+  const { orderId } = req.body;
+
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const order = user.orders.find((o) => o._id.toString() === orderId);
+
+    if (!order) {
+      return res.status(404).json({ error: "Order not found" });
+    }
+
+    order.status = "canceled";
+    order.total_price = 0
+    await user.save();
+
+    res.status(200).json({ message: "Order canceled successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "An error occurred" });
+  }
+};
+
+
+
+var ConfirmOrder = async (req, res) => {
+  const userId = req.body.userID;
+  const orderId  = req.body.orderID;
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const order = user.orders.find((o) => o._id.toString() === orderId);
+
+    if (!order) {
+      return res.status(404).json({ error: "Order not found" });
+    }
+
+    order.status = "confirmed";
+    await user.save();
+
+    res.status(200).json({ message: "Order confirmed successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "An error occurred" });
+  }
+
+};
+
+
+var DeliverOrder = async (req, res) => {
+  const userId = req.body.userID;
+  const orderId  = req.body.orderID;
+
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const order = user.orders.find((o) => o._id.toString() === orderId);
+
+    if (!order) {
+      return res.status(404).json({ error: "Order not found" });
+    }
+
+    order.status = "delivered";
+    await user.save();
+
+    res.status(200).json({ message: "Order delivered successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "An error occurred" });
+  }
+};
+
+var getOrderForAllUser = async (req, res) => {
+  try {
+    const users = await User.find();
+    const pendingOrders = [];
+
+    users.forEach(user => {
+      user.orders.forEach(order => {
+          const orderWithUserName = {
+            _id: order._id,
+            userName: user.name,
+            total: order.total_price,
+            userId : user._id,
+            status: order.status
+          };
+          pendingOrders.push(orderWithUserName);
+
+      });
+    });
+
+    res.status(200).json(pendingOrders);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+}
+
+
+
 module.exports = {
+  ConfirmOrder,
   addOrder,
-  getOrderByID
+  getOrderByID,
+  CancelOrder,
+  DeliverOrder,
+  getOrderForAllUser
 };
 
