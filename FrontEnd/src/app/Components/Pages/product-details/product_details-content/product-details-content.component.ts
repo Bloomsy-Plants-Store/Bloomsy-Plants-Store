@@ -7,6 +7,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { FavouritesService } from 'src/app/Services/favourites.service';
 import { Router } from '@angular/router';
 import { CheckoutService } from 'src/app/Services/checkout.service';
+import * as bootstrap from 'bootstrap';
 
 export interface MyCartItem {
   product_id: string;
@@ -23,9 +24,12 @@ export class ProductDetailsComponent {
   quantity: number = 1;
   isFavorited: boolean = false;
   Product: any;
+  @ViewChild('addToFavouriteModal') addToFavouriteModal!: ElementRef;
+  @ViewChild('removeFromFavouriteModal') removeFromFavouriteModal!: ElementRef;
   favourite?:boolean;
   flag: any;
   cartItems: MyCartItem[] = [];
+
   constructor(private elementRef: ElementRef,
     public productService: ProductsService,
     public cartService:CartService,
@@ -68,6 +72,16 @@ export class ProductDetailsComponent {
     });
   }
 
+  showAddToFavouriteModal(){
+    const modal = new bootstrap.Modal(this.addToFavouriteModal.nativeElement);
+    modal.show();
+  }
+
+  showRemoveFromFavouriteModal(){
+    const modal = new bootstrap.Modal(this.removeFromFavouriteModal.nativeElement);
+    modal.show();
+  }
+  
   // add product to cart
   addProductToCart(id: any, price: any) {
     this.spinner.show();
@@ -99,15 +113,19 @@ export class ProductDetailsComponent {
   }
 
   addOrRemoveFavourite(productId: any) {
+    this.spinner.show();
     if (localStorage.getItem('access_token')) {
       let userId = JSON.parse(localStorage.getItem('access_token')!).UserId;
       if (this.isFavorited) {
         this.favouritesService.deleteProductFromFavourites(userId, productId).subscribe({
           next: (response: any) => {
             this.isFavorited = false;
+            this.spinner.hide();
+            this.showRemoveFromFavouriteModal();
           },
           error: (err: any) => {
             console.log(err);
+            this.spinner.hide();
           }
         });
       } else {
@@ -115,9 +133,12 @@ export class ProductDetailsComponent {
         this.favouritesService.addProductToFavourites(userId, productId).subscribe({
           next: (response: any) => {
             this.isFavorited = true;
+            this.spinner.hide();
+            this.showAddToFavouriteModal();
           },
           error: (err: any) => {
             console.log(err);
+            this.spinner.hide();
           }
         });
       }
