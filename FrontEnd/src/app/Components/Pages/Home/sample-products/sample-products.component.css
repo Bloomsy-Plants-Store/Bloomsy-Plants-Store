@@ -146,19 +146,21 @@
 }
 
 .modal-confirm {
-  color: #636363;
-  width: 325px;
+  color: #000;
+  width: 300px;
   font-size: 14px;
 }
 
 .modal-title{
   font-family: 'Dancing Script', cursive;
   font-style: italic;
-  font-weight: bold;
+  text-align: center;
+  font-size: 24px;
+  margin: 30px 0 -10px;
 }
 
 .modal-confirm .modal-content {
-  padding: 5px;
+  padding: 10px;
   border-radius: 5px;
   border: none;
 }
@@ -166,18 +168,6 @@
 .modal-confirm{
   border-bottom: none;
   position: relative;
-}
-
-.modal-confirm h4 {
-  text-align: center;
-  font-size: 26px;
-  margin: 30px 0 -15px;
-}
-
-.modal-confirm .form-control,
-.modal-confirm .btn {
-  min-height: 40px;
-  border-radius: 3px;
 }
 
 .modal-confirm .icon-box {
@@ -206,8 +196,5 @@
   max-height: 100%;
 }
 
-.modal-confirm.modal-dialog {
-  margin-top: 80px;
-}
 
 
