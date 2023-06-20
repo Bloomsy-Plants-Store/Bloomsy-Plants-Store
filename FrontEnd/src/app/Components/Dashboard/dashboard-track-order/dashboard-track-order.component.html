@@ -1,12 +1,14 @@
 <div class="drag-container">
-  <div class="container">
+  <div class="container ">
     <h4>Pending</h4>
     <div class="list" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="pending"
       [cdkDropListConnectedTo]="[deliversList, confirmedList]" #pendingList="cdkDropList">
-      <div class="list-item" *ngFor="let item of pending" cdkDrag>
-        <p>Order {{ item.counter }}</p>
-        <p> {{ item.userName }}</p>
-        <p> {{ item.total }}</p>
+      <div class="textBox list-item" *ngFor="let item of pending" cdkDrag>
+        <div class="textContent">
+         <p class="h1"><span class="orderby">order by </span> {{ item.userName }}</p>
+          <span class="span"><i class="bi bi-currency-pound"></i>{{ item.total }}</span>
+        </div>
+        <p class="p">Order {{ item.counter }} is now <span class="orderby">{{item.status}} </span>  it is waiting for drag!</p>
       </div>
     </div>
   </div>
@@ -15,10 +17,12 @@
     <h4>Confirming</h4>
     <div class="list" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="confirmed"
       [cdkDropListConnectedTo]="[pendingList, deliversList]" #confirmedList="cdkDropList">
-      <div class="list-item" *ngFor="let item of confirmed" cdkDrag>
-        <p>Order {{ item.counter }}</p>
-        <p> {{ item.userName }}</p>
-        <p> {{ item.total }}</p>
+      <div class="textBox list-item" *ngFor="let item of confirmed" cdkDrag>
+        <div class="textContent">
+         <p class="h1"><span class="orderby">order by </span> {{ item.userName }}</p>
+          <span class="span"><i class="bi bi-currency-pound"></i>{{ item.total }}</span>
+        </div>
+        <p class="p">Order {{ item.counter }} is now <span class="orderby">{{item.status}} </span>  it is waiting for drag!</p>
       </div>
     </div>
   </div>
@@ -27,10 +31,12 @@
     <h4>Delivering</h4>
     <div class="list" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="delivers"
       [cdkDropListConnectedTo]="[pendingList, confirmedList]" #deliversList="cdkDropList">
-      <div class="list-item" *ngFor="let item of delivers" cdkDrag>
-        <p>Order {{ item.counter }}</p>
-        <p> {{ item.userName }}</p>
-        <p> {{ item.total }}</p>
+      <div class="textBox list-item" *ngFor="let item of delivers" cdkDrag>
+        <div class="textContent">
+         <p class="h1"><span class="orderby">order by </span> {{ item.userName }}</p>
+          <span class="span"><i class="bi bi-currency-pound"></i>{{ item.total }}</span>
+        </div>
+        <p class="p">Order {{ item.counter }} is now <span class="orderby">{{item.status}} </span>  it is waiting for drag!</p>
       </div>
     </div>
   </div>
