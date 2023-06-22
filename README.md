@@ -140,3 +140,4 @@ to this Repository as it can make a Significant Difference.
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Rowan+Tamer)](https://github.com/rowantamer) </br>
 
 
+![Dribbble Shot HD Final](https://github.com/Bloomsy-Plants-Store/Bloomsy-Plants-Store/assets/78274961/2fef0b4d-81ef-4e9b-ae6d-39a3aaca8f4d)
