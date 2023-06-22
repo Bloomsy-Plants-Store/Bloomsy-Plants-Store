@@ -58,7 +58,7 @@ We Hope That You are enjoying Watching Our Demo Video [🎥](https://www.youtube
 
 ## **Documentation**
 
-[Final Project Documentation.pdf](https://github.com/Bloomsy-Plants-Store/Bloomsy-Plants-Store/files/11840916/Final.Project.Documentation.pdf)
+[Project Documentation](https://drive.google.com/file/d/1IU-pzHB55jK6z_eInz3KAP2h5fcJ4iZ9/view?usp=sharing)
 
 ## **INSTALLATION**
 
