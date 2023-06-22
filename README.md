@@ -94,6 +94,11 @@ We Hope That You are enjoying Watching Our Demo Video [🎥](https://www.youtube
   }
   </pre>
 
+ Create File `.env`
+  <pre>
+      OPENAI_API_KEY=""
+  </pre>
+  
   Run Back-End Server
   <pre>
     nodemon main.js
