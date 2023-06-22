@@ -56,6 +56,10 @@ Our website offers order tracking for customers to stay informed about their pur
 
 We Hope That You are enjoying Watching Our Demo Video [🎥](https://www.youtube.com/watch?v=-8E6sfRQGCw)
 
+## **Documentation**
+
+[Final Project Documentation.pdf](https://github.com/Bloomsy-Plants-Store/Bloomsy-Plants-Store/files/11840916/Final.Project.Documentation.pdf)
+
 ## **INSTALLATION**
 
 - **CLONE THE REPOSITORY**
