@@ -39,7 +39,8 @@ export class DashboardTrackOrderComponent implements OnInit {
             userName: order.userName,
             total: order.total,
             userId: order.userId,
-            counter: counter++
+            counter: counter++,
+            status: order.status
           };
           if (order.status === 'pending') {
             this.pending.push(mappedOrder);
