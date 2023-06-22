@@ -46,6 +46,12 @@ Explore Our Curated Selection of indoor and outdoor plants, including vibrant fl
 - **Mobile Responsiveness**<br>
   The website is designed to be responsive across various devices, including smartphones and tablets. It offers a seamless browsing and shopping experience, allowing customers to shop for plants on the go.
 
+- **Chatbot Assistance for Plant Selection**<br>
+Our website has a chatbot feature that helps users find plants that match their personality and preferences. Using advanced algorithms and a large plant database, the chatbot offers personalized recommendations based on factors like lighting, maintenance, and aesthetics. Whether you're new to plants or an experienced gardener, our chatbot guides you in finding the perfect plants for your space and lifestyle.
+
+- **Order Tracking for Seamless Shopping Experience**<br>
+Our website provides order tracking for customers, allowing them to stay informed about their purchase. From confirmation to shipping and delivery, customers can easily monitor the progress of their orders. Real-time updates and notifications ensure transparency and a hassle-free shopping experience.
+
 ## **DEMO**
 
 We Hope That You are enjoying Watching Our Demo Video [🎥](https://www.youtube.com/watch?v=-8E6sfRQGCw)
@@ -133,4 +139,3 @@ to this Repository as it can make a Significant Difference.
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Radwa+Hassan)](https://github.com/RadwaHassan99) </br>
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Rowan+Tamer)](https://github.com/rowantamer) </br>
 
-![IMG-20230527-WA0002](https://github.com/Bloomsy-Plants-Store/Plants-Shop/assets/81237428/902df7f1-333a-452a-ac8f-0d2027073ff0)
