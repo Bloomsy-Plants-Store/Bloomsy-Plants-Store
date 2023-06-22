@@ -47,10 +47,10 @@ Explore Our Curated Selection of indoor and outdoor plants, including vibrant fl
   The website is designed to be responsive across various devices, including smartphones and tablets. It offers a seamless browsing and shopping experience, allowing customers to shop for plants on the go.
 
 - **Chatbot Assistance for Plant Selection**<br>
-Our website has a chatbot feature that helps users find plants that match their personality and preferences. Using advanced algorithms and a large plant database, the chatbot offers personalized recommendations based on factors like lighting, maintenance, and aesthetics. Whether you're new to plants or an experienced gardener, our chatbot guides you in finding the perfect plants for your space and lifestyle.
+Our chatbot helps you find plants that match your preferences using advanced algorithms and a vast plant database. It provides personalized recommendations based on lighting, maintenance, and aesthetics, catering to all levels of plant enthusiasts.
 
 - **Order Tracking for Seamless Shopping Experience**<br>
-Our website provides order tracking for customers, allowing them to stay informed about their purchase. From confirmation to shipping and delivery, customers can easily monitor the progress of their orders. Real-time updates and notifications ensure transparency and a hassle-free shopping experience.
+Our website offers order tracking for customers to stay informed about their purchases. From confirmation to delivery, easily monitor progress with real-time updates for a hassle-free experience.
 
 ## **DEMO**
 
