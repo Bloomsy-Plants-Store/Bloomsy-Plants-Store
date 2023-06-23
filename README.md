@@ -54,11 +54,11 @@ Our website offers order tracking for customers to stay informed about their pur
 
 ## **DEMO**
 
-We Hope That You are enjoying Watching Our Demo Video [🎥](https://www.youtube.com/watch?v=RJKBdzqMcSk)
+🎥 We Hope That You are enjoying Watching Our Demo Video from [Here](https://www.youtube.com/watch?v=RJKBdzqMcSk)
 
 ## **DOCUMENTATION**
 
-[Project Documentation](https://drive.google.com/file/d/1IU-pzHB55jK6z_eInz3KAP2h5fcJ4iZ9/view?usp=sharing)
+📄 Check Bloomsy Documentation from [Here](https://drive.google.com/file/d/1IU-pzHB55jK6z_eInz3KAP2h5fcJ4iZ9/view?usp=sharing)
 
 ## **INSTALLATION**
 
