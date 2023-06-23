@@ -76,8 +76,6 @@ export class NavbarComponent {
 
   }
 
-
-
   logout(): void {
    const id = JSON.parse(localStorage.getItem('access_token')!).UserId;
        this.authService.logout(id).subscribe({
