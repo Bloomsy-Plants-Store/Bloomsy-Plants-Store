@@ -46,9 +46,20 @@ Explore Our Curated Selection of indoor and outdoor plants, including vibrant fl
 - **Mobile Responsiveness**<br>
   The website is designed to be responsive across various devices, including smartphones and tablets. It offers a seamless browsing and shopping experience, allowing customers to shop for plants on the go.
 
+- **Chatbot Assistance for Plant Selection**<br>
+Our chatbot helps you find plants that match your preferences using advanced algorithms and a vast plant database. It provides personalized recommendations based on lighting, maintenance, and aesthetics, catering to all levels of plant enthusiasts.
+
+- **Order Tracking for Seamless Shopping Experience**<br>
+Our website offers order tracking for customers to stay informed about their purchases. From confirmation to delivery, easily monitor progress with real-time updates for a hassle-free experience.
+
 ## **DEMO**
 
-We Hope That You are enjoying Watching Our Demo Video [🎥](https://www.youtube.com/watch?v=-8E6sfRQGCw)
+🎥 We Hope That You are enjoying Watching Our Demo Video from [Here](https://www.youtube.com/watch?v=RJKBdzqMcSk)
+
+
+## **DOCUMENTATION**
+
+📄 Check Bloomsy Documentation from [Here](https://drive.google.com/file/d/1IU-pzHB55jK6z_eInz3KAP2h5fcJ4iZ9/view?usp=sharing)
 
 ## **INSTALLATION**
 
@@ -93,6 +104,12 @@ We Hope That You are enjoying Watching Our Demo Video [🎥](https://www.youtube
       "STRIPE_SECRET_KEY":""
   }
   </pre>
+
+ Create File `.env`
+  <pre>
+      OPENAI_API_KEY=""
+  </pre>
+  
   Run Back-End Server
   <pre>
     nodemon main.js
@@ -123,10 +140,9 @@ to this Repository as it can make a Significant Difference.
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Mariam+Reda+Mokhtar)](https://github.com/Mariam-Mokhtar) </br>
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Omnia+Goher)](https://github.com/Omnia-Goher) </br>
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Hager+Abd+El+Galil)](https://github.com/Hager-Abd-El-Galil)  </br>
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Radwa+Hassan)](https://github.com/RadwaHassan99)  </br>
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Rowan+Tamer)](https://github.com/rowantamer)  </br>
-
-![IMG-20230527-WA0002](https://github.com/Bloomsy-Plants-Store/Plants-Shop/assets/81237428/902df7f1-333a-452a-ac8f-0d2027073ff0)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Hager+Abd+El+Galil)](https://github.com/Hager-Abd-El-Galil) </br>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Radwa+Hassan)](https://github.com/RadwaHassan99) </br>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Dancing+Script&weight=700&size=20&height=25&duration=1&pause=1000&color=749D77&vCenter=true&lines=Rowan+Tamer)](https://github.com/rowantamer) </br>
 
 
+![Dribbble Shot HD Final](https://github.com/Bloomsy-Plants-Store/Bloomsy-Plants-Store/assets/78274961/2fef0b4d-81ef-4e9b-ae6d-39a3aaca8f4d)

@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
 import { config } from '../config';
 
 
@@ -13,8 +12,6 @@ export class CheckoutService {
   private Base_URL = `${config.backendUrl}/charge/`
   constructor(private readonly myClient: HttpClient) { }
 
-  public orderSubject: Subject<void> = new Subject<void>();
-  public orderUpdated: Observable<void> = this.orderSubject.asObservable();
 
   total: number = 0;
   cartItems = [];
@@ -26,7 +23,7 @@ export class CheckoutService {
     this.flag = flag;
   }
 
-  sendDataToStripe(cardN:any, cardM:any , cardY :any, cardCVC :any): Observable<any> {
+  sendDataToStripe(cardN:any, cardM:any , cardY :any, cardCVC :any) {
     return this.myClient.post(this.Base_URL, { cardN, cardM, cardY, cardCVC });
 
   }

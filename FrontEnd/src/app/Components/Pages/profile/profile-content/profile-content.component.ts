@@ -23,6 +23,7 @@ export class ProfileContentComponent {
   itemsPerPage = 12; // Number of items to display per page
   totalItems = 0;
   selectedOrder: any;
+  orderStatus: any;
   userId: any | null = null;
   userName: any;
   constructor(private elementRef: ElementRef, public favouritesService: FavouritesService, public orderService: OrderService, public productService: ProductsService, public myCartService: CartService) { }
@@ -149,6 +150,31 @@ export class ProfileContentComponent {
     const tab = document.getElementById('ex-with-icons-tabs-4');
     tab?.classList.remove("show", "active")
   }
+  getStatusColor(): string {
+    switch (this.clickedOrder['status']) {
+      case 'pending':
+        return '#207bd6'; // Blue color for active status
+      case 'canceled':
+        return '#ff0000'; // Red color for cancelled status
+      case 'delivered':
+        return '#4BB543';
+      default:
+        return '#000000'; // Default color if status is not recognized
+    }
+  }
+
+  cancelOrder() {
+    this.orderService.cancelOrder(this.userId,this.clickedOrder["_id"]).subscribe({
+      next: (response: any) => {
+        this.clickedOrder['statuts'] = 'canceled';
+        window.location.reload()
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
 }
 
 interface Order {

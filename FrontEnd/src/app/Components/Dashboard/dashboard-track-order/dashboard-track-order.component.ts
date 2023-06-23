@@ -18,14 +18,15 @@ export class DashboardTrackOrderComponent implements OnInit {
   constructor(
     private orderService: OrderService,
     private checkOutService: CheckoutService
-    ) { }
+    ) { this.getOrders(); }
 
     ngOnInit(): void {
-      this.checkOutService.orderUpdated.subscribe(() => {
+      this.orderService.orderUpdated.subscribe(() => {
+        console.log('Order updated. Getting orders...');
         this.getOrders();
       });
 
-      this.getOrders();
+
     }
 
   getOrders() {
@@ -38,7 +39,8 @@ export class DashboardTrackOrderComponent implements OnInit {
             userName: order.userName,
             total: order.total,
             userId: order.userId,
-            counter: counter++
+            counter: counter++,
+            status: order.status
           };
           if (order.status === 'pending') {
             this.pending.push(mappedOrder);
