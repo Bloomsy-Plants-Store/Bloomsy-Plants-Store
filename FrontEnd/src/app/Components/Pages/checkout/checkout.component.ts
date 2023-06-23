@@ -79,6 +79,7 @@ export class CheckoutComponent{
     this.Items = this.checkoutService.cartItems;
     this.flag = this.checkoutService.flag;
     console.log(this.total, this.Items, this.flag);
+    window.scroll(0, 0);
   }
   get inputName() {
     return this.validationCheckoutForm.get('name');

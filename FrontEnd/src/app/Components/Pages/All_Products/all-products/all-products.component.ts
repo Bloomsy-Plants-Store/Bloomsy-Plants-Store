@@ -16,4 +16,8 @@ export class ALlProductsComponent {
     this.priceRange = data;
     console.log(this.priceRange)
   }
+
+  ngOnInit() {
+    window.scroll(0, 0);
+  }
 }
