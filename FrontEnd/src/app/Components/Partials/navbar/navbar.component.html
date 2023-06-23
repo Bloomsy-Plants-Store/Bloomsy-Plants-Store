@@ -27,6 +27,7 @@
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
         aria-label="Toggle navigation"
+        id="navbarToggler"
       >
         <i class="fas fa-bars"></i>
       </button>
@@ -36,16 +37,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0 d-flex gap-3">
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/" >HOME</a>
+          <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/" (click)="closeNavbar()" >HOME</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/products">PRODUCTS</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/products" (click)="closeNavbar()">PRODUCTS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/about-us">ABOUT</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/about-us" (click)="closeNavbar()">ABOUT</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/contact-us">CONTACT US</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/contact-us" (click)="closeNavbar()">CONTACT US</a>
         </li>
       </ul>
     </div>

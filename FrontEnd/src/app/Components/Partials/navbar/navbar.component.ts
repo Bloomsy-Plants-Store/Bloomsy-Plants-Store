@@ -1,8 +1,7 @@
-import { Component, HostListener ,   } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild ,   } from '@angular/core';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/Services/cart.service';
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -94,6 +93,12 @@ export class NavbarComponent {
         }
     })
   }
-
+  closeNavbar(): void {
+    const navbarcontent = document.getElementById('navbarSupportedContent');
+    const navbarToggler=document.getElementById('navbarToggler');
+    if (navbarcontent?.classList.contains('show')) {
+      navbarToggler?.click(); // Simulate click on the navbar toggler to close the navbar
+    }
+  }
 }
 
