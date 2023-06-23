@@ -54,7 +54,7 @@ Our website offers order tracking for customers to stay informed about their pur
 
 ## **DEMO**
 
-🎥 We Hope That You are enjoying Watching Our Demo Video from [![Typing SVG](https://readme-typing-svg.demolab.com?font=Dancing+Script&weight=700&size=20&height=60&duration=1&pause=1000&color=749D77&center=true&vCenter=true&width=40&lines=Here)](https://www.youtube.com/watch?v=RJKBdzqMcSk)
+🎥 We Hope That You are enjoying Watching Our Demo Video from [Here](https://www.youtube.com/watch?v=RJKBdzqMcSk)
 
 
 ## **DOCUMENTATION**
