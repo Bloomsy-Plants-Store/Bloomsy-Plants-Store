@@ -63,7 +63,7 @@ Our website offers order tracking for customers to stay informed about their pur
 
 ## **PRESENTATION**
 
-📄 Check Bloomsy Presentation from [Here] (https://docs.google.com/presentation/d/1uIsAWOOuFsV7VdwM3U7du6UCtA3wfVh6/edit?usp=drivesdk&ouid=114025015125954719975&rtpof=true&sd=true)
+📄 Check Bloomsy Presentation from [Here](https://docs.google.com/presentation/d/1uIsAWOOuFsV7VdwM3U7du6UCtA3wfVh6/edit?usp=drivesdk&ouid=114025015125954719975&rtpof=true&sd=true)
 
 ## **INSTALLATION**
 
