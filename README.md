@@ -61,6 +61,10 @@ Our website offers order tracking for customers to stay informed about their pur
 
 📄 Check Bloomsy Documentation from [Here](https://drive.google.com/file/d/1IU-pzHB55jK6z_eInz3KAP2h5fcJ4iZ9/view?usp=sharing)
 
+## **PRESENTATION**
+
+📄 Check Bloomsy Presentation from [Here] (https://docs.google.com/presentation/d/1uIsAWOOuFsV7VdwM3U7du6UCtA3wfVh6/edit?usp=drivesdk&ouid=114025015125954719975&rtpof=true&sd=true)
+
 ## **INSTALLATION**
 
 - **CLONE THE REPOSITORY**
